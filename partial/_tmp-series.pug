@@ -1,0 +1,225 @@
+//- Series page template
+
+//- Dependencies
+include _config.pug
+include _nav-series.pug
+include _crd-artwork.pug
+include _crd-series.pug
+
+//- Series medium list mixin
+mixin seriesMediums(...mediumList)
+	ul.ap-c-mdl-series__tags
+		each item in mediumList
+			li
+				a(
+					href= urlRootTag + item
+					title= "All artworks created with" + item
+				)= item
+
+//- Series material list mixin
+mixin seriesMaterials(...materialList)
+	ul.ap-c-mdl-series__tags
+		each item in materialList
+			li
+				a(
+					href= urlRootTag + item
+					title= "All artworks created with " + item
+				)= item
+
+//- Series page parameters
+block config
+	//- "series" object
+		Properties:
+		Series title,
+		Series class,
+		Series page address,
+		One-line description,
+		Content summary,
+		Dates created,
+		Work collection title,
+		Work collection address,
+		Header background overlay image,
+		Header background base image,
+		Footer background overlay image,
+		Footer background base image
+
+	//- Overwritable defaults
+	//- -
+	//- 	var series = {
+	//- 		name:    "Untitled Series",
+	//- 		subhead: `${series.colname} Series`,
+	//- 		info:    "Series of artworks by Grazyna Adamska Jarecka",
+	//- 		date:    "Various Dates",
+	//- 		border1: "background_border_intro_04.png",
+	//- 		border2: "background_border_outro_03.png"
+	//- 	}
+	//- -
+	//- 	var page = {
+	//- 		subhead: "This is a test"
+	//- 	}
+
+doctype html
+html(lang="en")
+	head
+		include _head.pug
+		block headMeta
+			meta(
+				name="title" 
+				content= `${series.name} – Grazyna Adamska Jarecka`
+			)
+			meta(
+				name="description" 
+				content= `${series.info}`
+			)
+		block headOpengraph
+			meta(
+				property="og:title"
+				content= `${series.name}`
+			)
+			meta(
+				property="og:description"
+				content= `${series.info}`
+			)
+			meta(
+				property="og:url"
+				content= `${series.link}`
+			)
+	body.ap-p-series#top(class= `ap-p-series--${series.id}`)
+		//- Website navigation components
+			Contains opt-in "block navSubmenu"
+		include _nav-main.pug
+
+		//- Series intro section
+		section.ap-c-scn.ap-c-scn--intro
+			//- Intro background – overlay image + main image + placeholder image
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_intro_04.png),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${series.hero1}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${series.hero1});`
+			)
+			//- Page header
+			div.ap-c-scn__header
+				header.ap-c-scn__header-container
+					h1.ap-c-scn__header-title
+						//- Title of series
+						span #{series.name}
+					h2.ap-c-scn__header-subtitle
+						//- i.e. "Abstract Series"
+						span= `${series.colname} Series`
+
+		//- Series-specific content
+		main.ap-c-scn.ap-c-scn--main
+			//- Main header content background
+			div.ap-c-scn__background
+			//- Outro CTA banner background – overlay image + main image + placeholder image
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_01.png),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${series.hero2}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${series.hero2});`
+			)
+
+			//- Series description
+			section.ap-c-scn.ap-c-scn--series
+				article.ap-c-mdl-series
+					div.ap-c-mdl-series__summary
+						h2.ap-c-mdl-series__label Summary
+						p #{series.summary}
+					ul.ap-c-mdl-series__list
+						li.ap-c-mdl-series__item
+							h3.ap-c-mdl-series__label Dates
+							span.ap-c-mdl-series__details #{series.date}
+						li.ap-c-mdl-series__item
+							h3.ap-c-mdl-series__label Mediums
+							span.ap-c-mdl-series__details
+								//- Mediums list mixin
+								block seriesMediums
+						li.ap-c-mdl-series__item
+							h3.ap-c-mdl-series__label Materials
+							span.ap-c-mdl-series__details
+								//- Materials list mixin
+								block seriesMaterials
+						li.ap-c-mdl-series__item
+							h3.ap-c-mdl-series__label Collection
+							//- Collection link and label
+							a.ap-c-mdl-series__details(
+								href= `${series.collink}`
+								title= `All ${series.colname} Series`
+							) #{series.colname}
+
+			//- Series gallery
+			section.ap-c-scn.ap-c-scn--gallery
+				+headerTitle("Series Gallery")
+				div.ap-c-mdl-gallery
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--1
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--2
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--3
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--4
+					//- Series-specific gallery items
+					block galleryContent
+
+			//- Outro call to action
+			+contactFooter
+
+		//- Next series section
+		section.ap-c-scn.ap-c-scn--next
+			+headerTitle("Next Series")
+			div.ap-c-mdl-collection
+				ul.ap-c-mdl-collection__list
+					li.ap-c-mdl-collection__item.ap-l-crd--spotlight
+						block nextSeries
+							+seriesAbstractGrace
+
+		//- Related series section
+		section.ap-c-scn.ap-c-scn--related
+			div.ap-c-scn__header
+				header.ap-c-scn__header-container
+					h2.ap-c-scn__header-title
+						//- i.e. "More Abstract Series"
+						span= `More ${series.colname} Series`
+					+button(
+						"See All",
+						iconArrowRight,
+						work.link,
+						work.info,
+						"_self"
+					)
+			div.ap-c-mdl-collection
+				ul.ap-c-mdl-collection__list
+					li.ap-c-mdl-collection__item
+						block relatedSeries01
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries02
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries03
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries04
+							+seriesAbstractGrace
+
+		//- Related tags slider section
+		block relatedTags
+			//- +tagSliderPopular
+
+		//- Mini-bio section
+		include _scn-grazyna.pug
+
+		//- Website footer
+		include _scn-footer.pug
+
+		//- Colcade layout library
+		script(src="/js/colcade.js")
+
+		//- Inline CDN script requests
+		include ../js/_js-plugins.pug
+
+		//- Local scripts
+		script(src="/js/adamska.js")
+
+		//- Local library scripts
+		//- script(src="js/plugins.js")
+
+		//- Add plugins.js for init scripts and import colcade so you can put global scripts before plugins

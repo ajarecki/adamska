@@ -1,0 +1,58 @@
+extends partial/_tmp-series.pug
+
+//- Selected Abstract Works Volume 1
+
+block config
+	-
+		var series = {
+			id:      abstractSelectedVol1.id,
+			name:    abstractSelectedVol1.name,
+			info:    abstractSelectedVol1.info,
+			link:    abstractSelectedVol1.link,
+			date:    abstractSelectedVol1.date,
+			hero1:   abstractSelectedVol1.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractSelectedVol1
+
+block galleryContent
+	+abstractSelectedVol1S01
+	+abstractSelectedVol1S02
+	+abstractSelectedVol1S03
+	+abstractSelectedVol1S04
+	+abstractSelectedVol1S05
+	+abstractSelectedVol1S06
+	+abstractSelectedVol1S07
+	+abstractSelectedVol1S08
+	+abstractSelectedVol1S09
+	+abstractSelectedVol1S10
+	+abstractSelectedVol1S11
+	+abstractSelectedVol1S12
+	+abstractSelectedVol1S13
+
+block relatedSeries01
+	+seriesAbstractLandscapes
+
+block relatedSeries02
+	+seriesAbstractFigural
+
+block relatedSeries03
+	+seriesAbstractAttachments
+
+block relatedSeries04
+	+seriesAbstractFlames

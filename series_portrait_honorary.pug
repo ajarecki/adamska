@@ -1,0 +1,51 @@
+extends partial/_tmp-series.pug
+
+//- Honorary & Collegiate Portraits
+
+block config
+	-
+		var series = {
+			id:      portraitHonorary.id,
+			name:    portraitHonorary.name,
+			info:    portraitHonorary.info,
+			link:    portraitHonorary.link,
+			date:    portraitHonorary.date,
+			hero1:   portraitHonorary.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"oil",
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitHonorary
+
+block galleryContent
+	+portraitHonoraryS01
+	+portraitHonoraryS02
+	+portraitHonoraryS03
+	+portraitHonoraryS04
+	+portraitHonoraryS05
+
+block relatedSeries01
+	+seriesPortraitGuelph
+
+block relatedSeries02
+	+seriesPortraitGuelph
+
+block relatedSeries03
+	+seriesPortraitGuelph
+
+block relatedSeries04
+	+seriesPortraitGuelph

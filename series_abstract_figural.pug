@@ -1,0 +1,52 @@
+extends partial/_tmp-series.pug
+
+//- Figural Abstract Works
+
+block config
+	-
+		var series = {
+			id:      abstractFigural.id,
+			name:    abstractFigural.name,
+			info:    abstractFigural.info,
+			link:    abstractFigural.link,
+			date:    abstractFigural.date,
+			hero1:   abstractFigural.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractFigural
+
+block galleryContent
+	+abstractFiguralS01
+	+abstractFiguralS02
+	+abstractFiguralS03
+	+abstractFiguralS04
+	+abstractFiguralS05
+	+abstractFiguralS06
+	+abstractFiguralS07
+
+block relatedSeries01
+	+seriesAbstractFlames
+
+block relatedSeries02
+	+seriesAbstractSelectedVol1
+
+block relatedSeries03
+	+seriesAbstractAttachments
+
+block relatedSeries04
+	+seriesAbstractLandscapes

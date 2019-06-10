@@ -1,0 +1,75 @@
+extends partial/_tmp-series.pug
+
+//- Selected Abstract Works Volume 2
+
+block config
+	-
+		var series = {
+			id:      portraitSelectedVol2.id,
+			name:    portraitSelectedVol2.name,
+			info:    portraitSelectedVol2.info,
+			link:    portraitSelectedVol2.link,
+			date:    portraitSelectedVol2.date,
+			hero1:   portraitSelectedVol2.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitSelectedVol2
+
+block galleryContent
+	+portraitSelectedVol2G01
+	+portraitSelectedVol2S01
+	+portraitSelectedVol2S02
+	+portraitSelectedVol2S03
+	+portraitSelectedVol2S04
+	+portraitSelectedVol2S05
+	+portraitSelectedVol2S06
+	//- No S07
+	+portraitSelectedVol2S08
+	+portraitSelectedVol2S09
+	+portraitSelectedVol2S10
+	+portraitSelectedVol2S11
+	+portraitSelectedVol2S12
+	+portraitSelectedVol2S13
+	+portraitSelectedVol2S14
+	+portraitSelectedVol2S15
+	+portraitSelectedVol2S16
+	+portraitSelectedVol2G03
+	+portraitSelectedVol2S17
+	+portraitSelectedVol2S18
+	+portraitSelectedVol2S19
+	+portraitSelectedVol2S20
+	+portraitSelectedVol2G02
+	+portraitSelectedVol2S21
+	+portraitSelectedVol2S22
+	//- S23 not ready
+	//- +portraitSelectedVol2S23
+	+portraitSelectedVol2S24
+	//- G01b not ready
+	//- +portraitSelectedVol2G01b
+
+block relatedSeries01
+	+seriesPortraitSelectedVol3
+
+block relatedSeries02
+	+seriesPortraitSelectedVol1
+
+block relatedSeries03
+	+seriesPortraitSkype
+
+block relatedSeries04
+	+seriesPortraitConte

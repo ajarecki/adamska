@@ -1,0 +1,49 @@
+extends partial/_tmp-series.pug
+
+//- Grace / No Grace
+
+block config
+	-
+		var series = {
+			id:      abstractGrace.id,
+			name:    abstractGrace.name,
+			info:    abstractGrace.info,
+			link:    abstractGrace.link,
+			date:    abstractGrace.date,
+			hero1:   abstractGrace.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractGrace
+
+block galleryContent
+	+abstractGraceS01
+	+abstractGraceS02
+	+abstractGraceS03
+	+abstractGraceS04
+
+block relatedSeries01
+	+seriesAbstractShapes
+
+block relatedSeries02
+	+seriesAbstractFlames
+
+block relatedSeries03
+	+seriesAbstractSelectedVol1
+
+block relatedSeries04
+	+seriesAbstractAttachments

@@ -1,0 +1,476 @@
+// Section content containers
+
+// Sections
+.ap-c-scn {
+	@extend %widthFull;
+	position: relative;
+	// Page header sections
+	&--intro {
+		@extend %backgroundLargeHeight;
+	}
+	&--main {
+		@extend %backgroundLight;
+	}
+	// Featured series section
+	&--featured {
+		@extend %paddingTopDouble;
+		@extend %paddingBottomHalf;
+	}
+	// Selected press section
+	&--press {
+		@extend %paddingTopBottom;
+		background-color: $colorWhite01;
+	}
+	// Mini bio section
+	&--grazyna {
+		@extend %paddingTopBottomHalf;
+		overflow: hidden;
+		background-color: $colorWhite05;
+	}
+	// Main website footer
+	&--footer {
+		@extend %paddingTopBottom;
+		@extend %paddingLeftRight;
+		background-color: $colorWhite05;
+	}
+	&--gallery {
+		@extend %paddingTopDouble;
+		// Special padding to comensate for space taken by series info panel
+		padding-top: $grd * 32;
+		// @include forPhoneOnly {
+		// 	padding-top: $grd * 24;
+		// }
+		@include forTabletPortraitUp {
+			padding-top: $grd * 18;
+		}
+		@include forTabletLandscapeUp {
+			padding-top: $grd * 20;
+		}
+		@include forTabletUp {
+			padding-top: $grd * 24;
+		}
+		@include forDesktopUp {
+			padding-top: $grd * 26;
+		}
+		@include forBigDesktopUp {
+			padding-top: $grd * 28;
+		}
+	}
+	&--series {
+		@extend %paddingLeftRight;
+		// Remove extra space caused by transform positioning on inner content
+		height: 0;
+		overflow: visible;
+	}
+	&--poster {
+		@extend %paddingLeftRightHalf;
+	}
+	// About content module container
+	&--about {
+		@extend %paddingLeftRightHalf;
+	}
+	// CV content module container
+	&--cv {
+		@extend %paddingLeftRightHalf;
+	}
+	// Collection sections on the Work page
+	&--collection {
+		@extend %paddingBottomHalf;
+		@extend %paddingLeftRight;
+		// Figurative series collection
+		// &-figurative {
+		// 	@extend %backgroundLight;
+		// }
+		// // Abstract series section
+		// &-abstract {
+		// 	@extend %backgroundLight;
+		// }
+		// // Portrait series section
+		// &-portrait {
+		// 	@extend %backgroundLight;
+		// }
+		// // Assorted series section
+		// &-assorted {
+		// 	@extend %backgroundLight;
+		// }
+	}
+	// Slider sections
+	// &--slider {
+	// }
+	// Tag slider sections
+	// &--tag {
+
+	// }
+	// Instagram slider section
+	&--instagram {
+		@extend %backgroundLightAlternate;
+	}
+	// Next series section
+	&--next {
+		@extend %paddingTop;
+		@extend %paddingBottom;
+		background-color: $colorWhite01;
+	}
+	// Related series section
+	&--related {
+		@extend %paddingBottom;
+		@extend %backgroundLightAlternate;
+	}
+}
+
+// Large title style
+%titlePrimary {
+	@extend %fontLarge;
+	@extend %lineLeftRight;
+	text-align: center;
+}
+
+// Section header containers
+.ap-c-scn__header {
+	@extend %widthFull;
+	@extend %paddingLeftRight;
+	position: relative;
+	// Content wrapper
+	&-container {
+		@extend %widthWrap;
+		position: relative;
+		overflow: hidden;
+		// Page intro section specificity
+		.ap-c-scn--intro & {
+			overflow: visible;
+			text-align: center;
+		}
+	}
+	// Header headline text
+	&-title {
+		@extend %widthFull;
+		@extend %paddingBottomHalf;
+		@extend %fontExtendedBold;
+		@extend %fontMedium;
+		@extend %lineRight;
+		position: relative;
+		text-align: left;
+		white-space: nowrap;
+		color: $colorBlack01;
+		// Page intro section specificity
+		.ap-c-scn--intro & {
+			@extend %paddingTopDouble;
+			padding-bottom: 0;
+			// @extend %paddingBottom;
+			@extend %fontExtendedBold;
+			text-align: center;
+			white-space: normal;
+			color: $colorWhite01;
+			// Remove pseudo element effects
+			&::before,
+			&::after {
+				display: none;
+			}
+			@include forTabletPortraitUp {
+				// Scale text based on browser width
+				font-size: 3.25vw;
+			}
+			@include forBigDesktopUp {
+				font-size: 2.75vw;
+			}
+			span {
+				@extend %heroHeadline;
+			}
+		}
+		// Featured series section specificity
+		.ap-c-scn--featured & {
+			@extend %titlePrimary;
+			@extend %paddingTopBottomHalf;
+		}
+		.ap-c-scn--collection & {
+			@extend %titlePrimary;
+			@extend %paddingTopBottomHalf;
+		}
+		// Gallery section specificity
+		.ap-c-scn--gallery & {
+			@extend %titlePrimary;
+		}
+		// Next series section specificity
+		.ap-c-scn--next & {
+			@extend %titlePrimary;
+		}
+	}
+	// Subtitles
+	&-subtitle {
+		@extend %widthFull;
+		@extend %fontExtendedNormal;
+		@extend %fontRegular;
+		position: relative;
+		span {
+			@extend %widthFull;
+		}
+		// Page intro section specificity
+		.ap-c-scn--intro & {
+			color: $colorWhite01;
+		}
+	}
+	// Section header buttons
+	.ap-c-btn-contained {
+		position: absolute;
+		right: 0;
+		top: 4%;
+		@include forSmallPhoneOnly {
+			// Reposition button on phones
+			position: relative;
+			display: inline-block;
+			right: auto;
+			top: auto;
+			margin: {
+				top: $grd * 2;
+				bottom: $grd * 2;
+				// right: 0;
+			}
+		}
+		// Press section specifity
+		.ap-c-scn--press & {
+			@extend %buttonIconLeft;
+		}
+		// Instagram section specifity
+		.ap-c-scn--instagram & {
+			@extend %buttonIconLeft;
+		}
+	}
+}
+
+// Section footers – included on homepage featured section and series gallery sections
+.ap-c-scn__footer {
+	@extend %widthFull;
+	@extend %paddingTopAndHalf;
+	@extend %paddingBottomTriple;
+	@extend %paddingLeftRight;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	// Content wrapper
+	&-container {
+		@extend %widthWrap;
+		position: relative;
+	}
+	// Footer headline text
+	&-title {
+		@extend %widthFull;
+		@extend %fontExtendedBold;
+		@extend %fontMedium;
+		display: inline-block;
+		position: relative;
+		color: $colorWhite01;
+		@include forPhoneOnly {
+			font-size: 4vw;
+		}
+		p {
+			@extend %heroHeadline;
+			display: inline;
+			a {
+				@extend %hoverLinkBackground;
+			}
+		}
+	}
+	// Call to action button
+	.ap-c-btn-contained {
+		@extend %marginTopThird;
+		@extend %buttonIconLeft;
+		position: relative;
+	}
+}
+
+// Section backgrounds
+
+// Section background image dimensions
+// Large backgrounds
+$backgroundLargeWidth: 1920px;
+$backgroundLargeHeight: 960px;
+// Small backgrounds
+$backgroundSmallWidth: 1920px;
+$backgroundSmallHeight: 768px;
+
+// Large background container height
+%backgroundLargeHeight {
+	height: $backgroundLargeHeight * .75;
+	@include forBigDesktopOnly {
+		height: $backgroundLargeHeight / 2;
+	}
+	@include forTabletOnly {
+		height: $backgroundLargeHeight * .325;
+	}
+}
+// Small background container height
+%backgroundSmallHeight {
+	height: $backgroundSmallHeight * 1.5;
+	@include forBigDesktopOnly {
+		height: $backgroundSmallHeight;
+	}
+	@include forTabletOnly {
+		height: $backgroundSmallHeight * .65;
+	}
+}
+// Large background size
+%backgroundLargeSize {
+	background-size: 
+		$backgroundLargeWidth * .75
+		$backgroundLargeHeight * .75;
+	@include forBigDesktopOnly {
+		background-size: 
+			$backgroundLargeWidth / 2
+			$backgroundLargeHeight / 2;
+	}
+	@include forTabletOnly {
+		background-size: 
+			$backgroundLargeWidth * .325
+			$backgroundLargeHeight * .325;
+	}
+}
+// Small background size – doubled to allow two pattern rows
+%backgroundSmallSize {
+	background-size: 
+		$backgroundSmallWidth * .75
+		$backgroundSmallHeight * .75;
+	@include forBigDesktopOnly {
+		background-size: 
+			$backgroundSmallWidth / 2
+			$backgroundSmallHeight / 2;
+	}
+	@include forTabletOnly {
+		background-size: 
+			$backgroundSmallWidth * .325
+			$backgroundSmallHeight * .325;
+	}
+}
+
+// %backgroundFooterOverlay01 {
+// 	background-image: 
+// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_01.png");
+// }
+// %backgroundFooterOverlay02 {
+// 	background-image: 
+// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_02.png");
+// }
+// %backgroundFooterOverlay03 {
+// 	background-image: 
+// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_03.png");
+// }
+// %backgroundFooterOverlay04 {
+// 	background-image: 
+// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_04.png");
+// }
+
+// %backgroundFooterImage01 {
+// 	background-image: 
+// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_04.png");
+// }
+
+// %backgroundFooterImage {
+	
+// }
+
+// Section background element
+.ap-c-scn__banner {
+	position: absolute;
+	right: 0;
+	left: 0;
+	width: 100%;
+	user-select: none;
+	background: {
+		color: $colorBrand05;
+		repeat: repeat;
+		position: top center;
+	}
+	&::before {
+		@extend %positionAbsolute;
+		content: "";
+	}
+	// Hero header backgrounds
+	.ap-c-scn--intro & {
+		@extend %backgroundLargeHeight;
+		@extend %backgroundLargeSize;
+		top: 0;
+		background-repeat: repeat-x;
+		&::before {
+			background-image:
+				linear-gradient(
+					-26deg,
+					rgba($colorBrand04, 0),
+					rgba($colorBrand04, .92)
+				);
+		}
+	}
+	// Main section call to action backgrounds
+	.ap-c-scn--main & {
+		@extend %backgroundSmallHeight;
+		@extend %backgroundSmallSize;
+		bottom: 0;
+		&::before {
+			background-image:
+				linear-gradient(
+					-26deg,
+					rgba($colorBrand04, 0),
+					rgba($colorBrand04, .92)
+				);
+		}
+	}
+	// Mini bio section background
+	.ap-c-scn--grazyna & {
+		@extend %backgroundSmallHeight;
+		@extend %backgroundSmallSize;
+		bottom: 0;
+		&::before {
+			background-image:
+				linear-gradient(
+					-26deg,
+					rgba($colorBrand04, 0),
+					rgba($colorBrand04, .92),
+					rgba($colorBrand04, .92),
+					rgba($colorBrand04, 0)
+				);
+		}
+	}
+}
+
+// Main section background pattern
+.ap-c-scn__background {
+	@extend %positionAbsolute;
+	@extend %sectionBackground01;
+}
+
+// Video element size
+$videoWidth: 1280px;
+$videoHeight: 720px;
+
+// Video container on home and work page
+.ap-c-scn__hero {
+	@extend %marginAuto;
+	@extend %shadowSmall;
+	display: block;
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	// Center positioning
+	left: 50%;
+	// Sizes calculated based on actual video dimensions
+	width: $videoWidth / 2;
+	height: $videoHeight / 2;
+	// Position over section boundary
+	transform: translate3d(-50%, 50%, 0);
+	@include forTabletOnly {
+		width: $videoWidth * .375;
+		height: $videoHeight * .375;
+	}
+	@include forPhoneOnly {
+		width: $videoWidth * .25;
+		height: $videoHeight * .25;
+	}
+	@include forBigDesktopUp {
+		width: $videoWidth * .625;
+		height: $videoHeight * .625;
+	}
+	// Video element
+	&-video {
+		@extend %positionAbsolute;
+		width: 100%;
+		height: auto;
+	}
+}

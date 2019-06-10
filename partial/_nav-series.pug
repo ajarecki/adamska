@@ -1,0 +1,323 @@
+//- Series page navigation for each individual series
+
+//- Work navigation item mixin
+	Declare:
+	Title of current series,
+	Address to current series,
+	Title of collection the series belongs to,
+	Address of collection the series belongs to,
+	Title of previous series in queue,
+	Address of previous series in queue,
+	Background image source of previous series link,
+	Title of next series in queue,
+	Address of next series in queue,
+	Background image source of next series link,
+//- mixin navSeries(seriesName, seriesLink, collectionName, collectionLink, prevSeriesName, prevSeriesLink, prevBackground, nextSeriesName, nextSeriesLink, nextBackground)
+mixin navSeries(seriesData, collectionData, prevSeriesData, nextSeriesData)
+	nav.ap-c-nav-series
+		ul.ap-c-nav-series__list
+			li.ap-c-nav-series__item.ap-c-nav-series__item--previous
+				a.ap-c-nav-series__link.ap-c-nav-series__link--prevnext(
+					href= prevSeriesData.link
+					title= `Previous Series: ${prevSeriesData.name}`
+					style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${prevSeriesData.cover});`
+				)
+					+icon(iconArrowLeft)
+					span= prevSeriesData.name
+			li.ap-c-nav-series__item.ap-c-nav-series__item--next
+				a.ap-c-nav-series__link.ap-c-nav-series__link--prevnext(
+					href= nextSeriesData.link
+					title= `Next Series: ${nextSeriesData.name}`
+					style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${nextSeriesData.cover});`
+				)
+					//- span Next&emsp;
+					span= nextSeriesData.name
+					+icon(iconArrowRight)
+			li.ap-c-nav-series__item.ap-c-nav-series__item--collection
+				a.ap-c-nav-series__link(
+					href= collectionData.link
+					title= collectionData.info
+				)
+					span= `${collectionData.name} Series`
+					+icon(iconChevronRight)
+			li.ap-c-nav-series__item.ap-c-nav-series__item--title
+				span= seriesData.name
+			//- Social Sharing
+			li.ap-c-nav-series__item.ap-c-nav-series__item--share
+				a.ap-c-nav-series__link(
+					href= `mailto:?subject=${seriesData.link}&body=${seriesData.link}`
+				)
+					+icon(iconEmail)
+					span Email
+			li.ap-c-nav-series__item.ap-c-nav-series__item--share
+				a.ap-c-nav-series__link(
+					href= `https://twitter.com/intent/tweet?url=${seriesData.link}`
+					target= "_blank"
+					rel= "nofollow noreferrer noopener"
+				)
+					+icon(iconTwitter)
+					span Twitter
+			li.ap-c-nav-series__item.ap-c-nav-series__item--share
+				a.ap-c-nav-series__link(
+					href= `http://pinterest.com/pin/create/button/?url=${seriesData.link}`
+					target= "_blank"
+					rel= "nofollow noreferrer noopener"
+				)
+					+icon(iconPinterest)
+					span Pinterest
+			li.ap-c-nav-series__item.ap-c-nav-series__item--share
+				a.ap-c-nav-series__link(
+					href= `https://www.facebook.com/sharer/sharer.php?u=${seriesData.link}`
+					target= "_blank"
+					rel= "nofollow noreferrer noopener"
+				)
+					+icon(iconFacebook)
+					span Facebook
+			li.ap-c-nav-series__item.ap-c-nav-series__item--share
+				span Share&colon;
+
+
+//- Series navigation components
+	Items are listed in order of how they appear on the /Work page
+	as it helps with the prev/next linking
+
+
+//- Figurative series page navigation
+
+//- Selected Figurative Works Volume 3
+mixin navFigurativeSelectedVol3
+	+navSeries(
+		figurativeSelectedVol3,
+		workFigurative,
+		assortedLandscapesVol1,
+		figurativeSelectedVol2
+	)
+//- Selected Figurative Volume 2
+mixin navFigurativeSelectedVol2
+	+navSeries(
+		figurativeSelectedVol2,
+		workFigurative,
+		figurativeSelectedVol3,
+		figurativeCoping
+	)
+//- Coping Behaviors
+mixin navFigurativeCoping
+	+navSeries(
+		figurativeCoping,
+		workFigurative,
+		figurativeCoping,
+		figurativeBody
+	)
+//- Body Drawings
+mixin navFigurativeBody
+	+navSeries(
+		figurativeBody,
+		workFigurative,
+		figurativeCoping,
+		figurativeDisengagement
+	)
+//- Image of Disengagement
+mixin navFigurativeDisengagement
+	+navSeries(
+		figurativeDisengagement,
+		workFigurative,
+		figurativeBody,
+		figurativeExamination
+	)
+//- Self Examination
+mixin navFigurativeExamination
+	+navSeries(
+		figurativeExamination,
+		workFigurative,
+		figurativeDisengagement,
+		figurativeSelectedVol1
+	)
+//- Selected Figurative Works Volume 1
+mixin navFigurativeSelectedVol1
+	+navSeries(
+		figurativeSelectedVol1,
+		workFigurative,
+		figurativeExamination,
+		abstractAttachments
+	)
+
+
+//- Abstract series page navigation
+
+//- Attachments
+mixin navAbstractAttachments
+	+navSeries(
+		abstractAttachments,
+		workAbstract,
+		figurativeSelectedVol1,
+		abstractFigural
+	)
+//- Figural Abstract Works
+mixin navAbstractFigural
+	+navSeries(
+		abstractFigural,
+		workAbstract,
+		abstractAttachments,
+		abstractLandscapes
+	)
+//- Abstracted Landscapes
+mixin navAbstractLandscapes
+	+navSeries(
+		abstractLandscapes,
+		workAbstract,
+		abstractFigural,
+		abstractFlames
+	)
+//- Flames, Coral Reefs
+mixin navAbstractFlames
+	+navSeries(
+		abstractFlames,
+		workAbstract,
+		abstractLandscapes,
+		abstractShapes
+	)
+//- Shapes & Textures
+mixin navAbstractShapes
+	+navSeries(
+		abstractShapes,
+		workAbstract,
+		abstractFlames,
+		abstractSelectedVol1
+	)
+//- Selected Abstract Works Volume 1
+mixin navAbstractSelectedVol1
+	+navSeries(
+		abstractSelectedVol1,
+		workAbstract,
+		abstractShapes,
+		abstractGrace
+	)
+//- Grace / No Grace
+mixin navAbstractGrace
+	+navSeries(
+		abstractGrace,
+		workAbstract,
+		abstractSelectedVol1,
+		portraitSelectedVol3
+	)
+
+
+//- Portrait series page navigation
+
+//- Selected Portraits Volume 3
+mixin navPortraitSelectedVol3
+	+navSeries(
+		portraitSelectedVol3,
+		workPortrait,
+		abstractGrace,
+		portraitSkype
+	)
+//- Skype Scéance
+mixin navPortraitSkype
+	+navSeries(
+		portraitSkype,
+		workPortrait,
+		portraitSelectedVol3,
+		portraitSelectedVol2
+	)
+//- Selected Portraits Volume 2
+mixin navPortraitSelectedVol2
+	+navSeries(
+		portraitSelectedVol2,
+		workPortrait,
+		portraitSkype,
+		portraitSelectedVol1
+	)
+//- Picks From The Guelph Community –– Unpublished
+mixin navPortraitGuelph
+	+navSeries(
+		portraitGuelph,
+		workPortrait,
+		portraitSelectedVol2,
+		portraitSelectedVol1
+	)
+//- Selected Portraits Volume 1
+mixin navPortraitSelectedVol1
+	+navSeries(
+		portraitSelectedVol1,
+		workPortrait,
+		portraitSelectedVol2,
+		portraitConte
+	)
+//- Conté Drawings – Formerly "Family Collage"
+mixin navPortraitConte
+	+navSeries(
+		portraitConte,
+		workPortrait,
+		portraitSelectedVol1,
+		portraitHonorary
+	)
+//- Honorary & Collegiate Portraits
+mixin navPortraitHonorary
+	+navSeries(
+		portraitHonorary,
+		workPortrait,
+		portraitConte,
+		assortedLandscapesVol2
+	)
+//- Dogs –– Unpublished
+mixin navPortraitDogs
+	+navSeries(
+		portraitDogs,
+		workPortrait,
+		portraitHonorary,
+		portraitCats
+	)
+//- Cats –– Unpublished
+mixin navPortraitCats
+	+navSeries(
+		portraitCats,
+		workPortrait,
+		portraitDogs,
+		assortedStill
+	)
+
+
+//- Assorted series page navigation
+	Last Assorted series links to first Figurative series
+
+//- Still Life Works –– Unpublished
+mixin navAssortedStill
+	+navSeries(
+		assortedStill,
+		workAssorted,
+		portraitDogs,
+		assortedLandscapesVol2
+	)
+//- Traditional Landscapes Volume 2
+mixin navAssortedLandscapesVol2
+	+navSeries(
+		assortedLandscapesVol2,
+		workAssorted,
+		portraitHonorary,
+		assortedAnimals
+	)
+//- Animals
+mixin navAssortedAnimals
+	+navSeries(
+		assortedAnimals,
+		workAssorted,
+		assortedLandscapesVol2,
+		assortedLandscapesVol1
+	)
+//- Traditional Landscapes
+mixin navAssortedLandscapesVol1
+	+navSeries(
+		assortedLandscapesVol1,
+		workAssorted,
+		assortedAnimals,
+		figurativeSelectedVol3
+	)
+//- Miscellaneous Works –– Unpublished
+mixin navAssortedMisc
+	+navSeries(
+		assortedMisc,
+		workAssorted,
+		assortedLandscapesVol1,
+		figutativeSelectedVol3
+	)

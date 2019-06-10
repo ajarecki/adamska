@@ -1,0 +1,267 @@
+//- Main website footer
+
+//- Internal list link mixin
+//- mixin footerItemV1(linkAddress, linkInfo, linkIcon, linkLabel, linkTarget)
+//- 	li.ap-c-mdl-footer__item
+//- 		a.ap-c-btn-uncontained(
+//- 			href= linkAddress
+//- 			title= linkInfo
+//- 			target= linkTarget
+//- 		)
+//- 			span= linkLabel
+//- 			svg(
+//- 				width="16" 
+//- 				height="16" 
+//- 				viewBox="0 0 16 16" 
+//- 				fill="none" 
+//- 				xmlns="http://www.w3.org/2000/svg"
+//- 			)
+//- 				path(
+//- 					fill-rule="evenodd" 
+//- 					clip-rule="evenodd" 
+//- 					d= linkIcon 
+//- 					fill="black"
+//- 				)
+
+//- Footer nav item link mixin
+	Declare:
+	Page object – properties corresponde with "itemData" properties
+	SVG icon path
+	Inbound or outbound targeting
+mixin footerItem(itemData, linkIcon, linkTarget)
+	li.ap-c-mdl-footer__item
+		a.ap-c-btn-uncontained(
+			href= itemData.link
+			title= itemData.info
+			target= linkTarget
+		)
+			span= itemData.name
+			svg(
+				width="16" 
+				height="16" 
+				viewBox="0 0 16 16" 
+				fill="none" 
+				xmlns="http://www.w3.org/2000/svg"
+			)
+				path(
+					fill-rule= "evenodd" 
+					clip-rule= "evenodd" 
+					d= linkIcon 
+					fill="black"
+				)
+
+//- Website footer section
+section.ap-c-scn.ap-c-scn--footer
+	//- Footer content module
+	div.ap-c-mdl-footer
+		//- Contact
+		address.ap-c-mdl-footer__contact
+			h4.ap-c-mdl-footer__label Contact
+			p To contact Grazyna in regard to exhibitions, commisions, lessons, or other inquiries, send an email to #[a(href= email.link title= email.info) #[span= email.name]]
+			+button(
+				"Contact Grazyna",
+				iconEmail,
+				email.link,
+				email.info,
+				"_blank"
+			)
+		//- Navigation
+		div.ap-c-mdl-footer__navigation
+			nav.ap-c-mdl-footer__group
+				h4.ap-c-mdl-footer__label Info
+				ul.ap-c-mdl-footer__list
+					+footerItem(
+						home,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						about,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						cv,
+						iconArrowRight,
+						"_self"
+					)
+			nav.ap-c-mdl-footer__group
+				h4.ap-c-mdl-footer__label Work
+				ul.ap-c-mdl-footer__list
+					+footerItem(
+						work,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						workFeatured,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						workFigurative,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						workAbstract,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						workPortrait,
+						iconArrowRight,
+						"_self"
+					)
+					+footerItem(
+						workAssorted,
+						iconArrowRight,
+						"_self"
+					)
+			nav.ap-c-mdl-footer__group
+				h4.ap-c-mdl-footer__label Web
+				ul.ap-c-mdl-footer__list
+					+footerItem(
+						instagram,
+						iconExternal,
+						"_blank"
+					)
+					+footerItem(
+						saatchiart,
+						iconExternal,
+						"_blank"
+					)
+					+footerItem(
+						facebook,
+						iconExternal,
+						"_blank"
+					)
+					+footerItem(
+						tumblr,
+						iconExternal,
+						"_blank"
+					)
+					+footerItem(
+						linkedin,
+						iconExternal,
+						"_blank"
+					)
+		//- Credits
+		footer.ap-c-mdl-footer__fine
+			a.ap-c-mdl-footer__logo(
+				href= home.link 
+				title= home.info
+			)
+				include _gaj-logo.svg
+			p
+				small Copyright &copy; 2009 &ndash; 2019 Grazyna Adamska-Jarecka. Website designed and developed by <a href="https://jarecki.co/" title="Developer website" target="_blank">Andrew Jarecki</a>
+
+
+		//- div.ap-c-mdl-footer__navigation
+		//- 	nav.ap-c-mdl-footer__group
+		//- 		h4.ap-c-mdl-footer__label Info
+		//- 		ul.ap-c-mdl-footer__list
+		//- 			+footerItem(
+		//- 				linkHome,
+		//- 				titleHome,
+		//- 				iconArrowRight,
+		//- 				"Home",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkHome,
+		//- 				titleHome,
+		//- 				iconArrowRight,
+		//- 				"About",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkHome,
+		//- 				titleHome,
+		//- 				iconArrowRight,
+		//- 				"CV",
+		//- 				"_self"
+		//- 			)
+		//- 	nav.ap-c-mdl-footer__group
+		//- 		h4.ap-c-mdl-footer__label Work
+		//- 		ul.ap-c-mdl-footer__list
+		//- 			+footerItem(
+		//- 				linkWork,
+		//- 				titleWork,
+		//- 				iconArrowRight,
+		//- 				"All Series",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkWorkFeatured,
+		//- 				titleWorkFeatured,
+		//- 				iconArrowRight,
+		//- 				"Featured",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkWorkFigurative,
+		//- 				titleWorkFigurative,
+		//- 				iconArrowRight,
+		//- 				"Figurative",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkWorkAbstract,
+		//- 				titleWorkAbstract,
+		//- 				iconArrowRight,
+		//- 				"Abstract",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkWorkPortrait,
+		//- 				titleWorkPortrait,
+		//- 				iconArrowRight,
+		//- 				"Portraits",
+		//- 				"_self"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkWorkAssorted,
+		//- 				titleWorkAssorted,
+		//- 				iconArrowRight,
+		//- 				"Assorted",
+		//- 				"_self"
+		//- 			)
+		//- 	nav.ap-c-mdl-footer__group
+		//- 		h4.ap-c-mdl-footer__label Web
+		//- 		ul.ap-c-mdl-footer__list
+		//- 			+footerItem(
+		//- 				linkInstagram,
+		//- 				titleInstagram,
+		//- 				iconExternal,
+		//- 				"Instagram",
+		//- 				"_blank"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkSaatchiArt,
+		//- 				titleSaatchiArt,
+		//- 				iconExternal,
+		//- 				"Saatchi Art",
+		//- 				"_blank"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkFacebook,
+		//- 				titleFacebook,
+		//- 				iconExternal,
+		//- 				"Facebook",
+		//- 				"_blank"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkTumblr,
+		//- 				titleTumblr,
+		//- 				iconExternal,
+		//- 				"Tumblr",
+		//- 				"_blank"
+		//- 			)
+		//- 			+footerItem(
+		//- 				linkLinkedIn,
+		//- 				titleLinkedIn,
+		//- 				iconExternal,
+		//- 				"LinkedIn",
+		//- 				"_blank"
+		//- 			)

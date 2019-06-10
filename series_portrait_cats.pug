@@ -1,0 +1,61 @@
+extends partial/_tmp-series.pug
+
+//- Cat Portraits
+
+block config
+	-
+		var series = {
+			id:      portraitCats.id,
+			name:    portraitCats.name,
+			info:    portraitCats.info,
+			link:    portraitCats.link,
+			date:    portraitCats.date,
+			hero1:   portraitCats.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"wood",
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitCats
+
+block galleryContent
+	//- Unpublished
+	//- +portraitCatsS01
+	//- +portraitCatsS02
+	//- +portraitCatsS03
+	//- +portraitCatsS04
+	//- +portraitCatsS05
+	//- +portraitCatsS07
+	//- +portraitCatsS08
+	//- +portraitCatsS09
+	//- +portraitCatsS10
+	//- +portraitCatsS11
+	//- +portraitCatsS12
+	//- +portraitCatsS13
+	//- +portraitCatsS14
+	//- +portraitCatsS15
+
+block relatedSeries01
+	+seriesPortraitGuelph
+
+block relatedSeries02
+	+seriesPortraitGuelph
+
+block relatedSeries03
+	+seriesPortraitGuelph
+
+block relatedSeries04
+	+seriesPortraitGuelph

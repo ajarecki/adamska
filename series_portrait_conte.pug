@@ -1,0 +1,51 @@
+extends partial/_tmp-series.pug
+
+//- Conté Drawings
+
+block config
+	-
+		var series = {
+			id:      portraitConte.id,
+			name:    portraitConte.name,
+			info:    portraitConte.info,
+			link:    portraitConte.link,
+			date:    portraitConte.date,
+			hero1:   portraitConte.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"conte-crayon"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitConte
+
+block galleryContent
+	+portraitFamilyS01
+	+portraitFamilyS02
+	+portraitFamilyG01
+	+portraitFamilyS03
+	+portraitFamilyS04
+	+portraitFamilyS05
+
+block relatedSeries01
+	+seriesPortraitGuelph
+
+block relatedSeries02
+	+seriesPortraitGuelph
+
+block relatedSeries03
+	+seriesPortraitGuelph
+
+block relatedSeries04
+	+seriesPortraitGuelph

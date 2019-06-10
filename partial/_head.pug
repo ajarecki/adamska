@@ -1,0 +1,163 @@
+//- HTML head
+
+//- Dependencies
+include _config.pug
+
+meta(charset="utf-8")
+meta(
+	http-equiv="x-ua-compatible" 
+	content="ie=edge"
+)
+meta(
+	name="viewport" 
+	content="width=device-width, initial-scale=1"
+)
+
+//- Page-specfic title and description
+block headMeta
+
+//- Cloudinary performance
+link(
+	rel="dns-prefetch" 
+	href="//res.cloudinary.com/"
+)
+//- Stylesheet
+link(
+	rel="stylesheet" 
+	href="/css/adamska.css"
+)
+
+//- Facebook Opengraph
+
+//- Page-specfic OpenGraph
+block headOpengraph
+
+meta(
+	property="og:site_name"
+	content="Grazyna Adamska Jarecka"
+)
+meta(
+	property="og:type"
+	content="profile"
+)
+meta(
+	property="og:image:secure_url"
+	content=""
+)
+
+//- Twitter
+meta(
+	property="twitter:card"
+	content="summary_large_image"
+)
+meta(
+	property="twitter:image:alt"
+	content="Artwork by Grazyna Adamska Jarecka"
+)
+
+//- Icons
+//- Favicon
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_16.png" 
+	sizes="16x16"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_32.png" 
+	sizes="32x32"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_64.png" 
+	sizes="64x64"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_76.png" 
+	sizes="76x76"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_96.png" 
+	sizes="96x96"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_128.png"
+	sizes="128x128"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_160.png"
+	sizes="160x160"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_192.png"
+	sizes="192x192"
+)
+link(
+	rel="icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon_256.png"
+	sizes="256x256"
+)
+//- Android
+link(
+	rel="shortcut icon" 
+	sizes="196x196" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_192.png"
+)
+//- iOS
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_120.png" 
+	sizes="120x120"
+)
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_152.png" 
+	sizes="152x152"
+)
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_180.png" 
+	sizes="180x120"
+)
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_384.png" 
+	sizes="384x384"
+)
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_384.png" 
+	sizes="384x384"
+)
+link(
+	rel="apple-touch-icon" 
+	href="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_512.png" 
+	sizes="512x512"
+)
+//- Windows 8
+meta(
+	name="msapplication-TileColor" 
+	content="#ffffff"
+)
+meta(
+	name="msapplication-TileImage" 
+	content="https://res.cloudinary.com/adamska/image/upload/v1/head/icon-app_144.png"
+)
+
+//- Google Analytics
+//- Global site tag (gtag.js)
+script(
+	async
+	src="https://www.googletagmanager.com/gtag/js?id=UA-47959201-5"
+)
+script.
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-47959201-5');

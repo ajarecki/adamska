@@ -1,0 +1,56 @@
+extends partial/_tmp-series.pug
+
+//- Selected Figurative Works Volume 3
+
+block config
+	-
+		var series = {
+			id:      figurativeSelectedVol3.id,
+			name:    figurativeSelectedVol3.name,
+			info:    figurativeSelectedVol3.info,
+			link:    figurativeSelectedVol3.link,
+			date:    figurativeSelectedVol3.date,
+			hero1:   figurativeSelectedVol3.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeSelectedVol3
+
+block galleryContent
+	+figurativeSelectedVol3S01
+	+figurativeSelectedVol3S02
+	+figurativeSelectedVol3S03
+	+figurativeSelectedVol3S03b
+	+figurativeSelectedVol3S04
+	+figurativeSelectedVol3S05
+	+figurativeSelectedVol3S06
+	+figurativeSelectedVol3S07
+	+figurativeSelectedVol3S08
+	+figurativeSelectedVol3S09
+	+figurativeSelectedVol3S10
+
+block relatedSeries01
+	+seriesFigurativeSelectedVol2
+
+block relatedSeries02
+	+seriesFigurativeSelectedVol1
+
+block relatedSeries03
+	+seriesFigurativeExamination
+
+block relatedSeries04
+	+seriesFigurativeCoping

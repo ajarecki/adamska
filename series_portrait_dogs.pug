@@ -1,0 +1,66 @@
+extends partial/_tmp-series.pug
+
+//- Dog Portraits
+
+block config
+	-
+		var series = {
+			id:      portraitDogs.id,
+			name:    portraitDogs.name,
+			info:    portraitDogs.info,
+			link:    portraitDogs.link,
+			date:    portraitDogs.date,
+			hero1:   portraitDogs.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"wood",
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitDogs
+
+block galleryContent
+	//- Unpublished
+	//- +portraitDogsS01
+	//- +portraitDogsS02
+	//- +portraitDogsS03
+	//- +portraitDogsS04
+	//- +portraitDogsS05
+	//- +portraitDogsS07
+	//- +portraitDogsS08
+	//- +portraitDogsS09
+	//- +portraitDogsS10
+	//- +portraitDogsS11
+	//- +portraitDogsS12
+	//- +portraitDogsS13
+	//- +portraitDogsS14
+	//- +portraitDogsS15
+	//- +portraitDogsS16
+	//- +portraitDogsS17
+	//- +portraitDogsS18
+	//- +portraitDogsS19
+	//- +portraitDogsS20
+
+block relatedSeries01
+	+seriesPortraitGuelph
+
+block relatedSeries02
+	+seriesPortraitGuelph
+
+block relatedSeries03
+	+seriesPortraitGuelph
+
+block relatedSeries04
+	+seriesPortraitGuelph

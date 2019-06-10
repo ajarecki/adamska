@@ -1,0 +1,51 @@
+//- Selected press
+
+//- Press item mixin
+	Declare:
+	Publication name,
+	Article title,
+	Link address
+mixin pressItem(pressSource, pressTitle, pressLink)
+	li.ap-c-mdl-press__item
+		a.ap-c-mdl-press__link(
+			href= pressLink
+			target="_blank"
+		)
+			article.ap-c-mdl-press__entry
+				p.ap-c-mdl-press__label 
+					span= pressSource
+				h4.ap-c-mdl-press__title
+					span= pressTitle
+				//- Button appearance
+				span.ap-c-btn-uncontained
+					span Website
+					+icon(iconExternal)
+
+//- Selected press section
+section.ap-c-scn.ap-c-scn--press
+	+headerTitleAndButton(
+		"Selected Press",
+		"Read CV",
+		iconDocument,
+		cv.link,
+		cv.info,
+		"_self"
+	)
+	//- Selected press module
+	div.ap-c-mdl-press
+		ul.ap-c-mdl-press__list
+			+pressItem(
+				"Guelph Murcury", 
+				"Guelph artist's paintings explore immigrant experience of loss",
+				"https://www.guelphmercury.com/opinion-story/8595790-guelph-artist-s-paintings-explore-immigrant-experience-of-loss/"
+			)
+			+pressItem( 
+				"University of Guelph",
+				"Portrait celebrates Wayne Martin’s contributions to Ontario Veterinary College",
+				"https://bulletin.ovc.uoguelph.ca/post/133810345225/portrait-celebrates-wayne-martins-contributions"
+			)
+			+pressItem(
+				"Tussle Magazine", 
+				"Exposing Grazyna Adamska-Jarecka",
+				"https://www.tusslemagazine.com/grazyna-adamska-jarecka"
+			)

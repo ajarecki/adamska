@@ -1,0 +1,60 @@
+extends partial/_tmp-series.pug
+
+//- Body Drawings
+
+block config
+	-
+		var series = {
+			id:      figurativeBody.id,
+			name:    figurativeBody.name,
+			info:    figurativeBody.info,
+			link:    figurativeBody.link,
+			date:    figurativeBody.date,
+			hero1:   figurativeBody.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeBody
+
+block galleryContent
+	+figurativeBodyG01
+	+figurativeBodyS01
+	+figurativeBodyS02
+	+figurativeBodyS03
+	+figurativeBodyS04
+	+figurativeBodyS04b
+	+figurativeBodyS04c
+	+figurativeBodyS04d
+	+figurativeBodyS05
+	+figurativeBodyS05b
+	+figurativeBodyS06
+	+figurativeBodyS06b
+	//- S06c not ready
+	//- +figurativeBodyS06c
+	+figurativeBodyS07
+
+block relatedSeries01
+	+seriesFigurativeCoping
+
+block relatedSeries02
+	+seriesFigurativeDisengagement
+
+block relatedSeries03
+	+seriesFigurativeExamination
+
+block relatedSeries04
+	+seriesFigurativeSelectedVol1

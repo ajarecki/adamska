@@ -1,0 +1,63 @@
+extends partial/_tmp-series.pug
+
+//- Skype Scéance
+
+block config
+	-
+		var series = {
+			id:      portraitSkype.id,
+			name:    portraitSkype.name,
+			info:    portraitSkype.info,
+			link:    portraitSkype.link,
+			date:    portraitSkype.date,
+			hero1:   portraitSkype.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic",
+		"pastel",
+		"paper"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"paper",
+		"plastic"
+	)
+
+block navSubmenu
+	+navPortraitSkype
+
+block galleryContent
+	+portraitSkypeS01
+	+portraitSkypeS01b
+	+portraitSkypeS01c
+	+portraitSkypeS01d
+	+portraitSkypeS01e
+	+portraitSkypeS01f
+	+portraitSkypeS02
+	+portraitSkypeS02b
+	+portraitSkypeS03
+	+portraitSkypeS03b
+	+portraitSkypeS03c
+	+portraitSkypeS04
+	+portraitSkypeS05
+	+portraitSkypeS05b
+	+portraitSkypeS06
+
+block relatedSeries01
+	+seriesPortraitSelectedVol3
+
+block relatedSeries02
+	+seriesPortraitSelectedVol2
+
+block relatedSeries03
+	+seriesPortraitSelectedVol1
+
+block relatedSeries04
+	+seriesPortraitConte

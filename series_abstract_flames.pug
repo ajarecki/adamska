@@ -1,0 +1,59 @@
+extends partial/_tmp-series.pug
+
+//- Flames, Coral Reefs
+
+block config
+	-
+		var series = {
+			id:      abstractFlames.id,
+			name:    abstractFlames.name,
+			info:    abstractFlames.info,
+			link:    abstractFlames.link,
+			date:    abstractFlames.date,
+			hero1:   abstractFlames.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractFlames
+
+block galleryContent
+	+abstractFlamesS01
+	+abstractFlamesS02
+	+abstractFlamesS03
+	+abstractFlamesS04
+	+abstractFlamesS05
+	+abstractFlamesS06
+	+abstractFlamesS07
+	+abstractFlamesS08
+	+abstractFlamesS09
+	+abstractFlamesS10
+	+abstractFlamesS11
+	+abstractFlamesS12
+	+abstractFlamesS13
+	+abstractFlamesS14
+
+block relatedSeries01
+	+seriesAbstractShapes
+
+block relatedSeries02
+	+seriesAbstractFigural
+
+block relatedSeries03
+	+seriesAbstractAttachments
+
+block relatedSeries04
+	+seriesAbstractGrace

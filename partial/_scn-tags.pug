@@ -1,0 +1,78 @@
+//- Tag sliders
+
+//- Tag slide mixin
+	Declare:
+	Tag object (found in "config.pug") – properites corresponds with those in "tagData"
+mixin tagSlide(tagData)
+	li.ap-c-sld__item.ap-c-sld__item--tag
+		a.ap-c-sld__link.ap-c-sld__link-tag(
+			href= tagData.link
+			title= tagData.info
+		)
+			h4.ap-c-sld__label
+				span= tagData.name
+				+icon(iconArrowRight)
+			div.ap-c-sld__thumb(
+				style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_${tagData.thumb});`
+			)
+
+//- Outro slide mixin
+mixin tagSlideLast
+	li.ap-c-sld__item
+		a.ap-c-sld__link.ap-c-sld__link--tag(
+			href= tags.link
+			title= tags.info
+		)
+			h4.ap-c-sld__label Explore All Tags
+				+icon(iconArrowRight)
+			//- Define in css
+			div.ap-c-sld__thumb
+
+//- Tag slider header mixin
+mixin tagHeader(sectionTitle)
+	div.ap-c-scn__header
+		header.ap-c-scn__header-container
+			h2.ap-c-scn__header-title
+				span= sectionTitle
+			+button(
+				"See All",
+				iconArrowRight,
+				workTags.link,
+				workTags.info,
+				"_self"
+			)
+
+//- Slider border element mixin
+mixin sliderEdges
+	div.ap-c-sld__edge.ap-c-sld__edge--left
+	div.ap-c-sld__edge.ap-c-sld__edge--right
+
+
+//- Tag slide list mixins
+	Define:
+	Title of the slider with a header mixin
+	A List of tags to be featured in a given list
+
+//- Popular topics
+mixin tagSliderTopics
+	section.ap-c-scn.ap-c-scn--slider
+		+tagHeader("Browse by Topic")
+		div.ap-c-sld
+			ul.ap-c-sld__list
+				+tagSlide(tagMan)
+				+tagSlide(tagMan)
+				+tagSlide(tagMan)
+				+tagSlideLast
+			+sliderEdges
+
+//- Colors
+mixin tagSliderColors
+	section.ap-c-scn.ap-c-scn--slider
+		+tagHeader("Browse by Colour")
+		div.ap-c-sld
+			ul.ap-c-sld__list
+				+tagSlide(tagMan)
+				+tagSlide(tagMan)
+				+tagSlide(tagMan)
+				+tagSlideLast
+			+sliderEdges

@@ -1,0 +1,145 @@
+// Base styles
+
+// Global
+html {
+	@extend %resetBox;
+	box-sizing: border-box;
+	font-size: 1rem;
+	text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	scroll-behavior: smooth;
+}
+*, 
+*::before, 
+*::after {
+	box-sizing: inherit;
+}
+body {
+	@extend %resetBox;
+	// Fill entire viewport
+	width: 100%;
+	width: 100vw;
+	min-height: 100vh;
+}
+
+// Resets
+div, 
+main, 
+header, 
+footer, 
+section, 
+address, 
+video, 
+nav, 
+figure, 
+ul, 
+li, 
+ol, 
+article {
+	@extend %resetBox;
+	display: block;
+	float: left;
+}
+h1, 
+h2, 
+h3, 
+h4,
+p, 
+span, 
+small {
+	@extend %resetBox;
+}
+audio, 
+canvas, 
+iframe,
+img, 
+svg, 
+video {
+	@extend %resetBox;
+	vertical-align: middle;
+}
+ul, 
+ol, 
+li {
+	@extend %resetBox;
+	list-style: none;
+	list-style-type: none;
+}
+
+// Text
+p, 
+span, 
+figcaption, 
+cite, 
+small {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	white-space: inherit;
+}
+
+// Links
+a {
+	color: inherit;
+	text-decoration: none;
+	&:hover,
+	&:focus,
+	&:active {
+		color: $colorBrand01;
+	}
+}
+p a {
+	text-decoration: underline;
+}
+
+// Buttons
+a, 
+button {
+	outline: 0;
+	&:focus {
+		outline: {
+			width: 3px;		
+			style: solid;
+			color: rgba($colorBrand01, .32);
+		}
+	}
+	&:active, 
+	&:visited {
+		outline: 0;
+	}
+	span::selection {
+		color: inherit;
+		background: transparent;
+	}
+}
+
+// Graphics
+img, 
+svg, 
+video {
+	// Scale within containers
+	max-width: 100%;
+	height: auto;
+	// Prevent highlighting
+	&::selection {
+		background: transparent;
+	}
+}
+
+// Transitions
+// img,
+// svg {
+// 	@extend %transitionFast;
+// 	transition-property: 
+// 		transform,
+// 		opacity;
+// }
+
+// Selected text
+// Styling reference: 
+// https://css-tricks.com/almanac/selectors/s/selection/
+::selection {
+	color: $colorWhite01;
+	background: $colorBrand01;
+}

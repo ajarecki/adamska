@@ -1,0 +1,59 @@
+extends partial/_tmp-series.pug
+
+//- Self Examination
+
+block config
+	-
+		var series = {
+			id:      figurativeExamination.id,
+			name:    figurativeExamination.name,
+			info:    figurativeExamination.info,
+			link:    figurativeExamination.link,
+			date:    figurativeExamination.date,
+			hero1:   figurativeExamination.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"plastic",
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeExamination
+
+block galleryContent
+	+figurativeExaminationS01
+	+figurativeExaminationS02
+	+figurativeExaminationS02b
+	+figurativeExaminationS03
+	+figurativeExaminationS04
+	+figurativeExaminationS05
+	+figurativeExaminationS06
+	+figurativeExaminationG01
+	+figurativeExaminationS07
+	+figurativeExaminationS08
+	+figurativeExaminationS09
+	+figurativeExaminationS10
+	+figurativeExaminationS11
+
+block relatedSeries01
+	+seriesFigurativeCoping
+
+block relatedSeries02
+	+seriesFigurativeDisengagement
+
+block relatedSeries03
+	+seriesFigurativeSelectedVol2
+
+block relatedSeries04
+	+seriesFigurativeBody

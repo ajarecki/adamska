@@ -1,0 +1,864 @@
+// Content modules
+
+// Shared content module styles
+%overhangSection {
+	position: relative;
+	z-index: 2;
+	transform: translateY($grd * -16);
+	@include forPhoneUp {
+		transform: translateY($grd * -18);
+	}
+	@include forTabletPortraitUp {
+		transform: translateY($grd * -24);
+	}
+	@include forTabletLandscapeUp {
+		transform: translateY($grd * -28);
+	}
+	@include forDesktopUp {
+		transform: translateY($grd * -32);
+	}
+	@include forBigDesktopUp {
+		transform: translateY($grd * -36);
+	}
+}
+
+// Series info container
+.ap-c-mdl-series {
+	@extend %widthModule;
+	@extend %paddingTopBottomQuarter;
+	@extend %overhangSection;
+	@extend %shadowSmall;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	background-color: $colorWhite02;
+	@include forPhoneOnly {
+		flex-direction: column;
+	}
+	// Headings
+	&__label {
+		@extend %widthFull;
+		@extend %fontExtendedBold;
+		@extend %fontMicro;
+		@extend %lineRight;
+		overflow: hidden;
+		line-height: 2;
+		// Recolor line
+		&::after {
+			background-color: $colorGray07;
+		}
+		.ap-c-mdl-series__summary & {
+			@extend %fontSmall;
+		}
+	}
+	// Summary container
+	&__summary {
+		// @extend %paddingTopBottomQuarter;
+		@extend %paddingLeftRightThird;
+		@extend %fontNormal;
+		@extend %fontRegular;
+		// Fallback display and float
+		display: block;
+		float: left;
+		width: 64%;
+		color: $colorGray01;
+		p {
+			@extend %paddingTopBottomQuarter;
+		}
+		@include forPhoneOnly {
+			width: 100%;
+		}
+	}
+	// Details list
+	&__list {
+		// @extend %paddingTopBottomQuarter;
+		@extend %paddingLeftRightThird;
+		// Fallback display and float
+		display: block;
+		float: right;
+		width: 36%;
+		border-left: $borderMedium;
+		@include forPhoneOnly {
+			width: 100%;
+			border-left: 0;
+		}
+	}
+	// List items
+	&__item {
+		@extend %widthFull;
+		@extend %paddingBottomQuarter;
+		@include forPhoneOnly {
+			width: 50%;
+		}
+	}
+	// Detail info
+	&__details {
+		@extend %fontExtendedNormal;
+		@extend %fontSmall;
+		display: inline-block;
+	}
+	// Mediums and materials
+	&__tags {
+		a {
+			// @extend %hoverLinkBackground;
+			text-transform: capitalize;
+			&::before {
+				content: ",\00a0";
+				display: inline-block;
+			}
+		}
+		// First item specificity
+		li:first-of-type a {
+			// Remove pseudo element on first list item
+			&::before {
+				content: "";
+			}
+		}
+	}
+	// Any link within container
+	a {
+		text-decoration: underline;
+	}
+}
+
+// Gallery and column styles for Colcade layout plugin
+// https://github.com/desandro/colcade
+// https://codepen.io/desandro/pen/EKMdxg
+
+// Default styles for columns apart from the first column
+%columnHidden {
+	// Hidden by default
+	display: none;
+	// No column spacing by default
+	margin-right: 0;
+}
+
+// Column margin width
+// $gallerySpacing: $grd * 5;
+$gallerySpacing: 4%;
+
+
+// Gallery content module
+.ap-c-mdl-gallery {
+	@extend %widthFull;
+	padding: {
+		right: 12%;
+		left: 12%;
+	}
+	@include forSmallPhoneOnly {
+		padding: {
+			right: 12%;
+			left: 12%;
+		}
+	}
+	@include forPhoneOnly {
+		padding: {
+			right: 14%;
+			left: 14%;
+		}
+	}
+	@include forTabletPortraitUp {
+		padding: {
+			right: 8%;
+			left: 8%;
+		}
+	}
+	@include forDesktopUp {
+		padding: {
+			right: 4%;
+			left: 4%;
+		}
+	}
+	// @include forBigDesktopUp {
+	// 	padding: {
+	// 		right: 5%;
+	// 		left: 5%;
+	// 	}
+	// }
+	// Gallery columns
+	&__column {
+		display: block;
+		float: left;
+		width: 100%;
+		@include forTabletPortraitUp {
+			// Fallback width
+			// 100% width - 4% margin / 2
+			width: 48%;
+			width: calc(48% - 8px);
+		}
+		@include forDesktopUp {
+			// 100% width - 8% margin / 3
+			width: 30.6666%;
+			width: calc(30.66% - 8px);
+		}
+		@include forBigDesktopUp {
+			// 100% width - 12% margin / 4
+			width: 22%;
+			width: calc(22% - 8px);
+		}
+	}
+	// First column
+	&__column--1 {
+		// Visible at any size
+		display: block;
+		margin-right: 0;
+		@include forTabletPortraitUp {
+			// Add spacing to first column when second column appears
+			margin-right: $gallerySpacing;
+		}
+	}
+	// Second column
+	&__column--2 {
+		@extend %columnHidden;
+		@include forTabletPortraitUp {
+			// Show second column
+			display: block;
+		}
+		@include forDesktopUp {
+			// Add spacing to second column when third column appears
+			margin-right: $gallerySpacing;
+		}
+	}
+	// Third column
+	&__column--3 {
+		@extend %columnHidden;
+		@include forDesktopUp {
+			// Show third column
+			display: block;
+		}
+		@include forBigDesktopUp {
+			// Add spacing to third column when fourth column appears
+			margin-right: $gallerySpacing;
+		}
+	}
+	// Fourth column (max)
+	&__column--4 {
+		@extend %columnHidden;
+		margin-right: 0;
+		@include forBigDesktopUp {
+			// Show fourth column
+			display: block;
+			margin-right: 0;
+		}
+	}
+}
+
+// Series collection list container
+.ap-c-mdl-collection {
+	@extend %widthFull;
+	@extend %paddingLeftRight;
+	// Series card list
+	&__list {
+		@extend %widthWrap;
+		display: flex;
+		flex-basis: 100%;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	// List item containing card
+	&__item {
+		position: relative;
+		width: 46.86%;
+		margin-bottom: $grd * 2;
+		@include forDesktopOnly {
+		}
+		@include forTabletOnly {
+			width: 48%;
+			bottom: $grd * 1.5;
+		}
+		@include forPhoneOnly {
+			width: 100%;
+			margin: {
+				right: auto;
+				left: auto;
+				bottom: $grd;
+			}
+		}
+		// Spotlight series specificity
+		&.ap-l-crd--spotlight {
+			width: 100%;
+			margin-bottom: $grd * 10;
+			@include forPhoneOnly {
+				margin-bottom: $grd * 3;
+			}
+			// Next series section specificity
+			.ap-c-scn--next & {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Website footer content
+.ap-c-mdl-footer {
+	@extend %widthWrap;
+	position: relative;
+	// Headings
+	&__label {
+		@extend %widthFull;
+		@extend %marginBottomQuarter;
+		@extend %fontExtendedBold;
+		@extend %fontMicro;
+		@extend %lineRight;
+		color: $colorBlack01;
+	}
+	// Contact info container
+	&__contact {
+		@extend %paddingRightHalf;
+		@extend %fontNormal;
+		@extend %fontRegular;
+		float: left;
+		width: 50%;
+		color: $colorGray01;
+		@include forTabletOnly {
+			width: 100%;
+			padding: {
+				right: 0;
+				bottom: $grd * 12;
+			}
+		}
+		// Contact text
+		p {
+			max-width: $grd * 80;
+			a {
+				@extend %hoverLinkBackground;
+			}
+		}
+		// Email button
+		.ap-c-btn-contained {
+			@extend %buttonIconLeft;
+			@extend %marginTopQuarter;
+		}
+	}
+	// Navigation container
+	&__navigation {
+		@extend %paddingLeftHalf;
+		@extend %paddingBottomHalf;
+		display: block;
+		float: right;
+		width: 50%;
+		border-left: $borderDark;
+		@include forTabletOnly {
+			width: 100%;
+			padding: {
+				bottom: $grd * 8;
+				left: 0;
+			}
+			border-left: 0;
+		}
+	}
+	// Navigation list container
+	&__group {
+		display: block;
+		width: 33%;
+		padding-right: $grd * 2;
+		&:last-of-type {
+			padding-right: 0;
+		}
+		@include forPhoneOnly {
+			width: 100%;
+			padding: {
+				right: 0;
+				bottom: $grd * 6;
+			}
+		}
+	}
+	// Navigation lists
+	&__list {
+		@extend %widthFull;
+	}
+	// List items containing links
+	&__item {
+		@extend %widthFull;
+		@extend %hoverShowIcon;
+		// Footer navigation links
+		.ap-c-btn-uncontained {
+			padding: $grd * 1.5 0;
+			&:hover,
+			&:focus {
+				span {
+					color: $colorBrand01;
+				}
+				svg {
+					transform: $translateRight;
+				}
+			}
+		}
+	}
+	// Credits container
+	&__fine {
+		@extend %widthFull;
+		@extend %paddingTopHalf;
+		@extend %paddingLeftRight;
+		border-top: $borderDark;
+		text-align: center;
+		color: $colorGray01;
+		// Text
+		p {
+			@extend %paddingTopHalf;
+			@extend %fontExtendedNormal;
+			@extend %fontMicro;
+			a {
+				text-decoration: underline;
+			}
+		}
+	}
+	// Logo link
+	&__logo {
+		&:hover,
+		&:focus {
+			svg path {
+				fill: $colorBrand01;
+			}
+		}
+		svg {
+			width: $logoWidth * .25;
+			height: $logoHeight * .25;
+			path {
+				fill: $colorBrand03;
+			}
+			@include forPhoneOnly {
+				width: $logoWidth * .2;
+				height: $logoHeight * .2;
+			}
+			@include forBigDesktopUp {
+				width: $logoWidth * .3;
+				height: $logoHeight * .3;
+			}
+		}
+	}
+}
+
+// Selected media content
+.ap-c-mdl-press {
+	@extend %widthFull;
+	@extend %paddingLeftRight;
+	position: relative;
+	&__list {
+		@extend %widthWrap;
+		position: relative;
+	}
+	// List element containing link
+	&__item {
+		@extend %widthFull;
+		height: $grd * 12;
+	}
+	// Link wrapping content
+	&__link {
+		@extend %widthFull;
+		@extend %hoverShadow;
+		position: relative;
+		height: 100%;
+		padding: {
+			top: $grd * 3;
+			bottom: $grd * 3;
+			right: $grd * 3;
+		}
+		border-bottom: $borderMedium;
+		background-color: $colorWhite01;
+		&:hover,
+		&:focus {
+			// Position active item above others so shadow style is visible
+			z-index: 2;
+			background-color: $colorWhite02;
+			border-color: transparent;
+			span {
+				// Recolor all text
+				color: $colorBrand01;
+			}
+			.ap-c-mdl-press__link-label {
+				transform: translate3d(24px, 0, 0);
+				@include forPhoneOnly {
+					transform: translate3d(16px, 0, 0);
+				}
+			}
+			.ap-c-mdl-press__link-title {
+				text-decoration: underline;
+				transform: translate3d(24px, 0, 0);
+				@include forPhoneOnly {
+					transform: translate3d(16px, 0, 0);
+				}
+			}
+			.ap-c-btn-uncontained {
+				span {
+					text-decoration: underline;
+				}
+				svg {
+					transform: $translateUpRight;
+					path {
+						fill: $colorBrand01;
+					}
+				}
+			}
+		}
+		@include forTabletOnly {
+			padding: {
+				top: $grd * 2.5;
+				bottom: $grd * 2.5;
+				right: $grd * 2.5;
+			}
+		}
+		@include forPhoneOnly {
+			padding: {
+				top: $grd * 2;
+				bottom: $grd * 2;
+				right: $grd * 2;
+			}
+		}
+	}
+	// Contains label and title
+	&__entry {
+		@extend %widthFull;
+		position: relative;
+		height: 100%;
+	}
+	&__label {
+		@extend %fontExtendedNormal;
+		@extend %fontMicro;
+		@extend %transitionFast;
+		position: relative;
+		margin-bottom: $grd;
+		line-height: 1;
+		white-space: nowrap;
+		color: $colorBlack01;
+		@include forTabletOnly {
+			margin-bottom: $grd * 2;
+		}
+	}
+	&__title {
+		@extend %fontExtendedBold;
+		@extend %fontExtraSmall;
+		@extend %transitionFast;
+		position: relative;
+		max-width: 80%;
+		color: $colorBlack01;
+	}
+	// 'Visit Website' link
+	.ap-c-btn-uncontained {
+		display: block;
+		position: absolute;
+		height: 100%;
+		top: 0;
+		right: 0;
+		padding: {
+			right: $grd * .75;
+			left: $grd * 3.5;
+		}
+		color: $colorBlack01;
+		border-left: $borderMedium;
+		@include forTabletOnly {
+			padding-left: $grd * 3;
+		}
+		span {
+			@extend %fontExtraSmall;
+			line-height: 3.5;
+			color: $colorGray01;
+			@include forTabletOnly {
+				line-height: 5;
+			}
+			@include forPhoneOnly {
+				display: none;
+			}
+		}
+		svg {
+			transform: none;
+			path {
+				fill: $colorGray01;
+			}
+			@include forPhoneOnly {
+				width: $grd * 2;
+				height: $grd * 2;
+				margin-top: $grd * 3;
+			}
+		}
+	}
+}
+
+// Curriculum Vitae content
+.ap-c-mdl-cv {
+	@extend %widthModule;
+	@extend %paddingLeftRightHalf;
+	@extend %overhangSection;
+	@extend %shadowSmall;
+	overflow: auto;
+	background-color: $colorWhite01;
+	// CV Main Header container
+	&__header {
+		@extend %widthFull;
+		@extend %paddingTopHalf;
+		@extend %fontExtendedBold;
+		@extend %fontRegular;
+	}
+	// CV document section
+	&__section {
+		@extend %widthFull;
+		// Negative margin compensates for pseudo element anchor positioning hack
+		margin-bottom: $grd * -10;
+		@include forTabletOnly {
+			margin-bottom: $grd * -13;
+		}
+		@include forPhoneOnly {
+			margin-bottom: $grd * -12;
+		}
+		@include forBigDesktopUp {
+			margin-bottom: $grd * -14;
+		}
+		// This pseudo is used to add edit the landing position of the hash tag links associated with each section
+		// https://css-tricks.com/hash-tag-links-padding/
+		&::before { 
+			content: ""; 
+			display: block; 
+			margin-top: $grd * 16;
+			visibility: hidden; 
+			pointer-events: none;
+			@include forTabletOnly {
+				margin-top: $grd * 18;
+			}
+			@include forPhoneOnly {
+				margin-top: $grd * 16;
+			}
+			@include forBigDesktopUp {
+				margin-top: $grd * 20;
+			}
+		}
+		&:first-of-type {
+			margin-top: $grd * -8;
+			@include forTabletOnly {
+				margin-top: $grd * -9;
+			}
+			@include forPhoneOnly {
+				margin-top: $grd * -9;
+			}
+			@include forBigDesktopUp {
+				margin-top: $grd * -10;
+			}
+		}
+		&:last-of-type {
+			margin-bottom: $grd * 8;
+			@include forTabletOnly {
+				margin-bottom: $grd * 6;
+			}
+			@include forPhoneOnly {
+				margin-bottom: $grd * 4;
+			}
+			@include forBigDesktopUp {
+				margin-bottom: $grd * 10;
+			}
+		}
+	}
+	&__subtitle {
+		@extend %widthFull;
+		@extend %paddingBottomQuarter;
+		@extend %fontExtendedBold;
+		@extend %fontSmall;
+		@extend %lineRight;
+		float: left;
+		margin-top: $grd * 3;
+		// margin-bottom: $grd * 3.5;
+		white-space: nowrap;
+		color: $colorBlack01;
+		overflow: hidden;
+		@include forTabletOnly {
+			margin-top: $grd * 2;
+		}
+		@include forPhoneOnly {
+			margin-top: $grd;
+		}
+		@include forBigDesktopUp {
+			margin-top: $grd * 4;
+		}
+	}
+	// List of entries
+	&__list {
+		@extend %widthFull;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: stretch;
+	}
+	// CV entry content
+	&__item {
+		@extend %paddingBottomQuarter;
+		@extend %paddingRightQuarter;
+		// Display fallbacks
+		display: table;
+		table-layout: fixed;
+		display: flex;
+		flex-flow: row nowrap;
+		width: 50%;
+		padding-bottom: $grd * 2;
+		@include forTabletOnly {
+			width: 100%;
+			padding-right: 0;
+			padding-bottom: $grd * 1.75;
+		}
+		@include forPhoneOnly {
+			padding-bottom: $grd * 1.5;
+		}
+		@include forBigDesktopUp {
+			padding-bottom: $grd * 2.5;
+		}
+	}
+	// Year labels
+	&__date {
+		@extend %fontExtendedNormal;
+		@extend %fontMicro;
+		// Display table fallbacks
+		display: table-cell;
+		vertical-align: top;
+		display: block;
+		width: $grd * 5;
+		line-height: 1.6125;
+		white-space: nowrap;
+		color: $colorGray06;
+		@include forTabletOnly {
+			width: $grd * 4;
+		}
+		@include forPhoneOnly {
+			width: $grd * 6;
+		}
+		@include forBigDesktopUp {
+			width: $grd * 6;
+		}
+	}
+	// Entry titles
+	&__title {
+		@extend %fontExtraSmall;
+		// Display table fallbacks
+		display: table-cell;
+		vertical-align: top;
+		display: block;
+	}
+	// Bold text
+	&__emphasis {
+		// @extend %widthFull;
+		@extend %fontBold;
+		display: block;
+		// line-height: 2;
+		margin-bottom: $grd * .75;
+		@include forTabletOnly {
+			margin-bottom: $grd * .5;
+		}
+		@include forPhoneOnly {
+			margin-bottom: $grd * .5;
+		}
+		@include forBigDesktopUp {
+			margin-bottom: $grd;
+		}
+	}
+	// Normal text
+	&__standard {
+		@extend %fontNormal;
+	}
+}
+
+// Profile article
+.ap-c-mdl-about {
+	@extend %widthModule;
+	@extend %overhangSection;
+	@extend %shadowSmall;
+	position: relative;
+	background-color: $colorWhite01;
+	overflow: auto;
+	// Portrait image container
+	&__photo {
+		position: relative;
+		display: block;
+		float: left;
+		width: 40%;
+		overflow: hidden;
+		background-color: $colorBrand05;
+		&::before {
+			@extend %positionAbsolute;
+			content: "";
+			background: {
+				image: url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/grazyna-adamska-jarecka_portrait-border.png");
+				size: cover;
+			}
+		}
+		@include forTabletOnly {
+			width: 100%;
+			height: $grd * 56;
+		}
+		@include forPhoneOnly {
+			height: $grd * 44;
+		}
+		img {
+			@include forTabletOnly {
+				margin-top: -36%;
+			}
+			@include forPhoneOnly {
+				margin-top: $grd * -8;
+			}
+		}
+	}
+	// Text content container
+	&__text {
+		position: relative;
+		display: block;
+		width: 60%;
+		float: right;
+		@include forTabletOnly {
+			width: 100%;
+		}
+	}
+	// Intro passage
+	&__header {
+		@extend %paddingTopBottomHalf;
+		@extend %paddingLeftRightHalf;
+		@extend %fontNormal;
+		@extend %fontRegular;
+		background-color: $colorBrand05;
+		color: $colorWhite01;
+	}
+	// Main article
+	&__body {
+		@extend %widthFull;
+		@extend %paddingTopBottomHalf;
+		@extend %paddingLeftRightHalf;
+		@extend %fontNormal;
+		@extend %fontSmall;
+		color: $colorGray01;
+		p {
+			@extend %paddingBottomQuarter;
+		}
+	}
+}
+
+// Mini-bio content module
+.ap-c-mdl-grazyna {
+	@extend %widthWrap;
+	position: relative;
+	overflow: auto;
+	@include forBigDesktopUp {
+		max-width: $widthDesktop;
+	}
+	// Module content container
+	&__container {
+		@extend %widthFull;
+		@extend %paddingAll;
+		color: $colorWhite01;
+	}
+	// Headline text
+	&__title {
+		@extend %fontExtendedBold;
+		@extend %fontMedium;
+		@extend %shadowHeadline;
+		@extend %marginBottomQuarter;
+		@extend %lineRight;
+		color: $colorWhite01;
+	}
+	// Paragraph text
+	&__body {
+		@extend %fontNormal;
+		@extend %fontRegular;
+		a {
+			@extend %hoverLinkBackground;
+		}
+	}
+	// About page link
+	.ap-c-btn-contained {
+		@extend %marginTopThird;
+	}
+}

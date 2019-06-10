@@ -1,0 +1,150 @@
+//- Tag page template
+
+//- Dependencies
+include _config.pug
+include _crd-artwork.pug
+include _crd-series.pug
+
+//- Tag page parameters
+block config
+	//- "tag" object
+		Properties:
+		Tag name,
+		Tag class,
+		Tag address,
+		Header background overlay image,
+		Header background base image,
+		Footer background overlay image,
+		Footer background base image,
+		Header section headline
+
+	//- Overwritable defaults
+	-
+		var tag = {
+			hero1:   "background_intro_tags.png",
+			hero2:   "background_outro_figurative02.png",
+			border1: "background_border_intro_04.png",
+			border2: "background_border_outro_03.png"
+		}
+
+doctype html
+html(lang="en")
+	head
+		include _head.pug
+		block headMeta
+			meta(
+				name="title" 
+				content= `Work Filed Under: ${tag.name} – Grazyna Adamska Jarecka`
+			)
+			meta(
+				name="description" 
+				content= "Artwork by visual artist and painter Grazyna Adamska Jarecka"
+			)
+		block headOpengraph
+			meta(
+				property="og:title"
+				content= `Work Filed Under: ${tag.name} – Grazyna Adamska Jarecka`
+			)
+			meta(
+				property="og:description"
+				content= "Artwork by visual artist and painter Grazyna Adamska Jarecka"
+			)
+			meta(
+				property="og:url"
+				content= `${tag.link}`
+			)
+	body.ap-p-tag#top(class= `ap-p-tag--${tag.id}`)
+		//- Website navigation components
+			contains opt-in "block navSubmenu"
+		include _nav-main.pug
+
+		//- Tag intro section
+		section.ap-c-scn.ap-c-scn--intro
+			//- Intro background
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_intro_04.png),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${tag.hero1}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${tag.hero1});`
+			)
+			//- Page header
+			div.ap-c-scn__header
+				header.ap-c-scn__header-container
+					h1.ap-c-scn__header-title
+						span Work Filed Under&colon;&nbsp;
+						//- Title of tag
+						span #{tag.name}
+
+		//- Page-specific content
+		main.ap-c-scn.ap-c-scn--main
+			//- Main header content background
+			div.ap-c-scn__background
+			//- Outro CTA banner background – overlay image + main image + placeholder image
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_03.png),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${tag.hero2}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${tag.hero2});`
+			)
+
+			//- Tag-specific gallery
+			section.ap-c-scn.ap-c-scn--gallery
+				+headerTitle("Topic Gallery")
+				div.ap-c-gallery__list
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--1
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--2
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--3
+					div.ap-c-mdl-gallery__column.ap-c-mdl-gallery__column--4
+					//- Tag-specific gallery items
+					block galleryContent
+
+			//- Outro call to action
+			+contactFooter
+
+		//- Related tags slider section
+		block relatedTags
+			//- +tagSliderPopular
+
+		//- Related series section
+		section.ap-c-scn.ap-c-scn--related
+			div.ap-c-scn__header
+				header.ap-c-scn__header-container
+					h2.ap-c-scn__header-title
+						span= `Series Matching: `
+						span= `${tag.name}`
+					+button(
+						"See All",
+						iconArrowRight,
+						work.link,
+						work.info,
+						"_self"
+					)
+			div.ap-c-mdl-collection
+				ul.ap-c-mdl-collection__list
+					li.ap-c-mdl-collection__item
+						block relatedSeries01
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries02
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries03
+							+seriesAbstractGrace
+					li.ap-c-mdl-collection__item
+						block relatedSeries04
+							+seriesAbstractGrace
+
+		//- Mini-bio section
+		include _scn-grazyna.pug
+
+		//- Website footer
+		include _scn-footer.pug
+
+		//- Colcade layout library
+		script(src="/js/colcade.js")
+
+		//- CDN scripts
+		include ../js/_js-plugins.pug
+
+		//- Main website scripts
+		script(src="/js/adamska.js")

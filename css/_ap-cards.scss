@@ -1,0 +1,906 @@
+// Card components
+
+// Series cards
+.ap-c-crd-series {
+	display: block;
+	position: relative;
+	width: 100%;
+	// Interaction styles
+	&:hover, 
+	&:focus {
+		.ap-c-crd-series__thumb {
+			transform: $scaleUpLarge;
+			@include forPhoneOnly {
+				transform: $scaleUpSmall;
+			}
+		}
+		.ap-c-crd-series__overlay {
+			// Hide thumbnail overlay images to reveal slide animation
+			opacity: .01;
+		}
+		.ap-c-crd-series__cover {
+			// Hide thumbnail image to reveal slide animation
+			opacity: .01;
+			@include forPhoneOnly {
+				// Always show thumbnail cover on phones
+				opacity: 1;
+			}
+		}
+		.ap-c-crd-series__slide {
+			// Play slide animation
+			animation-play-state: running;
+			@include forPhoneOnly {
+				// Do not run slide animation on phones
+				animation-play-state: paused;
+			}
+		}
+		.ap-c-crd-series__info {
+			box-shadow: none;
+			background: $colorWhite01;
+			transform: translate3d(0, -66.66%, 0);
+			@include forPhoneOnly {
+				// No transform effect on phones
+				transform: none;
+				// No background color on phones
+				background: none;
+			}
+			&::before {
+				// Reveal pseudo shadow
+				opacity: 1;
+			}
+		}
+		.ap-c-crd-series__title {
+			color: $colorBrand01;
+			text-decoration: underline;
+			text-decoration-color: rgba($colorBrand01, .92);
+		}
+		.ap-c-crd-series__item {
+			color: $colorBrand01;
+		}
+		svg {
+			path {
+				fill: rgba($colorBrand01, .92);
+			}
+		}
+	}
+	&:active {
+		.ap-c-crd-series__thumb {
+			transform: $scaleUpLarge;
+		}
+	}
+	&:visited {
+		.ap-c-crd-series__title {
+			color: $colorBrand01;
+		}
+	}
+	// Anchor link thumbnail image and slideshow container
+	&__thumb {
+		@extend %fontNormal;
+		@extend %fontExtraSmall;
+		@extend %transitionFast;
+		@extend %shadowSmall;
+		// @extend %overlayEdge;
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 0;
+		// Aspect ratio
+		padding-top: 320 / 960 * 100%;
+		overflow: hidden;
+		color: $colorWhite01;
+		background: {
+			color: $colorBrand03;
+			size: cover;
+		}
+		transform-origin: bottom center;
+	}
+	// Animation poster container
+	&__slide {
+		@extend %hidePhone;
+		@extend %positionAbsolute;
+		@extend %animationSlideshow;
+		display: block;
+		// background-image is defined in _crd-series.pug
+		background: {
+			size: cover;
+			repeat: no-repeat;
+		}
+		@include forPhoneOnly {
+			// Do not show/load slide images on phones
+			background-image: none !important;
+		}
+	}
+	// Slide 1
+	&__slide--1 {
+		// background-position: center 29.67%;
+		background-position: center top;
+	}
+	// Slide 2
+	&__slide--2 {
+		// background-position: center 59.33%;
+		background-position: center center;
+		animation-delay: .67s;
+	}
+	// Slide 3
+	&__slide--3 {
+		// background-position: center 89%;
+		background-position: center bottom;
+		animation-delay: 1.34s;
+	}
+	// Staic thumbnail image element
+	&__cover {
+		@extend %positionAbsolute;
+		@extend %transitionFast;
+		width: 63%;
+		// Value matches animation delay
+		transition-delay: .33s;
+		@include forPhoneOnly {
+			width: 100%;
+		}
+	}
+	// Cover overlay images
+	&__overlay {
+		@extend %transitionFast;
+		display: block;
+		position: absolute;
+		width: 44%;
+		height: 50%;
+		right: 0;
+		// Image source is defined in "_crd-series.pug"
+		background: {
+			size: 100%;
+			repeat: no-repeat;
+		}
+		border-left: 1px solid $colorWhite03;
+		// Try transform translate transition
+		// Value matches animation delay
+		transition-delay: .33s;
+		@include forPhoneOnly {
+			background-size: 125%; 
+		}
+	}
+	// Top right overlay image
+	&__overlay--01 {
+		top: 0;
+		background-position: center center;
+		border-bottom: 1px solid $colorWhite03;
+	}
+	// Bottom right overlay image
+	&__overlay--02 {
+		bottom: 0;
+		background-position: center bottom;
+	}
+	// Anchor link text container
+	&__info {
+		@extend %shadowSmall;
+		@extend %transitionFast;
+		display: block;
+		position: relative;
+		// Fallback width
+		width: 92%;
+		width: calc(100% - 64px);
+		left: 32px;
+		padding: {
+			top: $grd * 3;
+			bottom: $grd * 3;
+			left: $grd * 4;
+		}
+		background: $colorWhite01;
+		// Layer info on top of the thumbnail images
+		transform: translate3d(0, -50%, 0);
+		&::before {
+			@extend %positionAbsolute;
+			@extend %shadowLarge;
+			@extend %transitionFast;
+			content: "";
+    		opacity: .01;
+			@include forPhoneOnly {
+				display: none;
+			}
+		}
+		@include forDesktopOnly {
+			width: calc(100% - 48px);
+			left: 24px;
+		}
+		@include forTabletOnly {
+			width: 100%;
+			left: auto;
+			transform: none;
+			padding: {
+				top: $grd * 3 / 1.5;
+				bottom: $grd * 3 / 1.5;
+				left: $grd * 4 / 1.5;
+			}
+		}
+		@include forPhoneOnly {
+			width: 100%;
+			transform: none;
+			left: 0;
+			padding: {
+				top: $grd * 1.5;
+				bottom: $grd * 1.5;
+				left: $grd * 1.5;
+			}
+		}
+	}
+	// Series title – h tag containing span
+	&__title {
+		@extend %fontExtendedBold;
+		@extend %fontRegular;
+		display: inline-block;
+		width: 100%;
+		margin-bottom: $grd * 1.75;
+		text-align: left;
+		white-space: nowrap;
+		text-overflow: clip;
+		line-height: 1.25;
+		color: $colorBlack01;
+		// Prevent title from breaching card bounds
+		overflow: hidden;
+		@include forTabletOnly {
+			margin-bottom: $grd * 1.5;
+		}
+		@include forPhoneOnly {
+			width: auto;
+			margin-bottom: $grd * .75;
+			padding-right: $grd * 2;
+			overflow: auto;
+		}
+	}
+	// Element containing details
+	&__details {
+		display: inline-block;
+		width: 100%;
+	}
+	// Detail labels and icons
+	&__item {
+		@extend %fontExtendedNormal;
+		@extend %fontExtraSmall;
+		display: inline-block;
+		text-align: left;
+		line-height: 1;
+		white-space: nowrap;
+		color: $colorGray01;
+	}
+	// Icons
+	svg {
+		position: relative;
+		bottom: 2px;
+		@include forPhoneOnly {
+			width: $grd * 1.25;
+			height: $grd * 1.25;
+		}
+		path {
+			fill: $colorGray01;
+		}
+	}
+}
+
+// Spotlight series cards
+.ap-l-crd--spotlight .ap-c-crd-series {
+	// Interaction styles
+	&:hover, 
+	&:focus {
+		.ap-c-crd-series__thumb {
+			transform: $scaleUpSmall;
+		}
+		.ap-c-crd-series__overlay {
+			@include forPhoneOnly {
+				opacity: 1;
+			}
+		}
+		.ap-c-crd-series__info {
+			background: none;
+			box-shadow: none;
+			transform: none;
+			&::before {
+				transform: $scaleUpSmall;
+			}
+			&::after {
+				opacity: .48;
+				transform: $scaleUpSmall;
+			}
+		}
+		.ap-c-crd-series__title {
+			color: $colorWhite01;
+		}
+		.ap-c-crd-series__item {
+			color: $colorWhite01;
+		}
+		svg {
+			path {
+				fill: $colorWhite01;
+			}
+		}
+	}
+	&:active {
+		.ap-c-crd-series__thumb {
+			transform: $scaleUpSmall;
+		}
+	}
+	&:visited {
+		.ap-c-crd-series__title {
+			color: $colorWhite01;
+		}
+	}
+	// Thumbnail image and slideshow container
+	&__thumb {
+		// 3:1 Aspect Ratio
+		padding-top: 1 / 4 * 100%;
+		@include forTabletOnly {
+			padding-top: 448 / 960 * 100%;
+		}
+		@include forPhoneOnly {
+			padding-top: 512 / 960 * 100%;
+		}
+	}
+	&__overlay {
+		display: block;
+		visibility: visible;
+		@include forPhoneOnly {
+			display: block;
+			visibility: visible;
+		}
+	}
+	// Thumbnail cover image
+	&__cover {
+		@include forTabletPortraitUp {
+			// Adjust main thumbnail image size
+			width: 56%;
+		}
+		@include forTabletOnly {
+			width: 88%;
+		}
+	}
+	// Info panel
+	&__info {
+		// Styled as an overlay
+		@extend %positionAbsolute;
+		width: 100%;
+		padding: {
+			top: 8%;
+			left: 4%;
+		}
+		background: none;
+		box-shadow: none;
+		transform: none;
+		@include forPhoneOnly {
+			padding: {
+				top: 12%;
+				left: 6%;
+			}
+		}
+		// Hover shadow
+		&::before {
+			display: none;
+			box-shadow: 
+				0 24px 12px -12px rgba($colorBrand04, .12),
+				0 12px 6px -6px rgba($colorBrand03, .16);
+		}
+		// Underlay panel
+		&::after {
+			@extend %positionAbsolute;
+			@extend %transitionFast;
+			content: "";
+			z-index: 1;
+			opacity: 1;
+			background-image: 
+				linear-gradient(
+					to right,
+					rgba($colorBrand04, .32) 8%,
+					rgba($colorBrand01, 0) 57%
+				);
+			@include forPhoneOnly {
+				display: block;
+			}
+		}
+	}
+	// Series title
+	&__title {
+		@extend %fontMedium;
+		position: relative;
+		color: $colorWhite01;
+		@include forPhoneOnly {
+			width: 100%;
+		}
+	}
+	// Series details container
+	&__details {
+		position: relative;
+		z-index: 2;
+	}
+	// Series detail items
+	&__item {
+		@extend %fontSmall;
+		color: $colorWhite01;
+	}
+	// Icons
+	svg {
+		path {
+			// Change icon color
+			fill: $colorWhite01;
+		}
+	}
+}
+
+// Remove card thumbnail overlay images on phones for non-featured series cards
+li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
+	.ap-c-crd-series__overlay {
+		@include forPhoneOnly {
+			display: none !important;
+			visibility: none !important;
+			background-image: none !important;
+		}
+	}
+}
+
+
+// ! Add responsive fixed sizes
+// Gallery item cards
+.ap-c-crd-artwork {
+	@extend %widthFull;
+	@extend %marginAuto;
+	position: relative;
+	padding-bottom: $grd;
+	margin-bottom: $grd * 1.5;
+	background-color: rgba($colorWhite05, .92);
+	&:hover, 
+	&:focus {
+		.ap-c-crd-artwork__thumb {
+			transform: $scaleUpSmall;
+		}
+		.ap-c-crd-artwork__image {
+			opacity: .72;
+			// transform: scale(.98);
+		}
+		.ap-c-crd-artwork__icon {
+			opacity: 1;
+			svg {
+				transform: scale3d(1, 1, 1);
+			}
+		}
+		.ap-c-crd-artwork__info {
+			// Add title underline
+			span {
+				// Recolor all text
+				color: $colorBrand01;
+			}
+			a span {
+				// Underline links and tags
+				text-decoration: underline;
+			}
+		}
+	}
+	&:active {
+		.ap-c-crd-artwork__thumb {
+			transform: $scaleNormal;
+		}
+	}
+	@include forTabletPortraitUp {
+		padding-bottom: $grd * 1.75;
+		margin-bottom: $grd * 3.25;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $grd * 2;
+		margin-bottom: $grd * 3.5;
+	}
+	// Thumbnail image container
+	&__thumb {
+		@extend %shadowSmall;
+		@extend %hoverShadow;
+		@extend %transitionFast;
+		display: block;
+		width: 100%;
+		// These work with the aspect ratio classes ap-l-ratio
+		height: 0;
+		cursor: zoom-in;
+		overflow: hidden;
+		// background-image is defined individually 
+		// for each item in "_crd-artwork.pug"
+		background: {
+			color: $colorWhite05;
+			repeat: repeat;
+			size: cover;
+		}
+		transform-origin: bottom center;
+	}
+	// Image element within container
+	&__image {
+		@extend %positionAbsolute;
+		@extend %fontNormal;
+		@extend %fontMicro;
+		@extend %transitionFast;
+		width: 100%;
+		text-align: center;
+		// Alt text color for broken images
+		color: rgba($colorBlack01, .8);
+	}
+	// Information container
+	&__info {
+		display: inline-block;
+		width: 100%;
+		padding: {
+			top: $grd * 1.75;
+			left: $grd * 1.75;
+		}
+		// Show arrow cursor for non-hyperlinked text
+		cursor: default;
+		@include forTabletOnly {
+			padding: {
+				top: $grd * 1.5;
+				left: $grd * 1.5;
+			}
+		}
+		@include forPhoneOnly {
+			padding: {
+				top: $grd;
+				left: $grd;
+			}
+		}
+		@include forBigDesktopUp {
+			padding: {
+				top: $grd * 2;
+				left: $grd * 2;
+			}
+		}
+		a {
+			text-decoration: none;
+			text-decoration-color: rgba($colorBrand01, .92);
+			cursor: pointer;
+		}
+	}
+	// Title container
+	&__title {
+		@extend %fontExtraSmall;
+		display: block;
+		width: 100%;
+	}
+	// Item title
+	&__piece {
+		@extend %fontExtendedBold;
+		display: inline-block;
+		white-space: nowrap;
+		text-overflow: clip;
+		color: $colorBlack01;
+	}
+	// Associated series link
+	&__series {
+		// Hidden for now
+		@extend %hideItem;
+		@extend %fontExtraSmall;
+		@extend %fontExtendedNormal;
+		// display: inline-block;
+		white-space: nowrap;
+		text-overflow: clip;
+		color: $colorGray04;
+		// Series page specificity
+		.ap-p-series & {
+			// Hide series link when element is within a series pages
+			@extend %hideItem;
+		}
+	}
+	// Medium and dimensions
+	&__spec {
+		@extend %fontExtendedNormal;
+		@extend %fontMicro;
+		display: inline-block;
+		margin-top: $grd;
+		color: $colorGray05;
+		// Capitalize medium names as they are referenced from tag labels
+		a {
+			text-transform: capitalize;
+		}
+	}
+	// Tag list
+	&__tags {
+		// Hiding for now
+		@extend %hideItem;
+		@extend %fontNormal;
+		@extend %fontMicro;
+		// display: block;
+		width: 100%;
+		margin-top: $grd * 2;
+		color: $colorGray05;
+		text-transform: capitalize;
+		padding: 4px;
+		// Tag list item
+		li {
+			display: inline-block;
+			line-height: 1.5;
+		}
+		// Link within list items
+		a {
+			@extend %hoverBackground;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	// Overlay expand signal
+	&__icon {
+		// Remove on phones
+		@extend %hidePhone;
+		@extend %transitionFast;
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: $grd * 24;
+		height: $grd * 24;
+		padding: {
+			top: $grd * 1.75;
+			right: $grd * 1.75;
+		}
+		background-image:
+			linear-gradient(
+				45deg,
+				rgba($colorBrand04, 0) 48%,
+				rgba($colorBrand04, .32)
+			);
+		opacity: .01;
+		@include forTabletOnly {
+			width: $grd * 20;
+			height: $grd * 20;
+			padding: {
+				top: $grd * 1.5;
+				right: $grd * 1.5;
+			}
+		}
+		// Expand icon
+		svg {
+			@extend %transitionFast;
+			width: $grd * 3.75;
+			height: $grd * 3.75;
+			float: right;
+			transform: scale3d(.25, .25, 1);
+			@include forTabletOnly {
+				width: $grd * 3.25;
+				height: $grd * 3.25;
+			}
+			path {
+				fill: $colorWhite01;
+			}
+		}
+	}
+}
+
+// Press item specificity
+// Use as parent selector
+// .ap-l--press & {
+// }
+
+// Aspect ratio padding – listed width by height
+// Corresponding dimensions used for images included in comments
+// SCSS math: height divided by width times container width
+// An appropriate class are added to "ap-c-crd-artwork__thumb"
+.ap-l-ratio {
+	// Square – 1408 × 1408
+	&--1-1 {
+		padding-bottom: 100%;
+	}
+	// 992 × 1984 – Double height
+	&--1-2 {
+		padding-bottom: 2 / 1 * 100%;
+	}
+	// 1984 × 992 – Double width
+	&--2-1 {
+		padding-bottom: 1 / 2 * 100%;
+	}
+	// 1728 × 1152
+	&--3-2 {
+		padding-bottom: 2 / 3 * 100%;
+	}
+	// 1152 × 1728
+	&--2-3 {
+		padding-bottom: 3 / 2 * 100%;
+	}
+	// Typical portrait – 1200 × 1600
+	&--3-4 {
+		padding-bottom: 4 / 3 * 100%;
+	}
+	// Typical landscape – 1600 × 1200
+	&--4-3 {
+		padding-bottom: 3 / 4 * 100%;
+	}
+	// 1229 × 1536
+	&--4-5 {
+		padding-bottom: 5 / 4 * 100%;
+	}
+	// 1536 × 1229
+	&--5-4 {
+		padding-bottom: 4 / 5 * 100%;
+	}
+	// 1792 × 1075
+	&--5-3 {
+		padding-bottom: 4 / 5 * 100%;
+	}
+	// 1075 × 1792
+	&--3-5 {
+		padding-bottom: 4 / 5 * 100%;
+	}
+	// 1189 × 1664 or 1200 × 1680
+	&--5-7 {
+		padding-bottom: 7 / 5 * 100%;
+	}
+	// 1664 × 1189 or 1680 × 1200
+	&--7-5 {
+		padding-bottom: 5 / 7 * 100%;
+	}
+	// 1280 × 1536
+	&--5-6 {
+		padding-bottom: 6 / 5 * 100%;
+	}
+	// 1536 × 1280
+	&--6-5 {
+		padding-bottom: 5 / 6 * 100%;
+	}
+	
+	&--4-7 {
+		padding-bottom: 7 / 4 * 100%;
+	}
+	
+	&--7-4 {
+		padding-bottom: 4 / 7 * 100%;
+	}
+	// 1494 × 1280
+	&--7-6 {
+		padding-bottom: 6 / 7 * 100%;
+	}
+	// 1280 × 1494
+	&--6-7 {
+		padding-bottom: 7 / 6 * 100%;
+	}
+	// 1288 × 1472
+	&--7-8 {
+		padding-bottom: 8 / 7 * 100%;
+	}
+	// 1472 × 1288
+	&--8-7 {
+		padding-bottom: 7 / 8 * 100%;
+	}
+	// 1245 × 1600
+	&--7-9 {
+		padding-bottom: 9 / 7 * 100%;
+	}
+	// 1600 × 1245
+	&--9-7 {
+		padding-bottom: 7 / 9 * 100%;
+	}
+	// 1760 × 1100
+	&--8-5 {
+		padding-bottom: 5 / 8 * 100%;
+	}
+	// 1100 × 1760
+	&--5-8 {
+		padding-bottom: 8 / 5 * 100%;
+	}
+	// 1200 * 1650
+	&--8-11 {
+		padding-bottom: 11 / 8 * 100%;
+	}
+	// 1650 * 1200
+	&--11-8 {
+		padding-bottom: 8 / 11 * 100%;
+	}
+	// 1257 × 1600
+	&--11-14 {
+		padding-bottom: 14 / 11 * 100%;
+	}
+	// 1600 × 1257
+	&--14-11 {
+		padding-bottom: 11 / 14 * 100%;
+	}
+	&--4-9 {
+		padding-bottom: 9 / 4 * 100%;
+	}
+	&--9-4 {
+		padding-bottom: 4 / 9 * 100%;
+	}
+	&--5-9 {
+		padding-bottom: 9 / 5 * 100%;
+	}
+	&--9-5 {
+		padding-bottom: 5 / 9 * 100%;
+	}
+	&--9-10 {
+		padding-bottom: 10 / 9 * 100%;
+	}
+	&--10-9 {
+		padding-bottom: 9 / 10 * 100%;
+	}
+	&--7-10 {
+		padding-bottom: 10 / 7 * 100%;
+	}
+	&--10-7 {
+		padding-bottom: 7 / 10 * 100%;
+	}
+	// 1300 × 1536
+	&--11-13 {
+		padding-bottom: 13 / 11 * 100%;
+	}
+	// 1536 × 1300
+	&--13-11 {
+		padding-bottom: 11 / 13 * 100%;
+	}
+	// 1256 × 1536
+	&--9-11 {
+		padding-bottom: 11 / 9 * 100%;
+	}
+	// 1536 × 1256
+	&--11-9 {
+		padding-bottom: 9 / 11 * 100%;
+	}
+	// 1216 × 1548
+	&--11-15 {
+		padding-bottom: 15 / 11 * 100%;
+	}
+	// 1548 × 1216
+	&--15-11 {
+		padding-bottom: 11 / 15 * 100%;
+	}
+	// 1920 × 1080 – Video Stills
+	&--16-9 {
+		padding-bottom: 9 / 16 * 100%;
+	}
+	// 1080 × 1920
+	&--9-16 {
+		padding-bottom: 16 / 9 * 100%;
+	}
+	// 1792 × 1120
+	&--16-10 {
+		padding-bottom: 10 / 16 * 100%;
+	}
+	// 1120 × 1792
+	&--10-16 {
+		padding-bottom: 16 / 10 * 100%;
+	}
+	// 1440 × 1344
+	&--15-14 {
+		padding-bottom: 14 / 15 * 100%;
+	}
+	// 1344 × 1440
+	&--14-15 {
+		padding-bottom: 15 / 14 * 100%;
+	}
+	&--12-5 {
+		padding-bottom: 5 / 12 * 100%;
+	}
+	&--5-12 {
+		padding-bottom: 12 / 5 * 100%;
+	}
+	// 1380 × 1408
+	&--49-50 {
+		padding-bottom: 49 / 50 * 100%;
+	}
+	// 1408 × 1380
+	&--50-49 {
+		padding-bottom: 50 / 49 * 100%;
+	}
+	// 2058 × 960
+	&--15-7 {
+		padding-bottom: 7 / 15 * 100%;
+	}
+	// 1656 × 1152
+	&--23-16 {
+		padding-bottom: 16 / 23 * 100%;
+	}
+	// 1152 × 1656
+	&--16-23 {
+		padding-bottom: 23 / 16 * 100%;
+	}
+	// 1638 × 1280
+	&--23-18 {
+		padding-bottom: 18 / 23 * 100%;
+	}
+	// 1280 × 1638
+	&--18-23 {
+		padding-bottom: 23 / 18 * 100%;
+	}
+	// 1472 × 1280
+	&--23-20 {
+		padding-bottom: 20 / 23 * 100%;
+	}
+	// 1280 × 1472
+	&--20-23 {
+		padding-bottom: 23 / 20 * 100%;
+	}
+}

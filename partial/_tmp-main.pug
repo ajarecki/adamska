@@ -1,0 +1,96 @@
+//- Main page template
+
+//- Dependencies
+include _config.pug
+include _crd-series.pug
+
+//- Configuration
+block config
+	//- "main" object
+		Properties:
+		Meta tag title,
+		Meta tag description,
+		Page address,
+		Page class,
+		Header background overlay image,
+		Header background base image,
+		Footer background overlay image,
+		Footer background base image,
+		Header section headline
+
+doctype html
+html(lang="en")
+	head
+		include _head.pug
+		block headMeta
+			meta(
+				name="title" 
+				content= `${main.title}`
+			)
+			meta(
+				name="description" 
+				content= `${main.desc}`
+			)
+		block headOpengraph
+			meta(
+				property="og:title"
+				content= `${main.title}`
+			)
+			meta(
+				property="og:description"
+				content= `${main.desc}`
+			)
+			meta(
+				property="og:url"
+				content= `${main.link}`
+			)
+	body.ap-p-main#top(class= `ap-p-main--${main.id}`)
+		//- Website navigation components
+			contains opt-in "block navSubmenu"
+		include _nav-main.pug
+
+		//- Intro section
+		section.ap-c-scn.ap-c-scn--intro
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/${main.border1}),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${main.hero1}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${main.hero1});`
+			)
+			//- Page header
+			div.ap-c-scn__header
+				header.ap-c-scn__header-container
+					h1.ap-c-scn__header-title
+						span #{main.header}
+			//- Opt-in hero video
+			block introVideo
+		
+		main.ap-c-scn.ap-c-scn--main
+			//- Main header content background
+			div.ap-c-scn__background
+			//- Outro CTA banner background – overlay image + main image + placeholder image
+			div.ap-c-scn__banner(
+				style= `background-image:
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_01.png),
+					url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${main.hero2}),
+					url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:1024,f_auto,q_auto:good,w_256/v1/ui/${main.hero2});`
+			)
+
+			//- Page-specific content
+			block mainContent
+			
+			//- Outro call to action
+			+contactFooter
+
+		//- Page section opt-in
+		block secondaryContent
+
+		//- Mini-bio section opt-out
+		block sectionGrazyna
+			include _scn-grazyna.pug
+
+		//- Site footer section
+		include _scn-footer.pug
+
+		//- Main website scripts
+		script(src="/js/adamska.js")

@@ -1,0 +1,72 @@
+extends partial/_tmp-series.pug
+
+//- Coping Behaviors
+
+block config
+	-
+		var series = {
+			id:      figurativeCoping.id,
+			name:    figurativeCoping.name,
+			info:    figurativeCoping.info,
+			link:    figurativeCoping.link,
+			date:    figurativeCoping.date,
+			hero1:   figurativeCoping.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"plastic"
+	)
+
+block navSubmenu
+	+navFigurativeCoping
+
+block galleryContent
+	+figurativeCopingG01
+	+figurativeCopingG01b
+	+figurativeCopingG01c
+	+figurativeCopingG01
+	+figurativeCopingG01d
+	+figurativeCopingG02
+	+figurativeCopingG02b
+	+figurativeCopingG03
+	+figurativeCopingG03b
+	//- S01 - S07 not ready
+	//- +figurativeCopingS01
+	//- +figurativeCopingS02
+	//- +figurativeCopingS03
+	//- +figurativeCopingS04
+	//- +figurativeCopingS05
+	//- +figurativeCopingS05b
+	//- +figurativeCopingS06
+	//- +figurativeCopingS06b
+	//- +figurativeCopingS07
+	+figurativeCopingS08
+	//- No S09
+	+figurativeCopingS10
+	+figurativeCopingS11
+	+figurativeCopingS12
+	//- S13 not ready
+	//- +figurativeCopingS13
+	+figurativeCopingP01
+
+block relatedSeries01
+	+seriesFigurativeExamination
+
+block relatedSeries02
+	+seriesFigurativeDisengagement
+
+block relatedSeries03
+	+seriesFigurativeSelectedVol2
+
+block relatedSeries04
+	+seriesFigurativeBody

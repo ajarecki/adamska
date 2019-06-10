@@ -1,0 +1,450 @@
+//- Series cards
+
+//- Series card component mixin
+	Declare:
+	Title of series,
+	Link to series page,
+	Series date range,
+	Number of piece in series,
+	Name of corresponding collection,
+	Link to corresponding collection,
+	Source image used for thumbnail and slides,
+	Alt text for cover thumbnail image
+mixin seriesCard(seriesTitle, seriesLink, yearRange, itemCount, collectionName, collectionLink, imageSource, imageAlt)
+	article.ap-c-crd-series
+		a.ap-c-crd-series__thumb(
+			href=seriesLink
+			style="background-image:url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/sprite_series_" + imageSource + ");"
+		)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--3(
+				style="background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_series_" + imageSource + ");"
+			)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--2(
+				style="background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_series_" + imageSource + ");"
+			)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--1(
+				style="background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_series_" + imageSource + ");"
+			)
+			img.ap-c-crd-series__cover(
+				src="https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/sprite_series_" + imageSource
+				alt=imageAlt + " by Grazyna Adamska Jarecka"
+			)
+			div.ap-c-crd-series__overlay.ap-c-crd-series__overlay--02(
+				style="background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_series_" + imageSource + ");"
+			)
+			div.ap-c-crd-series__overlay.ap-c-crd-series__overlay--01(
+				style="background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_series_" + imageSource + ");"
+			)
+		a.ap-c-crd-series__info(href=seriesLink)
+			h3.ap-c-crd-series__title=seriesTitle
+			span.ap-c-crd-series__details
+				span.ap-c-crd-series__item
+					+icon(iconDate)
+					| &nbsp;
+					span=yearRange
+					| &emsp;
+				span.ap-c-crd-series__item
+					+icon(iconGallery)
+					| &nbsp;
+					span=itemCount
+						| &nbsp;Works
+
+
+mixin seriesCardV2(seriesData)
+	article.ap-c-crd-series
+		a.ap-c-crd-series__thumb(
+			href= seriesData.link
+			style= `background-image:url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${seriesData.cover});`
+		)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--3(
+				style= `background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${seriesData.cover});`
+			)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--2(
+				style= `"background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${seriesData.cover});`
+			)
+			div.ap-c-crd-series__slide.ap-c-crd-series__slide--1(
+				style= `background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${seriesData.cover});`
+			)
+			img.ap-c-crd-series__cover(
+				src= `https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${seriesData.cover}`
+				alt= seriesData.info
+			)
+			div.ap-c-crd-series__overlay.ap-c-crd-series__overlay--02(
+				style= `background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${seriesData.cover});`
+			)
+			div.ap-c-crd-series__overlay.ap-c-crd-series__overlay--01(
+				style= `background-image:url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/${seriesData.cover});`
+			)
+		a.ap-c-crd-series__info(href= seriesData.link)
+			h3.ap-c-crd-series__title= seriesData.name
+			span.ap-c-crd-series__details
+				span.ap-c-crd-series__item
+					+icon(iconDate)
+					| &nbsp;
+					span= yearRange
+					| &emsp;
+				span.ap-c-crd-series__item
+					+icon(iconGallery)
+					| &nbsp;
+					span= itemCount
+						| &nbsp;Works
+
+
+
+//- +seriesCardV2(assortedStill)
+
+
+
+//- Series cards
+
+
+//- Assorted series cards
+
+//- Still Life Works –– Unpublished
+mixin seriesAssortedStill
+	+seriesCard(
+		nameAssortedStill, 
+		linkAssortedStill,
+		dateAssortedStill,
+		itemAssortedStill,
+		nameWorkAssorted,
+		linkWorkAssorted,
+		"assorted_still.png",
+		"Series of paintings"
+	)
+//- Animals
+mixin seriesAssortedAnimals
+	+seriesCard(
+		nameAssortedAnimals, 
+		linkAssortedAnimals,
+		dateAssortedAnimals,
+		itemAssortedAnimals,
+		nameWorkAssorted,
+		linkWorkAssorted,
+		"assorted_animals.png",
+		"Series of paintings"
+	)
+//- Miscellaneous Works –– Unpublished
+mixin seriesAssortedMisc
+	+seriesCard(
+		nameAssortedMisc, 
+		linkAssortedMisc,
+		dateAssortedMisc,
+		itemAssortedMisc,
+		nameWorkAssorted,
+		linkWorkAssorted,
+		"assorted_misc.png",
+		"Series of paintings"
+	)
+//- Traditional Landscapes Volume 1
+mixin seriesAssortedLandscapesVol1
+	+seriesCard(
+		nameAssortedLandscapesVol1, 
+		linkAssortedLandscapesVol1,
+		dateAssortedLandscapesVol1,
+		itemAssortedLandscapesVol1,
+		nameWorkAssorted,
+		linkWorkAssorted,
+		"assorted_landscapes01.png",
+		"Series of paintings"
+	)
+//- Traditional Landscapes Volume 2
+mixin seriesAssortedLandscapesVol2
+	+seriesCard(
+		nameAssortedLandscapesVol2, 
+		linkAssortedLandscapesVol2,
+		dateAssortedLandscapesVol2,
+		itemAssortedLandscapesVol2,
+		nameWorkAssorted,
+		linkWorkAssorted,
+		"assorted_landscapes02.png",
+		"Series of paintings"
+	)
+	
+
+//- Abstract series cards
+
+//- Grace / No Grace
+mixin seriesAbstractGrace
+	+seriesCard(
+		nameAbstractGrace, 
+		linkAbstractGrace,
+		dateAbstractGrace,
+		itemAbstractGrace,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_grace.png",
+		"Series of abstract paintings"
+	)
+//- Abstracted Landscapes
+mixin seriesAbstractLandscapes
+	+seriesCard(
+		nameAbstractLandscapes, 
+		linkAbstractLandscapes,
+		dateAbstractLandscapes,
+		itemAbstractLandscapes,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_landscapes.png",
+		"Series of abstract paintings"
+	)
+//- Figural Abstract Works
+mixin seriesAbstractFigural
+	+seriesCard(
+		nameAbstractFigural, 
+		linkAbstractFigural,
+		dateAbstractFigural,
+		itemAbstractFigural,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_figural.png",
+		"Series of abstract paintings"
+	)
+//- Flames, Coral Reefs
+mixin seriesAbstractFlames
+	+seriesCard(
+		nameAbstractFlames, 
+		linkAbstractFlames,
+		dateAbstractFlames,
+		itemAbstractFlames,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_flames.png",
+		"Series of abstract paintings"
+	)
+//- Shapes & Textures
+mixin seriesAbstractShapes
+	+seriesCard(
+		nameAbstractShapes, 
+		linkAbstractShapes,
+		dateAbstractShapes,
+		itemAbstractShapes,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_shapes.png",
+		"Series of abstract paintings"
+	)
+//- Attachments
+mixin seriesAbstractAttachments
+	+seriesCard(
+		nameAbstractAttachments, 
+		linkAbstractAttachments,
+		dateAbstractAttachments,
+		itemAbstractAttachments,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_attachments.png",
+		"Series of abstract paintings"
+	)
+//- Selected Abstract Works Volume 1
+mixin seriesAbstractSelectedVol1
+	+seriesCard(
+		nameAbstractSelectedVol1, 
+		linkAbstractSelectedVol1,
+		dateAbstractSelectedVol1,
+		itemAbstractSelectedVol1,
+		nameWorkAbstract,
+		linkWorkAbstract,
+		"abstract_selected01.png",
+		"Series of abstract paintings"
+	)
+
+
+//- Figurative series cards
+
+//- Body Drawings
+mixin seriesFigurativeBody
+	+seriesCard(
+		nameFigurativeBody, 
+		linkFigurativeBody,
+		dateFigurativeBody,
+		itemFigurativeBody,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_body.png",
+		"Series of figurative paintings"
+	)
+//- Self Examination
+mixin seriesFigurativeExamination
+	+seriesCard(
+		nameFigurativeExamination, 
+		linkFigurativeExamination,
+		dateFigurativeExamination,
+		itemFigurativeExamination,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_examination.png",
+		"Series of figurative paintings"
+	)
+//- Image of Disengagement
+mixin seriesFigurativeDisengagement
+	+seriesCard(
+		nameFigurativeDisengagement, 
+		linkFigurativeDisengagement,
+		dateFigurativeDisengagement,
+		itemFigurativeDisengagement,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_disengagement.png",
+		"Series of figurative paintings"
+	)
+//- Coping Behaviors
+mixin seriesFigurativeCoping
+	+seriesCard(
+		nameFigurativeCoping, 
+		linkFigurativeCoping,
+		dateFigurativeCoping,
+		itemFigurativeCoping,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_coping.png",
+		"Series of figurative paintings"
+	)
+//- Selected Figurative Works Volume 1
+mixin seriesFigurativeSelectedVol1
+	+seriesCard(
+		nameFigurativeSelectedVol1, 
+		linkFigurativeSelectedVol1,
+		dateFigurativeSelectedVol1,
+		itemFigurativeSelectedVol1,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_selected01.png",
+		"Series of figurative paintings"
+	)
+//- Selected Figurative Works Volume 2
+mixin seriesFigurativeSelectedVol2
+	+seriesCard(
+		nameFigurativeSelectedVol2, 
+		linkFigurativeSelectedVol2,
+		dateFigurativeSelectedVol2,
+		itemFigurativeSelectedVol2,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_selected02.png",
+		"Series of figurative paintings"
+	)
+//- Selected Figurative Works Volume 3
+mixin seriesFigurativeSelectedVol3
+	+seriesCard(
+		nameFigurativeSelectedVol3, 
+		linkFigurativeSelectedVol3,
+		dateFigurativeSelectedVol3,
+		itemFigurativeSelectedVol3,
+		nameWorkFigurative,
+		linkWorkFigurative,
+		"figurative_selected03.png",
+		"Series of figurative paintings"
+	)
+
+
+//- Portrait series cards
+
+//- Picks From The Guelph Community –– Unpublished
+mixin seriesPortraitGuelph
+	+seriesCard(
+		namePortraitGuelph, 
+		linkPortraitGuelph,
+		datePortraitGuelph,
+		itemPortraitGuelph,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_guelph.png",
+		"Series of portrait paintings"
+	)
+//- Conté Drawings
+mixin seriesPortraitConte
+	+seriesCard(
+		namePortraitConte, 
+		linkPortraitConte,
+		datePortraitConte,
+		itemPortraitConte,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_family.png",
+		"Series of portrait drawings"
+	)
+//- Skype Scéance
+mixin seriesPortraitSkype
+	+seriesCard(
+		namePortraitSkype, 
+		linkPortraitSkype,
+		datePortraitSkype,
+		itemPortraitSkype,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_skype.png",
+		"Series of portrait paintings"
+	)
+//- Cats –– Unpublished
+mixin seriesPortraitCats
+	+seriesCard(
+		namePortraitCats, 
+		linkPortraitCats,
+		datePortraitCats,
+		itemPortraitCats,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_cats.png",
+		"Series of portraits of cats"
+	)
+//- Dogs –– Unpublished
+mixin seriesPortraitDogs
+	+seriesCard(
+		namePortraitDogs, 
+		linkPortraitDogs,
+		datePortraitDogs,
+		itemPortraitDogs,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_dogs.png",
+		"Series of portraits of dogs"
+	)
+//- Honorary & Collegiate Portraits
+mixin seriesPortraitHonorary
+	+seriesCard(
+		namePortraitHonorary, 
+		linkPortraitHonorary,
+		datePortraitHonorary,
+		itemPortraitHonorary,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_honorary.png",
+		"Series of commisioned portrait paintings of University faculty"
+	)
+//- Selected Portraits Volume 1
+mixin seriesPortraitSelectedVol1
+	+seriesCard(
+		namePortraitSelectedVol1, 
+		linkPortraitSelectedVol1,
+		datePortraitSelectedVol1,
+		itemPortraitSelectedVol1,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_selected01.png",
+		"Series of portrait paintings"
+	)
+//- Selected Portraits Volume 2
+mixin seriesPortraitSelectedVol2
+	+seriesCard(
+		namePortraitSelectedVol2, 
+		linkPortraitSelectedVol2,
+		datePortraitSelectedVol2,
+		itemPortraitSelectedVol2,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_selected02.png",
+		"Series of portrait paintings"
+	)
+//- Selected Portraits Volume 3
+mixin seriesPortraitSelectedVol3
+	+seriesCard(
+		namePortraitSelectedVol3, 
+		linkPortraitSelectedVol3,
+		datePortraitSelectedVol3,
+		itemPortraitSelectedVol3,
+		nameWorkPortrait,
+		linkWorkPortrait,
+		"portrait_selected03.png",
+		"Series of portrait paintings"
+	)

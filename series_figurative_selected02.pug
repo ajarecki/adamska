@@ -1,0 +1,55 @@
+extends partial/_tmp-series.pug
+
+//- Selected Figurative Works Volume 2
+
+block config
+	-
+		var series = {
+			id:      figurativeSelectedVol2.id,
+			name:    figurativeSelectedVol2.name,
+			info:    figurativeSelectedVol2.info,
+			link:    figurativeSelectedVol2.link,
+			date:    figurativeSelectedVol2.date,
+			hero1:   figurativeSelectedVol2.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeSelectedVol2
+
+block galleryContent
+	+figurativeSelectedVol2G01
+	+figurativeSelectedVol2G01b
+	+figurativeSelectedVol2S01
+	+figurativeSelectedVol2S02
+	+figurativeSelectedVol2S03
+	+figurativeSelectedVol2S04
+	+figurativeSelectedVol2S05
+	+figurativeSelectedVol2S06
+	+figurativeSelectedVol2S06b
+	+figurativeSelectedVol2S07
+
+block relatedSeries01
+	+seriesFigurativeSelectedVol3
+
+block relatedSeries02
+	+seriesFigurativeCoping
+
+block relatedSeries03
+	+seriesFigurativeBody
+
+block relatedSeries04
+	+seriesFigurativeSelectedVol1

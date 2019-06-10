@@ -1,0 +1,40 @@
+extends partial/_tmp-tag.pug
+
+//- Tag — Abstract
+
+block config
+	-
+		var tag = {
+			id:   tagAbstract.id,
+			name: tagAbstract.name,
+			link: tagAbstract.link,
+		}
+
+block galleryContent
+	+abstractGraceS01
+	+abstractGraceS02
+	+abstractGraceS03
+	+abstractGraceS04
+	+abstractGraceS01
+	+abstractGraceS02
+	+abstractGraceS03
+	+abstractGraceS04
+	+abstractGraceS01
+	+abstractGraceS02
+	+abstractGraceS03
+	+abstractGraceS04
+
+//- block relatedTags
+//- 	+tagSliderPopular
+
+block relatedSeries01
+	+seriesAbstractShapes
+
+block relatedSeries02
+	+seriesAbstractFigural
+
+block relatedSeries03
+	+seriesAbstractSelectedVol1
+
+block relatedSeries04
+	+seriesAbstractFlames

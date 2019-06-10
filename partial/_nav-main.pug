@@ -1,0 +1,215 @@
+//- Website navigation
+
+
+//- Submenu and page section navigation
+
+//- Work page section navigation
+
+//- Work navigation item mixin
+	Declare:
+	Hashtag link to section,
+	Collection title,
+	Link slide image source
+mixin navItemWork(sectionLink, sectionLabel, linkBackground)
+	li.ap-c-nav-section__item
+		a(
+			href= sectionLink
+			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_collection-nav_" + linkBackground + ");"
+		)
+			div.ap-c-nav-section__slide.ap-c-nav-section__slide--3(
+				style="background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_collection-nav_" + linkBackground + ");"
+			)
+			div.ap-c-nav-section__slide.ap-c-nav-section__slide--2(
+				style="background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_collection-nav_" + linkBackground + ");"
+			)
+			div.ap-c-nav-section__slide.ap-c-nav-section__slide--1(
+				style="background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_collection-nav_" + linkBackground + ");"
+			)
+			span= sectionLabel
+			+icon(iconPageDown)
+
+//- Work page navigation bar
+mixin navWork
+	nav.ap-c-nav-section.ap-c-nav-section--work
+		ul.ap-c-nav-section__list
+			+navItemWork(
+				"#featured",
+				"Featured",
+				"featured.png"
+			)
+			+navItemWork(
+				"#figurative",
+				"Figurative",
+				"figurative.png"
+			)
+			+navItemWork(
+				"#abstract",
+				"Abstract",
+				"abstract.png"
+			)
+			+navItemWork(
+				"#portraits",
+				"Portraits",
+				"portrait.png"
+			)
+			+navItemWork(
+				"#assorted",
+				"Assorted",
+				"assorted.png"
+			)
+		div.ap-c-nav-section__edge
+
+
+//- Curriculum Vitae page section navigation
+
+//- CV navigation item mixin
+	Declare:
+	Hashtag link to section,
+	Section title
+mixin navItemCV(sectionLink, sectionLabel)
+	li.ap-c-nav-section__item
+		a(href=sectionLink)
+			span= sectionLabel
+			+icon(iconPageSection)
+
+//- CV page navigation bar
+mixin navCV
+	nav.ap-c-nav-section.ap-c-nav-section--cv
+		ul.ap-c-nav-section__list
+			+navItemCV(
+				"#solo",
+				"Solo Shows"
+			)
+			+navItemCV(
+				"#group",
+				"Group Shows"
+			)
+			+navItemCV(
+				"#awards",
+				"Awards"
+			)
+			+navItemCV(
+				"#commissions",
+				"Commissions"
+			)
+			+navItemCV(
+				"#bibliography",
+				"Bibliography"
+			)
+			+navItemCV(
+				"#catalogues",
+				"Catalogues"
+			)
+			+navItemCV(
+				"#education",
+				"Education"
+			)
+		div.ap-c-nav-section__edge
+
+
+//-  Main website navigation
+
+//- Overlay navigation for phones
+nav.ap-c-nav-mobile
+	//- JS trigger that closes mobile nav overlay
+	div.ap-c-nav-toggle.ap-c-nav-toggle--close(aria-label="Close Menu")
+		span Close
+		+icon(iconExit)
+	ul.ap-c-nav-mobile__list
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--home
+			a.ap-c-nav-mobile__link(
+				href= home.link
+				title= home.info
+			)
+				include _gaj-logo.svg
+		li.ap-c-nav-mobile__item
+			a.ap-c-nav-mobile__link(
+				href= work.link
+				title= work.info
+			)
+				span Work
+		li.ap-c-nav-mobile__item
+			a.ap-c-nav-mobile__link(
+				href= about.link
+				title= about.info
+			)
+				span About
+		li.ap-c-nav-mobile__item
+			a.ap-c-nav-mobile__link(
+				href= cv.link
+				title= cv.info
+			)
+				span CV
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
+			a.ap-c-nav-mobile__link(
+				href= email.link
+				title= email.info
+			)
+				+icon(iconEmail)
+				span Email
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
+			a.ap-c-nav-mobile__link(
+				href= instagram.link
+				title= instagram.info
+				target="_blank"
+			)
+				+icon(iconInstagram)
+				span Instagram
+
+//- Header navigation bar with opt-in submenu
+div.ap-c-nav-container
+	div.ap-c-nav-group
+		nav.ap-c-nav-main
+			a.ap-c-nav-main__home(
+				href= home.link
+				title= home.info
+			)
+				include _gaj-logo.svg
+			//- JS trigger that opens mobile nav overlay
+			div.ap-c-nav-toggle.ap-c-nav-toggle--open(aria-label="Menu")
+				span Menu
+				+icon(iconMenu)
+			ul.ap-c-nav-main__list
+				li.ap-c-nav-main__item
+					a.ap-c-nav-main__link(
+						href= work.link
+						title= work.info
+					)
+						span Work
+				li.ap-c-nav-main__item
+					a.ap-c-nav-main__link(
+						href= about.link
+						title= about.info
+					)
+						span About
+				li.ap-c-nav-main__item
+					a.ap-c-nav-main__link(
+						href= cv.link
+						title= cv.info
+					)
+						span CV
+				li.ap-c-nav-main__item.ap-c-nav-main__item--social
+					a.ap-c-nav-main__link(
+						href= email.link
+						title= email.info
+					)
+						+icon(iconEmail)
+						span Email
+				li.ap-c-nav-main__item.ap-c-nav-main__item--social
+					a.ap-c-nav-main__link(
+						href= instagram.link
+						title= instagram.info
+						target="_blank"
+					)
+						+icon(iconInstagram)
+						span Instagram
+		//- Opt-in submenu navigation for pages that require it
+		block navSubmenu
+
+//- Back to top button
+a.ap-c-nav-top(
+	href="#top" 
+	title="Back to Page Top"
+	aria-label="Back to Top"
+)
+	+icon(iconPageUp)

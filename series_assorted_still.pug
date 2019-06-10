@@ -1,0 +1,63 @@
+extends partial/_tmp-series.pug
+
+//- Stil Life Works
+
+block config
+	-
+		var series = {
+			id:      assortedStill.id,
+			name:    assortedStill.name,
+			info:    assortedStill.info,
+			link:    assortedStill.link,
+			date:    assortedStill.date,
+			hero1:   assortedStill.hero,
+			hero2:   workAssorted.hero,
+			colname: workAssorted.name,
+			collink: workAssorted.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAssortedStill
+
+block galleryContent
+	//- Unpublished
+	//- +assortedStillS01
+	//- +assortedStillS02
+	//- +assortedStillS03
+	//- +assortedStillS04
+	//- +assortedStillS05
+	//- +assortedStillS06
+	//- +assortedStillS07
+	//- +assortedStillS08
+	//- +assortedStillS09
+	//- +assortedStillS10
+	//- +assortedStillS11
+	//- +assortedStillS12
+	//- +assortedStillS13
+	//- +assortedStillS14
+	//- +assortedStillS15
+	//- +assortedStillS16
+	//- +assortedStillS17
+
+block relatedSeries01
+	+seriesAssortedStill
+
+block relatedSeries02
+	+seriesAssortedStill
+
+block relatedSeries03
+	+seriesAssortedStill
+
+block relatedSeries04
+	+seriesAssortedStill

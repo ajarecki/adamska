@@ -1,0 +1,51 @@
+extends partial/_tmp-series.pug
+
+//- Miscellaneous Works
+
+block config
+	-
+		var series = {
+			id:      assortedMisc.id,
+			name:    assortedMisc.name,
+			info:    assortedMisc.info,
+			link:    assortedMisc.link,
+			date:    assortedMisc.date,
+			hero1:   assortedMisc.hero,
+			hero2:   workAssorted.hero,
+			colname: workAssorted.name,
+			collink: workAssorted.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAssortedMisc
+
+block galleryContent
+	//- Unpublished
+	//- +assortedMiscS01
+	//- +assortedMiscS02
+	//- +assortedMiscS03
+	//- +assortedMiscS04
+	//- +assortedMiscS05
+
+block relatedSeries01
+	+seriesAssortedStill
+
+block relatedSeries02
+	+seriesAssortedStill
+
+block relatedSeries03
+	+seriesAssortedStill
+
+block relatedSeries04
+	+seriesAssortedStill

@@ -1,0 +1,51 @@
+extends partial/_tmp-series.pug
+
+//- Shapes & Textures
+
+block config
+	-
+		var series = {
+			id:      abstractShapes.id,
+			name:    abstractShapes.name,
+			info:    abstractShapes.info,
+			link:    abstractShapes.link,
+			date:    abstractShapes.date,
+			hero1:   abstractShapes.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractShapes
+
+block galleryContent
+	+abstractShapesS01
+	+abstractShapesS02
+	+abstractShapesS03
+	+abstractShapesS04
+	+abstractShapesS05
+	+abstractShapesS06
+
+block relatedSeries01
+	+seriesAbstractGrace
+
+block relatedSeries02
+	+seriesAbstractAttachments
+
+block relatedSeries03
+	+seriesAbstractFlames
+
+block relatedSeries04
+	+seriesAbstractLandscapes

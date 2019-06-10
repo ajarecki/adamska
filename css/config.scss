@@ -1,0 +1,23 @@
+// Stylesheet configuration
+
+// Third-party browser style resets
+@import "tp-normalize";
+
+// Variables
+@import "var-base";
+@import "var-colors";
+@import "var-typography";
+@import "var-decoration";
+
+// Website component styles
+@import "ap-base";
+@import "ap-typography";
+@import "ap-navigation";
+@import "ap-buttons";
+@import "ap-cards";
+@import "ap-sliders";
+@import "ap-sections";
+@import "ap-modules";
+
+// Third-party JS plugin styles
+@import "tp-lightgallery";

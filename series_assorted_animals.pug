@@ -1,0 +1,53 @@
+extends partial/_tmp-series.pug
+
+//- Animals
+
+block config
+	-
+		var series = {
+			id:      assortedAnimals.id,
+			name:    assortedAnimals.name,
+			info:    assortedAnimals.info,
+			link:    assortedAnimals.link,
+			date:    assortedAnimals.date,
+			hero1:   assortedAnimals.hero,
+			hero2:   workAssorted.hero,
+			colname: workAssorted.name,
+			collink: workAssorted.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAssortedAnimals
+
+block galleryContent
+	+assortedAnimalsS01
+	+assortedAnimalsS02
+	+assortedAnimalsS03
+	+assortedAnimalsS04
+	+assortedAnimalsS05
+	+assortedAnimalsS06
+	+assortedAnimalsS07
+	+assortedAnimalsS08
+
+block relatedSeries01
+	+seriesAssortedLandscapesVol1
+
+block relatedSeries02
+	+seriesAssortedLandscapesVol2
+
+block relatedSeries03
+	//- Null
+
+block relatedSeries04
+	//- Null

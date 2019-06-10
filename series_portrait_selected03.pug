@@ -1,0 +1,66 @@
+extends partial/_tmp-series.pug
+
+//- Selected Abstract Works Volume 3
+
+block config
+	-
+		var series = {
+			id:      portraitSelectedVol3.id,
+			name:    portraitSelectedVol3.name,
+			info:    portraitSelectedVol3.info,
+			link:    portraitSelectedVol3.link,
+			date:    portraitSelectedVol3.date,
+			hero1:   portraitSelectedVol3.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navPortraitSelectedVol3
+
+block galleryContent
+	+portraitSelectedVol3G01
+	+portraitSelectedVol3S01
+	+portraitSelectedVol3S02
+	+portraitSelectedVol3S03
+	+portraitSelectedVol3S04
+	+portraitSelectedVol3S05
+	+portraitSelectedVol3S06
+	+portraitSelectedVol3S07
+	+portraitSelectedVol3S08
+	+portraitSelectedVol3S09
+	+portraitSelectedVol3S10
+	+portraitSelectedVol3S11
+	+portraitSelectedVol3S12
+	+portraitSelectedVol3S13
+	+portraitSelectedVol3S14
+	+portraitSelectedVol3S15
+	+portraitSelectedVol3S16
+	+portraitSelectedVol3S17
+	+portraitSelectedVol3S18
+	+portraitSelectedVol3S19
+	+portraitSelectedVol3S20
+
+block relatedSeries01
+	+seriesPortraitSelectedVol2
+
+block relatedSeries02
+	+seriesPortraitSelectedVol1
+
+block relatedSeries03
+	+seriesPortraitConte
+
+block relatedSeries04
+	+seriesPortraitSkype

@@ -1,0 +1,37 @@
+extends partial/_tmp-main.pug
+
+//- Website Homepage
+
+block config
+	-
+		var main = {
+			title:   "Grazyna Adamska Jarecka",
+			desc:    "Website of visual artist and painter Grazyna Adamska Jarecka",
+			id:      home.id,
+			link:    home.link,
+			header:  "Grazyna Adamska Jarecka is a visual artist based in Guelph, Ontario",
+			hero1:   "background_intro_main-home.png",
+			hero2:   "background_outro_portrait.png",
+			border1: "background_border_intro_01.png"
+		}
+
+block introVideo
+	div.ap-c-scn__hero
+		video.ap-c-scn__hero-video(
+			width="960" height="540" loop muted playsinline 
+			controlsList="nodownload nofullscreen noremoteplayback" 
+			poster="https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,q_auto:best,w_1280/v1551768532/ui/hero-video-poster.png"
+		)
+		//- source(
+		//- 	src="https://res.cloudinary.com/adamska/video/upload/v1551767833/ui/hero-home.webm" 
+		//- 	type="video/webm"
+		//- )
+
+block mainContent
+	include partial/_scn-featured.pug
+	//- +tagSliderPopular
+	include partial/_scn-collections.pug
+
+block secondaryContent
+	include partial/_scn-press.pug
+	include partial/_scn-instagram.pug

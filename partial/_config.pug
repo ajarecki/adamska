@@ -1,0 +1,1641 @@
+//- Configuration
+
+//- Address partials
+- var urlRoot = "https://adamska.ca/"
+- var urlRootTag = urlRoot + "tag-"
+- var urlRootImage = "https://res.cloudinary.com/adamska/image/upload"
+
+//- Main pages
+	id — An identifier used to assign classes
+	name — A name for the item to be used in text elements
+	link — Page address for the item
+	info – Descriptive text usable for link title attributes
+	hero — Banner background image
+
+//- Internal addresses
+-
+	var home = {
+		id:   "home",
+		name: "Home",
+		link: "https://adamska.ca/",
+		info: "Website Homepage"
+	}
+-
+	var about = {
+		id:   "about",
+		name: "About",
+		link: "https://adamska.ca/about",
+		info: "Artist Bio & Profile"
+	}
+-
+	var cv = {
+		id:   "cv",
+		name: "CV",
+		link: "https://adamska.ca/cv",
+		info: "Curriculum Vitae – Exhibitions, Awards and Press"
+	}
+-
+	var work = {
+		id:    "work",
+		name:  "Work",
+		link:  "https://adamska.ca/work",
+		info:  "All Artwork Series"
+	}
+-
+	var workFeatured = {
+		id:    "work",
+		name:  "Featured",
+		link:  "https://adamska.ca/work#featured",
+		info:  "All Featured Artwork Series"
+	}
+-
+	var workAbstract = {
+		id:    "abstract",
+		name:  "Abstract",
+		link:  "https://adamska.ca/work#abstract",
+		info:  "All Abstract Artwork Series",
+		count: "7",
+		cover: "sprite_collection-poster_abstract.png",
+		hero:  "background_outro_abstract.png"
+	}
+-
+	var workFigurative = {
+		id:    "figurative",
+		name:  "Figurative",
+		link:  "https://adamska.ca/work#figurative",
+		info:  "All Figurative Artwork Series",
+		count: "6",
+		cover: "sprite_collection-poster_figurative.png",
+		hero:  "background_outro_figurative.png"
+	}
+-
+	var workPortrait = {
+		id:    "portrait",
+		name:  "Portrait",
+		link:  "https://adamska.ca/work#work",
+		info:  "All Portrait Series",
+		count: "9",
+		cover: "sprite_collection-poster_portrait.png",
+		hero:  "background_outro_portrait.png"
+	}
+-
+	var workAssorted = {
+		id:    "assorted",
+		name:  "Assorted",
+		link:  "https://adamska.ca/work#assorted",
+		info:  "All Assorted Artwork Series",
+		count: "5",
+		cover: "sprite_collection-poster_assorted.png",
+		hero:  "background_outro_assorted.png"
+	}
+-
+	var workTags = {
+		id:    "tags",
+		name:  "Tags",
+		link:  "https://adamska.ca/tags",
+		info:  "All Tags – Artworks by Topic",
+		count: ""
+	}
+
+//- Email contact
+//- Add email protection
+-
+	var email = {
+		name: "adamskapainting@gmail.com",
+		link: "mailto:adamskapainting@gmail.com",
+		info: "Contact Grazyna by Email"
+	}
+
+//- External addresses
+-
+	var instagram = {
+		name: "Instagram",
+		link: "https://www.instagram.com/adamskapainting/",
+		info: "Grazyna on Instagram"
+	}
+-
+	var facebook = {
+		name: "Instagram",
+		link: "https://www.facebook.com/GrazynaAdamskaART/",
+		info: "Grazyna on Facebook"
+	}
+-
+	var tumblr = {
+		name: "Instagram",
+		link: "https://adamskapainting.tumblr.com/",
+		info: "Grazyna on Tumblr"
+	}
+-
+	var linkedin = {
+		name: "Instagram",
+		link: "https://www.linkedin.com/in/graziedios/",
+		info: "Grazyna on LinkedIn"
+	}
+-
+	var saatchiart = {
+		name: "Saatchi Art",
+		link: "https://www.saatchiart.com/gadamska",
+		info: "Grazyna on Saatchi Art"
+	}
+
+//- Shared page graphics
+//- -
+//- 	var bannerHeader = {
+//- 		one:   "background_border_intro_01.png",
+//- 		two:   "background_border_intro_02.png",
+//- 		three: "background_border_intro_03.png",
+//- 		four:  "background_border_intro_04.png"
+//- 	}
+//- -
+//- 	var bannerFooter = {
+//- 		one:   "background_border_outro_01.png",
+//- 		two:   "background_border_outro_02.png",
+//- 		three: "background_border_outro_03.png",
+//- 		four:  "background_border_outro_04.png"
+//- 	}
+//- -
+//- 	var borderHeader = {
+//- 		one:   "background_border_intro_01.png",
+//- 		two:   "background_border_intro_02.png",
+//- 		three: "background_border_intro_03.png",
+//- 		four:  "background_border_intro_04.png"
+//- 	}
+//- -
+//- 	var borderFooter = {
+//- 		one:   "background_border_outro_01.png",
+//- 		two:   "background_border_outro_02.png",
+//- 		three: "background_border_outro_03.png",
+//- 		four:  "background_border_outro_04.png"
+//- 	}
+
+//- Series objects
+	id    — An identifier used to assign classes
+	name  — A name for the item to be used in text elements
+	date  – Year range the series was created
+	count – Number of images in the series gallery
+	link  — Page address for the item
+	image – Full size lightbox image source address
+	thumb – Thumbnail image source address
+	cover – Sprite slideshow image source address
+	hero  – Hero image source address
+	info  – Descriptive text usable for link title attributes, etc
+
+//- Assorted series
+//- Unpublished
+-
+	var assortedStill = {
+		id:    "assorted-still",
+		name:  "Still Life Works",
+		date:  "2016 — 2018",
+		count: "17",
+		link:  "https://adamska.ca/still-life-works",
+		image: "grazyna-adamska-jarecka_assorted_still.png",
+		thumb: "grazyna-adamska-jarecka_assorted_still-thumb.png",
+		cover: "sprite_series_assorted_still.png",
+		hero:  "background_intro_series_assorted-still.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var assortedAnimals = {
+		id:    "assorted-animals",
+		name:  "Animals",
+		date:  "Various Dates",
+		count: "8",
+		link:  "https://adamska.ca/assorted-animals",
+		image: "grazyna-adamska-jarecka_assorted_animals.png",
+		thumb: "grazyna-adamska-jarecka_assorted_animals-thumb.png",
+		cover: "sprite_series_assorted_animals.png",
+		hero:  "background_intro_series_assorted-animals.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+//- Unpublished
+-
+	var assortedMisc = {
+		id:    "assorted-misc",
+		name:  "Miscellaneous Works",
+		date:  "Various Dates",
+		count: "5",
+		link:  "https://adamska.ca/miscellaneous-works",
+		image: "grazyna-adamska-jarecka_assorted_misc.png",
+		thumb: "grazyna-adamska-jarecka_assorted_misc-thumb.png",
+		cover: "sprite_series_assorted_misc.png",
+		hero:  "background_intro_series_assorted-misc.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var assortedLandscapesVol1 = {
+		id:    "assorted-landscapes01",
+		name:  "Traditional Landscapes Vol. 1",
+		date:  "Pre-2017",
+		count: "9",
+		link:  "https://adamska.ca/traditional-landscapes-volume-1",
+		image: "grazyna-adamska-jarecka_assorted_landscapes01.png",
+		thumb: "grazyna-adamska-jarecka_assorted_landscapes01-thumb.png",
+		cover: "sprite_series_assorted_landscapes01.png",
+		hero:  "background_intro_series_assorted-landscapes01.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var assortedLandscapesVol2 = {
+		id:    "assorted-landscapes02",
+		name:  "Traditional Landscapes Vol. 2",
+		date:  "2017 — 2018",
+		count: "10",
+		link:  "https://adamska.ca/traditional-landscapes-volume-2",
+		image: "grazyna-adamska-jarecka_assorted_landscapes02.png",
+		thumb: "grazyna-adamska-jarecka_assorted_landscapes02-thumb.png",
+		cover: "sprite_series_assorted_landscapes01.png",
+		hero:  "background_intro_series_assorted-landscapes02.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+
+//- Abstract series
+-
+	var abstractGrace = {
+		id:    "abstract-grace",
+		name:  "Grace / No Grace",
+		date:  "2011",
+		count: "4",
+		link:  "https://adamska.ca/grace-no-grace",
+		image: "grazyna-adamska-jarecka_abstract_grace.png",
+		thumb: "grazyna-adamska-jarecka_abstract_grace-thumb.png",
+		cover: "sprite_series_abstract_grace.png",
+		hero:  "background_intro_series_abstract_grace.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractLandscapes = {
+		id:    "abstract-landscapes",
+		name:  "Abstracted Landscapes",
+		date:  "2014 — 2017",
+		count: "21",
+		link:  "https://adamska.ca/abstracted-landscapes",
+		image: "grazyna-adamska-jarecka_abstract_landscapes.png",
+		thumb: "grazyna-adamska-jarecka_abstract_landscapes-thumb.png",
+		cover: "sprite_series_abstract_landscapes.png",
+		hero:  "background_intro_series_abstract_landscapes.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractFigural = {
+		id:    "abstract-figural",
+		name:  "Figural Abstract Works",
+		date:  "2014 — 2018",
+		count: "7",
+		link:  "https://adamska.ca/figural-abstract-works",
+		image: "grazyna-adamska-jarecka_abstract_attachments.png",
+		thumb: "grazyna-adamska-jarecka_abstract_attachments-thumb.png",
+		cover: "sprite_series_abstract_attachments.png",
+		hero:  "background_intro_series_abstract_attachments.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractFlames = {
+		id:    "abstract-flames",
+		name:  "Flames, Coral Reefs",
+		date:  "2016 — 2018",
+		count: "14",
+		link:  "https://adamska.ca/flames-coral-reefs",
+		image: "grazyna-adamska-jarecka_abstract_flames.png",
+		thumb: "grazyna-adamska-jarecka_abstract_flames-thumb.png",
+		cover: "sprite_series_abstract_flames.png",
+		hero:  "background_intro_series_abstract_flames.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractShapes = {
+		id:    "abstract-shapes",
+		name:  "Shapes & Textures",
+		date:  "2017",
+		count: "6",
+		link:  "https://adamska.ca/shapes-and-textures",
+		image: "grazyna-adamska-jarecka_abstract_shapes.png",
+		thumb: "grazyna-adamska-jarecka_abstract_shapes-thumb.png",
+		cover: "sprite_series_abstract_shapes.png",
+		hero:  "background_intro_series_abstract_shapes.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractAttachments = {
+		id:    "abstract-attachments",
+		name:  "Attachments",
+		date:  "2019",
+		count: "17",
+		link:  "https://adamska.ca/attachments",
+		image: "grazyna-adamska-jarecka_abstract_attachments.png",
+		thumb: "grazyna-adamska-jarecka_abstract_attachments-thumb.png",
+		cover: "sprite_series_abstract_attachments.png",
+		hero:  "background_intro_series_abstract_attachments.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var abstractSelectedVol1 = {
+		id:    "abstract-selected01",
+		name:  "Selected Abstract Works Vol. 1",
+		date:  "2013 — 2016",
+		count: "13",
+		link:  "https://adamska.ca/selected-abstract-works-volume-1",
+		image: "grazyna-adamska-jarecka_abstract_selected01.png",
+		thumb: "grazyna-adamska-jarecka_abstract_selected01-thumb.png",
+		cover: "sprite_series_abstract_selected01.png",
+		hero:  "background_intro_series_abstract_selected01.png",
+		info:  "Abstract Painting Series by Grazyna Adamska Jarecka"
+	};
+
+//- Figurative series
+-
+	var figurativeBody = {
+		id:    "figurative-body",
+		name:  "Body Drawings",
+		date:  "2005 — 2014",
+		count: "7",
+		link:  "https://adamska.ca/body-drawings",
+		image: "grazyna-adamska-jarecka_figurative_body.png",
+		thumb: "grazyna-adamska-jarecka_figurative_body-thumb.png",
+		cover: "sprite_series_figurative_body.png",
+		hero:  "background_intro_series_figurative_body.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeExamination = {
+		id:    "figurative-examination",
+		name:  "Self Examination",
+		date:  "2006 — 2009",
+		count: "11",
+		link:  "https://adamska.ca/self-examination",
+		image: "grazyna-adamska-jarecka_figurative_examination.png",
+		thumb: "grazyna-adamska-jarecka_figurative_examination-thumb.png",
+		cover: "sprite_series_figurative_examination.png",
+		hero:  "background_intro_series_figurative_examination.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeDisengagement = {
+		id:    "figurative-disengagement",
+		name:  "Image of Disengagement",
+		date:  "2006 — 2010",
+		count: "13",
+		link:  "https://adamska.ca/image-of-disengagement",
+		image: "grazyna-adamska-jarecka_figurative_disengagement.png",
+		thumb: "grazyna-adamska-jarecka_figurative_disengagement-thumb.png",
+		cover: "sprite_series_figurative_disengagement.png",
+		hero:  "background_intro_series_figurative_disengagement.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeCoping = {
+		id:    "figurative-coping",
+		name:  "Image of Disengagement",
+		date:  "2006 — 2012",
+		count: "13",
+		link:  "https://adamska.ca/coping-behaviours",
+		image: "grazyna-adamska-jarecka_figurative_coping.png",
+		thumb: "grazyna-adamska-jarecka_figurative_coping-thumb.png",
+		cover: "sprite_series_figurative_coping.png",
+		hero:  "background_intro_series_figurative_coping.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeSelectedVol1 = {
+		id:    "figurative-selected01",
+		name:  "Selected Figurative Works Vol. 1",
+		date:  "Pre-2014",
+		count: "12",
+		link:  "https://adamska.ca/selected-figurative-works-volume-1",
+		image: "grazyna-adamska-jarecka_figurative_selected01.png",
+		thumb: "grazyna-adamska-jarecka_figurative_selected01-thumb.png",
+		cover: "sprite_series_figurative_selected01.png",
+		hero:  "background_intro_series_figurative-selected01.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeSelectedVol2 = {
+		id:    "figurative-selected02",
+		name:  "Selected Figurative Works Vol. 2",
+		date:  "2014",
+		count: "7",
+		link:  "https://adamska.ca/selected-figurative-works-volume-2",
+		image: "grazyna-adamska-jarecka_figurative_selected02.png",
+		thumb: "grazyna-adamska-jarecka_figurative_selected02-thumb.png",
+		cover: "sprite_series_figurative_selected02.png",
+		hero:  "background_intro_series_figurative-selected02.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+-
+	var figurativeSelectedVol3 = {
+		id:    "figurative-selected03",
+		name:  "Selected Figurative Works Vol. 3",
+		date:  "2017 — 2019",
+		count: "10",
+		link:  "https://adamska.ca/selected-figurative-works-volume-3",
+		image: "grazyna-adamska-jarecka_figurative_selected03.png",
+		thumb: "grazyna-adamska-jarecka_figurative_selected03-thumb.png",
+		cover: "sprite_series_figurative_selected03.png",
+		hero:  "background_intro_series_figurative-selected03.png",
+		info:  "Figurative Painting Series by Grazyna Adamska Jarecka"
+	};
+
+//- Portrait series
+//- Unpublished
+-
+	var portraitGuelph = {
+		id:    "portrait-guelph",
+		name:  "Picks from the Guelph Community",
+		date:  "2001 — 2003",
+		count: "58",
+		link:  "https://adamska.ca/picks-from-the-guelph-community",
+		image: "grazyna-adamska-jarecka_portrait_guelph.png",
+		thumb: "grazyna-adamska-jarecka_portrait_guelph-thumb.png",
+		cover: "sprite_series_portrait_guelph.png",
+		hero:  "background_intro_series_portrait-guelph.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitConte = {
+		id:    "portrait-conte",
+		name:  "Conté Drawings",
+		date:  "2002 — 2003",
+		count: "5",
+		link:  "https://adamska.ca/conte-drawings",
+		image: "grazyna-adamska-jarecka_portrait_family.png",
+		thumb: "grazyna-adamska-jarecka_portrait_family-thumb.png",
+		cover: "sprite_series_portrait_family.png",
+		hero:  "background_intro_series_portrait-family.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitSkype = {
+		id:    "portrait-skype",
+		name:  "Skype Scéance",
+		date:  "2013 — 2018",
+		count: "6",
+		link:  "https://adamska.ca/skype-sceance",
+		image: "grazyna-adamska-jarecka_portrait_skype.png",
+		thumb: "grazyna-adamska-jarecka_portrait_skype-thumb.png",
+		cover: "sprite_series_portrait_skype.png",
+		hero:  "background_intro_series_portrait-skype.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitHonorary = {
+		id:    "portrait-honorary",
+		name:  "Honorary & Collegiate Portraits",
+		date:  "Various Dates",
+		count: "5",
+		link:  "https://adamska.ca/honorary-and-collegiate-portraits",
+		image: "grazyna-adamska-jarecka_portrait_honorary.png",
+		thumb: "grazyna-adamska-jarecka_portrait_honorary-thumb.png",
+		cover: "sprite_series_portrait_honorary.png",
+		hero:  "background_intro_series_portrait-honorary.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitDogs = {
+		id:    "portrait-dogs",
+		name:  "Dogs",
+		date:  "Various Dates",
+		count: "20",
+		link:  "https://adamska.ca/dog-portraits",
+		image: "grazyna-adamska-jarecka_portrait_dogs.png",
+		thumb: "grazyna-adamska-jarecka_portrait_dogs-thumb.png",
+		cover: "sprite_series_portrait_dogs.png",
+		hero:  "background_intro_series_portrait-dogs.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitCats = {
+		id:    "portrait-cats",
+		name:  "Cats",
+		date:  "Various Dates",
+		count: "15",
+		link:  "https://adamska.ca/cat-portraits",
+		image: "grazyna-adamska-jarecka_portrait_cats.png",
+		thumb: "grazyna-adamska-jarecka_portrait_cats-thumb.png",
+		cover: "sprite_series_portrait_cats.png",
+		hero:  "background_intro_series_portrait-cats.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitSelectedVol1 = {
+		id:    "portrait-selected01",
+		name:  "Selected Portraits Vol. 1",
+		date:  "Pre-2013",
+		count: "2017",
+		link:  "https://adamska.ca/selected-portraits-volume-1",
+		image: "grazyna-adamska-jarecka_portrait_selected01.png",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01-thumb.png",
+		cover: "sprite_series_portrait_selected01.png",
+		hero:  "background_intro_series_portrait-selected01.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitSelectedVol2 = {
+		id:    "portrait-selected02",
+		name:  "Selected Portraits Vol. 2",
+		date:  "2013 — 2015",
+		count: "24",
+		link:  "https://adamska.ca/selected-portraits-volume-2",
+		image: "grazyna-adamska-jarecka_portrait_selected02.png",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02-thumb.png",
+		cover: "sprite_series_portrait_selected02.png",
+		hero:  "background_intro_series_portrait-selected02.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+-
+	var portraitSelectedVol3 = {
+		id:    "portrait-selected03",
+		name:  "Selected Portraits Vol. 3",
+		date:  "2013 — 2016",
+		count: "13",
+		link:  "https://adamska.ca/selected-portraits-volume-3",
+		image: "grazyna-adamska-jarecka_portrait_selected03.png",
+		thumb: "grazyna-adamska-jarecka_portrait_selected03-thumb.png",
+		cover: "sprite_series_portrait_selected03.png",
+		hero:  "background_intro_series_portrait-selected03.png",
+		info:  "Portrait Series by Grazyna Adamska Jarecka"
+	};
+
+//- Tag objects
+	id    — An identifier used to assign classes
+	name  — A name for the item to be used in text elements
+	link  — Page address for the item
+	thumb – Thumbnail image source address
+	info  – Descriptive text usable for link title attributes, etc
+
+//- Collections
+-
+	var tagFigurative = {
+		id:    "figurative",
+		name:  "Figurative",
+		link:  "https://adamska.ca/tag-figurative",
+		thumb: "grazyna-adamska-jarecka_figurative_selected03_s01-thumb.png",
+		info:  "Work filed under: Figurative",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagAbstract = {
+		id:    "abstract",
+		name:  "Abstract",
+		link:  "https://adamska.ca/tag-abstract",
+		thumb: "grazyna-adamska-jarecka_abstract_flames_s03-thumb.png",
+		info:  "Work filed under: Abstract",
+		count: "",
+		hero:  ""
+	}
+-
+	var tagPortrait = {
+		id:    "portrait",
+		name:  "Portrait",
+		link:  "https://adamska.ca/tag-portrait",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02_s08-thumb.png",
+		info:  "Work filed under: Portraits",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagAssorted = {
+		id:    "assorted",
+		name:  "Assorted",
+		link:  "https://adamska.ca/tag-assorted",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work filed under: Assorted",
+		count: "",
+		hero:  ""
+	};
+
+//- Mediums
+-
+	var tagAcrylic = {
+		id:    "acrylic",
+		name:  "Acrylic",
+		link:  "https://adamska.ca/tag-acrylic",
+		thumb: "grazyna-adamska-jarecka_figurative_examination_s02-thumb.png",
+		info:  "Work created with acrylics",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagOil = {
+		id:    "oil",
+		name:  "Oil",
+		link:  "https://adamska.ca/tag-oil",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02_s16-thumb.png",
+		info:  "Work created with oils",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagWatercolour = {
+		id:    "watercolour",
+		name:  "Watercolour",
+		link:  "https://adamska.ca/tag-watercolour",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s03-thumb.png",
+		info:  "Work created with watercolours",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagCharcoal = {
+		id:    "charcoal",
+		name:  "Charcoal",
+		link:  "https://adamska.ca/tag-charcoal",
+		thumb: "grazyna-adamska-jarecka_figurative_selected01_s09-thumb.png",
+		info:  "Work created with charcoal",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagGesso = {
+		id:    "gesso",
+		name:  "Gesso",
+		link:  "https://adamska.ca/tag-gesso",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s05-thumb.png",
+		info:  "Work created with gesso",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagCoffee = {
+		id:    "coffee",
+		name:  "Coffee",
+		link:  "https://adamska.ca/tag-coffee",
+		thumb: "grazyna-adamska-jarecka_figurative_examination_s07-thumb.png",
+		info:  "Work created with coffee",
+		count: "",
+		hero:  ""
+	};
+-
+	var tagInk = {
+		id:    "ink",
+		name:  "Ink",
+		link:  "https://adamska.ca/tag-ink",
+		thumb: "grazyna-adamska-jarecka_figurative_selected01_s01-thumb.png",
+		info:  "Work created using ink",
+		count: "",
+		hero:  ""
+	};
+//- Remove Mixed Media?
+-
+	var tagMixedMedia = {
+		id:    "mixed-media",
+		name:  "Mixed Media",
+		link:  "https://adamska.ca/tag-mixed-media",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created with mixed media",
+		count: ""
+	};
+
+//- Materials
+-
+	var tagCanvas = {
+		id:    "canvas",
+		name:  "Canvas",
+		link:  "https://adamska.ca/tag-canvas",
+		thumb: "grazyna-adamska-jarecka_figurative_examination_s09-thumb.png",
+		info:  "Work created on canvas",
+		count: ""
+	};
+-
+	var tagWood = {
+		id:    "wood",
+		name:  "Wood",
+		link:  "https://adamska.ca/tag-wood",
+		thumb: "grazyna-adamska-jarecka_portrait_selected03_s06-thumb.png",
+		info:  "Work created on wood",
+		count: ""
+	};
+-
+	var tagPaper = {
+		id:    "paper",
+		name:  "Paper",
+		link:  "https://adamska.ca/tag-paper",
+		thumb: "grazyna-adamska-jarecka_figurative_selected03_s07-thumb.png",
+		info:  "Work created on paper",
+		count: ""
+	};
+-
+	var tagPlastic = {
+		id:    "plastic",
+		name:  "Plastic",
+		link:  "https://adamska.ca/tag-plastic",
+		thumb: "grazyna-adamska-jarecka_figurative_coping_g03-thumb.png",
+		info:  "Work created on plastic",
+		count: ""
+	};
+//- Remove Glass?
+-
+	var tagGlass = {
+		id:    "glass",
+		name:  "Glass",
+		link:  "https://adamska.ca/tag-glass",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created on glass",
+		count: ""
+	};
+
+//- General subjects
+-
+	var tagLandscape = {
+		id:    "landscape",
+		name:  "Landscape",
+		link:  "https://adamska.ca/tag-landscape",
+		thumb: "grazyna-adamska-jarecka_assorted_landscapes01_s01-thumb.png",
+		info:  "Work filed under: Landscape",
+		count: ""
+	};
+-
+	var tagStillLife = {
+		id:    "still-life",
+		name:  "Still Life",
+		link:  "https://adamska.ca/tag-still-life",
+		thumb: "grazyna-adamska-jarecka_assorted_still_s17-thumb.png",
+		info:  "Work filed under: Still Life",
+		count: ""
+	};
+-
+	var tagSketch = {
+		id:    "sketch",
+		name:  "Sketch",
+		link:  "https://adamska.ca/tag-sketch",
+		thumb: "grazyna-adamska-jarecka_portrait_skype_s03c-thumb.png",
+		info:  "Work filed under: Sketch",
+		count: ""
+	};
+-
+	var tagNude = {
+		id:    "nude",
+		name:  "Nude",
+		link:  "https://adamska.ca/tag-nude",
+		thumb: "grazyna-adamska-jarecka_figurative_disengagement_s02-thumb.png",
+		info:  "Work filed under: Nude",
+		count: ""
+	};
+-
+	var tagPattern = {
+		id:    "pattern",
+		name:  "Pattern",
+		link:  "https://adamska.ca/tag-pattern",
+		thumb: "grazyna-adamska-jarecka_abstract_grace_s01-thumb.png",
+		info:  "Work filed under: Pattern",
+		count: ""
+	};
+-
+	var tagPlant = {
+		id:    "plant",
+		name:  "Plant",
+		link:  "https://adamska.ca/tag-plant",
+		thumb: "grazyna-adamska-jarecka_abstract_landscapes_s18-thumb.png",
+		info:  "Work filed under: Plant",
+		count: ""
+	};
+-
+	var tagForest = {
+		id:    "forest",
+		name:  "Forest",
+		link:  "https://adamska.ca/tag-forest",
+		thumb: "grazyna-adamska-jarecka_abstract_landscapes_s11-thumb.png",
+		info:  "Work filed under: Forest",
+		count: ""
+	};
+-
+	var tagCelebrity = {
+		id:    "celebrity",
+		name:  "Celebrity",
+		link:  "https://adamska.ca/tag-celebrity",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s16-thumb.png",
+		info:  "Work filed under: Celebrity",
+		count: ""
+	};
+
+//- Format
+-
+	var tagDiptych = {
+		id:    "diptych",
+		name:  "Diptych",
+		link:  "https://adamska.ca/tag-diptych",
+		thumb: "grazyna-adamska-jarecka_portrait_selected03_g01-thumb.png",
+		info:  "Work filed under: Diptych",
+		count: ""
+	};
+-
+	var tagTriptych = {
+		id:    "triptych",
+		name:  "Triptych",
+		link:  "https://adamska.ca/tag-triptych",
+		thumb: "grazyna-adamska-jarecka_portrait_family_g01-thumb.png",
+		info:  "Work filed under: Triptych",
+		count: ""
+	};
+-
+	var tagGroup = {
+		id:    "group",
+		name:  "Group",
+		link:  "https://adamska.ca/tag-group",
+		thumb: "grazyna-adamska-jarecka_figurative_body_s05-thumb.png",
+		info:  "Work filed under: Group",
+		count: ""
+	};
+-
+	var tagInstallation = {
+		id:    "installation",
+		name:  "Installation",
+		link:  "https://adamska.ca/tag-installation",
+		thumb: "grazyna-adamska-jarecka_figurative_coping_g01-thumb.png",
+		info:  "Work filed under: Installation",
+		count: ""
+	};
+
+//- Human subjects
+-
+	var tagAdult = {
+		id:    "adult",
+		name:  "Adult",
+		link:  "https://adamska.ca/tag-adult",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s17-thumb.png",
+		info:  "Work filed under: Adult",
+		count: ""
+	};
+-
+	var tagMan = {
+		id:    "man",
+		name:  "Man",
+		link:  "https://adamska.ca/tag-man",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02_s14-thumb.png",
+		info:  "Work filed under: Man",
+		count: ""
+	};
+-
+	var tagWoman = {
+		id:    "woman",
+		name:  "Woman",
+		link:  "https://adamska.ca/tag-woman",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s14-thumb.png",
+		info:  "Work filed under: Woman",
+		count: ""
+	};
+-
+	var tagChild = {
+		id:    "child",
+		name:  "Child",
+		link:  "https://adamska.ca/tag-child",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s01-thumb.png",
+		info:  "Work filed under: Child",
+		count: ""
+	};
+-
+	var tagBoy = {
+		id:    "boy",
+		name:  "Boy",
+		link:  "https://adamska.ca/tag-boy",
+		thumb: "grazyna-adamska-jarecka_portrait_selected03_s01-thumb.png",
+		info:  "Work filed under: Boy",
+		count: ""
+	};
+-
+	var tagGirl = {
+		id:    "girl",
+		name:  "Girl",
+		link:  "https://adamska.ca/tag-girl",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02_s04-thumb.png",
+		info:  "Work filed under: Girl",
+		count: ""
+	};
+
+//- Animal subjects
+-
+	var tagAnimal = {
+		id:    "animal",
+		name:  "Animal",
+		link:  "https://adamska.ca/tag-animal",
+		thumb: "grazyna-adamska-jarecka_assorted_animals_s01-thumb.png",
+		info:  "Work filed under: Animal",
+		count: ""
+	};
+-
+	var tagCat = {
+		id:    "cat",
+		name:  "Cat",
+		link:  "https://adamska.ca/tag-cat",
+		thumb: "grazyna-adamska-jarecka_assorted_animals_s02-thumb.png",
+		info:  "Work filed under: Cat"
+	};
+-
+	var tagDog = {
+		id:    "dog",
+		name:  "Dog",
+		link:  "https://adamska.ca/tag-dog",
+		thumb: "grazyna-adamska-jarecka_assorted_animals_s03-thumb.png",
+		info:  "Work filed under: Dog",
+		count: ""
+	};
+-
+	var tagHorse = {
+		id:    "horse",
+		name:  "Horse",
+		link:  "https://adamska.ca/tag-horse",
+		thumb: "grazyna-adamska-jarecka_assorted_animals_s08-thumb.png",
+		info:  "Work filed under: Horse",
+		count: ""
+	};
+
+//- Styles
+-
+	var tagRealism = {
+		id:    "realism",
+		name:  "Realism",
+		link:  "https://adamska.ca/tag-realism",
+		thumb: "grazyna-adamska-jarecka_portrait_honorary_04-thumb.png",
+		info:  "Work filed under: Realism",
+		count: ""
+	};
+-
+	var tagExpressionism = {
+		id:    "expressionism",
+		name:  "Expressionism",
+		link:  "https://adamska.ca/tag-expressionism",
+		thumb: "grazyna-adamska-jarecka_figurative_selected03_s05-thumb.png",
+		info:  "Work filed under: Expressionism",
+		count: ""
+	};
+
+//- Themes
+-
+	var tagDepression = {
+		id:    "depression",
+		name:  "Depression",
+		link:  "https://adamska.ca/tag-depression",
+		thumb: "grazyna-adamska-jarecka_figurative_disengagement_s08-thumb.png",
+		info:  "Work filed under: Depression",
+		count: ""
+	};
+-
+	var tagTechnology = {
+		id:    "technology",
+		name:  "Technology",
+		link:  "https://adamska.ca/tag-technology",
+		thumb: "grazyna-adamska-jarecka_portrait_skype_s05-thumb.png",
+		info:  "Work filed under: Depression",
+		count: ""
+	};
+
+//- Context
+-
+	var tagCommision = {
+		id:    "commission",
+		name:  "Commission",
+		link:  "https://adamska.ca/tag-commission",
+		thumb: "grazyna-adamska-jarecka_portrait_selected02_s12-thumb.png",
+		info:  "Work filed under: Commission",
+		count: ""
+	};
+
+//- Dominant colors
+-
+	var tagWhite = {
+		id:    "white",
+		name:  "White",
+		link:  "https://adamska.ca/tag-white",
+		thumb: "grazyna-adamska-jarecka_abstract_grace_s03-thumb.png",
+		info:  "Work with white as a dominant colour",
+		count: ""
+	};
+-
+	var tagGrey = {
+		id:    "Grey",
+		name:  "grey",
+		link:  "https://adamska.ca/tag-grey",
+		thumb: "grazyna-adamska-jarecka_figurative_examination_s04-thumb.png",
+		info:  "Work with grey as a dominant colour",
+		count: ""
+	};
+-
+	var tagBlack = {
+		id:    "black",
+		name:  "Black",
+		link:  "https://adamska.ca/tag-black",
+		thumb: "grazyna-adamska-jarecka_abstract_attachments_s16-thumb.png",
+		info:  "Work with black as a dominant colour",
+		count: ""
+	};
+-
+	var tagBrown = {
+		id:    "Brown",
+		name:  "brown",
+		link:  "https://adamska.ca/tag-brown",
+		thumb: "grazyna-adamska-jarecka_abstract_flames_s02-thumb.png",
+		info:  "Work with brown as a dominant colour",
+		count: ""
+	};
+-
+	var tagRed = {
+		id:    "red",
+		name:  "Red",
+		link:  "https://adamska.ca/tag-red",
+		thumb: "grazyna-adamska-jarecka_figurative_selected01_s12-thumb.png",
+		info:  "Work with red as a dominant colour",
+		count: ""
+	};
+-
+	var tagOrange = {
+		id:    "orange",
+		name:  "Orange",
+		link:  "https://adamska.ca/tag-orange",
+		thumb: "grazyna-adamska-jarecka_abstract_landscapes_s01-thumb.png",
+		info:  "Work with orange as a dominant colour",
+		count: ""
+	};
+-
+	var tagYellow = {
+		id:    "yellow",
+		name:  "Yellow",
+		link:  "https://adamska.ca/tag-yellow",
+		thumb: "grazyna-adamska-jarecka_abstract_attachments_s03-thumb.png",
+		info:  "Work with yellow as a dominant colour",
+		count: ""
+	};
+-
+	var tagGreen = {
+		id:    "Green",
+		name:  "green",
+		link:  "https://adamska.ca/tag-green",
+		thumb: "grazyna-adamska-jarecka_abstract_landscapes_s04-thumb.png",
+		info:  "Work with green as a dominant colour",
+		count: ""
+	};
+-
+	var tagCyan = {
+		id:    "Cyan",
+		name:  "cyan",
+		link:  "https://adamska.ca/tag-cyan",
+		thumb: "grazyna-adamska-jarecka_portrait_selected01_s04-thumb.png",
+		info:  "Work with cyan as a dominant colour",
+		count: ""
+	};
+-
+	var tagBlue = {
+		id:    "blue",
+		name:  "Blue",
+		link:  "https://adamska.ca/tag-blue",
+		thumb: "grazyna-adamska-jarecka_abstract_flames_s09-thumb.png",
+		info:  "Work with blue as a dominant colour",
+		count: ""
+	};
+-
+	var tagPurple = {
+		id:    "purple",
+		name:  "Purple",
+		link:  "https://adamska.ca/tag-purple",
+		thumb: "grazyna-adamska-jarecka_figurative_selected03_s06-thumb.png",
+		info:  "Work with purple as a dominant colour",
+		count: ""
+	};
+-
+	var tagPink = {
+		id:    "pink",
+		name:  "Pink",
+		link:  "https://adamska.ca/tag-pink",
+		thumb: "grazyna-adamska-jarecka_abstract_attachments_s06-thumb.png",
+		info:  "Work with pink as a dominant colour",
+		count: ""
+	};
+
+//- Year created
+-
+	var tag2000 = {
+		id:    "2000",
+		name:  "2000",
+		link:  "https://adamska.ca/tag-2000",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in the year 2000",
+		count: ""
+	};
+-
+	var tag2001 = {
+		id:    "2001",
+		name:  "2001",
+		link:  "https://adamska.ca/tag-2001",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2001",
+		count: ""
+	};
+-
+	var tag2002 = {
+		id:    "2002",
+		name:  "2002",
+		link:  "https://adamska.ca/tag-2002",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2002",
+		count: ""
+	};
+-
+	var tag2003 = {
+		id:    "2003",
+		name:  "2003",
+		link:  "https://adamska.ca/tag-2003",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2003",
+		count: ""
+	};
+-
+	var tag2004 = {
+		id:    "2004",
+		name:  "2004",
+		link:  "https://adamska.ca/tag-2004",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2004",
+		count: ""
+	};
+-
+	var tag2005 = {
+		id:    "2005",
+		name:  "2005",
+		link:  "https://adamska.ca/tag-2005",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2005",
+		count: ""
+	};
+-
+	var tag2006 = {
+		id:    "2006",
+		name:  "2006",
+		link:  "https://adamska.ca/tag-2006",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2006",
+		count: ""
+	};
+-
+	var tag2007 = {
+		id:    "2007",
+		name:  "2007",
+		link:  "https://adamska.ca/tag-2007",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2007",
+		count: ""
+	};
+-
+	var tag2008 = {
+		id:    "2008",
+		name:  "2008",
+		link:  "https://adamska.ca/tag-2008",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2008",
+		count: ""
+	};
+-
+	var tag2009 = {
+		id:    "2009",
+		name:  "2009",
+		link:  "https://adamska.ca/tag-2009",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2009",
+		count: ""
+	};
+-
+	var tag2010 = {
+		id:    "2010",
+		name:  "2010",
+		link:  "https://adamska.ca/tag-2010",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2010",
+		count: ""
+	};
+-
+	var tag2011 = {
+		id:    "2011",
+		name:  "2011",
+		link:  "https://adamska.ca/tag-2011",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2011",
+		count: ""
+	};
+-
+	var tag2012 = {
+		id:    "2012",
+		name:  "2012",
+		link:  "https://adamska.ca/tag-2012",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2012",
+		count: ""
+	};
+-
+	var tag2013 = {
+		id:    "2013",
+		name:  "2013",
+		link:  "https://adamska.ca/tag-2013",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2013",
+		count: ""
+	};
+-
+	var tag2014 = {
+		id:    "2014",
+		name:  "2014",
+		link:  "https://adamska.ca/tag-2014",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2014",
+		count: ""
+	};
+-
+	var tag2015 = {
+		id:    "2015",
+		name:  "2015",
+		link:  "https://adamska.ca/tag-2015",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2015",
+		count: ""
+	};
+-
+	var tag2016 = {
+		id:    "2016",
+		name:  "2016",
+		link:  "https://adamska.ca/tag-2016",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2016",
+		count: ""
+	};
+-
+	var tag2017 = {
+		id:    "2017",
+		name:  "2017",
+		link:  "https://adamska.ca/tag-2017",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2017",
+		count: ""
+	};
+-
+	var tag2018 = {
+		id:    "2018",
+		name:  "2018",
+		link:  "https://adamska.ca/tag-2018",
+		image: "grazyna-adamska-jarecka_.png",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2018",
+		count: ""
+	};
+-
+	var tag2019 = {
+		id:    "2019",
+		name:  "2019",
+		link:  "https://adamska.ca/tag-2019",
+		image: "grazyna-adamska-jarecka_.png",
+		thumb: "grazyna-adamska-jarecka_-thumb.png",
+		info:  "Work created in 2019",
+		count: ""
+	};
+
+
+//- Shared components
+
+//- Button mixin
+	Define:
+	Label text,
+	SVG icon path,
+	Link address,
+	Title attribute text,
+	Target attribute
+mixin button(buttonText, buttonIcon, buttonLink, buttonInfo, buttonTarget)
+	a.ap-c-btn-contained(
+		href=buttonLink
+		title=buttonInfo
+		target=buttonTarget
+	)
+		span=buttonText
+		svg(
+			width="16" 
+			height="16" 
+			viewBox="0 0 16 16" 
+			fill="none" 
+			xmlns="http://www.w3.org/2000/svg"
+		)
+			path(
+				fill-rule="evenodd" 
+				clip-rule="evenodd" 
+				d=buttonIcon 
+				fill="black"
+			)
+
+//- SVG icon mixin
+	Defines svg path
+mixin icon(svgPath)
+	svg(
+		width="16" 
+		height="16" 
+		viewBox="0 0 16 16" 
+		fill="none" 
+		xmlns="http://www.w3.org/2000/svg"
+	)
+		path(
+			fill-rule="evenodd" 
+			clip-rule="evenodd" 
+			d=svgPath 
+			fill="#473793"
+		)
+
+//- Section header mixins
+//- Section header with title only
+mixin headerTitle(sectionTitle)
+	div.ap-c-scn__header
+		header.ap-c-scn__header-container
+			h2.ap-c-scn__header-title
+				span= sectionTitle
+
+//- Section header with title and button
+mixin headerTitleAndButton(sectionTitle, buttonText, buttonIcon, buttonLink, buttonInfo, buttonTarget)
+	div.ap-c-scn__header
+		header.ap-c-scn__header-container
+			h2.ap-c-scn__header-title
+				span= sectionTitle
+			a.ap-c-btn-contained(
+				href= buttonLink
+				title= buttonInfo
+				target= buttonTarget
+			)
+				span= buttonText
+				svg(
+					width="16" 
+					height="16" 
+					viewBox="0 0 16 16" 
+					fill="none" 
+					xmlns="http://www.w3.org/2000/svg"
+				)
+					path(
+						fill-rule= "evenodd" 
+						clip-rule= "evenodd" 
+						d= buttonIcon 
+						fill= "black"
+					)
+
+//- Main content outro CTA
+mixin contactFooter
+	div.ap-c-scn__footer
+		footer.ap-c-scn__footer-container
+			h3.ap-c-scn__footer-title
+				p Get in touch with Grazyna by sending an email to #[a(href= email.link title= email.info) #[span= email.name]]
+			+button(
+				"Contact Grazyna",
+				iconEmail,
+				email.link,
+				email.info,
+				"_blank"
+			)
+
+
+//- Shared SVG elements
+
+//- Icon SVG paths
+//- Arrows
+- var iconArrowUp = "M3 5.5V8.32843L7 4.32843L7 15H8V4.32843L12 8.32843V5.5L8.91421 2.41422L7.5 1L6.08579 2.41422L3 5.5Z";
+- var iconArrowDown = "M12 10.5V7.67157L8 11.6716V1H7L7 11.6716L3 7.67157V10.5L6.08579 13.5858L7.5 15L8.91421 13.5858L12 10.5Z";
+- var iconArrowLeft = "M5.5 4H8.32843L4.32843 8H15V9H4.32843L8.32843 13H5.5L2.41421 9.91421L1 8.5L2.41422 7.08579L5.5 4Z";
+- var iconArrowRight = "M10.5 4H7.67157L11.6716 8H1V9H11.6716L7.67157 13H10.5L13.5858 9.91421L15 8.5L13.5858 7.08579L10.5 4Z";
+
+//- Chevrons
+- var iconChevronUp = "M13 9.17157V12L7.99999 6.99999L3 12V9.17156L6.58578 5.58578L7.99999 4.17156L9.41421 5.58578L13 9.17157Z";
+- var iconChevronDown = "M3 6.99999V4.17156L8.00001 9.17157L13 4.17158V7.00001L9.41422 10.5858L8.00001 12L6.58579 10.5858L3 6.99999Z";
+- var iconChevronLeft = "M11.3284 4H8.5L5.41422 7.08579L4 8.5L5.41422 9.91421L8.5 13H11.3284L6.82843 8.5L11.3284 4Z";
+- var iconChevronRight = "M4.67157 4H7.5L10.5858 7.08579L12 8.5L10.5858 9.91421L7.5 13H4.67157L9.17157 8.5L4.67157 4Z";
+
+//- Page movement
+- var iconPageUp = "M14 2L14 1H1V2H14ZM3 10.3284V7.5L6.08579 4.41422L7.5 3L8.91421 4.41422L12 7.5V10.3284L8 6.32843V16H7L7 6.32843L3 10.3284Z";
+- var iconPageDown = "M0.999999 14L0.999999 15L14 15L14 14L0.999999 14ZM12 5.67157L12 8.5L8.91421 11.5858L7.5 13L6.08579 11.5858L3 8.5L3 5.67157L7 9.67157L7 -3.0598e-07L8 -2.62268e-07L8 9.67157L12 5.67157Z";
+
+//- Various
+- var iconMenu = "M14 5H2V7H14V5ZM14 10H2V11H14V10Z";
+- var iconExit = "M11.3129 3H14.0531L9.37012 8L14.0531 13H11.3129L8 9.46286L4.6871 13H1.94687L6.62988 8L1.94687 3H4.68711L8 6.53714L11.3129 3Z";
+- var iconExpand = "M12 2H9L7 4H11.2929L9.06066 6.23223L9.76777 6.93934L12 4.7071V9L14 7V4V2H12ZM4 7L2 9V12V14H4H7L9 12H4.7071L6.93934 9.76777L6.23223 9.06066L4 11.2929V7Z";
+- var iconExternal = "M12 2H9L7 4H11.2929L6.29289 9L7 9.70711L12 4.7071V9L14 7V4V2H12ZM2 4H6L5 5H3V13H11V11L12 10V14H11H3H2V5V4Z";
+- var iconEmail = "M1 3L8 9L15 3H1ZM2 12V4.85714L1 4V12V13H15V12V4L14 4.85714V12H2Z";
+- var iconShare = "M4 6.83V4.00157L6.08579 1.91579L7.5 0.501572L8.91421 1.91579L11 4.00157V6.83L8 3.83V11H7V3.83L4 6.83ZM3 7V4H1V15H14V4H12V7H13V14H2V7H3Z";
+- var iconDate = "M5 2H3V3V4H2V3H1V14H15V3H14V4H13V3V2H11V3V4H10V3H6V4H5V3V2ZM14 6H2V13H14V6Z";
+- var iconDocument = "M9 2H3V14H13V7H12V13H4V4H9V6H13L9 2ZM11 7H5V8H11V7ZM5 9H9V10H5V9Z";
+
+//- Gallery controls
+- var iconGallery = "M3 1H15V11H13V3H3V1ZM0 4H12V14H0V4ZM1 5H11V13H1V5Z";
+- var iconGalleryPlay = "M15 1H3V3H13V11H15V1ZM12 4H0V14H12V4ZM11 5H1V13H11V5ZM9 9L4 6V12L9 9Z";
+- var iconGalleryPause = "M15 1H3V3H13V11H15V1ZM12 4H0V14H12V4ZM11 5H1V13H11V5ZM3 6H5V12H3V6ZM7 6H9V12H7V6Z";
+
+//- Social media
+- var iconFacebook = "M16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 11.993 2.92547 15.3027 6.75 15.9028V10.3125H4.71875V8H6.75V6.2375C6.75 4.2325 7.94438 3.125 9.77172 3.125C10.647 3.125 11.5625 3.28125 11.5625 3.28125V5.25H10.5538C9.56 5.25 9.25 5.86672 9.25 6.49937V8H11.4688L11.1141 10.3125H9.25V15.9028C13.0745 15.3027 16 11.993 16 8Z";
+- var iconPinterest = "M0 8C0 11.3893 2.10867 14.284 5.08467 15.4493C5.01467 14.816 4.95133 13.846 5.11267 13.1547C5.25733 12.5307 6.05 9.178 6.05 9.178C6.05 9.178 5.81 8.698 5.81 7.99133C5.81 6.878 6.45533 6.048 7.258 6.048C7.94067 6.048 8.27 6.56 8.27 7.17467C8.27 7.86133 7.83333 8.888 7.608 9.838C7.41933 10.6347 8.00667 11.2847 8.792 11.2847C10.2133 11.2847 11.3067 9.78467 11.3067 7.62067C11.3067 5.706 9.93 4.366 7.96467 4.366C5.688 4.366 4.35133 6.074 4.35133 7.838C4.35133 8.526 4.61667 9.26333 4.94733 9.66467C5.01267 9.74267 5.022 9.81267 5.00267 9.89333C4.94267 10.1453 4.80733 10.6887 4.78067 10.8C4.74533 10.9467 4.66467 10.9773 4.514 10.9067C3.514 10.442 2.88933 8.98 2.88933 7.80667C2.88933 5.284 4.72267 2.96667 8.176 2.96667C10.9493 2.96667 13.1067 4.944 13.1067 7.58667C13.1067 10.344 11.3687 12.5627 8.95533 12.5627C8.14533 12.5627 7.382 12.1427 7.122 11.644C7.122 11.644 6.72067 13.172 6.62333 13.546C6.44333 14.2393 5.95533 15.1113 5.63 15.6427C6.38 15.8747 7.17467 16 8 16C12.418 16 16 12.4187 16 8C16 3.582 12.418 0 8 0C3.582 0 0 3.582 0 8Z";
+- var iconTwitter = "M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM12.024 6.732C12.024 9.28 10.084 12.22 6.53601 12.22C5.44801 12.22 4.43201 11.9 3.58801 11.348C3.74001 11.368 3.89201 11.376 4.04801 11.376C4.95201 11.376 5.78401 11.068 6.44401 10.552C5.60001 10.536 4.88801 9.98 4.64401 9.212C4.76401 9.236 4.88401 9.248 5.00801 9.248C5.18401 9.248 5.35601 9.224 5.51601 9.18C4.63201 9 3.96801 8.224 3.96801 7.288V7.264C4.22801 7.408 4.52401 7.496 4.84001 7.504C4.32001 7.16 3.98001 6.568 3.98001 5.9C3.98001 5.548 4.07601 5.216 4.24001 4.932C5.19201 6.1 6.61201 6.868 8.21601 6.948C8.18001 6.808 8.16401 6.66 8.16401 6.508C8.16401 5.444 9.02802 4.58 10.092 4.58C10.648 4.58 11.148 4.812 11.5 5.188C11.94 5.1 12.352 4.94 12.724 4.72C12.58 5.172 12.276 5.548 11.876 5.788C12.268 5.74 12.64 5.636 12.984 5.484C12.724 5.872 12.396 6.212 12.02 6.484C12.024 6.564 12.024 6.648 12.024 6.732Z";
+- var iconInstagram = "M13.8235 2.17654C14.1758 2.52885 14.4507 2.95081 14.6306 3.41543C14.8375 3.96709 14.9481 4.55024 14.9574 5.13938C15 5.88295 15 6.12449 15 8.02368C15 9.92287 14.9905 10.1597 14.9574 10.908C14.9454 11.4891 14.8349 12.0641 14.6306 12.6083C14.4507 13.0729 14.1758 13.4948 13.8235 13.8471C13.4712 14.1994 13.0492 14.4743 12.5846 14.6543C12.0404 14.8586 11.4655 14.9691 10.8843 14.9811C10.1407 15.0237 9.89919 15.0237 8 15.0237C6.10081 15.0237 5.86401 15.0142 5.1157 14.9811C4.53316 14.9615 3.95821 14.843 3.41543 14.6306C2.95081 14.4507 2.52885 14.1758 2.17654 13.8235C1.82423 13.4712 1.54933 13.0492 1.36942 12.5846C1.1651 12.0404 1.05461 11.4655 1.04263 10.8843C1 10.1407 1 9.89919 1 8C1 6.10081 1.00947 5.86401 1.04263 5.1157C1.05461 4.53454 1.1651 3.95962 1.36942 3.41543C1.54933 2.95081 1.82423 2.52885 2.17654 2.17654C2.52885 1.82423 2.95081 1.54933 3.41543 1.36942C3.95962 1.1651 4.53454 1.05461 5.1157 1.04263C5.85927 1 6.10081 1 8 1C9.89919 1 10.136 1.00947 10.8843 1.04263C11.4655 1.05461 12.0404 1.1651 12.5846 1.36942C13.0492 1.54933 13.4712 1.82423 13.8235 2.17654ZM13.4418 12.1394C13.5976 11.7193 13.6793 11.2754 13.6834 10.8275H13.6928C13.726 10.0839 13.726 9.88024 13.726 7.98579C13.726 6.09406 13.7165 5.88355 13.6835 5.14729L13.6834 5.14411C13.6777 4.70092 13.596 4.26198 13.4418 3.84641C13.3252 3.54394 13.1466 3.26924 12.9174 3.04002C12.6881 2.8108 12.4134 2.63214 12.111 2.51556C11.6954 2.36141 11.2565 2.27971 10.8133 2.27402C10.0602 2.23139 9.86604 2.23139 7.97158 2.23139C6.07984 2.23139 5.86934 2.24084 5.13307 2.27388L5.12991 2.27402C4.68671 2.27971 4.24777 2.36141 3.83221 2.51556C3.5287 2.63133 3.25295 2.80964 3.02285 3.03892C2.79275 3.2682 2.61346 3.54332 2.49662 3.84641C2.34086 4.26646 2.25913 4.71034 2.25507 5.15832C2.21245 5.91137 2.21245 6.10555 2.21245 8C2.21245 9.89175 2.22189 10.1022 2.25493 10.8385L2.25507 10.8417C2.26076 11.2849 2.34246 11.7238 2.49662 12.1394C2.61346 12.4425 2.79275 12.7176 3.02285 12.9469C3.25295 13.1762 3.5287 13.3545 3.83221 13.4702C4.24777 13.6244 4.68671 13.7061 5.12991 13.7118C5.88295 13.7544 6.07713 13.7544 7.97158 13.7544C9.86332 13.7544 10.0738 13.745 10.8101 13.7119L10.8133 13.7118C11.2565 13.7061 11.6954 13.6244 12.111 13.4702C12.4134 13.3537 12.6881 13.175 12.9174 12.9458C13.1466 12.7166 13.3252 12.4419 13.4418 12.1394ZM11.732 5.10623C12.195 5.10623 12.5703 4.73091 12.5703 4.26793C12.5703 3.80495 12.195 3.42964 11.732 3.42964C11.269 3.42964 10.8937 3.80495 10.8937 4.26793C10.8937 4.73091 11.269 5.10623 11.732 5.10623ZM7.99523 4.40054C7.28426 4.40054 6.58926 4.61136 5.99811 5.00636C5.40696 5.40135 4.94622 5.96277 4.67414 6.61962C4.40207 7.27647 4.33088 7.99925 4.46958 8.69656C4.60829 9.39386 4.95065 10.0344 5.45338 10.5371C5.95611 11.0398 6.59663 11.3822 7.29394 11.5209C7.99125 11.6596 8.71402 11.5884 9.37087 11.3164C10.0277 11.0443 10.5891 10.5835 10.9841 9.99238C11.3791 9.40123 11.59 8.70623 11.59 7.99526C11.59 7.5232 11.497 7.05575 11.3163 6.61962C11.1357 6.18349 10.8709 5.78721 10.5371 5.45341C10.2033 5.11961 9.80701 4.85482 9.37087 4.67417C8.93474 4.49352 8.4673 4.40054 7.99523 4.40054ZM7.99523 10.3302C7.53343 10.3302 7.082 10.1932 6.69803 9.93667C6.31405 9.68011 6.01478 9.31544 5.83806 8.88879C5.66133 8.46214 5.61509 7.99267 5.70519 7.53974C5.79528 7.08681 6.01766 6.67077 6.3442 6.34423C6.67074 6.01768 7.08679 5.79531 7.53971 5.70521C7.99264 5.61512 8.46212 5.66136 8.88877 5.83808C9.31541 6.01481 9.68008 6.31408 9.93664 6.69805C10.1932 7.08203 10.3301 7.53346 10.3301 7.99526C10.3301 8.61452 10.0841 9.20841 9.64627 9.64629C9.20838 10.0842 8.61449 10.3302 7.99523 10.3302Z";
+
+
+//- DEPRECATED – Phase out
+
+//- Global defaults
+//- Browser page title
+- var headTitle = "Grazyna Adamska Jarecka";
+- var headDescription = "Website of painter and visual artist Grazyna Adamska Jarecka"
+
+//- Addresses
+
+//- Address partials
+//- Internal link address partial
+- var urlRoot = "https://adamska.ca/";
+//- Cloudinary image source address partial
+- var imgRoot = "https://res.cloudinary.com/adamska/image/upload/"
+
+//- Current page address default
+- var linkCurrentPage = urlRoot + pageClass;
+
+//- Main internal addresses
+- var linkHome = urlRoot;
+- var linkAbout = urlRoot + "about";
+- var linkCV = urlRoot + "cv";
+
+- var linkWork = urlRoot + "work";
+- var linkWorkFeatured = urlRoot + "work#featured";
+- var linkWorkFigurative = urlRoot + "work#figurative";
+- var linkWorkAbstract = urlRoot + "work#abstract";
+- var linkWorkPortrait = urlRoot + "work#portraits";
+- var linkWorkAssorted = urlRoot + "work#assorted";
+- var linkTags = urlRoot + "tags";
+
+//- External addresses
+- var linkInstagram = "https://www.instagram.com/adamskapainting/";
+- var linkFacebook = "https://www.facebook.com/GrazynaAdamskaART/";
+- var linkTumblr = "https://adamskapainting.tumblr.com/";
+- var linkLinkedIn = "https://www.linkedin.com/in/graziedios/";
+- var linkSaatchiArt = "https://www.saatchiart.com/gadamska";
+
+
+//- Link title attributes
+
+//- Internal address title attributes
+- var titleHome = "Website Homepage";
+- var titleAbout = "Artist Profile";
+- var titleCV = "Curriculum Vitae";
+
+- var titleWork = "See All Artwork Series";
+- var titleWorkFeatured = "See All Featured Artwork Series";
+- var titleWorkFigurative = "See All Figurative Artwork Series";
+- var titleWorkAbstract = "See All Abstract Artwork Series";
+- var titleWorkPortrait = "See All Portrait Series";
+- var titleWorkAssorted = "See All Assorted Artwork Series";
+- var titleWorkAssorted = "See All Assorted Artwork Series";
+- var titleTags = "See All Tag Categories";
+
+//- External address title attributes
+- var titleEmail = "Contact Grazyna by email";
+- var titleInstagram = "Grazyna on Instagram";
+- var titleFacebook = "Grazyna on Facebook";
+- var titleTumblr = "Grazyna on Tumblr";
+- var titleLinkedIn = "Grazyna on LinkedIn";
+- var titleSaatchiArt = "Grazyna on SaatchiArt";
+
+- var nameWorkFigurative = "Figurative";
+- var nameWorkAbstract = "Abstract";
+- var nameWorkPortrait = "Portrait";
+- var nameWorkAssorted = "Assorted";
+
+//- Email information
+- var nameEmail = "adamskapainting@gmail.com"
+- var linkEmail = "mailto:adamskapainting@gmail.com";
+
+//- Abstract
+- var nameAbstractGrace = "Grace / No Grace";
+- var linkAbstractGrace = urlRoot + "grace-no-grace";
+- var dateAbstractGrace = "2011";
+- var itemAbstractGrace = "4";
+
+- var nameAbstractLandscapes = "Abstracted Landscapes";
+- var linkAbstractLandscapes = urlRoot + "abstracted-landscapes";
+- var dateAbstractLandscapes = "2014 — 2017";
+- var itemAbstractLandscapes = "21";
+
+- var nameAbstractFigural = "Figural Abstract Works";
+- var linkAbstractFigural = urlRoot + "figural-abstract-works";
+- var dateAbstractFigural = "2014 — 2018";
+- var itemAbstractFigural = "7";
+
+- var nameAbstractFlames = "Flames, Coral Reefs";
+- var linkAbstractFlames = urlRoot + "flames-coral-reefs";
+- var dateAbstractFlames = "2016 — 2018";
+- var itemAbstractFlames = "14";
+
+- var nameAbstractShapes = "Shapes & Textures";
+- var linkAbstractShapes = urlRoot + "shapes-and-textures";
+- var dateAbstractShapes = "2017";
+- var itemAbstractShapes = "6";
+
+- var nameAbstractAttachments = "Attachments";
+- var linkAbstractAttachments = urlRoot + "attachments";
+- var dateAbstractAttachments = "2019";
+- var itemAbstractAttachments = "17";
+
+- var nameAbstractSelectedVol1 = "Selected Abstract Works Vol. 1";
+- var linkAbstractSelectedVol1 = urlRoot + "selected-abstract-works";
+- var dateAbstractSelectedVol1 = "2013 — 2016";
+- var itemAbstractSelectedVol1 = "13";
+
+//- Assorted
+- var nameAssortedStill = "Still Life Works"; // Unpublished
+- var linkAssortedStill = urlRoot + "still-life-works";
+- var dateAssortedStill = "2016 — 2018";
+- var itemAssortedStill = "17";
+
+- var nameAssortedAnimals = "Animals";
+- var linkAssortedAnimals = urlRoot + "assorted-animals";
+- var dateAssortedAnimals = "Various Dates";
+- var itemAssortedStill = "8";
+
+- var nameAssortedMisc = "Miscellaneous Works"; // Unpublished
+- var linkAssortedMisc = urlRoot + "miscellaneous-works";
+- var dateAssortedMisc = "Various Dates"; 
+- var itemAssortedMisc = "5";
+
+- var nameAssortedLandscapesVol1 = "Traditional Landscapes Vol. 1";
+- var linkAssortedLandscapesVol1 = urlRoot + "traditional-landscapes";
+- var dateAssortedLandscapesVol1 = "Pre 2017";
+- var itemAssortedLandscapesVol1 = "9";
+
+- var nameAssortedLandscapesVol2 = "Traditional Landscapes Vol. 2";
+- var linkAssortedLandscapesVol2 = urlRoot + "traditional-landscapes-volume-2";
+- var dateAssortedLandscapesVol2 = "2017 — 2018";
+- var itemAssortedLandscapesVol2 = "10";
+
+//- Portraits
+- var namePortraitGuelph = "Picks from the Guelph Community"; // Unpublished
+- var linkPortraitGuelph = urlRoot + "picks-from-the-guelph-community";
+- var datePortraitGuelph = "2001 — 2003";
+- var itemPortraitGuelph = "58";
+
+- var namePortraitConte = "Conté Drawings";
+- var linkPortraitConte = urlRoot + "conte-drawings";
+- var datePortraitConte = "2002 — 2003";
+- var itemPortraitConte = "5";
+
+- var namePortraitSkype = "Skype Scéance";
+- var linkPortraitSkype = urlRoot + "skype-sceance";
+- var datePortraitSkype = "2013 — 2018";
+- var itemPortraitSkype = "6";
+
+- var namePortraitCats = "Cats";
+- var linkPortraitCats = urlRoot + "cat-portraits";
+- var datePortraitCats = "Various Dates";
+- var itemPortraitCats = "15";
+
+- var namePortraitDogs = "Dogs";
+- var linkPortraitDogs = urlRoot + "dog-portraits";
+- var datePortraitDogs = "Various Dates";
+- var itemPortraitDogs = "20";
+
+- var namePortraitHonorary = "Honorary & Collegiate Portraits";
+- var linkPortraitHonorary = urlRoot + "honorary-and-collegiate-portraits";
+- var datePortraitHonorary = "Various Dates";
+- var itemPortraitHonorary = "5";
+
+- var namePortraitSelectedVol1 = "Selected Portraits Vol. 1";
+- var linkPortraitSelectedVol1 = urlRoot + "selected-portraits";
+- var datePortraitSelectedVol1 = "Pre 2013";
+- var itemPortraitSelectedVol1 = "17";
+
+- var namePortraitSelectedVol2 = "Selected Portraits Vol. 2";
+- var linkPortraitSelectedVol2 = urlRoot + "selected-portraits-volume-2";
+- var datePortraitSelectedVol2 = "2013 — 2015";
+- var itemPortraitSelectedVol2 = "24";
+
+- var namePortraitSelectedVol3 = "Selected Portraits Vol. 3";
+- var linkPortraitSelectedVol3 = urlRoot + "selected-portraits-volume-3";
+- var datePortraitSelectedVol3 = "2016 — 2018";
+- var itemPortraitSelectedVol3 = "20";
+
+
+//- Figurative
+- var nameFigurativeBody = "Body Drawings";
+- var linkFigurativeBody = urlRoot + "body-drawings";
+- var dateFigurativeBody = "2005 — 2014";
+- var itemFigurativeBody = "7";
+
+- var nameFigurativeExamination = "Self Examination";
+- var linkFigurativeExamination = urlRoot + "self-examination";
+- var dateFigurativeExamination = "2006 — 2009";
+- var itemFigurativeExamination = "11";
+
+- var nameFigurativeDisengagement = "Image of Disengagement";
+- var linkFigurativeDisengagement = urlRoot + "image-of-disengagement";
+- var dateFigurativeDisengagement = "2006 — 2010";
+- var itemFigurativeDisengagement = "13";
+
+- var nameFigurativeCoping = "Coping Behaviours";
+- var linkFigurativeCoping = urlRoot + "coping-behaviours";
+- var dateFigurativeCoping = "2006 — 2012";
+- var itemFigurativeCoping = "13";
+
+- var nameFigurativeSelectedVol1 = "Selected Figurative Works Vol. 1";
+- var linkFigurativeSelectedVol1 = urlRoot + "selected-figurative-works";
+- var dateFigurativeSelectedVol1 = "Pre 2014";
+- var itemFigurativeSelectedVol1 = "12";
+
+- var nameFigurativeSelectedVol2 = "Figurative Works Vol. 2";
+- var linkFigurativeSelectedVol2 = urlRoot + "selected-figurative-works-volume-2";
+- var dateFigurativeSelectedVol2 = "2014";
+- var itemFigurativeSelectedVol2 = "7";
+
+- var nameFigurativeSelectedVol3 = "Figurative Works Vol. 3";
+- var linkFigurativeSelectedVol3 = urlRoot + "selected-figurative-works-volume-3";
+- var dateFigurativeSelectedVol3 = "2017 — 2019";
+- var itemFigurativeSelectedVol3 = "10";
+

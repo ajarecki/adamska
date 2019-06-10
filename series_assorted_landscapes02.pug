@@ -1,0 +1,55 @@
+extends partial/_tmp-series.pug
+
+//- Traditional Landscapes Volume 2
+
+block config
+	-
+		var series = {
+			id:      assortedLandscapesVol2.id,
+			name:    assortedLandscapesVol2.name,
+			info:    assortedLandscapesVol2.info,
+			link:    assortedLandscapesVol2.link,
+			date:    assortedLandscapesVol2.date,
+			hero1:   assortedLandscapesVol2.hero,
+			hero2:   workAssorted.hero,
+			colname: workAssorted.name,
+			collink: workAssorted.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAssortedLandscapesVol2
+
+block galleryContent
+	+assortedLandscapesVol2S01
+	+assortedLandscapesVol2S02
+	+assortedLandscapesVol2S03
+	+assortedLandscapesVol2S04
+	+assortedLandscapesVol2S05
+	+assortedLandscapesVol2S06
+	+assortedLandscapesVol2S07
+	+assortedLandscapesVol2S08
+	+assortedLandscapesVol2S09
+	+assortedLandscapesVol2S10
+
+block relatedSeries01
+	+seriesAssortedLandscapesVol1
+
+block relatedSeries02
+	+seriesAssortedAnimals
+
+block relatedSeries03
+	//- Null
+
+block relatedSeries04
+	//- Null

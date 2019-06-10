@@ -1,0 +1,688 @@
+extends partial/_tmp-main.pug
+
+//- Curriculum Vitae
+
+block config
+	-
+		var main = {
+			title:   "Curriculum Vitae – Grazyna Adamska Jarecka",
+			desc:    "CV of visual artist and painter Grazyna Adamska Jarecka",
+			id:      cv.id,
+			link:    cv.link,
+			header:  "Curriculum Vitae",
+			hero1:   "background_main_intro-cv.png",
+			hero2:   "background_outro_abstract.png",
+			border1: "background_border_outro_01.png"
+		}
+
+block navSubmenu
+	+navCV
+
+//- CV section header mixin
+mixin cvHeader(sectionTitle)
+	h3.ap-c-mdl-cv__subtitle=sectionTitle
+
+//- CV list item mixin
+mixin cvItem(itemYear, textEmphasis, textStandard)
+	li.ap-c-mdl-cv__item
+		span.ap-c-mdl-cv__date=itemYear
+		span.ap-c-mdl-cv__title
+			span.ap-c-mdl-cv__emphasis=textEmphasis
+			span.ap-c-mdl-cv__standard=textStandard
+
+block mainContent
+	section.ap-c-scn.ap-c-scn--cv
+		article.ap-c-mdl-cv
+			header.ap-c-mdl-cv__header
+				h2 Grazyna Adamska Jarecka
+				+button(
+					"PDF Version",
+					iconDocument,
+					"/cv_grazyna-adamska-jarecka.pdf",
+					"Get a printable PDF copy",
+					"_blank"
+				)
+			section.ap-c-mdl-cv__section#solo
+				+cvHeader(
+					"Selected Solo Exhibitions"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2018",
+						"Finding Nest; Otherness and Identity (Two person show)",
+						"Elora Centre for the Arts – Elora, ON"
+					)
+					+cvItem(
+						"2017",
+						"Forest Edges",
+						"Rotunda Gallery – Kitchener, ON"
+					)
+					+cvItem(
+						"2016",
+						"Tangled Beauty",
+						"Central Library Art Gallery – Kitchener, ON"
+					)
+					+cvItem(
+						"2016",
+						"Abstract Paintings, Project InBetween",
+						"Hotel Bristol – Warsaw, Poland"
+					)
+					+cvItem(
+						"2015",
+						"Echoes of Growth",
+						"Homer Watson House & Gallery – Kitchener, ON"
+					)
+					+cvItem(
+						"2014",
+						"Image of Detachment",
+						"Gallery M Contemporary – Thornhill, Toronto, ON"
+					)
+					+cvItem(
+						"2014",
+						"Poised and Unbalanced Installation",
+						"3 Capacity Gallery at Boarding House, Guelph, ON"
+					)
+					+cvItem(
+						"2012",
+						"Body Drawings (Wall Contest Winner)",
+						"Peak Gallery – Toronto, ON"
+					)
+					+cvItem(
+						"2010",
+						"Becoming Transparent, Au Natural (Solo Show Award)",
+						"Clatsop Community College Art Center Gallery – Astoria, OR, USA"
+					)
+					+cvItem(
+						"2009",
+						"Insufficiency of Self",
+						"ArtSpace Gallery, Town Center Building – Ames, Iowa, USA"
+					)
+					+cvItem(
+						"2006",
+						"A Life Worth Examining",
+						"Kipp Gallery – Indiana University of Pennsylvania, USA"
+					)
+					+cvItem(
+						"2006",
+						"Child Within/Woman Child",
+						"Miller Gallery – Indiana University of Pennsylvania, USA"
+					)
+					+cvItem(
+						"2001",
+						"Inspired Eyes",
+						"Zavitz Gallery – University of Guelph, Guelph, ON"
+					)
+					+cvItem(
+						"2000",
+						"Would-be Systems, Biological Annex",
+						"University of Guelph, Guelph, ON"
+					)
+			section.ap-c-mdl-cv__section#group
+				+cvHeader(
+					"Selected Group Exhibitions"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2018",
+						"40 VAM Juried Show of Fine Arts",
+						"Art Gallery of Mississauga,ON"
+					)
+					+cvItem(
+						"2018",
+						"Insights 39 Show of Fine Arts, Wellington Museum, Fergus, ON, jurors: John Kissick Janice Mason Steeves and Tammy Ratclif",
+						""
+					)
+					+cvItem(
+						"2017",
+						"14th Annual Auction of Fine Art at Art Gallery of Mississauga, Mississauga, ON",
+						""
+					)
+					+cvItem(
+						"2017",
+						"Beyond, Juried Show of Visual Arts Mississauga, Central Library of Mississauga",
+						""
+					)
+					+cvItem(
+						"2017",
+						"Beyond, Juried Show of VAM, Central Library in Mississauga, ON, juror Judy Daley",
+						""
+					)
+					+cvItem(
+						"2017",
+						"Insights 38, Wellington County Museum of Art, Fergus, ON, jurors: Renann Isaacs et al.",
+						""
+					)
+					+cvItem(
+						"2017",
+						"39 VAM Show of Fine Arts, AGM, Mississauga, ON, jurors: Sally McCay, Todd Tremeer",
+						""
+					)
+					+cvItem(
+						"2017",
+						"Annual Juried Members Show, VAM, Mississauga, ON, curator Annis Karpenko",
+						""
+					)
+					+cvItem(
+						"2017",
+						"Hidden Valley Revealed Homer Watson House and Gallery, Kitchener, ON, curator Faith Hieblinger",
+						""
+					)
+					+cvItem(
+						"2016",
+						"Artful Aging, Ashlar Gallery, Guelph, ON, invitational, curated by Gary Young",
+						""
+					)
+					+cvItem(
+						"2016",
+						"Power Girl, Wall of Art, juried show, Guelph Civic Museum, Guelph, ON",
+						""
+					)
+					+cvItem(
+						"2016",
+						"38 VAM Show of Fine Arts, AGM, Mississauga, jurors: Stewart Keeler, Lila Lewis Irving",
+						""
+					)
+					+cvItem(
+						"2016",
+						"Pastell Ohne Grenzen,  Int. Exhibit, Kunstgalerie Meduna, Vienna, Austria, curator Dr. Werner Kitlitschka",
+						""
+					)
+					+cvItem(
+						"2016",
+						"Biennial Exhibit, Glenhyrst Art Gallery of Brant, Brantford, juror Rhona Wenger et al.",
+						""
+					)
+					+cvItem(
+						"2016",
+						"Architextural Identities, VAM Exhibit, l Library of Mississauga, juror Kendra Ainsworth 9th Open Art Show, Beaux Arts, Brampton, ON, juror Tom Smart",
+						""
+					)
+					+cvItem(
+						"2016",
+						"The KWSA Annual Juried Show, Homer Watson House &Gallery, Kitchener, ON",
+						""
+					)
+					+cvItem(
+						"2015",
+						"Kunterbunt, Durham Art Gallery, Durham, ON, invitational, curated by Ilse Gassinger",
+						""
+					)
+					+cvItem(
+						"2015",
+						"Insights37, Juried Show of Fine Arts, Wellington County Museum of Art & Archives",
+						""
+					)
+					+cvItem(
+						"2015",
+						"Colour Dance, KWSA Juried Exhibit, Homer Watson House & Gallery, Kitchener, ON",
+						""
+					)
+					+cvItem(
+						"2014",
+						"Biennial Juried Exhibit, Glenhyrst Art Gallery of Brant, Brantford, ON",
+						""
+					)
+					+cvItem(
+						"2014",
+						"Childhood Reveries, Juried Show at Guelph Civic Museum, Guelph, ON",
+						""
+					)
+					+cvItem(
+						"2014",
+						"After Imaging, KWSA Juried Exhibition, Homer Watson House @Gallery, Kitchener, ON",
+						""
+					)
+					+cvItem(
+						"2014",
+						"Winter14 Group Show curated by Frank Goldspink, Tag Art Gallery, St. Catharines, ON",
+						""
+					)
+					+cvItem(
+						"2014",
+						"Insights36, Juried Art Show, Wellington County Museum of Art &Archives, Fergus, ON",
+						""
+					)
+					+cvItem(
+						"2013",
+						"Art Gives Good Gifts (invitational) curated by Rennan Isaacs, Rennan Isaacs Contemporary, Guelph, ON",
+						""
+					)
+					+cvItem(
+						"2013",
+						"Art Initiatives, Juried Art Show, Sunnyside Beach, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2013",
+						"6th Annual Open Juried Show 2013, Beaux-Arts, Brampton, ON",
+						""
+					)
+					+cvItem(
+						"2012",
+						"Another Criteria, (invitational) curated by Javier Ramirez, Marzia Frozen Gallery, Berlin",
+						""
+					)
+					+cvItem(
+						"2012",
+						"Effetto di Florence Biennale, Museum of the City Merida, Mexico",
+						""
+					)
+					+cvItem(
+						"2012",
+						"Come Coriandoli a Carnevale, (invitational) Galleria Monteoliveto, Naples, Italy",
+						""
+					)
+					+cvItem(
+						"2012",
+						"Identities,International Artexpo, Koza Visual Culture and Arts Association, Instanbul",
+						""
+					)
+					+cvItem(
+						"2011",
+						"International Florence Biennial of Contemporary Art, Florence, Italy",
+						""
+					)
+					+cvItem(
+						"2011",
+						"Bare Essentials,curated by Ingrid Fassbender, Woman Made Gallery, Chicago, USA",
+						""
+					)
+					+cvItem(
+						"2011",
+						"Los Angeles Art Show, presented by Ward-Nasse Gallery, New York, NY, USA",
+						""
+					)
+					+cvItem(
+						"2010",
+						"Rockford Midwestern Biennial, Rockford Art Museum, IL, USA",
+						""
+					)
+					+cvItem(
+						"2010",
+						"Au Naturel, the Nude in the 21st Century, Art Center Gallery, Astoria, OR, USA",
+						""
+					)
+					+cvItem(
+						"2010",
+						"United in Art, San Paolo, Edificio Villa Lobos Cultural, Brazil",
+						"Title2"
+					)
+					+cvItem(
+						"2010",
+						"Women’s Vision, Ward-Nasse Gallery, New York, NY, USA",
+						""
+					)
+					+cvItem(
+						"2010",
+						"Her Mark 2010, Woman Made Gallery, Chicago, IL, USA",
+						""
+					)
+					+cvItem(
+						"2009",
+						"Membership Annual Show, Woman Made Gallery, Chicago, IL, USA",
+						""
+					)
+					+cvItem(
+						"2009",
+						"Works of Art on Paper, The Long Beach Island Foundation of Arts & Science, Loveladies,  NJ, USA",
+						""
+					)
+					+cvItem(
+						"2009",
+						"Icons & Art, curated by John Lucas, J Lucas Gallery, Provincetown, MA, USA",
+						""
+					)
+					+cvItem(
+						"2009",
+						"Her Mark 2009, Woman Made Gallery, Chicago, IL, USA",
+						""
+					)
+					+cvItem(
+						"2008",
+						"Works of Art on Paper, The Long Beach  Island Foundation of Arts & Sciences, Loveladies, NJ,USA",
+						""
+					)
+					+cvItem(
+						"2008",
+						"Promenade, Gallery Arte, Des Moines, IA, USA",
+						""
+					)
+					+cvItem(
+						"2008",
+						"40 National Art Exhibition, Octagon Center for the Arts, Ames, IA, USA",
+						""
+					)
+					+cvItem(
+						"2006",
+						"Signatures of Age, Woman Made Gallery, Chicago, IL, USA",
+						""
+					)
+					+cvItem(
+						"2006",
+						"Annual Graduate Exhibition, the University Museum, Indiana University of   Pennsylvania, PA, USA",
+						""
+					)
+					+cvItem(
+						"2005",
+						"IUP Graduate Art Association Exhibiti, Modern Formations Gallery, Pittsburgh, PA, USA Go Figure, Panza Gallery, Milvale, PA, USA",
+						""
+					)
+					+cvItem(
+						"2005",
+						"Annual Graduate Show, the University Museum, IUP, PA, USA",
+						""
+					)
+					+cvItem(
+						"2004",
+						"Advanced Drawing and Graduate Work’, Boxheart Gallery, Pittsburgh, PA, USA",
+						""
+					)
+					+cvItem(
+						"2004",
+						"The Eye and the Hand, Etobicoke Civic centre Art Gallery, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2004",
+						"Three Times One, Coop Gallery, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2003",
+						"Toronto-Artists’ Inspiration, Praxis Gallery, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2003",
+						"Juried Drawing Exhibition, The Eye and the Hand, Etobicoke Civic Centre, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2002",
+						"Ten Top Winners of the 34th Juried Art Show,  Zavitz Gallery, University of Guelph",
+						""
+					)
+					+cvItem(
+						"2002",
+						"Juried 42nd Painting on the Green (GCAA),  Guelph, ON",
+						""
+					)
+					+cvItem(
+						"2001",
+						"Chasing after the Elusive, Acadia Gallery, Toronto, ON",
+						""
+					)
+					+cvItem(
+						"2008",
+						"Would be Systems, BA Honors Thesis Show,  Zavitz Gallery, University of Guelph",
+						""
+					)
+					+cvItem(
+						"2000",
+						"Juried 40th Painting on the Green, GCAA, Guelph, ON",
+						""
+					)
+					+cvItem(
+						"2000",
+						"Juried show of GCAA Expressions, Guelph, ON",
+						""
+					)
+			section.ap-c-mdl-cv__section#awards
+				+cvHeader(
+					"Selected Awards, Honours & Grants"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2018",
+						"Ontario Arts Council Exhibition Assistance",
+						"Mississauga, ON"
+					)
+					+cvItem(
+						"2017",
+						"Second Place, Juried VAM Show, Beyond",
+						"Mississauga, ON"
+					)
+					+cvItem(
+						"2017",
+						"Second Place, Juried VAM Annual Members Show",
+						"Title2"
+					)
+					+cvItem(
+						"2017",
+						"Honorable Mention, Hidden Valley Revealed, Homer Watson Gallery",
+						"Kitchener, ON – Juried by curator Faith Hieblinger"
+					)
+					+cvItem(
+						"2016",
+						"First Place, 38th VAM Juried Show of Fine Arts",
+						"Mississauga, ON – Juried by Stewart Keeler, Lila Lewis Irving, Camille Turner"
+					)
+					+cvItem(
+						"2016",
+						"Jurors Award Gold, KWSA Annual Juried Show, Homer Watson House & Gallery",
+						"Kitchener, ON — Juried by Megan Press and Cole Swanson"
+					)
+					+cvItem(
+						"2015",
+						"First Place, Architextural Identities, VAM Juried Exhibit, Central Library",
+						"Mississauga, ON — Juried by Kendra Ainsworth"
+					)
+					+cvItem(
+						"2015",
+						"Painting Award of 36th Annual Juried Exhibition of Fine Arts Insights, Wellington Museum of Art and Archives",
+						"Fergus, ON — Juried by Ilse Gassinger& Ron Shuebrook"
+					)
+					+cvItem(
+						"2015",
+						"Jurors Award Silver, KWSA Juried Exhibit After Imaging, Homer Watson House & Gallery",
+						"Kitchener, ON — Juried by Deidre Chisholm"
+					)
+					+cvItem(
+						"2013",
+						"Honorable Mention, 6th Annual Juried Show, Beaux-Arts Brampton",
+						"Brampton, ON — Juried by Lisa Deanne and Dana Holst"
+					)
+					+cvItem(
+						"2011",
+						"Fourth International Award of LORENZO de MEDICI, Florence Biennale of Contemporary Art",
+						"Florence, Italy"
+					)
+					+cvItem(
+						"2010",
+						"Solo Show Award, Clatsop Community College, Art Center Gallery",
+						"Astoria, OR, USA — Curated by Laura Russo and Christine Shauck"
+					)
+					+cvItem(
+						"2010",
+						"Workshop Award, Clatsop Community College, Art Center Gallery",
+						"Astoria, OR, USA"
+					)
+					+cvItem(
+						"2010",
+						"Research Grant Not only Social Butterflies Fly, Indiana University of Pennsylvania",
+						"Indiana, PA, USA"
+					)
+					+cvItem(
+						"2005",
+						"Seventh place, Top 10 Winners of 34 Juried Art Show, SOFAM, University of Guelph",
+						"Guelph, ON"
+					)
+					+cvItem(
+						"2002",
+						"First Prize, Juried 42nd Painting on the Green (GCAA)",
+						"Guelph, ON"
+					)
+			section.ap-c-mdl-cv__section#commissions
+				+cvHeader(
+					"Public Commissions / Collections"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2015",
+						"Portraits of Dr. Wayne Martin and Dr. Ian Dohoo",
+						"University of Guelph and University of Prince Edward Island"
+					)
+					+cvItem(
+						"2006",
+						"Two portraits of Dr. Carlton Gyles",
+						"Ontario Veterinary College, University of Guelph"
+					)
+					+cvItem(
+						"2004",
+						"Portrait of Dr. Frank W. Schofield",
+						"Ontario Veterinary College, University of Guelph"
+					)
+			section.ap-c-mdl-cv__section#bibliography
+				+cvHeader(
+					"Selected Bibliography"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2018",
+						"Katie Wilde – Member Spotlight: Grazyna Adamska-Jarecka in Studio",
+						"Guelph Arts Council"
+					)
+					+cvItem(
+						"2018",
+						"Kasia Jaronczyk: Guelph Artist’s Paintings Explore Immigrant Experience of Loss",
+						"Guelph Mercury Tribune, May 10, 18, p. 32-33"
+					)
+					+cvItem(
+						"2015",
+						"Rlaud Abdul Samuel Kan – And First Place Goes To",
+						"The Medium, Jan 18"
+					)
+					+cvItem(
+						"2015",
+						"Fall Exhibit, Curatorial Statement",
+						"p. 3, Homer Watson House and Gallery Newsletter"
+					)
+					+cvItem(
+						"2015",
+						"VAM Announces Opening of Architextural Identities Exhibit",
+						"North Mississauga SNAPD, Dec 9"
+					)
+					+cvItem(
+						"2015",
+						"Robert Reid – Nature a Big Inspiration",
+						"Kitchener Record, April 9, Section C"
+					)
+					+cvItem(
+						"2014",
+						"J.Z. – Exposing Grazyna Adamska-Jarecka",
+						"Tussle Magazine, Toronto"
+					)
+					+cvItem(
+						"2014",
+						"Yep its Her",
+						"Guelph Tribune, Entertainment, March 13, 2014"
+					)
+					+cvItem(
+						"2013",
+						"Article: And the Award Goes to",
+						"Brampton Guardian, April 13, 2013"
+					)
+					+cvItem(
+						"2010",
+						"Airi Kondo-Mattews,’ Becoming Transparent at CCC",
+						"The Bandit, October 2010, p. 8"
+					)
+					+cvItem(
+						"2010",
+						"Becoming Transparent, Au Naturel Solo Show Award Winner Grazyna Adamska-Jarecka",
+						"HIPFiSH monthly, Vol. 11, Issue 144, p. 16, September 2010"
+					)
+					+cvItem(
+						"2010",
+						"Midwestern Masterpieces",
+						"Rockford Register Star, January 18, 2010"
+					)
+					+cvItem(
+						"2010",
+						"Her Mark, A Journal of Art and Poetry",
+						"Woman Made Gallery, Chicago, IL, p. 59"
+					)
+					+cvItem(
+						"2010",
+						"Studio Visit Magazine, Vol. 7",
+						"p. 4, The Open Studio Press, Boston, MA, USA"
+					)
+					+cvItem(
+						"2009",
+						"Michael Morain, Art of Healing",
+						"Des Moines Register, April 12, 2009, p.2"
+					)
+					+cvItem(
+						"2009",
+						"Her Mark, A Journal of Art and Poetry",
+						"Woman Made Gallery, Chicago, IL"
+					)
+					+cvItem(
+						"2009",
+						"The Insufficiency of Self on Display in ArtSpace Gallery",
+						"The Ames Tribune, April 12, p. B2"
+					)
+					+cvItem(
+						"2008",
+						"Studio Visit Magazine, Vol. 2",
+						"p. 4, The Open Studio Press, Boston, MA, USA"
+					)
+			section.ap-c-mdl-cv__section#catalogues
+				+cvHeader(
+					"Catalogues"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2017",
+						"14th Annual Auction of Fine Art",
+						"Art Gallery of Mississauga"
+					)
+					+cvItem(
+						"2016",
+						"9th Open Juried Show",
+						"Beaux-Arts, Brampton"
+					)
+					+cvItem(
+						"2014",
+						"Guelph Jazz Festival",
+						"Auction Catalogue"
+					)
+					+cvItem(
+						"2013",
+						"6th Annual Open Juried Show",
+						"Beaux-Arts, Brampton"
+					)
+					+cvItem(
+						"2012",
+						"Exhibicion Internacional de Arte Contemporaneo",
+						"Effetto Biennale, Merida 2012, p.12"
+					)
+					+cvItem(
+						"2011",
+						"Catalogue of 2011 Florence Biennial, Italy",
+						"p. 5"
+					)
+					+cvItem(
+						"2010",
+						"Catalogue of the 2010 Los Angeles Art Show",
+						"p. 182"
+					)
+			section.ap-c-mdl-cv__section#education
+				+cvHeader(
+					"Education"
+				)
+				ul.ap-c-mdl-cv__list
+					+cvItem(
+						"2006",
+						"Masters of Fine Arts in Painting",
+						"Indiana University of Pennsylvania, PA, USA"
+					)
+					+cvItem(
+						"2002",
+						"Bachelor of Arts with Honours in Studio Art",
+						"University of Guelph, Canada"
+					)
+
+block secondaryContent
+	include partial/_scn-press.pug
+	include partial/_scn-instagram.pug

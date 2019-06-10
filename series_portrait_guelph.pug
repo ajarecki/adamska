@@ -1,0 +1,118 @@
+extends partial/_tmp-series.pug
+
+//- Picks from the Guelph Community
+
+block config
+	-
+		var series = {
+			id:      portraitGuelph.id,
+			name:    portraitGuelph.name,
+			info:    portraitGuelph.info,
+			link:    portraitGuelph.link,
+			date:    portraitGuelph.date,
+			hero1:   portraitGuelph.hero,
+			hero2:   workPortrait.hero,
+			colname: workPortrait.name,
+			collink: workPortrait.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"watercolour"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"paper"
+	)
+
+block navSubmenu
+	+navPortraitGuelph
+
+block galleryContent
+	//- Unpublished
+	//- +portraitGuelphS01
+	//- +portraitGuelphS01b
+	//- +portraitGuelphS01c
+	//- +portraitGuelphS01d
+	//- +portraitGuelphG01
+	//- +portraitGuelphS02
+	//- +portraitGuelphS02b
+	//- +portraitGuelphS02c
+	//- +portraitGuelphS02d
+	//- +portraitGuelphS02e
+	//- +portraitGuelphS02f
+	//- +portraitGuelphG02
+	//- +portraitGuelphG02b
+	//- +portraitGuelphS03
+	//- +portraitGuelphS03b
+	//- +portraitGuelphS03c
+	//- +portraitGuelphG03
+	//- +portraitGuelphS04
+	//- +portraitGuelphS04b
+	//- +portraitGuelphS04c
+	//- +portraitGuelphG04
+	//- +portraitGuelphS05
+	//- +portraitGuelphS05b
+	//- +portraitGuelphS05c
+	//- +portraitGuelphG05
+	//- +portraitGuelphS06
+	//- +portraitGuelphS06b
+	//- +portraitGuelphS06c
+	//- +portraitGuelphG06
+	//- +portraitGuelphS07
+	//- +portraitGuelphS07b
+	//- +portraitGuelphS07c
+	//- +portraitGuelphG07
+	//- +portraitGuelphS08
+	//- +portraitGuelphS08b
+	//- +portraitGuelphS09
+	//- +portraitGuelphS09b
+	//- +portraitGuelphS10
+	//- +portraitGuelphS10b
+	//- +portraitGuelphS11
+	//- +portraitGuelphS11b
+	//- +portraitGuelphS12
+	//- +portraitGuelphS12
+	//- +portraitGuelphS12b
+	//- +portraitGuelphS12c
+	//- +portraitGuelphS13
+	//- +portraitGuelphS13b
+	//- +portraitGuelphS14
+	//- +portraitGuelphS14b
+	//- +portraitGuelphS15
+	//- +portraitGuelphS15b
+	//- +portraitGuelphS16
+	//- +portraitGuelphS16b
+	//- +portraitGuelphS17
+	//- +portraitGuelphS18
+	//- +portraitGuelphS19
+	//- +portraitGuelphS20
+	//- +portraitGuelphS21
+	//- +portraitGuelphS22
+	//- +portraitGuelphS23
+	//- +portraitGuelphS24
+	//- +portraitGuelphS25
+	//- +portraitGuelphS26
+	//- +portraitGuelphS27
+	//- +portraitGuelphS27b
+	//- +portraitGuelphS27c
+	//- +portraitGuelphS27d
+	//- +portraitGuelphG11
+	//- +portraitGuelphG08
+	//- +portraitGuelphG09
+	//- +portraitGuelphG10
+	//- +portraitGuelphP01
+
+block relatedSeries01
+	+seriesPortraitGuelph
+
+block relatedSeries02
+	+seriesPortraitGuelph
+
+block relatedSeries03
+	+seriesPortraitGuelph
+
+block relatedSeries04
+	+seriesPortraitGuelph

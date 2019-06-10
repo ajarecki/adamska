@@ -1,0 +1,67 @@
+extends partial/_tmp-series.pug
+
+//- Abstracted Landscapes
+
+block config
+	-
+		var series = {
+			id:      abstractLandscapes.id,
+			name:    abstractLandscapes.name,
+			info:    abstractLandscapes.info,
+			link:    abstractLandscapes.link,
+			date:    abstractLandscapes.date,
+			hero1:   abstractLandscapes.hero,
+			hero2:   workAbstract.hero,
+			colname: workAbstract.name,
+			collink: workAbstract.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navAbstractLandscapes
+
+block galleryContent
+	+abstractLandscapesS01
+	+abstractLandscapesS02
+	+abstractLandscapesS03
+	+abstractLandscapesS04
+	+abstractLandscapesS05
+	+abstractLandscapesS06
+	+abstractLandscapesS07
+	+abstractLandscapesS08
+	+abstractLandscapesS09
+	+abstractLandscapesS10
+	+abstractLandscapesS11
+	+abstractLandscapesS12
+	+abstractLandscapesS13
+	+abstractLandscapesS14
+	+abstractLandscapesS15
+	//- S16 not ready
+	//- +abstractLandscapesS16
+	+abstractLandscapesS17
+	+abstractLandscapesS18
+	+abstractLandscapesS19
+	+abstractLandscapesS20
+	+abstractLandscapesS21
+
+block relatedSeries01
+	+seriesAbstractSelectedVol1
+
+block relatedSeries02
+	+seriesAbstractShapes
+
+block relatedSeries03
+	+seriesAbstractGrace
+
+block relatedSeries04
+	+seriesAbstractFlames

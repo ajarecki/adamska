@@ -1,0 +1,1548 @@
+// Base variables
+
+// Global sizing units
+// "$unit" might be a better name for this
+$grd: 8px;
+
+// Media queries
+// Breakpoint widths
+$widthSmallPhone: 360px;
+$widthPhone: 599px;
+$widthTabletPortrait: 600px;
+$widthTabletLandscape: 900px;
+$widthTablet: 1020px;
+$widthDesktop: 1200px;
+$widthBigDesktop: 1440px;
+
+// Responsive design breakpoints
+// Reference:
+// https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
+@mixin forSmallPhoneOnly {
+	@media (max-width: $widthSmallPhone) {
+		@content;
+	}
+}
+@mixin forSmallPhoneUp {
+	@media (min-width: $widthSmallPhone) {
+		@content;
+	}
+}
+@mixin forPhoneOnly {
+	@media (max-width: $widthPhone) {
+		@content;
+	}
+}
+@mixin forPhoneUp {
+	@media (min-width: $widthPhone) {
+		@content;
+	}
+}
+@mixin forTabletOnly {
+	@media (max-width: $widthTablet) {
+		@content;
+	}
+}
+@mixin forTabletUp {
+	@media (min-width: $widthTablet) {
+		@content;
+	}
+}
+@mixin forTabletPortraitOnly {
+	@media (max-width: $widthTabletPortrait) {
+		@content;
+	}
+}
+@mixin forTabletPortraitUp {
+	@media (min-width: $widthTabletPortrait) {
+		@content;
+	}
+}
+@mixin forTabletLandscapeOnly {
+	@media (max-width: $widthTabletLandscape) {
+		@content; 
+	}
+}
+@mixin forTabletLandscapeUp {
+	@media (min-width: $widthTabletLandscape) {
+		@content;
+	}
+}
+@mixin forDesktopOnly {
+	@media (max-width: $widthDesktop) {
+		@content;
+	}
+}
+@mixin forDesktopUp {
+	@media (min-width: $widthDesktop) {
+		@content;
+	}
+}
+// Width values match that of the main content container
+@mixin forBigDesktopOnly {
+	@media (max-width: $widthBigDesktop) {
+		@content;
+	}
+}
+@mixin forBigDesktopUp {
+	@media (min-width: $widthBigDesktop) {
+		@content;
+	}
+}
+
+// Print styles
+@mixin forPrint {
+	@media print {
+		@content;
+	}
+}
+
+// Utilities
+// Reset browser styles
+%resetBox {
+	margin: 0;
+	padding: 0;
+}
+// Clearfix hack
+%clearFix {
+	&::after {
+		content: "";
+		display: block; 
+		clear: both;
+	}
+}
+// Hide completely
+%hideItem {
+	display: none !important;
+	visibility: hidden !important;
+}
+// Hide on small viewports
+%hidePhone {
+	@include forPhoneOnly {
+		display: none !important;
+		visibility: hidden !important;
+	}
+}
+// Show on small viewports
+%showPhone {
+	@include forPhoneOnly {
+		display: block !important;
+		visibility: visible !important;
+	}
+}
+// Disable links
+%disableLink {
+	pointer-events: none !important;
+	cursor: default !important;
+	text-decoration: none !important;
+	&:hover,
+	&:focus,
+	&:active {
+		color: inherit;
+		span {
+			color: inherit;
+		}
+	}
+}
+
+// Block centering
+%marginAuto {
+	float: none;
+	margin: {
+		right: auto;
+		left: auto;
+	}
+}
+
+// Positioning
+%positionFull {
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+%positionAbsolute {
+	@extend %positionFull;
+	display: block;
+	position: absolute;
+}
+%positionFixed {
+	@extend %positionFull;
+	display: block;
+	position: fixed;
+}
+
+// Widths
+// Full browser width
+%widthFull {
+	display: block;
+	width: 100%;
+}
+// Container max-width opt-in
+%widthWrap {
+	@extend %widthFull;
+	@extend %marginAuto;
+	// max-width matches mixin "forBigDesktopUp" min-width
+	max-width: $widthBigDesktop;
+}
+// Module content container max-width opt-in
+%widthModule {
+	@extend %widthFull;
+	@extend %marginAuto;
+	max-width: $widthBigDesktop - 128px;
+}
+
+// Spacing
+// Vertical values are larger than their respective horizontal values
+
+// Vertical spacing base sizes
+$spaceVertical: $grd * 14;
+$spaceVerticalDesktop: $grd * 10;
+$spaceVerticalTablet: $grd * 8;
+$spaceVerticalPhone: $grd * 6;
+$spaceVerticalBigDesktop: $grd * 18;
+
+// Horizontal spacing base sizes
+$spaceHorizontal: $grd * 12;
+$spaceHorizontalDesktop: $grd * 8;
+$spaceHorizontalTablet: $grd * 6;
+$spaceHorizontalPhone: $grd * 4;
+$spaceHorizontalBigDesktop: $grd * 16;
+
+
+// Padding
+
+// Base padding sizes
+%paddingTop {
+	padding-top: $spaceVertical;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop;
+	}
+}
+%paddingBottom {
+	padding-bottom: $spaceVertical;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop;
+	}
+}
+%paddingLeft {
+	padding-left: $spaceHorizontal;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop;
+	}
+}
+%paddingRight {
+	padding-right: $spaceHorizontal;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop;
+	}
+}
+%paddingTopBottom {
+	@extend %paddingTop;
+	@extend %paddingBottom;
+}
+%paddingLeftRight {
+	@extend %paddingLeft;
+	@extend %paddingRight;
+}
+%paddingAll {
+	@extend %paddingTopBottom;
+	@extend %paddingLeftRight;
+}
+
+// Quadruple base padding sizes
+%paddingTopQuadruple {
+	padding-top: $spaceVertical * 4;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop * 4;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet * 4;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop * 4;
+	}
+}
+%paddingBottomQuadruple {
+	padding-bottom: $spaceVertical * 4;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop * 4;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet * 4;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop * 4;
+	}
+}
+%paddingLeftQuadruple {
+	padding-left: $spaceHorizontal * 4;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop * 4;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet * 4;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop * 4;
+	}
+}
+%paddingRightQuadruple {
+	padding-right: $spaceHorizontal * 4;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop * 4;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet * 4;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop * 4;
+	}
+}
+%paddingTopBottomQuadruple {
+	@extend %paddingTopQuadruple;
+	@extend %paddingBottomQuadruple;
+}
+%paddingLeftRightQuadruple {
+	@extend %paddingLeftQuadruple;
+	@extend %paddingRightQuadruple;
+}
+%paddingAllQuadruple {
+	@extend %paddingTopBottomQuadruple;
+	@extend %paddingLeftRightQuadruple;
+}
+
+// Triple base padding sizes
+%paddingTopTriple {
+	padding-top: $spaceVertical * 3;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop * 3;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet * 3;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop * 3;
+	}
+}
+%paddingBottomTriple {
+	padding-bottom: $spaceVertical * 3;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop * 3;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet * 3;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop * 3;
+	}
+}
+%paddingLeftTriple {
+	padding-left: $spaceHorizontal * 3;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop * 3;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet * 3;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop * 3;
+	}
+}
+%paddingRightTriple {
+	padding-right: $spaceHorizontal * 3;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop * 3;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet * 3;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop * 3;
+	}
+}
+%paddingTopBottomTriple {
+	@extend %paddingTopTriple;
+	@extend %paddingBottomTriple;
+}
+%paddingLeftRightTriple {
+	@extend %paddingLeftTriple;
+	@extend %paddingRightTriple;
+}
+%paddingAllTriple {
+	@extend %paddingTopBottomTriple;
+	@extend %paddingLeftRightTriple;
+}
+
+// Double base padding sizes
+%paddingTopDouble {
+	padding-top: $spaceVertical * 2;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop * 2;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet * 2;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop * 2;
+	}
+}
+%paddingBottomDouble {
+	padding-bottom: $spaceVertical * 2;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop * 2;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet * 2;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop * 2;
+	}
+}
+%paddingLeftDouble {
+	padding-left: $spaceHorizontal * 2;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop * 2;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet * 2;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop * 2;
+	}
+}
+%paddingRightDouble {
+	padding-right: $spaceHorizontal * 2;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop * 2;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet * 2;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop * 2;
+	}
+}
+%paddingTopBottomDouble {
+	@extend %paddingTopDouble;
+	@extend %paddingBottomDouble;
+}
+%paddingLeftRightDouble {
+	@extend %paddingLeftDouble;
+	@extend %paddingRightDouble;
+}
+%paddingAllDouble {
+	@extend %paddingTopBottomDouble;
+	@extend %paddingLeftRightDouble;
+}
+
+// One and one half base padding sizes
+%paddingTopAndHalf {
+	padding-top: $spaceVertical * 1.5;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop * 1.5;
+	}
+}
+%paddingBottomAndHalf {
+	padding-bottom: $spaceVertical * 1.5;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop * 1.5;
+	}
+}
+%paddingLeftAndHalf {
+	padding-left: $spaceHorizontal * 1.5;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop * 1.5;
+	}
+}
+%paddingRightAndHalf {
+	padding-right: $spaceHorizontal * 1.5;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop * 1.5;
+	}
+}
+%paddingTopBottomAndHalf {
+	@extend %paddingTopAndHalf;
+	@extend %paddingBottomAndHalf;
+}
+%paddingLeftRightAndHalf {
+	@extend %paddingLeftAndHalf;
+	@extend %paddingRightAndHalf;
+}
+%paddingAllAndHalf {
+	@extend %paddingTopBottomAndHalf;
+	@extend %paddingLeftRightAndHalf;
+}
+
+// Three quarters base padding sizes
+%paddingTopThreeQuarters {
+	padding-top: $spaceVertical * .75;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop * .75;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet * .75;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop * .75;
+	}
+}
+%paddingBottomThreeQuarters {
+	padding-bottom: $spaceVertical * .75;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop * .75;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet * .75;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop * .75;
+	}
+}
+%paddingLeftThreeQuarters {
+	padding-left: $spaceHorizontal * .75;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop * .75;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet * .75;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop * .75;
+	}
+}
+%paddingRightThreeQuarters {
+	padding-right: $spaceHorizontal * .75;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop * .75;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet * .75;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop * .75;
+	}
+}
+%paddingTopBottomThreeQuarters {
+	@extend %paddingTopThreeQuarters;
+	@extend %paddingBottomThreeQuarters;
+}
+%paddingLeftRightThreeQuarters {
+	@extend %paddingLeftThreeQuarters;
+	@extend %paddingRightThreeQuarters;
+}
+%paddingAllThreeQuarters {
+	@extend %paddingTopBottomThreeQuarters;
+	@extend %paddingLeftRightThreeQuarters;
+}
+
+// Half base padding sizes
+%paddingTopHalf {
+	padding-top: $spaceVertical / 2;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop / 2;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet / 2;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop / 2;
+	}
+}
+%paddingBottomHalf {
+	padding-bottom: $spaceVertical / 2;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop / 2;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet / 2;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop / 2;
+	}
+}
+%paddingLeftHalf {
+	padding-left: $spaceHorizontal / 2;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop / 2;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet / 2;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop / 2;
+	}
+}
+%paddingRightHalf {
+	padding-right: $spaceHorizontal / 2;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop / 2;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet / 2;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop / 2;
+	}
+}
+%paddingTopBottomHalf {
+	@extend %paddingTopHalf;
+	@extend %paddingBottomHalf;
+}
+%paddingLeftRightHalf {
+	@extend %paddingLeftHalf;
+	@extend %paddingRightHalf;
+}
+%paddingAllHalf {
+	@extend %paddingTopBottomHalf;
+	@extend %paddingLeftRightHalf;
+}
+
+// Third base padding sizes
+%paddingTopThird {
+	padding-top: $spaceVertical / 3;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop / 3;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet / 3;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop / 3;
+	}
+}
+%paddingBottomThird {
+	padding-bottom: $spaceVertical / 3;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop / 3;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet / 3;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop / 3;
+	}
+}
+%paddingLeftThird {
+	padding-left: $spaceHorizontal / 3;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop / 3;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet / 3;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop / 3;
+	}
+}
+%paddingRightThird {
+	padding-right: $spaceHorizontal / 3;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop / 3;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet / 3;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop / 3;
+	}
+}
+%paddingTopBottomThird {
+	@extend %paddingTopThird;
+	@extend %paddingBottomThird;
+}
+%paddingLeftRightThird {
+	@extend %paddingLeftThird;
+	@extend %paddingRightThird;
+}
+%paddingAllThird {
+	@extend %paddingTopBottomThird;
+	@extend %paddingLeftRightThird;
+}
+
+// Quarter base padding sizes
+%paddingTopQuarter {
+	padding-top: $spaceVertical / 4;
+	@include forDesktopOnly {
+		padding-top: $spaceVerticalDesktop / 4;
+	}
+	@include forTabletOnly {
+		padding-top: $spaceVerticalTablet / 4;
+	}
+	@include forPhoneOnly {
+		padding-top: $spaceVerticalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		padding-top: $spaceVerticalBigDesktop / 4;
+	}
+}
+%paddingBottomQuarter {
+	padding-bottom: $spaceVertical / 4;
+	@include forDesktopOnly {
+		padding-bottom: $spaceVerticalDesktop / 4;
+	}
+	@include forTabletOnly {
+		padding-bottom: $spaceVerticalTablet / 4;
+	}
+	@include forPhoneOnly {
+		padding-bottom: $spaceVerticalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		padding-bottom: $spaceVerticalBigDesktop / 4;
+	}
+}
+%paddingLeftQuarter {
+	padding-left: $spaceHorizontal / 4;
+	@include forDesktopOnly {
+		padding-left: $spaceHorizontalDesktop / 4;
+	}
+	@include forTabletOnly {
+		padding-left: $spaceHorizontalTablet / 4;
+	}
+	@include forPhoneOnly {
+		padding-left: $spaceHorizontalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		padding-left: $spaceHorizontalBigDesktop / 4;
+	}
+}
+%paddingRightQuarter {
+	padding-right: $spaceHorizontal / 4;
+	@include forDesktopOnly {
+		padding-right: $spaceHorizontalDesktop / 4;
+	}
+	@include forTabletOnly {
+		padding-right: $spaceHorizontalTablet / 4;
+	}
+	@include forPhoneOnly {
+		padding-right: $spaceHorizontalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		padding-right: $spaceHorizontalBigDesktop / 4;
+	}
+}
+%paddingTopBottomQuarter {
+	@extend %paddingTopQuarter;
+	@extend %paddingBottomQuarter;
+}
+%paddingLeftRightQuarter {
+	@extend %paddingLeftQuarter;
+	@extend %paddingRightQuarter;
+}
+%paddingAllQuarter {
+	@extend %paddingTopBottomQuarter;
+	@extend %paddingLeftRightQuarter;
+}
+
+
+// Margins
+// These use the same values as padding
+
+// Base margin sizes
+%marginTop {
+	margin-top: $spaceVertical;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop;
+	}
+}
+%marginBottom {
+	margin-bottom: $spaceVertical;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop;
+	}
+}
+%marginLeft {
+	margin-left: $spaceHorizontal;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop;
+	}
+}
+%marginRight {
+	margin-right: $spaceHorizontal;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop;
+	}
+}
+%marginTopBottom {
+	@extend %marginTop;
+	@extend %marginBottom;
+}
+%marginLeftRight {
+	@extend %marginLeft;
+	@extend %marginRight;
+}
+%marginAll {
+	@extend %marginTopBottom;
+	@extend %marginLeftRight;
+}
+
+// Quadruple margin padding sizes
+%marginTopQuadruple {
+	margin-top: $spaceVertical * 4;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop * 4;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet * 4;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop * 4;
+	}
+}
+%marginBottomQuadruple {
+	margin-bottom: $spaceVertical * 4;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop * 4;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet * 4;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop * 4;
+	}
+}
+%marginLeftQuadruple {
+	margin-left: $spaceHorizontal * 4;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop * 4;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet * 4;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop * 4;
+	}
+}
+%marginRightQuadruple {
+	margin-right: $spaceHorizontal * 4;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop * 4;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet * 4;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone * 4;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop * 4;
+	}
+}
+%marginTopBottomQuadruple {
+	@extend %marginTopQuadruple;
+	@extend %marginBottomQuadruple;
+}
+%marginLeftRightQuadruple {
+	@extend %marginLeftQuadruple;
+	@extend %marginRightQuadruple;
+}
+%marginAllQuadruple {
+	@extend %marginTopBottomQuadruple;
+	@extend %marginLeftRightQuadruple;
+}
+
+// Triple base margin sizes
+%marginTopTriple {
+	margin-top: $spaceVertical * 3;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop * 3;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet * 3;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop * 3;
+	}
+}
+%marginBottomTriple {
+	margin-bottom: $spaceVertical * 3;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop * 3;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet * 3;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop * 3;
+	}
+}
+%marginLeftTriple {
+	margin-left: $spaceHorizontal * 3;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop * 3;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet * 3;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop * 3;
+	}
+}
+%marginRightTriple {
+	margin-right: $spaceHorizontal * 3;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop * 3;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet * 3;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone * 3;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop * 3;
+	}
+}
+%marginTopBottomTriple {
+	@extend %marginTopTriple;
+	@extend %marginBottomTriple;
+}
+%marginLeftRightTriple {
+	@extend %marginLeftTriple;
+	@extend %marginRightTriple;
+}
+%marginAllTriple {
+	@extend %marginTopBottomTriple;
+	@extend %marginLeftRightTriple;
+}
+
+// Double base margin sizes
+%marginTopDouble {
+	margin-top: $spaceVertical * 2;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop * 2;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet * 2;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop * 2;
+	}
+}
+%marginBottomDouble {
+	margin-bottom: $spaceVertical * 2;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop * 2;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet * 2;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop * 2;
+	}
+}
+%marginLeftDouble {
+	margin-left: $spaceHorizontal * 2;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop * 2;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet * 2;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop * 2;
+	}
+}
+%marginRightDouble {
+	margin-right: $spaceHorizontal * 2;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop * 2;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet * 2;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone * 2;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop * 2;
+	}
+}
+%marginTopBottomDouble {
+	@extend %paddingTopDouble;
+	@extend %paddingBottomDouble;
+}
+%marginLeftRightDouble {
+	@extend %paddingLeftDouble;
+	@extend %paddingRightDouble;
+}
+%marginAllDouble {
+	@extend %marginTopBottomDouble;
+	@extend %marginLeftRightDouble;
+}
+
+// One and one half base margin sizes
+%marginTopAndHalf {
+	margin-top: $spaceVertical * 1.5;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop * 1.5;
+	}
+}
+%marginBottomAndHalf {
+	margin-bottom: $spaceVertical * 1.5;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop * 1.5;
+	}
+}
+%marginLeftAndHalf {
+	margin-left: $spaceHorizontal * 1.5;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop * 1.5;
+	}
+}
+%marginRightAndHalf {
+	margin-right: $spaceHorizontal * 1.5;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop * 1.5;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet * 1.5;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone * 1.5;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop * 1.5;
+	}
+}
+%marginTopBottomAndHalf {
+	@extend %paddingTopAndHalf;
+	@extend %paddingBottomAndHalf;
+}
+%marginLeftRightAndHalf {
+	@extend %paddingLeftAndHalf;
+	@extend %paddingRightAndHalf;
+}
+%marginAllAndHalf {
+	@extend %marginTopBottomAndHalf;
+	@extend %marginLeftRightAndHalf;
+}
+
+// Three quarters base margin sizes
+%marginTopThreeQuarters {
+	margin-top: $spaceVertical * .75;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop * .75;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet * .75;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop * .75;
+	}
+}
+%marginBottomThreeQuarters {
+	margin-bottom: $spaceVertical * .75;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop * .75;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet * .75;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop * .75;
+	}
+}
+%marginLeftThreeQuarters {
+	margin-left: $spaceHorizontal * .75;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop * .75;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet * .75;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop * .75;
+	}
+}
+%marginRightThreeQuarters {
+	margin-right: $spaceHorizontal * .75;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop * .75;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet * .75;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone * .75;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop * .75;
+	}
+}
+%marginTopBottomThreeQuarters {
+	@extend %marginTopThreeQuarters;
+	@extend %marginBottomThreeQuarters;
+}
+%marginLeftRightThreeQuarters {
+	@extend %marginLeftThreeQuarters;
+	@extend %marginRightThreeQuarters;
+}
+%marginAllThreeQuarters {
+	@extend %marginTopBottomThreeQuarters;
+	@extend %marginLeftRightThreeQuarters;
+}
+
+// Half base margin sizes
+%marginTopHalf {
+	margin-top: $spaceVertical / 2;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop / 2;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet / 2;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop / 2;
+	}
+}
+%marginBottomHalf {
+	margin-bottom: $spaceVertical / 2;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop / 2;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet / 2;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop / 2;
+	}
+}
+%marginLeftHalf {
+	margin-left: $spaceHorizontal / 2;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop / 2;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet / 2;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop / 2;
+	}
+}
+%marginRightHalf {
+	margin-right: $spaceHorizontal / 2;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop / 2;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet / 2;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone / 2;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop / 2;
+	}
+}
+%marginTopBottomHalf {
+	@extend %paddingTopHalf;
+	@extend %paddingBottomHalf;
+}
+%marginLeftRightHalf {
+	@extend %paddingLeftHalf;
+	@extend %paddingRightHalf;
+}
+%marginAllHalf {
+	@extend %paddingTopBottomHalf;
+	@extend %paddingLeftRightHalf;
+}
+
+// Third base margin sizes
+%marginTopThird {
+	margin-top: $spaceVertical / 3;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop / 3;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet / 3;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop / 3;
+	}
+}
+%marginBottomThird {
+	margin-bottom: $spaceVertical / 3;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop / 3;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet / 3;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop / 3;
+	}
+}
+%marginLeftThird {
+	margin-left: $spaceHorizontal / 3;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop / 3;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet / 3;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop / 3;
+	}
+}
+%marginRightThird {
+	margin-right: $spaceHorizontal / 3;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop / 3;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet / 3;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone / 3;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop / 3;
+	}
+}
+%marginTopBottomThird {
+	@extend %marginTopThird;
+	@extend %marginBottomThird;
+}
+%marginLeftRightThird {
+	@extend %marginLeftThird;
+	@extend %marginRightThird;
+}
+%marginAllThird {
+	@extend %marginTopBottomThird;
+	@extend %marginLeftRightThird;
+}
+
+// Quarter base margin sizes
+%marginTopQuarter {
+	margin-top: $spaceVertical / 4;
+	@include forDesktopOnly {
+		margin-top: $spaceVerticalDesktop / 4;
+	}
+	@include forTabletOnly {
+		margin-top: $spaceVerticalTablet / 4;
+	}
+	@include forPhoneOnly {
+		margin-top: $spaceVerticalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		margin-top: $spaceVerticalBigDesktop / 4;
+	}
+}
+%marginBottomQuarter {
+	margin-bottom: $spaceVertical / 4;
+	@include forDesktopOnly {
+		margin-bottom: $spaceVerticalDesktop / 4;
+	}
+	@include forTabletOnly {
+		margin-bottom: $spaceVerticalTablet / 4;
+	}
+	@include forPhoneOnly {
+		margin-bottom: $spaceVerticalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		margin-bottom: $spaceVerticalBigDesktop / 4;
+	}
+}
+%marginLeftQuarter {
+	margin-left: $spaceHorizontal / 4;
+	@include forDesktopOnly {
+		margin-left: $spaceHorizontalDesktop / 4;
+	}
+	@include forTabletOnly {
+		margin-left: $spaceHorizontalTablet / 4;
+	}
+	@include forPhoneOnly {
+		margin-left: $spaceHorizontalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		margin-left: $spaceHorizontalBigDesktop / 4;
+	}
+}
+%marginRightQuarter {
+	margin-right: $spaceHorizontal / 4;
+	@include forDesktopOnly {
+		margin-right: $spaceHorizontalDesktop / 4;
+	}
+	@include forTabletOnly {
+		margin-right: $spaceHorizontalTablet / 4;
+	}
+	@include forPhoneOnly {
+		margin-right: $spaceHorizontalPhone / 4;
+	}
+	@include forBigDesktopUp {
+		margin-right: $spaceHorizontalBigDesktop / 4;
+	}
+}
+%marginTopBottomQuarter {
+	@extend %marginTopQuarter;
+	@extend %marginBottomQuarter;
+}
+%marginLeftRightQuarter {
+	@extend %marginLeftQuarter;
+	@extend %marginRightQuarter;
+}
+%marginAllQuarter {
+	@extend %marginTopBottomQuarter;
+	@extend %marginLeftRightQuarter;
+}

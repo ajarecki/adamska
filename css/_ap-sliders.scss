@@ -1,0 +1,224 @@
+// Sliders
+
+// Slider components
+.ap-c-sld {
+	@extend %widthFull;
+	position: relative;
+	display: flex;
+	height: auto;
+	// Inertial scrolling behavior
+  	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+	// Slide list
+	&__list {
+		@extend %paddingTopHalf;
+		@extend %paddingBottomHalf;
+		@extend %paddingLeftRight;
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		position: relative;
+		width: auto;
+		// Enable horizontal scrolling
+		overflow-x: scroll;
+		overflow-y: visible;
+	}
+	// List item containing link
+	&__item {
+		display: block;
+		margin-right: $grd * 6;
+		@include forTabletOnly {
+			margin-right: $grd * 5;
+		}
+		@include forPhoneOnly {
+			margin-right: $grd * 4;
+		}
+		@include forBigDesktopUp {
+			margin-right: $grd * 8;
+		}
+	}
+	// Link within list items
+	&__link {
+		@extend %shadowSmall;
+		@extend %hoverShadow;
+		@extend %transitionFast;
+		position: relative;
+		display: block;
+		background-color: $colorWhite05;
+		&:hover,
+		&:focus,
+		&:active {
+			box-shadow: none;
+			transform: $scaleUpLarge;
+		}
+		&:active {
+			transform: $scaleNormal;
+		}
+		&::before {
+			@extend %positionAbsolute;
+			@extend %shadowLarge;
+			@extend %transitionFast;
+			content: "";
+			opacity: .01;
+		}
+	}
+	// Slide labels
+	&__label {
+		@extend %fontExtendedBold;
+		@extend %fontSmall;
+		display: block;
+		color: $colorWhite03;
+	}
+	&__thumb {
+		@extend %positionAbsolute;
+		width: 100%;
+		overflow: hidden;
+		@include forTabletOnly {
+			width: $grd * 36;
+			min-height: $grd * 36;
+		}
+		@include forPhoneOnly {
+			width: $grd * 28;
+			min-height: $grd * 28;
+		}
+		@include forBigDesktopUp {
+			width: $grd * 48;
+			min-height: $grd * 48;
+		}
+	}
+	// Tag slide specificity
+	&__link--tag {
+		width: $grd * 32;
+		height: 0;
+		height: 0;
+		padding-top: 75%;
+		@include forPhoneOnly {
+			width: $grd * 28;
+			min-height: $grd * 28;
+		}
+	}
+	// Instagram slide specificity
+	&__link--instagram {
+		width: $grd * 32;
+		// Prevent container from collapsing when images break
+		min-height: $grd * 24;
+		@include forTabletOnly {
+			width: $grd * 36;
+			min-height: $grd * 18;
+		}
+		@include forPhoneOnly {
+			width: $grd * 28;
+			min-height: $grd * 16;
+		}
+		@include forBigDesktopUp {
+			width: $grd * 48;
+			min-height: $grd * 28;
+		}
+	}
+	// Last list item
+	&__item--last {
+		.ap-c-sld__link {
+			margin-right: $grd * 6;
+			padding-top: $grd * 12;
+			text-align: center;
+			background-color: $colorBrand04;
+			&:hover,
+			&:focus {
+				span {
+					color: $colorBrand01;
+				}
+				svg {
+					path {
+						fill: $colorBrand01;
+					}
+				}
+			}
+			@include forTabletOnly {
+				width: $grd * 36;
+				height: $grd * 36;
+				margin-right: $grd * 5;
+				padding-top: $grd * 10;
+			}
+			@include forPhoneOnly {
+				width: $grd * 28;
+				height: $grd * 28;
+				margin-right: $grd * 4;
+				padding-top: $grd * 8;
+			}
+			@include forBigDesktopUp {
+				width: $grd * 48;
+				height: $grd * 48;
+				margin-right: $grd * 8;
+				padding-top: $grd * 16;
+			}
+			// Instagram icon
+			svg {
+				width: $grd * 4;
+				height: $grd * 4;
+				@include forTabletOnly {
+					width: $grd * 3;
+					height: $grd * 3;
+				}
+				@include forBigDesktopUp {
+					width: $grd * 6;
+					height: $grd * 6;
+				}
+				path {
+					fill: $colorWhite01;
+				}
+			}
+			// Text label
+			span {
+				@extend %fontExtendedBold;
+				@extend %fontSmall;
+				display: block;
+				color: $colorWhite03;
+				margin-top: $grd * 2;
+				@include forPhoneOnly {
+					margin-top: $grd;
+				}
+				@include forBigDesktopUp {
+					margin-top: $grd * 3;
+				}
+			}
+		}
+	}
+	// Gradient overlay edges
+	&__edge {
+		display: block;
+		position: absolute;
+		top: 8%;
+		bottom: 0;
+		width: $grd * 4;
+		height: auto;
+		pointer-events: none;
+		@include forTabletOnly {
+			width: $grd * 2.5;
+		}
+		@include forPhoneOnly {
+			width: $grd * 1.5;
+		}
+	}
+	// Left edge
+	&__edge--left {
+		left: 0;
+		background-image: 
+			linear-gradient(
+				to left,
+				rgba($colorWhite02, 0),
+				rgba($colorWhite02, .5) 66%,
+				rgba($colorWhite02, 1)
+			);
+	}
+	// Right edge
+	&__edge--right {
+		right: 0;
+		background-image: 
+			linear-gradient(
+				to right,
+				rgba($colorWhite02, 0),
+				rgba($colorWhite02, .5) 66%,
+				rgba($colorWhite02, 1)
+			);
+	}
+}

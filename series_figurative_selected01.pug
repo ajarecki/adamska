@@ -1,0 +1,60 @@
+extends partial/_tmp-series.pug
+
+//- Selected Figurative Works Volume 1
+
+block config
+	-
+		var series = {
+			id:      figurativeSelectedVol1.id,
+			name:    figurativeSelectedVol1.name,
+			info:    figurativeSelectedVol1.info,
+			link:    figurativeSelectedVol1.link,
+			date:    figurativeSelectedVol1.date,
+			hero1:   figurativeSelectedVol1.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeSelectedVol1
+
+block galleryContent
+	+figurativeSelectedVol1S01
+	+figurativeSelectedVol1S02
+	+figurativeSelectedVol1S03
+	//- 4 – 7 not ready
+	//- +figurativeSelectedVol1S04
+	//- +figurativeSelectedVol1S05
+	//- +figurativeSelectedVol1S06
+	//- +figurativeSelectedVol1S07
+	+figurativeSelectedVol1S08
+	+figurativeSelectedVol1S09
+	+figurativeSelectedVol1S10
+	+figurativeSelectedVol1S11
+	+figurativeSelectedVol1S12
+	+figurativeSelectedVol1S13
+	+figurativeSelectedVol1G01
+
+block relatedSeries01
+	+seriesFigurativeCoping
+
+block relatedSeries02
+	+seriesFigurativeSelectedVol3
+
+block relatedSeries03
+	+seriesFigurativeSelectedVol2
+
+block relatedSeries04
+	+seriesFigurativeDisengagement

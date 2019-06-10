@@ -1,0 +1,5367 @@
+//- Gallery artwork figures
+
+//- Artwork figure mixin – classes referenced by lightGallery.js
+	Declare:
+	Piece name,
+	Full-size image source address,
+	Thumbnail image source address,
+	Thumbnails image alt text,
+	Piece year created,
+	Piece medium,
+	Piece material,
+	Piece width in inches,
+	Piece height inches,
+	Image aspect ratio class,
+	Name of series piece belongs to,
+	Series link address,
+	List of tags relavent to piece
+mixin galleryItem(pieceName, imageFull, imageThumb, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesName, seriesLink, ...tagList)
+	figure.ap-c-crd-artwork(
+		data-src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageFull
+		data-sub-html=".ap-c-crd-artwork__info"
+	)
+		div.ap-c-crd-artwork__thumb(
+			class="ap-l-ratio--" + aspectRatio
+			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageThumb + ");"
+		)
+			img.ap-c-crd-artwork__image(
+				src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageThumb
+				alt=imageAlt + " by Grazyna Adamska Jarecka"
+			)
+			div.ap-c-crd-artwork__icon
+				+icon(iconExpand)
+		figcaption.ap-c-crd-artwork__info
+			div.ap-c-crd-artwork__title
+				h4.ap-c-crd-artwork__piece=pieceName
+				span.ap-c-crd-artwork__series
+					span &ensp;&mdash;&ensp;in&nbsp;
+					a(href=seriesLink)=seriesName
+			div.ap-c-crd-artwork__spec
+				a(
+					href=urlRoot + pieceYear  
+					title="More artworks created in" + pieceYear
+				)=pieceYear
+				span &nbsp;&mdash;&nbsp;
+				a(
+					href=urlRoot + pieceMedium
+					title="More artworks made with" + pieceMedium
+				)=pieceMedium
+				span &nbsp;on&nbsp;
+				a(
+					href=urlRoot + pieceMaterial
+					title="More artworks made with" + pieceMaterial
+				)=pieceMaterial
+				span &comma;&nbsp;
+				span=pieceWidth
+					| &nbsp;&times;&nbsp;
+				span=pieceHeight
+					| &nbsp;in
+			ul.ap-c-crd-artwork__tags
+				each item in tagList
+					li
+						a(href= urlRootTag + item)= item
+
+mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesName, seriesLink, ...tagList)
+	//- Lightbox image and caption
+	figure.ap-c-crd-artwork(
+		data-src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + ".png"
+		data-sub-html=".ap-c-crd-artwork__info"
+	)
+		//- Thumbnail container
+		div.ap-c-crd-artwork__thumb(
+			class="ap-l-ratio--" + aspectRatio
+			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+		)
+			//- Thumbnail image
+			img.ap-c-crd-artwork__image(
+				src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png"
+				alt= imageAlt + " by Grazyna Adamska Jarecka"
+			)
+			div.ap-c-crd-artwork__icon
+				+icon(iconExpand)
+		//- Info and details
+		figcaption.ap-c-crd-artwork__info
+			//- Title and series
+			div.ap-c-crd-artwork__title
+				h4.ap-c-crd-artwork__piece= pieceName
+				span.ap-c-crd-artwork__series
+					span &ensp;&mdash;&ensp;in&nbsp;
+					a(href= seriesLink)= seriesName
+			//- Mediums and materials
+			div.ap-c-crd-artwork__spec
+				a(
+					href= urlRoot + pieceYear
+					title="More artworks created in" + pieceYear
+				)=pieceYear
+				span &nbsp;&mdash;&nbsp;
+				a(
+					href= urlRoot + pieceMedium
+					title="More artworks made with" + pieceMedium
+				)= pieceMedium
+				span &nbsp;on&nbsp;
+				a(
+					href=urlRoot + pieceMaterial
+					title="More artworks made with" + pieceMaterial
+				)= pieceMaterial
+				span &comma;&nbsp;
+				span= pieceWidth
+					| &nbsp;&times;&nbsp;
+				span= pieceHeight
+					| &nbsp;in
+			//- Dominant colors
+			ul.ap-c-crd-artwork__palette
+				li
+					a(href= urlRootTag + color1
+					class=".ap-c-crd-artwork__palette--" + color1
+					)= color1
+				li
+					a(href= urlRootTag + color2
+					class=".ap-c-crd-artwork__palette--" + color2
+					)= color2
+				li
+					a(href= urlRootTag + color3
+					class=".ap-c-crd-artwork__palette--" + color3
+					)= color3
+			//- Tag list
+			ul.ap-c-crd-artwork__tags
+				each item in tagList
+					li
+						a(href= urlRootTag + item)= item
+
+
+//- Lightbox swipe/drag navigation alert component mixin
+mixin lightboxNavAlert
+	div.ap-c-alr-lightbox
+		span.ap-c-alr-lightbox__arrow.ap-c-alr-lightbox__arrow--left
+			+icon(iconChevronLeft)
+			+icon(iconChevronLeft)
+			+icon(iconChevronLeft)
+		span.ap-c-alr-lightbox__label.ap-c-alr-lightbox__label--mobile Swipe
+		span.ap-c-alr-lightbox__label.ap-c-alr-lightbox__label--desktop Drag or use arrow keys
+		span.ap-c-alr-lightbox__arrow.ap-c-alr-lightbox__arrow--right
+			+icon(iconChevronRight)
+			+icon(iconChevronRight)
+			+icon(iconChevronRight)
+
+
+//- Artwork figure components
+
+
+//- Abstract series gallery items
+
+//- Grace / No Grace
+//- Note: Reformat all of these mixins like so:
+mixin abstractGraceS01
+	+artworkCard(
+		"Grace / No Grace",
+		"abstract_grace_s01",
+		"Abstract painting",
+		"2011", "acrylic", "plastic",
+		"22", "22.1",
+		"50-49",
+		abstractGrace.name,
+		abstractGrace.link,
+		"red", "green", "blue",
+		"black", "abstract", "pattern"
+	)
+mixin abstractGraceS02
+	+artworkCard(
+		"Border Land",
+		"abstract_grace_s02",
+		"Abstract painting",
+		"2011", "acrylic", "plastic",
+		"28", "23",
+		"11-9",
+		abstractGrace.name,
+		abstractGrace.link,
+		"red", "green", "blue",
+		"abstract"
+	)
+mixin abstractGraceS03
+	+artworkCard(
+		"Grace to No Grace Ratio",
+		"abstract_grace_s03",
+		"Abstract painting",
+		"2011", "acrylic", "plastic",
+		"28", "23",
+		"11-9",
+		abstractGrace.name,
+		abstractGrace.link,
+		"white", "green", "blue",
+		"abstract"
+	)
+mixin abstractGraceS04
+	+artworkCard(
+		"Grace in Droplets",
+		"abstract_grace_s04",
+		"Abstract painting",
+		"2011", "acrylic", "plastic",
+		"23", "28",
+		"9-11",
+		abstractGrace.name,
+		abstractGrace.link,
+		"grey", "green", "blue",
+		"abstract"
+	)
+
+//- Selected Abstract Works Volume 1
+mixin abstractSelectedVol1S01
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s01.png",
+		"abstract_selected01_s01-thumb.png",
+		"Abstract acrylic painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract",
+		"tagname1",
+		"tagname2",
+		"tagname3"
+	)
+mixin abstractSelectedVol1S02
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s02.png",
+		"abstract_selected01_s02-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"14-11",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S03
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s03.png",
+		"abstract_selected01_s03-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S04
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s04.png",
+		"abstract_selected01_s04-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S05
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s05.png",
+		"abstract_selected01_s05-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S06
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s06.png",
+		"abstract_selected01_s06-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S07
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s07.png",
+		"abstract_selected01_s07-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-6",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S08
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s08.png",
+		"abstract_selected01_s08-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S09
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s09.png",
+		"abstract_selected01_s09-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S10
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s10.png",
+		"abstract_selected01_s10-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S11
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s11.png",
+		"abstract_selected01_s11-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S12
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s12.png",
+		"abstract_selected01_s12-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+mixin abstractSelectedVol1S13
+	+galleryItem(
+		"Untitled",
+		"abstract_selected01_s13.png",
+		"abstract_selected01_s13-thumb.png",
+		"Abstract painting",
+		"0000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAbstractSelectedVol1,
+		linkAbstractSelectedVol1,
+		"abstract"
+	)
+	
+//- Abstracted Landscapes
+mixin abstractLandscapesS01
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s01.png",
+		"abstract_landscapes_s01-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"8-7",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS02
+	+galleryItem(
+		"Orange le Vert",
+		"abstract_landscapes_s02.png",
+		"abstract_landscapes_s02-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"48",
+		"30",
+		"16-10",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS03
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s03.png",
+		"abstract_landscapes_s03-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS04
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s04.png",
+		"abstract_landscapes_s04-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS05
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s05.png",
+		"abstract_landscapes_s05-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS06
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s06.png",
+		"abstract_landscapes_s06-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"6-5",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS07
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s07.png",
+		"abstract_landscapes_s07-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS08
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s08.png",
+		"abstract_landscapes_s08-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS09
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s09.png",
+		"abstract_landscapes_s09-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS10
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s10.png",
+		"abstract_landscapes_s10-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS11
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s11.png",
+		"abstract_landscapes_s11-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS12
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s12.png",
+		"abstract_landscapes_s12-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS13
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s13.png",
+		"abstract_landscapes_s13-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS14
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s14.png",
+		"abstract_landscapes_s14-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS15
+	+galleryItem(
+		"Test",
+		"abstract_landscapes_s15.png",
+		"abstract_landscapes_s15-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape"
+	)
+mixin abstractLandscapesS16
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s16.png",
+		"abstract_landscapes_s16-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-4",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"green",
+		"abstract",
+		"landscape"
+	)
+mixin abstractLandscapesS17
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s17.png",
+		"abstract_landscapes_s17-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-4",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"blue",
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS18
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s18.png",
+		"abstract_landscapes_s18-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS19
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s19.png",
+		"abstract_landscapes_s19-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"blue",
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS20
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s20.png",
+		"abstract_landscapes_s20-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"14-11",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"blue",
+		"abstract",
+		"landscape",
+		""
+	)
+mixin abstractLandscapesS21
+	+galleryItem(
+		"Untitled",
+		"abstract_landscapes_s21.png",
+		"abstract_landscapes_s21-thumb.png",
+		"Abstracted landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAbstractLandscapes,
+		linkAbstractLandscapes,
+		"brown",
+		"abstract",
+		"landscape",
+		""
+	)
+
+
+
+//- Figural Abstract Works
+mixin abstractFiguralS01
+	+galleryItem(
+		"Deadline Anxiety",
+		"abstract_figural_s01.png",
+		"abstract_figural_s01-thumb.png",
+		"Abstract figure painting",
+		"2018",
+		"acrylic",
+		"canvas",
+		"46",
+		"36",
+		"23-18",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"yellow",
+		"abstract",
+		"figurative",
+		""
+	)
+mixin abstractFiguralS02
+	+galleryItem(
+		"Dominative Moments",
+		"abstract_figural_s02.png",
+		"abstract_figural_s02-thumb.png",
+		"Abstract figure painting",
+		"2018",
+		"acrylic",
+		"canvas",
+		"48",
+		"40",
+		"6-5",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"green",
+		"abstract",
+		"figurative",
+		""
+	)
+mixin abstractFiguralS03
+	+galleryItem(
+		"Open Closed Value",
+		"abstract_figural_s03.png",
+		"abstract_figural_s03-thumb.png",
+		"Abstract figure painting",
+		"2014",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"blue",
+		"abstract",
+		"figurative",
+		""
+)
+mixin abstractFiguralS04
+	+galleryItem(
+		"Dynamic Identities",
+		"abstract_figural_s04.png",
+		"abstract_figural_s04-thumb.png",
+		"Abstract figure painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"purple",
+		"abstract",
+		"figurative",
+		""
+	)
+mixin abstractFiguralS05
+	+galleryItem(
+		"Untitled",
+		"abstract_figural_s05.png",
+		"abstract_figural_s05-thumb.png",
+		"Abstract figure painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"purple",
+		"abstract",
+		"figurative",
+		""
+	)
+mixin abstractFiguralS06
+	+galleryItem(
+		"Untitled",
+		"abstract_figural_s06.png",
+		"abstract_figural_s06-thumb.png",
+		"Abstract figure painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-4",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"brown",
+		"abstract",
+		"figurative",
+		""
+	)
+mixin abstractFiguralS07
+	+galleryItem(
+		"Untitled",
+		"abstract_figural_s07.png",
+		"abstract_figural_s07-thumb.png",
+		"Abstract figure painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFigural,
+		linkAbstractFigural,
+		"yellow",
+		"abstract",
+		"figurative",
+		""
+	)
+
+//- Flames, Coral Reefs
+mixin abstractFlamesS01
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s01.png",
+		"abstract_flames_s01-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS02
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s02.png",
+		"abstract_flames_s02-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS03
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s03.png",
+		"abstract_flames_s03-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS04
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s04.png",
+		"abstract_flames_s04-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS05
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s05.png",
+		"abstract_flames_s05-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS06
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s06.png",
+		"abstract_flames_s06-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS07
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s07.png",
+		"abstract_flames_s07-thumb.png",
+		"Abstract painting of flames",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS08
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s08.png",
+		"abstract_flames_s08-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"23-20",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS09
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s09.png",
+		"abstract_flames_s09-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS10
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s10.png",
+		"abstract_flames_s10-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS11
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s11.png",
+		"abstract_flames_s11-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"14-11",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS12
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s12.png",
+		"abstract_flames_s12-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS13
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s13.png",
+		"abstract_flames_s13-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+mixin abstractFlamesS14
+	+galleryItem(
+		"Untitled",
+		"abstract_flames_s14.png",
+		"abstract_flames_s14-thumb.png",
+		"Abstract painting of corals",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractFlames,
+		linkAbstractFlames,
+		"abstract",
+		"",
+		""
+	)
+
+//- Shapes & Textures
+mixin abstractShapesS01
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s01.png",
+		"abstract_shapes_s01-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"yellow",
+		"abstract",
+		""		
+	)
+mixin abstractShapesS02
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s02.png",
+		"abstract_shapes_s02-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"pink",
+		"abstract",
+		""		
+	)
+mixin abstractShapesS03
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s03.png",
+		"abstract_shapes_s03-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"blue",
+		"abstract",
+		""		
+	)
+mixin abstractShapesS04
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s04.png",
+		"abstract_shapes_s04-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"yellow",
+		"abstract",
+		""		
+	)
+mixin abstractShapesS05
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s05.png",
+		"abstract_shapes_s05-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"yellow",
+		"abstract",
+		""		
+	)
+mixin abstractShapesS06
+	+galleryItem(
+		"Untitled",
+		"abstract_shapes_s06.png",
+		"abstract_shapes_s06-thumb.png",
+		"Abstract painting of shapes and textures",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-6",
+		nameAbstractShapes,
+		linkAbstractShapes,
+		"blue",
+		"abstract",
+		""		
+	)
+
+//- Attachments
+mixin abstractAttachmentsS01
+	+galleryItem(
+		"Pocket-Sized Voids",
+		"abstract_attachments_s01.png",
+		"abstract_attachments_s01-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"30",
+		"4-5",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"black",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS02
+	+galleryItem(
+		"Tangled Promises",
+		"abstract_attachments_s02.png",
+		"abstract_attachments_s02-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"30",
+		"11-14",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"blue",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS03
+	+galleryItem(
+		"Untitled Journey",
+		"abstract_attachments_s03.png",
+		"abstract_attachments_s03-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"30",
+		"4-5",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"yellow",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS04
+	+galleryItem(
+		"Attachment Delivered",
+		"abstract_attachments_s04.png",
+		"abstract_attachments_s04-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"22",
+		"28",
+		"11-14",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"brown",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS05
+	+galleryItem(
+		"Attachment",
+		"abstract_attachments_s05.png",
+		"abstract_attachments_s05-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"32",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"brown",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS06
+	+galleryItem(
+		"Miniature Rebellions",
+		"abstract_attachments_s06.png",
+		"abstract_attachments_s06-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"18",
+		"24",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"pink",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS07
+	+galleryItem(
+		"Third Chances",
+		"abstract_attachments_s07.png",
+		"abstract_attachments_s07-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"32",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"blue",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS08
+	+galleryItem(
+		"Clip Composition",
+		"abstract_attachments_s08.png",
+		"abstract_attachments_s08-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"32",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"grey",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS09
+	+galleryItem(
+		"Formative Years",
+		"abstract_attachments_s09.png",
+		"abstract_attachments_s09-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"16",
+		"20",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"purple",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS10
+	+galleryItem(
+		"Above & Beneath I",
+		"abstract_attachments_s10.png",
+		"abstract_attachments_s10-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"24",
+		"1-1",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"grey",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS11
+	+galleryItem(
+		"Above & Beneath II",
+		"abstract_attachments_s11.png",
+		"abstract_attachments_s11-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"32",
+		"32",
+		"1-1",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"grey",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS12
+	+galleryItem(
+		"Untitled",
+		"abstract_attachments_s12.png",
+		"abstract_attachments_s12-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"16",
+		"22",
+		"8-11",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"pink",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS13
+	+galleryItem(
+		"Color Field",
+		"abstract_attachments_s13.png",
+		"abstract_attachments_s13-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"32",
+		"32",
+		"1-1",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"grey",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS14
+	+galleryItem(
+		"Untitled",
+		"abstract_attachments_s14.png",
+		"abstract_attachments_s14-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"grey",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS15
+	+galleryItem(
+		"Untitled",
+		"abstract_attachments_s15.png",
+		"abstract_attachments_s15-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"plastic",
+		"24",
+		"32",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"green",
+		"abstract",
+		""
+	)
+mixin abstractAttachmentsS16
+	+galleryItem(
+		"Neon Routes",
+		"abstract_attachments_s16.png",
+		"abstract_attachments_s16-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"48",
+		"36",
+		"4-3",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"black",
+		"abstract",
+		""
+	)
+//- S17 - not ready
+mixin abstractAttachmentsS17
+	+galleryItem(
+		"No Easy Route",
+		"abstract_attachments_s17.png",
+		"abstract_attachments_s17-thumb.png",
+		"Abstract painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"24",
+		"32",
+		"3-4",
+		nameAbstractAttachments,
+		linkAbstractAttachments,
+		"yellow",
+		"abstract",
+		""
+	)
+
+//- Body Drawings
+//- S06c not ready
+mixin figurativeBodyG01
+	+galleryItem(
+		"Untitled",
+		"figurative_body_g01.png",
+		"figurative_body_g01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		"woman",
+		"nude"
+	)
+mixin figurativeBodyS01
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s01.png",
+		"figurative_body_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-6",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS02
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s02.png",
+		"figurative_body_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"6-5",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS03
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s03.png",
+		"figurative_body_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-6",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS04
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s04.png",
+		"figurative_body_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"3-2",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS04b
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s04b.png",
+		"figurative_body_s04b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS04c
+	+galleryItem(
+		"(Detail)",
+		"figurative_body_s04c.png",
+		"figurative_body_s04c-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"3-2",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS04d
+	+galleryItem(
+		"(Detail)",
+		"figurative_body_s04d.png",
+		"figurative_body_s04d-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-4",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		"triptych"
+	)
+mixin figurativeBodyS05
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s05.png",
+		"figurative_body_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS05b
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s05b.png",
+		"figurative_body_s05b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"7-5",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS06
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s06.png",
+		"figurative_body_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-8",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS06b
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s06b.png",
+		"figurative_body_s06b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+//- S06c is currently unpublished
+mixin figurativeBodyS06c
+	+galleryItem(
+		"(Details)",
+		"figurative_body_s06c.png",
+		"figurative_body_s06c-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+mixin figurativeBodyS07
+	+galleryItem(
+		"Untitled",
+		"figurative_body_s07.png",
+		"figurative_body_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeBody,
+		linkFigurativeBody,
+		"figurative",
+		""
+	)
+
+//- Self Examination
+mixin figurativeExaminationS01
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s01.png",
+		"figurative_examination_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS02
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s02.png",
+		"figurative_examination_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS02b
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s02b.png",
+		"figurative_examination_s02b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"16-9",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS03
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s03.png",
+		"figurative_examination_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"8-11",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS04
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s04.png",
+		"figurative_examination_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS05
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s05.png",
+		"figurative_examination_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"8-17",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS06
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s06.png",
+		"figurative_examination_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"2-1",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationG01
+	+galleryItem(
+		"Exhibition Documentation",
+		"figurative_examination_s06.png",
+		"figurative_examination_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"3-2",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS07
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s07.png",
+		"figurative_examination_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"10-19",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS08
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s08.png",
+		"figurative_examination_s08-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"2-3",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS09
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s09.png",
+		"figurative_examination_s09-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"16-10",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS10
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s10.png",
+		"figurative_examination_s10-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"3-5",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+mixin figurativeExaminationS11
+	+galleryItem(
+		"Untitled",
+		"figurative_examination_s11.png",
+		"figurative_examination_s11-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"8-9",
+		nameFigurativeExamination,
+		linkFigurativeExamination,
+		"figurative",
+		"nude"
+	)
+
+//- Image of Disengagement
+mixin figurativeDisengagementS01
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s01.png",
+		"figurative_disengagement_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"49-50",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS02
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s02.png",
+		"figurative_disengagement_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"6-7",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS03
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s03.png",
+		"figurative_disengagement_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"6-7",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS04
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s04.png",
+		"figurative_disengagement_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS05
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s05.png",
+		"figurative_disengagement_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-10",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS06
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s06.png",
+		"figurative_disengagement_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-5",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS07
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s07.png",
+		"figurative_disengagement_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS08
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s08.png",
+		"figurative_disengagement_s08-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS09
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s09.png",
+		"figurative_disengagement_s09-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS10
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s10.png",
+		"figurative_disengagement_s10-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS11
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s11.png",
+		"figurative_disengagement_s11-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS12
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s12.png",
+		"figurative_disengagement_s12-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+mixin figurativeDisengagementS13
+	+galleryItem(
+		"Untitled",
+		"figurative_disengagement_s13.png",
+		"figurative_disengagement_s13-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeDisengagement,
+		linkFigurativeDisengagement,
+		"figurative",
+		"nude"
+	)
+
+//- Coping Behaviors
+mixin figurativeCopingG01
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g01.png",
+		"figurative_coping_g01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-6",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG01b
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g01b.png",
+		"figurative_coping_g01b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG01c
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g01c.png",
+		"figurative_coping_g01c-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG01d
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g01d.png",
+		"figurative_coping_g01d-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-1",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG02
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g02.png",
+		"figurative_coping_g02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-8",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG02b
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g02b.png",
+		"figurative_coping_g02b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG03
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g03.png",
+		"figurative_coping_g03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingG03b
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_g03b.png",
+		"figurative_coping_g03b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS01
+	+galleryItem(
+		"Fourfold Rocking",
+		"figurative_coping_s01.png",
+		"figurative_coping_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"9-5",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS02
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s02.png",
+		"figurative_coping_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"9-5",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS03
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s03.png",
+		"figurative_coping_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"9-5",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS04
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s04.png",
+		"figurative_coping_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"9-5",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS05
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s05.png",
+		"figurative_coping_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS05b
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s05b.png",
+		"figurative_coping_s05b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS06
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s06.png",
+		"figurative_coping_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS06b
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s06b.png",
+		"figurative_coping_s06b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS07
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s07.png",
+		"figurative_coping_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-4",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"pink",
+		"figurative"
+	)
+mixin figurativeCopingS08
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s08.png",
+		"figurative_coping_s08-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS10
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s10.png",
+		"figurative_coping_s10-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-9",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS11
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s11.png",
+		"figurative_coping_s11-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-9",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS12
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s12.png",
+		"figurative_coping_s12-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-9",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingS13
+	+galleryItem(
+		"Untitled",
+		"figurative_coping_s13.png",
+		"figurative_coping_s13-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"green",
+		"figurative",
+		"nude"
+	)
+mixin figurativeCopingP01
+	+galleryItem(
+		"Fourfold Rocking – Exhibition Document",
+		"figurative_coping_p01.png",
+		"figurative_coping_p01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"7-10",
+		nameFigurativeCoping,
+		linkFigurativeCoping,
+		"figurative",
+		"nude"
+	)
+
+//- Selected Figurative Works Vol. 2
+mixin figurativeSelectedVol2G01
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_g01.png",
+		"figurative_selected02_g01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"4-5",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2G01b
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_g01b.png",
+		"figurative_selected02_g01b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"7-5",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S01
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s01.png",
+		"figurative_selected02_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-8",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S02
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s02.png",
+		"figurative_selected02_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-8",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S03
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s03.png",
+		"figurative_selected02_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-8",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S04
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s04.png",
+		"figurative_selected02_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-8",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S05
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s05.png",
+		"figurative_selected02_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-8",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S06
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s06.png",
+		"figurative_selected02_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"14-11",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S06b
+	+galleryItem(
+		"(Detail)",
+		"figurative_selected02_s06b.png",
+		"figurative_selected02_s06b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"8-5",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol2S07
+	+galleryItem(
+		"Untitled",
+		"figurative_selected02_s07.png",
+		"figurative_selected02_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeSelectedVol2,
+		linkFigurativeSelectedVol2,
+		"figurative",
+		""
+	)
+
+//- Selected Figurative Works Vol. 3
+mixin figurativeSelectedVol3S01
+	+galleryItem(
+		"Kaleidoscope Selfie",
+		"figurative_selected03_s01.png",
+		"figurative_selected03_s01-thumb.png",
+		"Figurative painting",
+		"2019",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"11-13",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"orange",
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S02
+	+galleryItem(
+		"ASAP",
+		"figurative_selected03_s02.png",
+		"figurative_selected03_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"11-13",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"gray",
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S03
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s03.png",
+		"figurative_selected03_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-8",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"purple",
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S03b
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s03b.png",
+		"figurative_selected03_s03b-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"purple",
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S04
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s04.png",
+		"figurative_selected03_s04-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-8",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S05
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s05.png",
+		"figurative_selected03_s05-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S06
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s06.png",
+		"figurative_selected03_s06-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S07
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s07.png",
+		"figurative_selected03_s07-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S08
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s08.png",
+		"figurative_selected03_s08-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S09
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s09.png",
+		"figurative_selected03_s09-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"7-10",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol3S10
+	+galleryItem(
+		"Untitled",
+		"figurative_selected03_s10.png",
+		"figurative_selected03_s10-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-1",
+		nameFigurativeSelectedVol3,
+		linkFigurativeSelectedVol3,
+		"figurative",
+		""
+	)
+
+//- Selected Figurative Works Vol. 1
+mixin figurativeSelectedVol1S01
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s01.png",
+		"figurative_selected01_s01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S02
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s02.png",
+		"figurative_selected01_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S03
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s03.png",
+		"figurative_selected01_s03-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+//- 4 – 7 not ready
+//- mixin figurativeSelectedVol1S04
+//- mixin figurativeSelectedVol1S05
+//- mixin figurativeSelectedVol1S06
+//- mixin figurativeSelectedVol1S07
+mixin figurativeSelectedVol1S08
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s08.png",
+		"figurative_selected01_s08-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S09
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s09.png",
+		"figurative_selected01_s09-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S10
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s10.png",
+		"figurative_selected01_s10-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S11
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s11.png",
+		"figurative_selected01_s11-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S12
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s12.png",
+		"figurative_selected01_s12-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1S13
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_s13.png",
+		"figurative_selected01_s13-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+mixin figurativeSelectedVol1G01
+	+galleryItem(
+		"Untitled",
+		"figurative_selected01_g01.png",
+		"figurative_selected01_g01-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameFigurativeSelectedVol1,
+		linkFigurativeSelectedVol1,
+		"figurative",
+		""
+	)
+
+//- Conté Portraits
+//- Handling medium tag requests for these?
+//- Need exceptions
+mixin portraitFamilyS01
+	+galleryItem(
+		"Untitled",
+		"portrait_family_s01.png",
+		"portrait_family_s01-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"3-2",
+		namePortraitConte,
+		linkPortraitFamily,
+		"orange",
+		"portrait",
+		"man"
+	)
+mixin portraitFamilyS02
+	+galleryItem(
+		"Untitled",
+		"portrait_family_s02.png",
+		"portrait_family_s02-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"3-2",
+		namePortraitConte,
+		linkPortraitFamily,
+		"orange",
+		"portrait",
+		"man"
+	)
+mixin portraitFamilyS03
+	+galleryItem(
+		"Untitled",
+		"portrait_family_s03.png",
+		"portrait_family_s03-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitConte,
+		linkPortraitFamily,
+		"white",
+		"portrait",
+		"man"
+	)
+mixin portraitFamilyS04
+	+galleryItem(
+		"Untitled",
+		"portrait_family_s04.png",
+		"portrait_family_s04-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitConte,
+		linkPortraitFamily,
+		"white",
+		"portrait",
+		"man"
+	)
+mixin portraitFamilyS05
+	+galleryItem(
+		"Untitled",
+		"portrait_family_s05.png",
+		"portrait_family_s05-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitConte,
+		linkPortraitFamily,
+		"white",
+		"portrait",
+		"man"
+	)
+mixin portraitFamilyG01
+	+galleryItem(
+		"Untitled",
+		"portrait_family_g01.png",
+		"portrait_family_g01-thumb.png",
+		"Portrait drawing",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"12-5",
+		namePortraitConte,
+		linkPortraitFamily,
+		"white",
+		"portrait",
+		"triptych",
+		"woman"
+	)
+
+//- Selected Portraits Vol. 2
+mixin portraitSelectedVol2G01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_g01.png",
+		"portrait_selected02_g01-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"3-2",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s01.png",
+		"portrait_selected02_s01-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S02
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s02.png",
+		"portrait_selected02_s02-thumb.png",
+		"Figurative painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S03
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s03.png",
+		"portrait_selected02_s03-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S04
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s04.png",
+		"portrait_selected02_s04-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S05
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s05.png",
+		"portrait_selected02_s05-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S06
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s06.png",
+		"portrait_selected02_s06-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S08
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s08.png",
+		"portrait_selected02_s08-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S09
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s09.png",
+		"portrait_selected02_s09-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"cyan",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S10
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s10.png",
+		"portrait_selected02_s10-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"5-6",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S11
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s11.png",
+		"portrait_selected02_s11-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"blue",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S12
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s12.png",
+		"portrait_selected02_s12-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"brown",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S13
+	+galleryItem(
+		"Self Portrait (Mirror)",
+		"portrait_selected02_s13.png",
+		"portrait_selected02_s13-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"brown",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S14
+	+galleryItem(
+		"Jeff",
+		"portrait_selected02_s14.png",
+		"portrait_selected02_s14-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S15
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s15.png",
+		"portrait_selected02_s15-thumb.png",
+		"Portrait painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S16
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s16.png",
+		"portrait_selected02_s16-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"blue",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2G03
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_g03.png",
+		"portrait_selected02_g03-thumb.png",
+		"Portrait painting",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"3-2",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		"diptych",
+		"man"
+	)
+mixin portraitSelectedVol2S17
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s17.png",
+		"portrait_selected02_s17-thumb.png",
+		"Portrait painting",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S18
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s18.png",
+		"portrait_selected02_s18-thumb.png",
+		"Portrait painting",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S19
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s19.png",
+		"portrait_selected02_s19-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S20
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s20.png",
+		"portrait_selected02_s20-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"green",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2G02
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_g02.png",
+		"portrait_selected02_g02-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"8-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"portrait",
+		"realism",
+		"diptych",
+		"man",
+		"woman",
+		"mature"
+	)
+mixin portraitSelectedVol2S21
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s21.png",
+		"portrait_selected02_s21-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"brown",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S22
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s22.png",
+		"portrait_selected02_s22-thumb.png",
+		"Portrait painting",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"brown",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S23
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s23.png",
+		"portrait_selected02_s23-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"white",
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol2S24
+	+galleryItem(
+		"Untitled",
+		"portrait_selected02_s24.png",
+		"portrait_selected02_s24-thumb.png",
+		"Portrait painting",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"5-6",
+		namePortraitSelectedVol2,
+		linkPortraitSelectedVol2,
+		"grey",
+		"portrait",
+		""
+	)
+
+//- Skype Scéance
+mixin portraitSkypeS01
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01.png",
+		"portrait_skype_s01-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"4-7",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"purple",
+		"portrait",
+		""
+	)
+mixin portraitSkypeS01b
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01b.png",
+		"portrait_skype_s01b-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"10-9",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS01c
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01c.png",
+		"portrait_skype_s01c-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"9-10",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS01d
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01d.png",
+		"portrait_skype_s01d-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"5-7",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS01e
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01e.png",
+		"portrait_skype_s01e-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS01f
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s01f.png",
+		"portrait_skype_s01f-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS02
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s02.png",
+		"portrait_skype_s02-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS02b
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s02b.png",
+		"portrait_skype_s02b-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"7-6",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS03
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s03.png",
+		"portrait_skype_s03-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"15-14",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS03b
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s03b.png",
+		"portrait_skype_s03b-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"6-7",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS03c
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s03c.png",
+		"portrait_skype_s03c-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"6-7",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS04
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s04.png",
+		"portrait_skype_s04-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+mixin portraitSkypeS05
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s05.png",
+		"portrait_skype_s05-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"black",
+		"portrait",
+		""
+	)
+mixin portraitSkypeS05b
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s05b.png",
+		"portrait_skype_s05b-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"6-5",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"black",
+		"portrait",
+		""
+	)
+mixin portraitSkypeS06
+	+galleryItem(
+		"Untitled",
+		"portrait_skype_s06.png",
+		"portrait_skype_s06-thumb.png",
+		"Portrait painting of a Skype conversation",
+		"2000",
+		"conte",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSkype,
+		linkPortraitSkype,
+		"portrait",
+		""
+	)
+
+//- Selected Portraits Volume 3
+mixin portraitSelectedVol3G01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_g01.png",
+		"portrait_selected03_g01-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"2-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s01.png",
+		"portrait_selected03_s01-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S02
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s02.png",
+		"portrait_selected03_s02-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S03
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s03.png",
+		"portrait_selected03_s03-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S04
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s04.png",
+		"portrait_selected03_s04-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S05
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s05.png",
+		"portrait_selected03_s05-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S06
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s06.png",
+		"portrait_selected03_s06-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S07
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s07.png",
+		"portrait_selected03_s07-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"wood",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S08
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s08.png",
+		"portrait_selected03_s08-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S09
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s07.png",
+		"portrait_selected03_s07-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S10
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s10.png",
+		"portrait_selected03_s10-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S11
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s11.png",
+		"portrait_selected03_s11-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"00",
+		"00",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S12
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s12.png",
+		"portrait_selected03_s12-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S13
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s13.png",
+		"portrait_selected03_s13-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S14
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s14.png",
+		"portrait_selected03_s14-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S15
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s15.png",
+		"portrait_selected03_s15-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S16
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s16.png",
+		"portrait_selected03_s16-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S17
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s17.png",
+		"portrait_selected03_s17-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S18
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s18.png",
+		"portrait_selected03_s18-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S19
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s19.png",
+		"portrait_selected03_s19-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"32",
+		"3-4",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+mixin portraitSelectedVol3S20
+	+galleryItem(
+		"Untitled",
+		"portrait_selected03_s20.png",
+		"portrait_selected03_s20-thumb.png",
+		"Portrait painting",
+		"2018",
+		"acrylic",
+		"paper",
+		"24",
+		"30",
+		"4-5",
+		namePortraitSelectedVol3,
+		linkPortraitSelectedVol3,
+		"portrait",
+		""
+	)
+
+//- Unpublished
+//- mixin portraitCatsS01
+//- mixin portraitCatsS02
+//- mixin portraitCatsS03
+//- mixin portraitCatsS04
+//- mixin portraitCatsS05
+//- mixin portraitCatsS07
+//- mixin portraitCatsS08
+//- mixin portraitCatsS09
+//- mixin portraitCatsS10
+//- mixin portraitCatsS11
+//- mixin portraitCatsS12
+//- mixin portraitCatsS13
+//- mixin portraitCatsS14
+//- mixin portraitCatsS15
+
+//- mixin portraitDogsS01
+//- mixin portraitDogsS02
+//- mixin portraitDogsS03
+//- mixin portraitDogsS04
+//- mixin portraitDogsS05
+//- mixin portraitDogsS07
+//- mixin portraitDogsS08
+//- mixin portraitDogsS09
+//- mixin portraitDogsS10
+//- mixin portraitDogsS11
+//- mixin portraitDogsS12
+//- mixin portraitDogsS13
+//- mixin portraitDogsS14
+//- mixin portraitDogsS15
+//- mixin portraitDogsS16
+//- mixin portraitDogsS17
+//- mixin portraitDogsS18
+//- mixin portraitDogsS19
+//- mixin portraitDogsS20
+
+//- Honorary & Collegiate Portraits
+mixin portraitHonoraryS01
+	+galleryItem(
+		"Name",
+		"portrait_honorary_s01.png",
+		"portrait_honorary_s01-thumb.png",
+		"Portrait painting of a university professor",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		namePortraitHonorary,
+		linkPortraitHonorary,
+		"blue",
+		"portrait",
+		"figurative",
+		"realism",
+		"man"		
+	)
+mixin portraitHonoraryS02
+	+galleryItem(
+		"Name",
+		"portrait_honorary_s02.png",
+		"portrait_honorary_s02-thumb.png",
+		"Portrait painting of a university professor",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		namePortraitHonorary,
+		linkPortraitHonorary,
+		"blue",
+		"portrait",
+		"figurative",
+		"realism",
+		"man"		
+	)
+mixin portraitHonoraryS03
+	+galleryItem(
+		"Name",
+		"portrait_honorary_s03.png",
+		"portrait_honorary_s03-thumb.png",
+		"Portrait painting of a university professor",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"11-9",
+		namePortraitHonorary,
+		linkPortraitHonorary,
+		"grey",
+		"portrait",
+		"figurative",
+		"man"		
+	)
+mixin portraitHonoraryS04
+	+galleryItem(
+		"Name",
+		"portrait_honorary_s04.png",
+		"portrait_honorary_s04-thumb.png",
+		"Portrait painting of a university professor",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		namePortraitHonorary,
+		linkPortraitHonorary,
+		"brown",
+		"portrait",
+		"realism",
+		"man"		
+	)
+mixin portraitHonoraryS05
+	+galleryItem(
+		"Untitled",
+		"portrait_honorary_s05.png",
+		"portrait_honorary_s05-thumb.png",
+		"Portrait painting of a university professor",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		namePortraitHonorary,
+		linkPortraitHonorary,
+		"brown",
+		"portrait",
+		"realism",
+		"man"		
+	)
+
+//- Selected Portraits Volume 1
+mixin portraitSelectedVol1G01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_g01.png",
+		"portrait_selected01_g01-thumb.png",
+		"Portrait painting of three young boys",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"15-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"assorted",
+		"triptych",
+		"boy",
+		"child"
+	)
+mixin portraitSelectedVol1S01
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s01.png",
+		"portrait_selected01_s01-thumb.png",
+		"Portrait painting of a young boy",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"5-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"realism",
+		"boy",
+		"child"
+	)
+mixin portraitSelectedVol1S02
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s02.png",
+		"portrait_selected01_s02-thumb.png",
+		"Portrait painting of a young boy",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"5-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"boy",
+		"child"
+	)
+mixin portraitSelectedVol1S03
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s03.png",
+		"portrait_selected01_s03-thumb.png",
+		"Portrait painting of a young boy",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"5-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"boy",
+		"child"
+	)
+mixin portraitSelectedVol1S04
+	+galleryItem(
+		"Valentynki",
+		"portrait_selected01_s04.png",
+		"portrait_selected01_s04-thumb.png",
+		"Painting of a boy and girl",
+		"2000",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"9-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"child",
+		"boy",
+		"girl"
+	)
+mixin portraitSelectedVol1S05
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s05.png",
+		"portrait_selected01_s05-thumb.png",
+		"Portrait painting of Michelle Obama",
+		"2000",
+		"mixed-media",
+		"wood",
+		"00",
+		"00",
+		"1-1",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"",
+		""
+	)
+//- S06 – S13 not ready
+//- mixin portraitSelectedVol1S06
+//- mixin portraitSelectedVol1S07
+//- mixin portraitSelectedVol1S08
+//- mixin portraitSelectedVol1S09
+//- mixin PortraitSelectedVol1S10
+//- mixin portraitSelectedVol1S11
+//- mixin portraitSelectedVol1S12
+//- mixin portraitSelectedVol1S13
+mixin portraitSelectedVol1S14
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s14.png",
+		"portrait_selected01_s14-thumb.png",
+		"Portrait painting of a young woman with blonde hair",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"woman",
+		"nude"
+	)
+mixin portraitSelectedVol1S15
+	+galleryItem(
+		"Untitled",
+		"portrait_selected01_s15.png",
+		"portrait_selected01_s15-thumb.png",
+		"Portrait painting of a man with dark hair",
+		"2000",
+		"oil",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"",
+		""
+	)
+mixin portraitSelectedVol1S16
+	+galleryItem(
+		"So Says Barden",
+		"portrait_selected01_s16.png",
+		"portrait_selected01_s16-thumb.png",
+		"Portrait painting of Javier Barden",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-6",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"man",
+		"mature"
+	)
+mixin portraitSelectedVol1S17
+	+galleryItem(
+		"Orange Distraction",
+		"portrait_selected01_s17.png",
+		"portrait_selected01_s17-thumb.png",
+		"Portrait painting of an adult man with blue eyes",
+		"2009",
+		"acrylic",
+		"plastic",
+		"00",
+		"00",
+		"5-7",
+		namePortraitSelectedVol1,
+		linkPortraitSelectedVol1,
+		"portrait",
+		"man",
+		"mature"
+	)
+
+//- Next Update
+//- mixin portraitGuelphS01
+//- mixin portraitGuelphS01b
+//- mixin portraitGuelphS01c
+//- mixin portraitGuelphS01d
+//- mixin portraitGuelphG01
+//- mixin portraitGuelphS02
+//- mixin portraitGuelphS02b
+//- mixin portraitGuelphS02c
+//- mixin portraitGuelphS02d
+//- mixin portraitGuelphS02e
+//- mixin portraitGuelphS02f
+//- mixin portraitGuelphG02
+//- mixin portraitGuelphG02b
+//- mixin portraitGuelphS03
+//- mixin portraitGuelphS03b
+//- mixin portraitGuelphS03c
+//- mixin portraitGuelphG03
+//- mixin portraitGuelphS04
+//- mixin portraitGuelphS04b
+//- mixin portraitGuelphS04c
+//- mixin portraitGuelphG04
+//- mixin portraitGuelphS05
+//- mixin portraitGuelphS05b
+//- mixin portraitGuelphS05c
+//- mixin portraitGuelphG05
+//- mixin portraitGuelphS06
+//- mixin portraitGuelphS06b
+//- mixin portraitGuelphS06c
+//- mixin portraitGuelphG06
+//- mixin portraitGuelphS07
+//- mixin portraitGuelphS07b
+//- mixin portraitGuelphS07c
+//- mixin portraitGuelphG07
+//- mixin portraitGuelphS08
+//- mixin portraitGuelphS08b
+//- mixin portraitGuelphS09
+//- mixin portraitGuelphS09b
+//- mixin portraitGuelphS10
+//- mixin portraitGuelphS10b
+//- mixin portraitGuelphS11
+//- mixin portraitGuelphS11b
+//- mixin portraitGuelphS12
+//- mixin portraitGuelphS12
+//- mixin portraitGuelphS12b
+//- mixin portraitGuelphS12c
+//- mixin portraitGuelphS13
+//- mixin portraitGuelphS13b
+//- mixin portraitGuelphS14
+//- mixin portraitGuelphS14b
+//- mixin portraitGuelphS15
+//- mixin portraitGuelphS15b
+//- mixin portraitGuelphS16
+//- mixin portraitGuelphS16b
+//- mixin portraitGuelphS17
+//- mixin portraitGuelphS18
+//- mixin portraitGuelphS19
+//- mixin portraitGuelphS20
+//- mixin portraitGuelphS21
+//- mixin portraitGuelphS22
+//- mixin portraitGuelphS23
+//- mixin portraitGuelphS24
+//- mixin portraitGuelphS25
+//- mixin portraitGuelphS26
+//- mixin portraitGuelphS27
+//- mixin portraitGuelphS27b
+//- mixin portraitGuelphS27c
+//- mixin portraitGuelphS27d
+//- mixin portraitGuelphG11
+//- mixin portraitGuelphG08
+//- mixin portraitGuelphG09
+//- mixin portraitGuelphG10
+//- mixin portraitGuelphP01
+
+//- Next update
+//- mixin assortedStillS01
+//- mixin assortedStillS02
+//- mixin assortedStillS03
+//- mixin assortedStillS04
+//- mixin assortedStillS05
+//- mixin assortedStillS06
+//- mixin assortedStillS07
+//- mixin assortedStillS08
+//- mixin assortedStillS09
+//- mixin assortedStillS10
+//- mixin assortedStillS11
+//- mixin assortedStillS12
+//- mixin assortedStillS13
+//- mixin assortedStillS14
+//- mixin assortedStillS15
+//- mixin assortedStillS16
+//- mixin assortedStillS17
+
+//- Assorted Landscapes Vol. 2
+mixin assortedLandscapesVol2S01
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s01.png",
+		"assorted_landscapes02_s01-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S02
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s02.png",
+		"assorted_landscapes02_s02-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S03
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s03.png",
+		"assorted_landscapes02_s03-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S04
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s04.png",
+		"assorted_landscapes02_s04-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S05
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s05.png",
+		"assorted_landscapes02_s05-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S06
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s06.png",
+		"assorted_landscapes02_s06-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S07
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s07.png",
+		"assorted_landscapes02_s07-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"14-11",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S08
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s08.png",
+		"assorted_landscapes02_s08-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S09
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s09.png",
+		"assorted_landscapes02_s09-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol2S10
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes02_s10.png",
+		"assorted_landscapes02_s10-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedLandscapesVol2,
+		linkAssortedLandscapesVol2,
+		"assorted",
+		"landscape",
+		""
+	)
+
+//- Assorted Animals
+mixin assortedAnimalsS01
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s01.png",
+		"assorted_animals_s01-thumb.png",
+		"Painting of a dead wolf",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"6-5",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"animal",
+		""
+	)
+mixin assortedAnimalsS02
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s02.png",
+		"assorted_animals_s02-thumb.png",
+		"Painting of a cat",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"animal",
+		""
+	)
+mixin assortedAnimalsS03
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s03.png",
+		"assorted_animals_s03-thumb.png",
+		"Painting of a dog",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"6-5",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"animal",
+		""
+	)
+mixin assortedAnimalsS04
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s04.png",
+		"assorted_animals_s04-thumb.png",
+		"Painting of a group of horses running",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-3",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"horse",
+		"animal",
+		""
+	)
+mixin assortedAnimalsS05
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s05.png",
+		"assorted_animals_s05-thumb.png",
+		"Portrait of a horse",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"horse",
+		"animal",
+		"portrait"
+	)
+mixin assortedAnimalsS06
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s06.png",
+		"assorted_animals_s06-thumb.png",
+		"Portrait painting of a brown horse",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"1-1",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"horse",
+		"animal",
+		"portrait"
+	)
+mixin assortedAnimalsS07
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s07.png",
+		"assorted_animals_s07-thumb.png",
+		"Painting of a brown dog sleeping",
+		"2000",
+		"watercolour",
+		"paper",
+		"00",
+		"00",
+		"3-2",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"animal",
+		""
+	)
+mixin assortedAnimalsS08
+	+galleryItem(
+		"Untitled",
+		"assorted_animals_s08.png",
+		"assorted_animals_s08-thumb.png",
+		"Portrait painting of a white horse",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-4",
+		nameAssortedAnimals,
+		linkAssortedAnimals,
+		"assorted",
+		"horse",
+		"animal",
+		"portrait"
+	)
+
+//- Next update
+//- mixin assortedMiscS01
+//- mixin assortedMiscS02
+//- mixin assortedMiscS03
+//- mixin assortedMiscS04
+//- mixin assortedMiscS05
+
+//- Assorted Landscapes Volume 1
+mixin assortedLandscapesVol1S01
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s01.png",
+		"assorted_landscapes01_s01-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"3-2",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S02
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s02.png",
+		"assorted_landscapes01_s02-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"2-3",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S03
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s03.png",
+		"assorted_landscapes01_s03-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"11-14",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S04
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s04.png",
+		"assorted_landscapes01_s04-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"11-14",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S05
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s05.png",
+		"assorted_landscapes01_s05-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"23-16",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S06
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s06.png",
+		"assorted_landscapes01_s06-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"8-11",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S07
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s07.png",
+		"assorted_landscapes01_s07-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"4-5",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S08
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s08.png",
+		"assorted_landscapes01_s08-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"5-4",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)
+mixin assortedLandscapesVol1S09
+	+galleryItem(
+		"Untitled",
+		"assorted_landscapes01_s09.png",
+		"assorted_landscapes01_s09-thumb.png",
+		"Landscape painting",
+		"2000",
+		"acrylic",
+		"canvas",
+		"00",
+		"00",
+		"8-11",
+		nameAssortedLandscapesVol1,
+		linkAssortedLandscapesVol1,
+		"assorted",
+		"landscape",
+		""
+	)

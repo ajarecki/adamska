@@ -1,0 +1,59 @@
+extends partial/_tmp-series.pug
+
+//- Image of Disengagement
+
+block config
+	-
+		var series = {
+			id:      figurativeDisengagement.id,
+			name:    figurativeDisengagement.name,
+			info:    figurativeDisengagement.info,
+			link:    figurativeDisengagement.link,
+			date:    figurativeDisengagement.date,
+			hero1:   figurativeDisengagement.hero,
+			hero2:   workFigurative.hero,
+			colname: workFigurative.name,
+			collink: workFigurative.link,
+			summary: ""
+		}
+
+block seriesMediums
+	+seriesMediums(
+		"acrylic"
+	)
+
+block seriesMaterials
+	+seriesMaterials(
+		"plastic",
+		"canvas"
+	)
+
+block navSubmenu
+	+navFigurativeDisengagement
+
+block galleryContent
+	+figurativeDisengagementS01
+	+figurativeDisengagementS02
+	+figurativeDisengagementS03
+	+figurativeDisengagementS04
+	+figurativeDisengagementS05
+	+figurativeDisengagementS06
+	+figurativeDisengagementS07
+	+figurativeDisengagementS08
+	+figurativeDisengagementS09
+	+figurativeDisengagementS10
+	+figurativeDisengagementS11
+	+figurativeDisengagementS12
+	+figurativeDisengagementS13
+
+block relatedSeries01
+	+seriesFigurativeExamination
+
+block relatedSeries02
+	+seriesFigurativeSelectedVol3
+
+block relatedSeries03
+	+seriesFigurativeSelectedVol2
+
+block relatedSeries04
+	+seriesFigurativeBody

@@ -1,0 +1,52 @@
+// AudiType Family
+
+// Extended Normal
+@font-face {
+	font-family: "TypefaceExtended";
+	font-weight: normal;
+	font-style: normal;
+	src: 
+		url("../font/family-extended-normal.woff2") format("woff2"),
+		url("../font/family-extended-normal.woff") format("woff");
+	font-display: swap;
+}
+// Extended Bold
+@font-face {
+	font-family: "TypefaceExtended";
+	font-weight: bold;
+	font-style: normal;
+	src: 
+		url("../font/family-extended-bold.woff2") format("woff2"),
+		url("../font/family-extended-bold.woff") format("woff");
+	font-display: swap;
+}
+// Condensed Light
+@font-face {
+	font-family: "Typeface";
+	font-weight: 100;
+	font-style: normal;
+	src: 
+		url("../font/family-light.woff2") format("woff2"),
+		url("../font/family-light.woff") format("woff");
+	font-display: swap;
+}
+// Condensed Normal
+@font-face {
+	font-family: "Typeface";
+	font-weight: normal;
+	font-style: normal;
+	src: 
+		url("../font/family-normal.woff2") format("woff2"),
+		url("../font/family-normal.woff") format("woff");
+	font-display: swap;
+}
+// Condensed Bold
+@font-face {
+	font-family: "Typeface";
+	font-weight: bold;
+	font-style: normal;
+	src: 
+		url("../font/family-bold.woff2") format("woff2"),
+		url("../font/family-bold.woff") format("woff");
+	font-display: swap;
+}
