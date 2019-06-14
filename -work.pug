@@ -10,23 +10,23 @@ block config
 			id:      work.id,
 			link:    work.link,
 			header:  "Selected Work",
-			hero1:   "background_main_intro-work.png",
+			hero1:   "background_intro_main-work.png",
 			hero2:   "background_outro_figurative.png",
-			border1: "background_border_outro_02.png"
+			border1: "background_border_intro_02.png"
 		}
 
 block navSubmenu
 	+navWork
 
 block introVideo
-	div.ap-c-scn__hero
-		video.ap-c-scn__hero-video(
+	div.ap-c-scn__video
+		video(
 			width="960" height="540" loop muted playsinline 
 			controlsList="nodownload nofullscreen noremoteplayback" 
-			poster="https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,q_auto:best,w_1280/v1551768532/ui/hero-video-poster.png"
+			poster="https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,q_auto:best,w_1280/v1/ui/hero-video-poster.png"
 		)
 		//- source(
-		//- 	src="https://res.cloudinary.com/adamska/video/upload/v1551767835/ui/hero-work.webm" 
+		//- 	src="" 
 		//- 	type="video/webm"
 		//- )
 
@@ -40,19 +40,19 @@ block mainContent
 		div.ap-c-mdl-collection
 			ul.ap-c-mdl-collection__list
 				li.ap-c-mdl-collection__item.ap-l-crd--spotlight
-					+seriesFigurativeSelectedVol3
+					+seriesCard(figurativeSelectedVol3)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeSelectedVol2
+					+seriesCard(figurativeSelectedVol2)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeCoping
+					+seriesCard(figurativeCoping)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeBody
+					+seriesCard(figurativeBody)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeDisengagement
+					+seriesCard(figurativeDisengagement)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeExamination
+					+seriesCard(figurativeExamination)
 				li.ap-c-mdl-collection__item
-					+seriesFigurativeSelectedVol1
+					+seriesCard(figurativeSelectedVol1)
 
 	//- Abstract Series
 	section.ap-c-scn.ap-c-scn--collection#abstract
@@ -60,19 +60,19 @@ block mainContent
 		div.ap-c-mdl-collection
 			ul.ap-c-mdl-collection__list
 				li.ap-c-mdl-collection__item.ap-l-crd--spotlight
-					+seriesAbstractAttachments
+					+seriesCard(abstractAttachments)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractFigural
+					+seriesCard(abstractFigural)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractLandscapes
+					+seriesCard(abstractLandscapes)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractFlames
+					+seriesCard(abstractFlames)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractShapes
+					+seriesCard(abstractShapes)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractSelectedVol1
+					+seriesCard(abstractSelectedVol1)
 				li.ap-c-mdl-collection__item
-					+seriesAbstractGrace
+					+seriesCard(abstractGrace)
 
 	//- Portraits Series
 	section.ap-c-scn.ap-c-scn--collection#portrait
@@ -80,23 +80,23 @@ block mainContent
 		div.ap-c-mdl-collection
 			ul.ap-c-mdl-collection__list
 				li.ap-c-mdl-collection__item.ap-l-crd--spotlight
-					+seriesPortraitSelectedVol3
+					+seriesCard(portraitSelectedVol3)
 				li.ap-c-mdl-collection__item
-					+seriesPortraitSkype
+					+seriesCard(portraitSkype)
 				li.ap-c-mdl-collection__item
-					+seriesPortraitSelectedVol2
+					+seriesCard(portraitSelectedVol2)
 				//- li.ap-c-mdl-collection__item
-				//- 	+seriesPortraitGuelph
+				//- 	+seriesCard(portraitGuelph)
 				li.ap-c-mdl-collection__item
-					+seriesPortraitConte
+					+seriesCard(portraitConte)
 				li.ap-c-mdl-collection__item
-					+seriesPortraitSelectedVol1
+					+seriesCard(portraitSelectedVol1)
 				li.ap-c-mdl-collection__item
-					+seriesPortraitHonorary
+					+seriesCard(portraitHonorary)
 				//- li.ap-c-mdl-collection__item
-				//- 	+seriesPortraitDogs
+				//- 	+seriesCard(portraitDogs)
 				//- li.ap-c-mdl-collection__item
-				//- 	+seriesPortraitCats
+				//- 	+seriesCard(portraitCats)
 
 	//- Assorted Series
 	section.ap-c-scn.ap-c-scn--collection#assorted
@@ -104,14 +104,14 @@ block mainContent
 		div.ap-c-mdl-collection
 			ul.ap-c-mdl-collection__list
 				//- li.ap-c-mdl-collection__item.ap-l-crd--spotlight
-				//- 	+seriesAssortedStill
+				//- 	+seriesCard(assortedStill)
 				li.ap-c-mdl-collection__item.ap-l-crd--spotlight
-					+seriesAssortedLandscapesVol2
+					+seriesCard(assortedLandscapesVol2)
 				li.ap-c-mdl-collection__item
-					+seriesAssortedAnimals
+					+seriesCard(assortedAnimals)
 				li.ap-c-mdl-collection__item
-					+seriesAssortedLandscapesVol1
+					+seriesCard(assortedLandscapesVol1)
 				//- li.ap-c-mdl-collection__item
-				//- 	+seriesAssortedMisc
+				//- 	+seriesCard(assortedMisc)
 
-	//- Browse by topic slider
+	//- Browse by topic/category slider

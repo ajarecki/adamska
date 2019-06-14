@@ -37,73 +37,34 @@
 	font-style: normal;
 }
 
-// $lineHeightParagraph: 1.5;
+// Line heights
+%lineHeightLabel {
+	line-height: 1;
+}
+%lineHeightHeadline {
+	line-height: 1.375;
+}
+%lineHeightBody {
+	line-height: 1.5;
+}
 
-// $lineHeightHeadline: 1;
+$fontSizeXXXL: 42px;
+ $fontSizeXXL: 36px;
+  $fontSizeXL: 32px;
+   $fontSizeL: 28px;
+   $fontSizeM: 24px;
+   $fontSizeR: 21px;
+   $fontSizeS: 18px;
+  $fontSizeXS: 16px;
+ $fontSizeXXS: 14px;
+$fontSizeXXXS: 12px;
 
-$fontSizeXXL: 55px;
-$letterspacing: 1.5;
-
-$fontSizeXXL: 48px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 48px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 42px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 36px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 32px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 28px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 24px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 21px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 18px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 16px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 14px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 12px;
-$lineHeightXXL: 1.5;
-
-$fontSizeXXL: 10px;
-$lineHeightXXL: 1.5;
-
+// Exclude line body here. Apply that individually
 
 // Font sizes
-%fontExtraLarge {
-	font-size: 48px;
-	letter-spacing: -1.25px;
-	line-height: 1.125;
-	text-rendering: optimizeLegibility;
-	@include forTabletOnly {
-		font-size: 42px;
-	}
-	@include forPhoneOnly {
-		font-size: 36px;
-	}
-	@include forBigDesktopUp {
-		font-size: 55px;
-	}
-}
 %fontLarge {
-	font-size: 36px;
+	font-size: 42px;
 	letter-spacing: -.75px;
-	line-height: 1.25;
 	text-rendering: optimizeLegibility;
 	@include forTabletOnly {
 		font-size: 28px;
@@ -118,7 +79,7 @@ $lineHeightXXL: 1.5;
 %fontMedium {
 	font-size: 28px;
 	letter-spacing: -.625px;
-	line-height: 1.375;
+	text-rendering: optimizeLegibility;
 	@include forTabletOnly {
 		font-size: 24px;
 	}
@@ -132,7 +93,6 @@ $lineHeightXXL: 1.5;
 %fontRegular {
 	font-size: 21px;
 	letter-spacing: -.5px;
-	line-height: 1.375;
 	@include forTabletOnly {
 		font-size: 18px;
 	}
@@ -146,7 +106,6 @@ $lineHeightXXL: 1.5;
 %fontSmall {
 	font-size: 16px;
 	letter-spacing: -.25px;
-	line-height: 1.375;
 	@include forTabletOnly {
 		font-size: 14px;
 	}
@@ -157,19 +116,10 @@ $lineHeightXXL: 1.5;
 		font-size: 18px;
 	}
 }
-%fontExtraSmall {
+%fontMicro {
 	font-size: 12px;
-	letter-spacing: -.125px;
-	line-height: 1.375;
+	letter-spacing: normal;
 	@include forBigDesktopUp {
 		font-size: 14px;
-	}
-}
-%fontMicro {
-	font-size: 10px;
-	letter-spacing: normal;
-	line-height: 1.375;
-	@include forBigDesktopUp {
-		font-size: 12px;
 	}
 }

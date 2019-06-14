@@ -14,7 +14,7 @@ block config
 			hero2:   workAssorted.hero,
 			colname: workAssorted.name,
 			collink: workAssorted.link,
-			summary: ""
+			summary: "An assortment of paintings featuring animals."
 		}
 
 block seriesMediums
@@ -40,11 +40,17 @@ block galleryContent
 	+assortedAnimalsS07
 	+assortedAnimalsS08
 
+//- block relatedTags
+	+tagSliderPopular
+
+block nextSeries
+	+seriesCard(assortedLandscapesVol1)
+
 block relatedSeries01
-	+seriesAssortedLandscapesVol1
+	+seriesCard(assortedLandscapesVol1)
 
 block relatedSeries02
-	+seriesAssortedLandscapesVol2
+	+seriesCard(assortedLandscapesVol2)
 
 block relatedSeries03
 	//- Null

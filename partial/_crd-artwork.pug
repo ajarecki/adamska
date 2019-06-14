@@ -1,10 +1,9 @@
-//- Gallery artwork figures
+//- Gallery cards
 
-//- Artwork figure mixin – classes referenced by lightGallery.js
+//- Artwork piece card mixin – classes referenced by lightGallery.js
 	Declare:
 	Piece name,
-	Full-size image source address,
-	Thumbnail image source address,
+	Image source address (used for both full-size and thumbnail),
 	Thumbnails image alt text,
 	Piece year created,
 	Piece medium,
@@ -12,69 +11,23 @@
 	Piece width in inches,
 	Piece height inches,
 	Image aspect ratio class,
-	Name of series piece belongs to,
+	Title of series piece belongs to,
 	Series link address,
 	List of tags relavent to piece
-mixin galleryItem(pieceName, imageFull, imageThumb, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesName, seriesLink, ...tagList)
-	figure.ap-c-crd-artwork(
-		data-src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageFull
-		data-sub-html=".ap-c-crd-artwork__info"
-	)
-		div.ap-c-crd-artwork__thumb(
-			class="ap-l-ratio--" + aspectRatio
-			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageThumb + ");"
-		)
-			img.ap-c-crd-artwork__image(
-				src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageThumb
-				alt=imageAlt + " by Grazyna Adamska Jarecka"
-			)
-			div.ap-c-crd-artwork__icon
-				+icon(iconExpand)
-		figcaption.ap-c-crd-artwork__info
-			div.ap-c-crd-artwork__title
-				h4.ap-c-crd-artwork__piece=pieceName
-				span.ap-c-crd-artwork__series
-					span &ensp;&mdash;&ensp;in&nbsp;
-					a(href=seriesLink)=seriesName
-			div.ap-c-crd-artwork__spec
-				a(
-					href=urlRoot + pieceYear  
-					title="More artworks created in" + pieceYear
-				)=pieceYear
-				span &nbsp;&mdash;&nbsp;
-				a(
-					href=urlRoot + pieceMedium
-					title="More artworks made with" + pieceMedium
-				)=pieceMedium
-				span &nbsp;on&nbsp;
-				a(
-					href=urlRoot + pieceMaterial
-					title="More artworks made with" + pieceMaterial
-				)=pieceMaterial
-				span &comma;&nbsp;
-				span=pieceWidth
-					| &nbsp;&times;&nbsp;
-				span=pieceHeight
-					| &nbsp;in
-			ul.ap-c-crd-artwork__tags
-				each item in tagList
-					li
-						a(href= urlRootTag + item)= item
-
-mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesName, seriesLink, ...tagList)
+mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesData, ...tagList)
 	//- Lightbox image and caption
 	figure.ap-c-crd-artwork(
-		data-src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + ".png"
+		data-src= urlRootImage + "f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + ".png"
 		data-sub-html=".ap-c-crd-artwork__info"
 	)
 		//- Thumbnail container
 		div.ap-c-crd-artwork__thumb(
 			class="ap-l-ratio--" + aspectRatio
-			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+			style="background-image: url(" + urlRootImage + "c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
 		)
 			//- Thumbnail image
 			img.ap-c-crd-artwork__image(
-				src="https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png"
+				src= urlRootImage + "f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png"
 				alt= imageAlt + " by Grazyna Adamska Jarecka"
 			)
 			div.ap-c-crd-artwork__icon
@@ -85,66 +38,79 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 			div.ap-c-crd-artwork__title
 				h4.ap-c-crd-artwork__piece= pieceName
 				span.ap-c-crd-artwork__series
-					span &ensp;&mdash;&ensp;in&nbsp;
-					a(href= seriesLink)= seriesName
+					| &ensp;&mdash;&ensp;in&nbsp;
+					a(href= seriesData.link)= seriesData.name
 			//- Mediums and materials
 			div.ap-c-crd-artwork__spec
-				a(
-					href= urlRoot + pieceYear
-					title="More artworks created in" + pieceYear
-				)=pieceYear
-				span &nbsp;&mdash;&nbsp;
-				a(
-					href= urlRoot + pieceMedium
-					title="More artworks made with" + pieceMedium
-				)= pieceMedium
-				span &nbsp;on&nbsp;
-				a(
-					href=urlRoot + pieceMaterial
-					title="More artworks made with" + pieceMaterial
-				)= pieceMaterial
-				span &comma;&nbsp;
+				span= pieceYear
+					| &nbsp;&mdash;&nbsp;
+				span= pieceMedium
+					| &nbsp;on&nbsp;
+				span= pieceMaterial
+					| &comma;&nbsp;
 				span= pieceWidth
 					| &nbsp;&times;&nbsp;
 				span= pieceHeight
 					| &nbsp;in
-			//- Dominant colors
-			ul.ap-c-crd-artwork__palette
-				li
-					a(href= urlRootTag + color1
-					class=".ap-c-crd-artwork__palette--" + color1
-					)= color1
-				li
-					a(href= urlRootTag + color2
-					class=".ap-c-crd-artwork__palette--" + color2
-					)= color2
-				li
-					a(href= urlRootTag + color3
-					class=".ap-c-crd-artwork__palette--" + color3
-					)= color3
-			//- Tag list
-			ul.ap-c-crd-artwork__tags
-				each item in tagList
-					li
-						a(href= urlRootTag + item)= item
+
+//- Info and details
+		figcaption.ap-c-crd-artwork__info(
+			style="background-image: url(" + urlRootImage + "c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+		)
+
+//- mixin artworkCard(pieceName, imageSource, imageAlt, yearData, mediumData, materialData, pieceWidth, pieceHeight, aspectRatio, seriesData, color1Data, color2Data, color3Data, ...tagList)
+
+//- Future update – data values
+	//- Mediums and materials
+	div.ap-c-crd-artwork__spec
+		a(
+			href= yearData.link
+			title= yearData.info
+		)= yearData.name
+			| &nbsp;&mdash;&nbsp;
+		a(
+			href= mediumData.link
+			title= mediumData.info
+		)= mediumData.name
+			| &nbsp;on&nbsp;
+		a(
+			href= materialData.link
+			title= materialData.info
+		)= materialData.name
+			| &comma;&nbsp;
+		span= pieceWidth
+			| &nbsp;&times;&nbsp;
+		span= pieceHeight
+			| &nbsp;in
+	//- Dominant colors – place above tag list
+	ul.ap-c-crd-artwork__palette
+		li
+			a(
+				href= color1Data.link
+				class= `.ap-c-crd-artwork__palette--${color1Data.id}`
+			)= color1Data.name
+		li
+			a(
+				href= color2Data.link
+				class= `.ap-c-crd-artwork__palette--${color2Data.id}`
+			)= color2Data.name
+		li
+			a(
+				href= color3Data.link
+				class= `.ap-c-crd-artwork__palette--${color3Data.id}`
+			)= color3Data.name
+	//- Tag list
+	ul.ap-c-crd-artwork__tags
+		each tagData in tagList
+			li
+				a(href= tagData.link)= tagData.name
 
 
-//- Lightbox swipe/drag navigation alert component mixin
-mixin lightboxNavAlert
-	div.ap-c-alr-lightbox
-		span.ap-c-alr-lightbox__arrow.ap-c-alr-lightbox__arrow--left
-			+icon(iconChevronLeft)
-			+icon(iconChevronLeft)
-			+icon(iconChevronLeft)
-		span.ap-c-alr-lightbox__label.ap-c-alr-lightbox__label--mobile Swipe
-		span.ap-c-alr-lightbox__label.ap-c-alr-lightbox__label--desktop Drag or use arrow keys
-		span.ap-c-alr-lightbox__arrow.ap-c-alr-lightbox__arrow--right
-			+icon(iconChevronRight)
-			+icon(iconChevronRight)
-			+icon(iconChevronRight)
+//- Separate Press/documentation item mixin? "documentCard"
+	Does not include piece-specific info
 
 
-//- Artwork figure components
+//- Artwork gallery card components
 
 
 //- Abstract series gallery items
@@ -156,11 +122,10 @@ mixin abstractGraceS01
 		"Grace / No Grace",
 		"abstract_grace_s01",
 		"Abstract painting",
-		"2011", "acrylic", "plastic",
+		tag2011, tagAcrylic, tagPlastic,
 		"22", "22.1",
 		"50-49",
-		abstractGrace.name,
-		abstractGrace.link,
+		abstractGrace,
 		"red", "green", "blue",
 		"black", "abstract", "pattern"
 	)
@@ -172,8 +137,7 @@ mixin abstractGraceS02
 		"2011", "acrylic", "plastic",
 		"28", "23",
 		"11-9",
-		abstractGrace.name,
-		abstractGrace.link,
+		abstractGrace,
 		"red", "green", "blue",
 		"abstract"
 	)
@@ -185,8 +149,7 @@ mixin abstractGraceS03
 		"2011", "acrylic", "plastic",
 		"28", "23",
 		"11-9",
-		abstractGrace.name,
-		abstractGrace.link,
+		abstractGrace,
 		"white", "green", "blue",
 		"abstract"
 	)
@@ -198,231 +161,164 @@ mixin abstractGraceS04
 		"2011", "acrylic", "plastic",
 		"23", "28",
 		"9-11",
-		abstractGrace.name,
-		abstractGrace.link,
+		abstractGrace,
 		"grey", "green", "blue",
 		"abstract"
 	)
 
 //- Selected Abstract Works Volume 1
 mixin abstractSelectedVol1S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s01.png",
-		"abstract_selected01_s01-thumb.png",
+		"abstract_selected01_s01",
 		"Abstract acrylic painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract",
 		"tagname1",
 		"tagname2",
 		"tagname3"
 	)
 mixin abstractSelectedVol1S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s02.png",
-		"abstract_selected01_s02-thumb.png",
+		"abstract_selected01_s02",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"14-11",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s03.png",
-		"abstract_selected01_s03-thumb.png",
+		"abstract_selected01_s03",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"4-3",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s04.png",
-		"abstract_selected01_s04-thumb.png",
+		"abstract_selected01_s04",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s05.png",
-		"abstract_selected01_s05-thumb.png",
+		"abstract_selected01_s05",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"4-3",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s06.png",
-		"abstract_selected01_s06-thumb.png",
+		"abstract_selected01_s06",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"4-3",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s07.png",
-		"abstract_selected01_s07-thumb.png",
+		"abstract_selected01_s07",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"7-6",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s08.png",
-		"abstract_selected01_s08-thumb.png",
+		"abstract_selected01_s08",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s09.png",
-		"abstract_selected01_s09-thumb.png",
+		"abstract_selected01_s09",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s10.png",
-		"abstract_selected01_s10-thumb.png",
+		"abstract_selected01_s10",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s11.png",
-		"abstract_selected01_s11-thumb.png",
+		"abstract_selected01_s11",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s12.png",
-		"abstract_selected01_s12-thumb.png",
+		"abstract_selected01_s12",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"1-1",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 mixin abstractSelectedVol1S13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_selected01_s13.png",
-		"abstract_selected01_s13-thumb.png",
+		"abstract_selected01_s13",
 		"Abstract painting",
-		"0000",
-		"acrylic",
-		"canvas",
-		"00",
-		"00",
+		"0000", "acrylic", "canvas",
+		"00", "00",
 		"3-4",
-		nameAbstractSelectedVol1,
-		linkAbstractSelectedVol1,
+		abstractSelectedVol1,
 		"abstract"
 	)
 	
 //- Abstracted Landscapes
 mixin abstractLandscapesS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s01.png",
-		"abstract_landscapes_s01-thumb.png",
+		"abstract_landscapes_s01",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -430,17 +326,15 @@ mixin abstractLandscapesS01
 		"00",
 		"00",
 		"8-7",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS02
-	+galleryItem(
+	+artworkCard(
 		"Orange le Vert",
-		"abstract_landscapes_s02.png",
-		"abstract_landscapes_s02-thumb.png",
+		"abstract_landscapes_s02",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -448,17 +342,15 @@ mixin abstractLandscapesS02
 		"48",
 		"30",
 		"16-10",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s03.png",
-		"abstract_landscapes_s03-thumb.png",
+		"abstract_landscapes_s03",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -466,17 +358,15 @@ mixin abstractLandscapesS03
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s04.png",
-		"abstract_landscapes_s04-thumb.png",
+		"abstract_landscapes_s04",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -484,17 +374,15 @@ mixin abstractLandscapesS04
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s05.png",
-		"abstract_landscapes_s05-thumb.png",
+		"abstract_landscapes_s05",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -502,17 +390,15 @@ mixin abstractLandscapesS05
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s06.png",
-		"abstract_landscapes_s06-thumb.png",
+		"abstract_landscapes_s06",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -520,17 +406,15 @@ mixin abstractLandscapesS06
 		"00",
 		"00",
 		"6-5",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s07.png",
-		"abstract_landscapes_s07-thumb.png",
+		"abstract_landscapes_s07",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -538,17 +422,15 @@ mixin abstractLandscapesS07
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s08.png",
-		"abstract_landscapes_s08-thumb.png",
+		"abstract_landscapes_s08",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -556,17 +438,15 @@ mixin abstractLandscapesS08
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s09.png",
-		"abstract_landscapes_s09-thumb.png",
+		"abstract_landscapes_s09",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -574,17 +454,15 @@ mixin abstractLandscapesS09
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s10.png",
-		"abstract_landscapes_s10-thumb.png",
+		"abstract_landscapes_s10",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -592,17 +470,15 @@ mixin abstractLandscapesS10
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s11.png",
-		"abstract_landscapes_s11-thumb.png",
+		"abstract_landscapes_s11",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -610,17 +486,15 @@ mixin abstractLandscapesS11
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s12.png",
-		"abstract_landscapes_s12-thumb.png",
+		"abstract_landscapes_s12",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -628,17 +502,15 @@ mixin abstractLandscapesS12
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s13.png",
-		"abstract_landscapes_s13-thumb.png",
+		"abstract_landscapes_s13",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -646,17 +518,15 @@ mixin abstractLandscapesS13
 		"00",
 		"00",
 		"4-5",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS14
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s14.png",
-		"abstract_landscapes_s14-thumb.png",
+		"abstract_landscapes_s14",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -664,17 +534,15 @@ mixin abstractLandscapesS14
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS15
-	+galleryItem(
+	+artworkCard(
 		"Test",
-		"abstract_landscapes_s15.png",
-		"abstract_landscapes_s15-thumb.png",
+		"abstract_landscapes_s15",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -682,16 +550,14 @@ mixin abstractLandscapesS15
 		"00",
 		"00",
 		"1-1",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape"
 	)
 mixin abstractLandscapesS16
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s16.png",
-		"abstract_landscapes_s16-thumb.png",
+		"abstract_landscapes_s16",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -699,17 +565,15 @@ mixin abstractLandscapesS16
 		"00",
 		"00",
 		"5-4",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"green",
 		"abstract",
 		"landscape"
 	)
 mixin abstractLandscapesS17
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s17.png",
-		"abstract_landscapes_s17-thumb.png",
+		"abstract_landscapes_s17",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -717,18 +581,16 @@ mixin abstractLandscapesS17
 		"00",
 		"00",
 		"5-4",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"blue",
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS18
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s18.png",
-		"abstract_landscapes_s18-thumb.png",
+		"abstract_landscapes_s18",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -736,17 +598,15 @@ mixin abstractLandscapesS18
 		"00",
 		"00",
 		"3-4",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS19
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s19.png",
-		"abstract_landscapes_s19-thumb.png",
+		"abstract_landscapes_s19",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -754,18 +614,16 @@ mixin abstractLandscapesS19
 		"00",
 		"00",
 		"3-4",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"blue",
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS20
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s20.png",
-		"abstract_landscapes_s20-thumb.png",
+		"abstract_landscapes_s20",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -773,18 +631,16 @@ mixin abstractLandscapesS20
 		"00",
 		"00",
 		"14-11",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"blue",
 		"abstract",
 		"landscape",
 		""
 	)
 mixin abstractLandscapesS21
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_landscapes_s21.png",
-		"abstract_landscapes_s21-thumb.png",
+		"abstract_landscapes_s21",
 		"Abstracted landscape painting",
 		"2000",
 		"acrylic",
@@ -792,8 +648,7 @@ mixin abstractLandscapesS21
 		"00",
 		"00",
 		"4-5",
-		nameAbstractLandscapes,
-		linkAbstractLandscapes,
+		abstractLandscapes,
 		"brown",
 		"abstract",
 		"landscape",
@@ -801,13 +656,11 @@ mixin abstractLandscapesS21
 	)
 
 
-
 //- Figural Abstract Works
 mixin abstractFiguralS01
-	+galleryItem(
+	+artworkCard(
 		"Deadline Anxiety",
-		"abstract_figural_s01.png",
-		"abstract_figural_s01-thumb.png",
+		"abstract_figural_s01",
 		"Abstract figure painting",
 		"2018",
 		"acrylic",
@@ -815,18 +668,16 @@ mixin abstractFiguralS01
 		"46",
 		"36",
 		"23-18",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"yellow",
 		"abstract",
 		"figurative",
 		""
 	)
 mixin abstractFiguralS02
-	+galleryItem(
+	+artworkCard(
 		"Dominative Moments",
-		"abstract_figural_s02.png",
-		"abstract_figural_s02-thumb.png",
+		"abstract_figural_s02",
 		"Abstract figure painting",
 		"2018",
 		"acrylic",
@@ -834,18 +685,16 @@ mixin abstractFiguralS02
 		"48",
 		"40",
 		"6-5",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"green",
 		"abstract",
 		"figurative",
 		""
 	)
 mixin abstractFiguralS03
-	+galleryItem(
+	+artworkCard(
 		"Open Closed Value",
-		"abstract_figural_s03.png",
-		"abstract_figural_s03-thumb.png",
+		"abstract_figural_s03",
 		"Abstract figure painting",
 		"2014",
 		"acrylic",
@@ -853,18 +702,16 @@ mixin abstractFiguralS03
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"blue",
 		"abstract",
 		"figurative",
 		""
 )
 mixin abstractFiguralS04
-	+galleryItem(
+	+artworkCard(
 		"Dynamic Identities",
-		"abstract_figural_s04.png",
-		"abstract_figural_s04-thumb.png",
+		"abstract_figural_s04",
 		"Abstract figure painting",
 		"2000",
 		"acrylic",
@@ -872,18 +719,16 @@ mixin abstractFiguralS04
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"purple",
 		"abstract",
 		"figurative",
 		""
 	)
 mixin abstractFiguralS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_figural_s05.png",
-		"abstract_figural_s05-thumb.png",
+		"abstract_figural_s05",
 		"Abstract figure painting",
 		"2000",
 		"acrylic",
@@ -891,18 +736,16 @@ mixin abstractFiguralS05
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"purple",
 		"abstract",
 		"figurative",
 		""
 	)
 mixin abstractFiguralS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_figural_s06.png",
-		"abstract_figural_s06-thumb.png",
+		"abstract_figural_s06",
 		"Abstract figure painting",
 		"2000",
 		"acrylic",
@@ -910,18 +753,16 @@ mixin abstractFiguralS06
 		"00",
 		"00",
 		"5-4",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"brown",
 		"abstract",
 		"figurative",
 		""
 	)
 mixin abstractFiguralS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_figural_s07.png",
-		"abstract_figural_s07-thumb.png",
+		"abstract_figural_s07",
 		"Abstract figure painting",
 		"2000",
 		"acrylic",
@@ -929,8 +770,7 @@ mixin abstractFiguralS07
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFigural,
-		linkAbstractFigural,
+		abstractFigural,
 		"yellow",
 		"abstract",
 		"figurative",
@@ -939,10 +779,9 @@ mixin abstractFiguralS07
 
 //- Flames, Coral Reefs
 mixin abstractFlamesS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s01.png",
-		"abstract_flames_s01-thumb.png",
+		"abstract_flames_s01",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -950,17 +789,15 @@ mixin abstractFlamesS01
 		"00",
 		"00",
 		"4-5",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s02.png",
-		"abstract_flames_s02-thumb.png",
+		"abstract_flames_s02",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -968,17 +805,15 @@ mixin abstractFlamesS02
 		"00",
 		"00",
 		"3-4",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s03.png",
-		"abstract_flames_s03-thumb.png",
+		"abstract_flames_s03",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -986,17 +821,15 @@ mixin abstractFlamesS03
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s04.png",
-		"abstract_flames_s04-thumb.png",
+		"abstract_flames_s04",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -1004,17 +837,15 @@ mixin abstractFlamesS04
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s05.png",
-		"abstract_flames_s05-thumb.png",
+		"abstract_flames_s05",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -1022,17 +853,15 @@ mixin abstractFlamesS05
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s06.png",
-		"abstract_flames_s06-thumb.png",
+		"abstract_flames_s06",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -1040,17 +869,15 @@ mixin abstractFlamesS06
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s07.png",
-		"abstract_flames_s07-thumb.png",
+		"abstract_flames_s07",
 		"Abstract painting of flames",
 		"2000",
 		"acrylic",
@@ -1058,17 +885,15 @@ mixin abstractFlamesS07
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s08.png",
-		"abstract_flames_s08-thumb.png",
+		"abstract_flames_s08",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1076,17 +901,15 @@ mixin abstractFlamesS08
 		"00",
 		"00",
 		"23-20",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s09.png",
-		"abstract_flames_s09-thumb.png",
+		"abstract_flames_s09",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1094,17 +917,15 @@ mixin abstractFlamesS09
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s10.png",
-		"abstract_flames_s10-thumb.png",
+		"abstract_flames_s10",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1112,17 +933,15 @@ mixin abstractFlamesS10
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s11.png",
-		"abstract_flames_s11-thumb.png",
+		"abstract_flames_s11",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1130,17 +949,15 @@ mixin abstractFlamesS11
 		"00",
 		"00",
 		"14-11",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s12.png",
-		"abstract_flames_s12-thumb.png",
+		"abstract_flames_s12",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1148,17 +965,15 @@ mixin abstractFlamesS12
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s13.png",
-		"abstract_flames_s13-thumb.png",
+		"abstract_flames_s13",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1166,17 +981,15 @@ mixin abstractFlamesS13
 		"00",
 		"00",
 		"4-3",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
 	)
 mixin abstractFlamesS14
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_flames_s14.png",
-		"abstract_flames_s14-thumb.png",
+		"abstract_flames_s14",
 		"Abstract painting of corals",
 		"2000",
 		"acrylic",
@@ -1184,8 +997,7 @@ mixin abstractFlamesS14
 		"00",
 		"00",
 		"1-1",
-		nameAbstractFlames,
-		linkAbstractFlames,
+		abstractFlames,
 		"abstract",
 		"",
 		""
@@ -1193,10 +1005,9 @@ mixin abstractFlamesS14
 
 //- Shapes & Textures
 mixin abstractShapesS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s01.png",
-		"abstract_shapes_s01-thumb.png",
+		"abstract_shapes_s01",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1204,17 +1015,15 @@ mixin abstractShapesS01
 		"00",
 		"00",
 		"1-1",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"yellow",
 		"abstract",
 		""		
 	)
 mixin abstractShapesS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s02.png",
-		"abstract_shapes_s02-thumb.png",
+		"abstract_shapes_s02",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1222,17 +1031,15 @@ mixin abstractShapesS02
 		"00",
 		"00",
 		"1-1",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"pink",
 		"abstract",
 		""		
 	)
 mixin abstractShapesS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s03.png",
-		"abstract_shapes_s03-thumb.png",
+		"abstract_shapes_s03",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1240,17 +1047,15 @@ mixin abstractShapesS03
 		"00",
 		"00",
 		"1-1",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"blue",
 		"abstract",
 		""		
 	)
 mixin abstractShapesS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s04.png",
-		"abstract_shapes_s04-thumb.png",
+		"abstract_shapes_s04",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1258,17 +1063,15 @@ mixin abstractShapesS04
 		"00",
 		"00",
 		"1-1",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"yellow",
 		"abstract",
 		""		
 	)
 mixin abstractShapesS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s05.png",
-		"abstract_shapes_s05-thumb.png",
+		"abstract_shapes_s05",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1276,17 +1079,15 @@ mixin abstractShapesS05
 		"00",
 		"00",
 		"1-1",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"yellow",
 		"abstract",
 		""		
 	)
 mixin abstractShapesS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_shapes_s06.png",
-		"abstract_shapes_s06-thumb.png",
+		"abstract_shapes_s06",
 		"Abstract painting of shapes and textures",
 		"2000",
 		"acrylic",
@@ -1294,8 +1095,7 @@ mixin abstractShapesS06
 		"00",
 		"00",
 		"7-6",
-		nameAbstractShapes,
-		linkAbstractShapes,
+		abstractShapes,
 		"blue",
 		"abstract",
 		""		
@@ -1303,10 +1103,9 @@ mixin abstractShapesS06
 
 //- Attachments
 mixin abstractAttachmentsS01
-	+galleryItem(
+	+artworkCard(
 		"Pocket-Sized Voids",
-		"abstract_attachments_s01.png",
-		"abstract_attachments_s01-thumb.png",
+		"abstract_attachments_s01",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1314,17 +1113,15 @@ mixin abstractAttachmentsS01
 		"24",
 		"30",
 		"4-5",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"black",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS02
-	+galleryItem(
+	+artworkCard(
 		"Tangled Promises",
-		"abstract_attachments_s02.png",
-		"abstract_attachments_s02-thumb.png",
+		"abstract_attachments_s02",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1332,17 +1129,15 @@ mixin abstractAttachmentsS02
 		"24",
 		"30",
 		"11-14",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"blue",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled Journey",
-		"abstract_attachments_s03.png",
-		"abstract_attachments_s03-thumb.png",
+		"abstract_attachments_s03",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1350,17 +1145,15 @@ mixin abstractAttachmentsS03
 		"24",
 		"30",
 		"4-5",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"yellow",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS04
-	+galleryItem(
+	+artworkCard(
 		"Attachment Delivered",
-		"abstract_attachments_s04.png",
-		"abstract_attachments_s04-thumb.png",
+		"abstract_attachments_s04",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1368,17 +1161,15 @@ mixin abstractAttachmentsS04
 		"22",
 		"28",
 		"11-14",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"brown",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS05
-	+galleryItem(
+	+artworkCard(
 		"Attachment",
-		"abstract_attachments_s05.png",
-		"abstract_attachments_s05-thumb.png",
+		"abstract_attachments_s05",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1386,17 +1177,15 @@ mixin abstractAttachmentsS05
 		"24",
 		"32",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"brown",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS06
-	+galleryItem(
+	+artworkCard(
 		"Miniature Rebellions",
-		"abstract_attachments_s06.png",
-		"abstract_attachments_s06-thumb.png",
+		"abstract_attachments_s06",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1404,17 +1193,15 @@ mixin abstractAttachmentsS06
 		"18",
 		"24",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"pink",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS07
-	+galleryItem(
+	+artworkCard(
 		"Third Chances",
-		"abstract_attachments_s07.png",
-		"abstract_attachments_s07-thumb.png",
+		"abstract_attachments_s07",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1422,17 +1209,15 @@ mixin abstractAttachmentsS07
 		"24",
 		"32",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"blue",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS08
-	+galleryItem(
+	+artworkCard(
 		"Clip Composition",
-		"abstract_attachments_s08.png",
-		"abstract_attachments_s08-thumb.png",
+		"abstract_attachments_s08",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1440,17 +1225,15 @@ mixin abstractAttachmentsS08
 		"24",
 		"32",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"grey",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS09
-	+galleryItem(
+	+artworkCard(
 		"Formative Years",
-		"abstract_attachments_s09.png",
-		"abstract_attachments_s09-thumb.png",
+		"abstract_attachments_s09",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1458,17 +1241,15 @@ mixin abstractAttachmentsS09
 		"16",
 		"20",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"purple",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS10
-	+galleryItem(
+	+artworkCard(
 		"Above & Beneath I",
-		"abstract_attachments_s10.png",
-		"abstract_attachments_s10-thumb.png",
+		"abstract_attachments_s10",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1476,17 +1257,15 @@ mixin abstractAttachmentsS10
 		"24",
 		"24",
 		"1-1",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"grey",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS11
-	+galleryItem(
+	+artworkCard(
 		"Above & Beneath II",
-		"abstract_attachments_s11.png",
-		"abstract_attachments_s11-thumb.png",
+		"abstract_attachments_s11",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1494,17 +1273,15 @@ mixin abstractAttachmentsS11
 		"32",
 		"32",
 		"1-1",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"grey",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_attachments_s12.png",
-		"abstract_attachments_s12-thumb.png",
+		"abstract_attachments_s12",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1512,17 +1289,15 @@ mixin abstractAttachmentsS12
 		"16",
 		"22",
 		"8-11",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"pink",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS13
-	+galleryItem(
+	+artworkCard(
 		"Color Field",
-		"abstract_attachments_s13.png",
-		"abstract_attachments_s13-thumb.png",
+		"abstract_attachments_s13",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1530,17 +1305,15 @@ mixin abstractAttachmentsS13
 		"32",
 		"32",
 		"1-1",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"grey",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS14
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_attachments_s14.png",
-		"abstract_attachments_s14-thumb.png",
+		"abstract_attachments_s14",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1548,17 +1321,15 @@ mixin abstractAttachmentsS14
 		"00",
 		"00",
 		"4-3",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"grey",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS15
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"abstract_attachments_s15.png",
-		"abstract_attachments_s15-thumb.png",
+		"abstract_attachments_s15",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1566,17 +1337,15 @@ mixin abstractAttachmentsS15
 		"24",
 		"32",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"green",
 		"abstract",
 		""
 	)
 mixin abstractAttachmentsS16
-	+galleryItem(
+	+artworkCard(
 		"Neon Routes",
-		"abstract_attachments_s16.png",
-		"abstract_attachments_s16-thumb.png",
+		"abstract_attachments_s16",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1584,18 +1353,16 @@ mixin abstractAttachmentsS16
 		"48",
 		"36",
 		"4-3",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"black",
 		"abstract",
 		""
 	)
 //- S17 - not ready
 mixin abstractAttachmentsS17
-	+galleryItem(
+	+artworkCard(
 		"No Easy Route",
-		"abstract_attachments_s17.png",
-		"abstract_attachments_s17-thumb.png",
+		"abstract_attachments_s17",
 		"Abstract painting",
 		"2019",
 		"acrylic",
@@ -1603,8 +1370,7 @@ mixin abstractAttachmentsS17
 		"24",
 		"32",
 		"3-4",
-		nameAbstractAttachments,
-		linkAbstractAttachments,
+		abstractAttachments,
 		"yellow",
 		"abstract",
 		""
@@ -1613,10 +1379,9 @@ mixin abstractAttachmentsS17
 //- Body Drawings
 //- S06c not ready
 mixin figurativeBodyG01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_g01.png",
-		"figurative_body_g01-thumb.png",
+		"figurative_body_g01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1624,17 +1389,15 @@ mixin figurativeBodyG01
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		"woman",
 		"nude"
 	)
 mixin figurativeBodyS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s01.png",
-		"figurative_body_s01-thumb.png",
+		"figurative_body_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1642,16 +1405,14 @@ mixin figurativeBodyS01
 		"00",
 		"00",
 		"5-6",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s02.png",
-		"figurative_body_s02-thumb.png",
+		"figurative_body_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1659,16 +1420,14 @@ mixin figurativeBodyS02
 		"00",
 		"00",
 		"6-5",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s03.png",
-		"figurative_body_s03-thumb.png",
+		"figurative_body_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1676,16 +1435,14 @@ mixin figurativeBodyS03
 		"00",
 		"00",
 		"5-6",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s04.png",
-		"figurative_body_s04-thumb.png",
+		"figurative_body_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1693,16 +1450,14 @@ mixin figurativeBodyS04
 		"00",
 		"00",
 		"3-2",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS04b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s04b.png",
-		"figurative_body_s04b-thumb.png",
+		"figurative_body_s04b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1710,16 +1465,14 @@ mixin figurativeBodyS04b
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS04c
-	+galleryItem(
+	+artworkCard(
 		"(Detail)",
-		"figurative_body_s04c.png",
-		"figurative_body_s04c-thumb.png",
+		"figurative_body_s04c",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1727,16 +1480,14 @@ mixin figurativeBodyS04c
 		"00",
 		"00",
 		"3-2",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS04d
-	+galleryItem(
+	+artworkCard(
 		"(Detail)",
-		"figurative_body_s04d.png",
-		"figurative_body_s04d-thumb.png",
+		"figurative_body_s04d",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1744,16 +1495,14 @@ mixin figurativeBodyS04d
 		"00",
 		"00",
 		"9-4",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		"triptych"
 	)
 mixin figurativeBodyS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s05.png",
-		"figurative_body_s05-thumb.png",
+		"figurative_body_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1761,16 +1510,14 @@ mixin figurativeBodyS05
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS05b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s05b.png",
-		"figurative_body_s05b-thumb.png",
+		"figurative_body_s05b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1778,16 +1525,14 @@ mixin figurativeBodyS05b
 		"00",
 		"00",
 		"7-5",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s06.png",
-		"figurative_body_s06-thumb.png",
+		"figurative_body_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1795,16 +1540,14 @@ mixin figurativeBodyS06
 		"00",
 		"00",
 		"9-8",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS06b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s06b.png",
-		"figurative_body_s06b-thumb.png",
+		"figurative_body_s06b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1812,17 +1555,15 @@ mixin figurativeBodyS06b
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 //- S06c is currently unpublished
 mixin figurativeBodyS06c
-	+galleryItem(
+	+artworkCard(
 		"(Details)",
-		"figurative_body_s06c.png",
-		"figurative_body_s06c-thumb.png",
+		"figurative_body_s06c",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1830,16 +1571,14 @@ mixin figurativeBodyS06c
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 mixin figurativeBodyS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_body_s07.png",
-		"figurative_body_s07-thumb.png",
+		"figurative_body_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1847,18 +1586,16 @@ mixin figurativeBodyS07
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeBody,
-		linkFigurativeBody,
+		figurativeBody,
 		"figurative",
 		""
 	)
 
 //- Self Examination
 mixin figurativeExaminationS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s01.png",
-		"figurative_examination_s01-thumb.png",
+		"figurative_examination_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1866,16 +1603,14 @@ mixin figurativeExaminationS01
 		"00",
 		"00",
 		"3-4",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s02.png",
-		"figurative_examination_s02-thumb.png",
+		"figurative_examination_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1883,16 +1618,14 @@ mixin figurativeExaminationS02
 		"00",
 		"00",
 		"3-4",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS02b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s02b.png",
-		"figurative_examination_s02b-thumb.png",
+		"figurative_examination_s02b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1900,16 +1633,14 @@ mixin figurativeExaminationS02b
 		"00",
 		"00",
 		"16-9",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s03.png",
-		"figurative_examination_s03-thumb.png",
+		"figurative_examination_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1917,16 +1648,14 @@ mixin figurativeExaminationS03
 		"00",
 		"00",
 		"8-11",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s04.png",
-		"figurative_examination_s04-thumb.png",
+		"figurative_examination_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1934,16 +1663,14 @@ mixin figurativeExaminationS04
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s05.png",
-		"figurative_examination_s05-thumb.png",
+		"figurative_examination_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1951,16 +1678,14 @@ mixin figurativeExaminationS05
 		"00",
 		"00",
 		"8-17",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s06.png",
-		"figurative_examination_s06-thumb.png",
+		"figurative_examination_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1968,16 +1693,14 @@ mixin figurativeExaminationS06
 		"00",
 		"00",
 		"2-1",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationG01
-	+galleryItem(
+	+artworkCard(
 		"Exhibition Documentation",
-		"figurative_examination_s06.png",
-		"figurative_examination_s06-thumb.png",
+		"figurative_examination_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -1985,16 +1708,14 @@ mixin figurativeExaminationG01
 		"00",
 		"00",
 		"3-2",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s07.png",
-		"figurative_examination_s07-thumb.png",
+		"figurative_examination_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2002,16 +1723,14 @@ mixin figurativeExaminationS07
 		"00",
 		"00",
 		"10-19",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s08.png",
-		"figurative_examination_s08-thumb.png",
+		"figurative_examination_s08",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2019,16 +1738,14 @@ mixin figurativeExaminationS08
 		"00",
 		"00",
 		"2-3",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s09.png",
-		"figurative_examination_s09-thumb.png",
+		"figurative_examination_s09",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2036,16 +1753,14 @@ mixin figurativeExaminationS09
 		"00",
 		"00",
 		"16-10",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s10.png",
-		"figurative_examination_s10-thumb.png",
+		"figurative_examination_s10",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2053,16 +1768,14 @@ mixin figurativeExaminationS10
 		"00",
 		"00",
 		"3-5",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 mixin figurativeExaminationS11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_examination_s11.png",
-		"figurative_examination_s11-thumb.png",
+		"figurative_examination_s11",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2070,18 +1783,16 @@ mixin figurativeExaminationS11
 		"00",
 		"00",
 		"8-9",
-		nameFigurativeExamination,
-		linkFigurativeExamination,
+		figurativeExamination,
 		"figurative",
 		"nude"
 	)
 
 //- Image of Disengagement
 mixin figurativeDisengagementS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s01.png",
-		"figurative_disengagement_s01-thumb.png",
+		"figurative_disengagement_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2089,16 +1800,14 @@ mixin figurativeDisengagementS01
 		"00",
 		"00",
 		"49-50",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s02.png",
-		"figurative_disengagement_s02-thumb.png",
+		"figurative_disengagement_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2106,16 +1815,14 @@ mixin figurativeDisengagementS02
 		"00",
 		"00",
 		"6-7",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s03.png",
-		"figurative_disengagement_s03-thumb.png",
+		"figurative_disengagement_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2123,16 +1830,14 @@ mixin figurativeDisengagementS03
 		"00",
 		"00",
 		"6-7",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s04.png",
-		"figurative_disengagement_s04-thumb.png",
+		"figurative_disengagement_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2140,16 +1845,14 @@ mixin figurativeDisengagementS04
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s05.png",
-		"figurative_disengagement_s05-thumb.png",
+		"figurative_disengagement_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2157,16 +1860,14 @@ mixin figurativeDisengagementS05
 		"00",
 		"00",
 		"9-10",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s06.png",
-		"figurative_disengagement_s06-thumb.png",
+		"figurative_disengagement_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2174,16 +1875,14 @@ mixin figurativeDisengagementS06
 		"00",
 		"00",
 		"9-5",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s07.png",
-		"figurative_disengagement_s07-thumb.png",
+		"figurative_disengagement_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2191,16 +1890,14 @@ mixin figurativeDisengagementS07
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s08.png",
-		"figurative_disengagement_s08-thumb.png",
+		"figurative_disengagement_s08",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2208,16 +1905,14 @@ mixin figurativeDisengagementS08
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s09.png",
-		"figurative_disengagement_s09-thumb.png",
+		"figurative_disengagement_s09",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2225,16 +1920,14 @@ mixin figurativeDisengagementS09
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s10.png",
-		"figurative_disengagement_s10-thumb.png",
+		"figurative_disengagement_s10",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2242,16 +1935,14 @@ mixin figurativeDisengagementS10
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s11.png",
-		"figurative_disengagement_s11-thumb.png",
+		"figurative_disengagement_s11",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2259,16 +1950,14 @@ mixin figurativeDisengagementS11
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s12.png",
-		"figurative_disengagement_s12-thumb.png",
+		"figurative_disengagement_s12",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2276,16 +1965,14 @@ mixin figurativeDisengagementS12
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 mixin figurativeDisengagementS13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_disengagement_s13.png",
-		"figurative_disengagement_s13-thumb.png",
+		"figurative_disengagement_s13",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2293,18 +1980,16 @@ mixin figurativeDisengagementS13
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeDisengagement,
-		linkFigurativeDisengagement,
+		figurativeDisengagement,
 		"figurative",
 		"nude"
 	)
 
 //- Coping Behaviors
 mixin figurativeCopingG01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g01.png",
-		"figurative_coping_g01-thumb.png",
+		"figurative_coping_g01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2312,16 +1997,14 @@ mixin figurativeCopingG01
 		"00",
 		"00",
 		"5-6",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG01b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g01b.png",
-		"figurative_coping_g01b-thumb.png",
+		"figurative_coping_g01b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2329,16 +2012,14 @@ mixin figurativeCopingG01b
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG01c
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g01c.png",
-		"figurative_coping_g01c-thumb.png",
+		"figurative_coping_g01c",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2346,16 +2027,14 @@ mixin figurativeCopingG01c
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG01d
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g01d.png",
-		"figurative_coping_g01d-thumb.png",
+		"figurative_coping_g01d",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2363,16 +2042,14 @@ mixin figurativeCopingG01d
 		"00",
 		"00",
 		"2-1",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g02.png",
-		"figurative_coping_g02-thumb.png",
+		"figurative_coping_g02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2380,16 +2057,14 @@ mixin figurativeCopingG02
 		"00",
 		"00",
 		"7-8",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG02b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g02b.png",
-		"figurative_coping_g02b-thumb.png",
+		"figurative_coping_g02b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2397,16 +2072,14 @@ mixin figurativeCopingG02b
 		"00",
 		"00",
 		"3-4",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g03.png",
-		"figurative_coping_g03-thumb.png",
+		"figurative_coping_g03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2414,16 +2087,14 @@ mixin figurativeCopingG03
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingG03b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_g03b.png",
-		"figurative_coping_g03b-thumb.png",
+		"figurative_coping_g03b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2431,16 +2102,14 @@ mixin figurativeCopingG03b
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS01
-	+galleryItem(
+	+artworkCard(
 		"Fourfold Rocking",
-		"figurative_coping_s01.png",
-		"figurative_coping_s01-thumb.png",
+		"figurative_coping_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2448,16 +2117,14 @@ mixin figurativeCopingS01
 		"00",
 		"00",
 		"9-5",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s02.png",
-		"figurative_coping_s02-thumb.png",
+		"figurative_coping_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2465,16 +2132,14 @@ mixin figurativeCopingS02
 		"00",
 		"00",
 		"9-5",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s03.png",
-		"figurative_coping_s03-thumb.png",
+		"figurative_coping_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2482,16 +2147,14 @@ mixin figurativeCopingS03
 		"00",
 		"00",
 		"9-5",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s04.png",
-		"figurative_coping_s04-thumb.png",
+		"figurative_coping_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2499,16 +2162,14 @@ mixin figurativeCopingS04
 		"00",
 		"00",
 		"9-5",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s05.png",
-		"figurative_coping_s05-thumb.png",
+		"figurative_coping_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2516,16 +2177,14 @@ mixin figurativeCopingS05
 		"00",
 		"00",
 		"2-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS05b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s05b.png",
-		"figurative_coping_s05b-thumb.png",
+		"figurative_coping_s05b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2533,16 +2192,14 @@ mixin figurativeCopingS05b
 		"00",
 		"00",
 		"2-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s06.png",
-		"figurative_coping_s06-thumb.png",
+		"figurative_coping_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2550,16 +2207,14 @@ mixin figurativeCopingS06
 		"00",
 		"00",
 		"2-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS06b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s06b.png",
-		"figurative_coping_s06b-thumb.png",
+		"figurative_coping_s06b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2567,16 +2222,14 @@ mixin figurativeCopingS06b
 		"00",
 		"00",
 		"2-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s07.png",
-		"figurative_coping_s07-thumb.png",
+		"figurative_coping_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2584,16 +2237,14 @@ mixin figurativeCopingS07
 		"00",
 		"00",
 		"5-4",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"pink",
 		"figurative"
 	)
 mixin figurativeCopingS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s08.png",
-		"figurative_coping_s08-thumb.png",
+		"figurative_coping_s08",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2601,16 +2252,14 @@ mixin figurativeCopingS08
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s10.png",
-		"figurative_coping_s10-thumb.png",
+		"figurative_coping_s10",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2618,16 +2267,14 @@ mixin figurativeCopingS10
 		"00",
 		"00",
 		"5-9",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s11.png",
-		"figurative_coping_s11-thumb.png",
+		"figurative_coping_s11",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2635,16 +2282,14 @@ mixin figurativeCopingS11
 		"00",
 		"00",
 		"5-9",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s12.png",
-		"figurative_coping_s12-thumb.png",
+		"figurative_coping_s12",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2652,16 +2297,14 @@ mixin figurativeCopingS12
 		"00",
 		"00",
 		"5-9",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingS13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_coping_s13.png",
-		"figurative_coping_s13-thumb.png",
+		"figurative_coping_s13",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2669,17 +2312,15 @@ mixin figurativeCopingS13
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"green",
 		"figurative",
 		"nude"
 	)
 mixin figurativeCopingP01
-	+galleryItem(
+	+artworkCard(
 		"Fourfold Rocking – Exhibition Document",
-		"figurative_coping_p01.png",
-		"figurative_coping_p01-thumb.png",
+		"figurative_coping_p01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2687,18 +2328,16 @@ mixin figurativeCopingP01
 		"00",
 		"00",
 		"7-10",
-		nameFigurativeCoping,
-		linkFigurativeCoping,
+		figurativeCoping,
 		"figurative",
 		"nude"
 	)
 
 //- Selected Figurative Works Vol. 2
 mixin figurativeSelectedVol2G01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_g01.png",
-		"figurative_selected02_g01-thumb.png",
+		"figurative_selected02_g01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2706,16 +2345,14 @@ mixin figurativeSelectedVol2G01
 		"00",
 		"00",
 		"4-5",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2G01b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_g01b.png",
-		"figurative_selected02_g01b-thumb.png",
+		"figurative_selected02_g01b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2723,16 +2360,14 @@ mixin figurativeSelectedVol2G01b
 		"00",
 		"00",
 		"7-5",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s01.png",
-		"figurative_selected02_s01-thumb.png",
+		"figurative_selected02_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2740,16 +2375,14 @@ mixin figurativeSelectedVol2S01
 		"00",
 		"00",
 		"5-8",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s02.png",
-		"figurative_selected02_s02-thumb.png",
+		"figurative_selected02_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2757,16 +2390,14 @@ mixin figurativeSelectedVol2S02
 		"00",
 		"00",
 		"5-8",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s03.png",
-		"figurative_selected02_s03-thumb.png",
+		"figurative_selected02_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2774,16 +2405,14 @@ mixin figurativeSelectedVol2S03
 		"00",
 		"00",
 		"5-8",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s04.png",
-		"figurative_selected02_s04-thumb.png",
+		"figurative_selected02_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2791,16 +2420,14 @@ mixin figurativeSelectedVol2S04
 		"00",
 		"00",
 		"5-8",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s05.png",
-		"figurative_selected02_s05-thumb.png",
+		"figurative_selected02_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2808,16 +2435,14 @@ mixin figurativeSelectedVol2S05
 		"00",
 		"00",
 		"9-8",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s06.png",
-		"figurative_selected02_s06-thumb.png",
+		"figurative_selected02_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2825,16 +2450,14 @@ mixin figurativeSelectedVol2S06
 		"00",
 		"00",
 		"14-11",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S06b
-	+galleryItem(
+	+artworkCard(
 		"(Detail)",
-		"figurative_selected02_s06b.png",
-		"figurative_selected02_s06b-thumb.png",
+		"figurative_selected02_s06b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2842,16 +2465,14 @@ mixin figurativeSelectedVol2S06b
 		"00",
 		"00",
 		"8-5",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol2S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected02_s07.png",
-		"figurative_selected02_s07-thumb.png",
+		"figurative_selected02_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2859,18 +2480,16 @@ mixin figurativeSelectedVol2S07
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeSelectedVol2,
-		linkFigurativeSelectedVol2,
+		figurativeSelectedVol2,
 		"figurative",
 		""
 	)
 
 //- Selected Figurative Works Vol. 3
 mixin figurativeSelectedVol3S01
-	+galleryItem(
+	+artworkCard(
 		"Kaleidoscope Selfie",
-		"figurative_selected03_s01.png",
-		"figurative_selected03_s01-thumb.png",
+		"figurative_selected03_s01",
 		"Figurative painting",
 		"2019",
 		"acrylic",
@@ -2878,17 +2497,15 @@ mixin figurativeSelectedVol3S01
 		"00",
 		"00",
 		"11-13",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"orange",
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S02
-	+galleryItem(
+	+artworkCard(
 		"ASAP",
-		"figurative_selected03_s02.png",
-		"figurative_selected03_s02-thumb.png",
+		"figurative_selected03_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2896,17 +2513,15 @@ mixin figurativeSelectedVol3S02
 		"00",
 		"00",
 		"11-13",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"gray",
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s03.png",
-		"figurative_selected03_s03-thumb.png",
+		"figurative_selected03_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2914,17 +2529,15 @@ mixin figurativeSelectedVol3S03
 		"00",
 		"00",
 		"7-8",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"purple",
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S03b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s03b.png",
-		"figurative_selected03_s03b-thumb.png",
+		"figurative_selected03_s03b",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2932,17 +2545,15 @@ mixin figurativeSelectedVol3S03b
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"purple",
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s04.png",
-		"figurative_selected03_s04-thumb.png",
+		"figurative_selected03_s04",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2950,16 +2561,14 @@ mixin figurativeSelectedVol3S04
 		"00",
 		"00",
 		"7-8",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s05.png",
-		"figurative_selected03_s05-thumb.png",
+		"figurative_selected03_s05",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2967,16 +2576,14 @@ mixin figurativeSelectedVol3S05
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s06.png",
-		"figurative_selected03_s06-thumb.png",
+		"figurative_selected03_s06",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -2984,16 +2591,14 @@ mixin figurativeSelectedVol3S06
 		"00",
 		"00",
 		"3-4",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s07.png",
-		"figurative_selected03_s07-thumb.png",
+		"figurative_selected03_s07",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3001,16 +2606,14 @@ mixin figurativeSelectedVol3S07
 		"00",
 		"00",
 		"3-4",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s08.png",
-		"figurative_selected03_s08-thumb.png",
+		"figurative_selected03_s08",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3018,16 +2621,14 @@ mixin figurativeSelectedVol3S08
 		"00",
 		"00",
 		"1-1",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s09.png",
-		"figurative_selected03_s09-thumb.png",
+		"figurative_selected03_s09",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3035,16 +2636,14 @@ mixin figurativeSelectedVol3S09
 		"00",
 		"00",
 		"7-10",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol3S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected03_s10.png",
-		"figurative_selected03_s10-thumb.png",
+		"figurative_selected03_s10",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3052,18 +2651,16 @@ mixin figurativeSelectedVol3S10
 		"00",
 		"00",
 		"2-1",
-		nameFigurativeSelectedVol3,
-		linkFigurativeSelectedVol3,
+		figurativeSelectedVol3,
 		"figurative",
 		""
 	)
 
 //- Selected Figurative Works Vol. 1
 mixin figurativeSelectedVol1S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s01.png",
-		"figurative_selected01_s01-thumb.png",
+		"figurative_selected01_s01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3071,16 +2668,14 @@ mixin figurativeSelectedVol1S01
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s02.png",
-		"figurative_selected01_s02-thumb.png",
+		"figurative_selected01_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3088,16 +2683,14 @@ mixin figurativeSelectedVol1S02
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s03.png",
-		"figurative_selected01_s03-thumb.png",
+		"figurative_selected01_s03",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3105,8 +2698,7 @@ mixin figurativeSelectedVol1S03
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
@@ -3116,10 +2708,9 @@ mixin figurativeSelectedVol1S03
 //- mixin figurativeSelectedVol1S06
 //- mixin figurativeSelectedVol1S07
 mixin figurativeSelectedVol1S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s08.png",
-		"figurative_selected01_s08-thumb.png",
+		"figurative_selected01_s08",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3127,16 +2718,14 @@ mixin figurativeSelectedVol1S08
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s09.png",
-		"figurative_selected01_s09-thumb.png",
+		"figurative_selected01_s09",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3144,16 +2733,14 @@ mixin figurativeSelectedVol1S09
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s10.png",
-		"figurative_selected01_s10-thumb.png",
+		"figurative_selected01_s10",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3161,16 +2748,14 @@ mixin figurativeSelectedVol1S10
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s11.png",
-		"figurative_selected01_s11-thumb.png",
+		"figurative_selected01_s11",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3178,16 +2763,14 @@ mixin figurativeSelectedVol1S11
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s12.png",
-		"figurative_selected01_s12-thumb.png",
+		"figurative_selected01_s12",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3195,16 +2778,14 @@ mixin figurativeSelectedVol1S12
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1S13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_s13.png",
-		"figurative_selected01_s13-thumb.png",
+		"figurative_selected01_s13",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3212,16 +2793,14 @@ mixin figurativeSelectedVol1S13
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
 mixin figurativeSelectedVol1G01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"figurative_selected01_g01.png",
-		"figurative_selected01_g01-thumb.png",
+		"figurative_selected01_g01",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3229,8 +2808,7 @@ mixin figurativeSelectedVol1G01
 		"00",
 		"00",
 		"4-3",
-		nameFigurativeSelectedVol1,
-		linkFigurativeSelectedVol1,
+		figurativeSelectedVol1,
 		"figurative",
 		""
 	)
@@ -3238,11 +2816,10 @@ mixin figurativeSelectedVol1G01
 //- Conté Portraits
 //- Handling medium tag requests for these?
 //- Need exceptions
-mixin portraitFamilyS01
-	+galleryItem(
+mixin portraitConteS01
+	+artworkCard(
 		"Untitled",
-		"portrait_family_s01.png",
-		"portrait_family_s01-thumb.png",
+		"portrait_family_s01",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3250,17 +2827,15 @@ mixin portraitFamilyS01
 		"00",
 		"00",
 		"3-2",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"orange",
 		"portrait",
 		"man"
 	)
-mixin portraitFamilyS02
-	+galleryItem(
+mixin portraitConteS02
+	+artworkCard(
 		"Untitled",
-		"portrait_family_s02.png",
-		"portrait_family_s02-thumb.png",
+		"portrait_family_s02",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3268,17 +2843,15 @@ mixin portraitFamilyS02
 		"00",
 		"00",
 		"3-2",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"orange",
 		"portrait",
 		"man"
 	)
-mixin portraitFamilyS03
-	+galleryItem(
+mixin portraitConteS03
+	+artworkCard(
 		"Untitled",
-		"portrait_family_s03.png",
-		"portrait_family_s03-thumb.png",
+		"portrait_family_s03",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3286,17 +2859,15 @@ mixin portraitFamilyS03
 		"00",
 		"00",
 		"4-5",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"white",
 		"portrait",
 		"man"
 	)
-mixin portraitFamilyS04
-	+galleryItem(
+mixin portraitConteS04
+	+artworkCard(
 		"Untitled",
-		"portrait_family_s04.png",
-		"portrait_family_s04-thumb.png",
+		"portrait_family_s04",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3304,17 +2875,15 @@ mixin portraitFamilyS04
 		"00",
 		"00",
 		"4-5",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"white",
 		"portrait",
 		"man"
 	)
-mixin portraitFamilyS05
-	+galleryItem(
+mixin portraitConteS05
+	+artworkCard(
 		"Untitled",
-		"portrait_family_s05.png",
-		"portrait_family_s05-thumb.png",
+		"portrait_family_s05",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3322,17 +2891,15 @@ mixin portraitFamilyS05
 		"00",
 		"00",
 		"4-5",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"white",
 		"portrait",
 		"man"
 	)
-mixin portraitFamilyG01
-	+galleryItem(
+mixin portraitConteG01
+	+artworkCard(
 		"Untitled",
-		"portrait_family_g01.png",
-		"portrait_family_g01-thumb.png",
+		"portrait_family_g01",
 		"Portrait drawing",
 		"2000",
 		"conte",
@@ -3340,8 +2907,7 @@ mixin portraitFamilyG01
 		"00",
 		"00",
 		"12-5",
-		namePortraitConte,
-		linkPortraitFamily,
+		portraitConte,
 		"white",
 		"portrait",
 		"triptych",
@@ -3350,10 +2916,9 @@ mixin portraitFamilyG01
 
 //- Selected Portraits Vol. 2
 mixin portraitSelectedVol2G01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_g01.png",
-		"portrait_selected02_g01-thumb.png",
+		"portrait_selected02_g01",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3361,17 +2926,15 @@ mixin portraitSelectedVol2G01
 		"00",
 		"00",
 		"3-2",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s01.png",
-		"portrait_selected02_s01-thumb.png",
+		"portrait_selected02_s01",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3379,17 +2942,15 @@ mixin portraitSelectedVol2S01
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s02.png",
-		"portrait_selected02_s02-thumb.png",
+		"portrait_selected02_s02",
 		"Figurative painting",
 		"2000",
 		"acrylic",
@@ -3397,17 +2958,15 @@ mixin portraitSelectedVol2S02
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s03.png",
-		"portrait_selected02_s03-thumb.png",
+		"portrait_selected02_s03",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3415,17 +2974,15 @@ mixin portraitSelectedVol2S03
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s04.png",
-		"portrait_selected02_s04-thumb.png",
+		"portrait_selected02_s04",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3433,17 +2990,15 @@ mixin portraitSelectedVol2S04
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s05.png",
-		"portrait_selected02_s05-thumb.png",
+		"portrait_selected02_s05",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3451,17 +3006,15 @@ mixin portraitSelectedVol2S05
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s06.png",
-		"portrait_selected02_s06-thumb.png",
+		"portrait_selected02_s06",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3469,17 +3022,15 @@ mixin portraitSelectedVol2S06
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s08.png",
-		"portrait_selected02_s08-thumb.png",
+		"portrait_selected02_s08",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3487,17 +3038,15 @@ mixin portraitSelectedVol2S08
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s09.png",
-		"portrait_selected02_s09-thumb.png",
+		"portrait_selected02_s09",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3505,17 +3054,15 @@ mixin portraitSelectedVol2S09
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"cyan",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s10.png",
-		"portrait_selected02_s10-thumb.png",
+		"portrait_selected02_s10",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3523,17 +3070,15 @@ mixin portraitSelectedVol2S10
 		"00",
 		"00",
 		"5-6",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s11.png",
-		"portrait_selected02_s11-thumb.png",
+		"portrait_selected02_s11",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3541,17 +3086,15 @@ mixin portraitSelectedVol2S11
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"blue",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s12.png",
-		"portrait_selected02_s12-thumb.png",
+		"portrait_selected02_s12",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3559,17 +3102,15 @@ mixin portraitSelectedVol2S12
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"brown",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S13
-	+galleryItem(
+	+artworkCard(
 		"Self Portrait (Mirror)",
-		"portrait_selected02_s13.png",
-		"portrait_selected02_s13-thumb.png",
+		"portrait_selected02_s13",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3577,17 +3118,15 @@ mixin portraitSelectedVol2S13
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"brown",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S14
-	+galleryItem(
+	+artworkCard(
 		"Jeff",
-		"portrait_selected02_s14.png",
-		"portrait_selected02_s14-thumb.png",
+		"portrait_selected02_s14",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3595,17 +3134,15 @@ mixin portraitSelectedVol2S14
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S15
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s15.png",
-		"portrait_selected02_s15-thumb.png",
+		"portrait_selected02_s15",
 		"Portrait painting",
 		"2000",
 		"acrylic",
@@ -3613,17 +3150,15 @@ mixin portraitSelectedVol2S15
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S16
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s16.png",
-		"portrait_selected02_s16-thumb.png",
+		"portrait_selected02_s16",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3631,17 +3166,15 @@ mixin portraitSelectedVol2S16
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"blue",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2G03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_g03.png",
-		"portrait_selected02_g03-thumb.png",
+		"portrait_selected02_g03",
 		"Portrait painting",
 		"2000",
 		"watercolour",
@@ -3649,18 +3182,16 @@ mixin portraitSelectedVol2G03
 		"00",
 		"00",
 		"3-2",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		"diptych",
 		"man"
 	)
 mixin portraitSelectedVol2S17
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s17.png",
-		"portrait_selected02_s17-thumb.png",
+		"portrait_selected02_s17",
 		"Portrait painting",
 		"2000",
 		"watercolour",
@@ -3668,17 +3199,15 @@ mixin portraitSelectedVol2S17
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S18
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s18.png",
-		"portrait_selected02_s18-thumb.png",
+		"portrait_selected02_s18",
 		"Portrait painting",
 		"2000",
 		"watercolour",
@@ -3686,17 +3215,15 @@ mixin portraitSelectedVol2S18
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S19
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s19.png",
-		"portrait_selected02_s19-thumb.png",
+		"portrait_selected02_s19",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3704,17 +3231,15 @@ mixin portraitSelectedVol2S19
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S20
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s20.png",
-		"portrait_selected02_s20-thumb.png",
+		"portrait_selected02_s20",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3722,17 +3247,15 @@ mixin portraitSelectedVol2S20
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"green",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2G02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_g02.png",
-		"portrait_selected02_g02-thumb.png",
+		"portrait_selected02_g02",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3740,8 +3263,7 @@ mixin portraitSelectedVol2G02
 		"00",
 		"00",
 		"8-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"portrait",
 		"realism",
 		"diptych",
@@ -3750,10 +3272,9 @@ mixin portraitSelectedVol2G02
 		"mature"
 	)
 mixin portraitSelectedVol2S21
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s21.png",
-		"portrait_selected02_s21-thumb.png",
+		"portrait_selected02_s21",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3761,17 +3282,15 @@ mixin portraitSelectedVol2S21
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"brown",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S22
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s22.png",
-		"portrait_selected02_s22-thumb.png",
+		"portrait_selected02_s22",
 		"Portrait painting",
 		"2000",
 		"oil",
@@ -3779,17 +3298,15 @@ mixin portraitSelectedVol2S22
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"brown",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S23
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s23.png",
-		"portrait_selected02_s23-thumb.png",
+		"portrait_selected02_s23",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3797,17 +3314,15 @@ mixin portraitSelectedVol2S23
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"white",
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol2S24
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected02_s24.png",
-		"portrait_selected02_s24-thumb.png",
+		"portrait_selected02_s24",
 		"Portrait painting",
 		"2000",
 		"conte",
@@ -3815,8 +3330,7 @@ mixin portraitSelectedVol2S24
 		"00",
 		"00",
 		"5-6",
-		namePortraitSelectedVol2,
-		linkPortraitSelectedVol2,
+		portraitSelectedVol2,
 		"grey",
 		"portrait",
 		""
@@ -3824,10 +3338,9 @@ mixin portraitSelectedVol2S24
 
 //- Skype Scéance
 mixin portraitSkypeS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01.png",
-		"portrait_skype_s01-thumb.png",
+		"portrait_skype_s01",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3835,17 +3348,15 @@ mixin portraitSkypeS01
 		"00",
 		"00",
 		"4-7",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"purple",
 		"portrait",
 		""
 	)
 mixin portraitSkypeS01b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01b.png",
-		"portrait_skype_s01b-thumb.png",
+		"portrait_skype_s01b",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3853,16 +3364,14 @@ mixin portraitSkypeS01b
 		"00",
 		"00",
 		"10-9",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS01c
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01c.png",
-		"portrait_skype_s01c-thumb.png",
+		"portrait_skype_s01c",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3870,16 +3379,14 @@ mixin portraitSkypeS01c
 		"00",
 		"00",
 		"9-10",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS01d
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01d.png",
-		"portrait_skype_s01d-thumb.png",
+		"portrait_skype_s01d",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3887,16 +3394,14 @@ mixin portraitSkypeS01d
 		"00",
 		"00",
 		"5-7",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS01e
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01e.png",
-		"portrait_skype_s01e-thumb.png",
+		"portrait_skype_s01e",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3904,16 +3409,14 @@ mixin portraitSkypeS01e
 		"00",
 		"00",
 		"1-1",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS01f
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s01f.png",
-		"portrait_skype_s01f-thumb.png",
+		"portrait_skype_s01f",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3921,16 +3424,14 @@ mixin portraitSkypeS01f
 		"00",
 		"00",
 		"1-1",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s02.png",
-		"portrait_skype_s02-thumb.png",
+		"portrait_skype_s02",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3938,16 +3439,14 @@ mixin portraitSkypeS02
 		"00",
 		"00",
 		"3-4",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS02b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s02b.png",
-		"portrait_skype_s02b-thumb.png",
+		"portrait_skype_s02b",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3955,16 +3454,14 @@ mixin portraitSkypeS02b
 		"00",
 		"00",
 		"7-6",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s03.png",
-		"portrait_skype_s03-thumb.png",
+		"portrait_skype_s03",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3972,16 +3469,14 @@ mixin portraitSkypeS03
 		"00",
 		"00",
 		"15-14",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS03b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s03b.png",
-		"portrait_skype_s03b-thumb.png",
+		"portrait_skype_s03b",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -3989,16 +3484,14 @@ mixin portraitSkypeS03b
 		"00",
 		"00",
 		"6-7",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS03c
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s03c.png",
-		"portrait_skype_s03c-thumb.png",
+		"portrait_skype_s03c",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -4006,16 +3499,14 @@ mixin portraitSkypeS03c
 		"00",
 		"00",
 		"6-7",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s04.png",
-		"portrait_skype_s04-thumb.png",
+		"portrait_skype_s04",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -4023,16 +3514,14 @@ mixin portraitSkypeS04
 		"00",
 		"00",
 		"1-1",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 mixin portraitSkypeS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s05.png",
-		"portrait_skype_s05-thumb.png",
+		"portrait_skype_s05",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -4040,17 +3529,15 @@ mixin portraitSkypeS05
 		"00",
 		"00",
 		"1-1",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"black",
 		"portrait",
 		""
 	)
 mixin portraitSkypeS05b
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s05b.png",
-		"portrait_skype_s05b-thumb.png",
+		"portrait_skype_s05b",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -4058,17 +3545,15 @@ mixin portraitSkypeS05b
 		"00",
 		"00",
 		"6-5",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"black",
 		"portrait",
 		""
 	)
 mixin portraitSkypeS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_skype_s06.png",
-		"portrait_skype_s06-thumb.png",
+		"portrait_skype_s06",
 		"Portrait painting of a Skype conversation",
 		"2000",
 		"conte",
@@ -4076,18 +3561,16 @@ mixin portraitSkypeS06
 		"00",
 		"00",
 		"3-4",
-		namePortraitSkype,
-		linkPortraitSkype,
+		portraitSkype,
 		"portrait",
 		""
 	)
 
 //- Selected Portraits Volume 3
 mixin portraitSelectedVol3G01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_g01.png",
-		"portrait_selected03_g01-thumb.png",
+		"portrait_selected03_g01",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4095,16 +3578,14 @@ mixin portraitSelectedVol3G01
 		"00",
 		"00",
 		"2-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s01.png",
-		"portrait_selected03_s01-thumb.png",
+		"portrait_selected03_s01",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4112,16 +3593,14 @@ mixin portraitSelectedVol3S01
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s02.png",
-		"portrait_selected03_s02-thumb.png",
+		"portrait_selected03_s02",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4129,16 +3608,14 @@ mixin portraitSelectedVol3S02
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s03.png",
-		"portrait_selected03_s03-thumb.png",
+		"portrait_selected03_s03",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4146,16 +3623,14 @@ mixin portraitSelectedVol3S03
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s04.png",
-		"portrait_selected03_s04-thumb.png",
+		"portrait_selected03_s04",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4163,16 +3638,14 @@ mixin portraitSelectedVol3S04
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s05.png",
-		"portrait_selected03_s05-thumb.png",
+		"portrait_selected03_s05",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4180,16 +3653,14 @@ mixin portraitSelectedVol3S05
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s06.png",
-		"portrait_selected03_s06-thumb.png",
+		"portrait_selected03_s06",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4197,16 +3668,14 @@ mixin portraitSelectedVol3S06
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s07.png",
-		"portrait_selected03_s07-thumb.png",
+		"portrait_selected03_s07",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4214,16 +3683,14 @@ mixin portraitSelectedVol3S07
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s08.png",
-		"portrait_selected03_s08-thumb.png",
+		"portrait_selected03_s08",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4231,16 +3698,14 @@ mixin portraitSelectedVol3S08
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s07.png",
-		"portrait_selected03_s07-thumb.png",
+		"portrait_selected03_s07",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4248,16 +3713,14 @@ mixin portraitSelectedVol3S09
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s10.png",
-		"portrait_selected03_s10-thumb.png",
+		"portrait_selected03_s10",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4265,16 +3728,14 @@ mixin portraitSelectedVol3S10
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S11
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s11.png",
-		"portrait_selected03_s11-thumb.png",
+		"portrait_selected03_s11",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4282,16 +3743,14 @@ mixin portraitSelectedVol3S11
 		"00",
 		"00",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S12
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s12.png",
-		"portrait_selected03_s12-thumb.png",
+		"portrait_selected03_s12",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4299,16 +3758,14 @@ mixin portraitSelectedVol3S12
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S13
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s13.png",
-		"portrait_selected03_s13-thumb.png",
+		"portrait_selected03_s13",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4316,16 +3773,14 @@ mixin portraitSelectedVol3S13
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S14
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s14.png",
-		"portrait_selected03_s14-thumb.png",
+		"portrait_selected03_s14",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4333,16 +3788,14 @@ mixin portraitSelectedVol3S14
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S15
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s15.png",
-		"portrait_selected03_s15-thumb.png",
+		"portrait_selected03_s15",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4350,16 +3803,14 @@ mixin portraitSelectedVol3S15
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S16
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s16.png",
-		"portrait_selected03_s16-thumb.png",
+		"portrait_selected03_s16",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4367,16 +3818,14 @@ mixin portraitSelectedVol3S16
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S17
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s17.png",
-		"portrait_selected03_s17-thumb.png",
+		"portrait_selected03_s17",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4384,16 +3833,14 @@ mixin portraitSelectedVol3S17
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S18
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s18.png",
-		"portrait_selected03_s18-thumb.png",
+		"portrait_selected03_s18",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4401,16 +3848,14 @@ mixin portraitSelectedVol3S18
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S19
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s19.png",
-		"portrait_selected03_s19-thumb.png",
+		"portrait_selected03_s19",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4418,16 +3863,14 @@ mixin portraitSelectedVol3S19
 		"24",
 		"32",
 		"3-4",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
 mixin portraitSelectedVol3S20
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected03_s20.png",
-		"portrait_selected03_s20-thumb.png",
+		"portrait_selected03_s20",
 		"Portrait painting",
 		"2018",
 		"acrylic",
@@ -4435,8 +3878,7 @@ mixin portraitSelectedVol3S20
 		"24",
 		"30",
 		"4-5",
-		namePortraitSelectedVol3,
-		linkPortraitSelectedVol3,
+		portraitSelectedVol3,
 		"portrait",
 		""
 	)
@@ -4479,10 +3921,9 @@ mixin portraitSelectedVol3S20
 
 //- Honorary & Collegiate Portraits
 mixin portraitHonoraryS01
-	+galleryItem(
+	+artworkCard(
 		"Name",
-		"portrait_honorary_s01.png",
-		"portrait_honorary_s01-thumb.png",
+		"portrait_honorary_s01",
 		"Portrait painting of a university professor",
 		"2000",
 		"oil",
@@ -4490,19 +3931,17 @@ mixin portraitHonoraryS01
 		"00",
 		"00",
 		"3-4",
-		namePortraitHonorary,
-		linkPortraitHonorary,
+		portraitHonorary,
 		"blue",
 		"portrait",
 		"figurative",
 		"realism",
-		"man"		
+		"man"
 	)
 mixin portraitHonoraryS02
-	+galleryItem(
+	+artworkCard(
 		"Name",
-		"portrait_honorary_s02.png",
-		"portrait_honorary_s02-thumb.png",
+		"portrait_honorary_s02",
 		"Portrait painting of a university professor",
 		"2000",
 		"oil",
@@ -4510,8 +3949,7 @@ mixin portraitHonoraryS02
 		"00",
 		"00",
 		"3-4",
-		namePortraitHonorary,
-		linkPortraitHonorary,
+		portraitHonorary,
 		"blue",
 		"portrait",
 		"figurative",
@@ -4519,10 +3957,9 @@ mixin portraitHonoraryS02
 		"man"		
 	)
 mixin portraitHonoraryS03
-	+galleryItem(
+	+artworkCard(
 		"Name",
-		"portrait_honorary_s03.png",
-		"portrait_honorary_s03-thumb.png",
+		"portrait_honorary_s03",
 		"Portrait painting of a university professor",
 		"2000",
 		"oil",
@@ -4530,18 +3967,16 @@ mixin portraitHonoraryS03
 		"00",
 		"00",
 		"11-9",
-		namePortraitHonorary,
-		linkPortraitHonorary,
+		portraitHonorary,
 		"grey",
 		"portrait",
 		"figurative",
 		"man"		
 	)
 mixin portraitHonoraryS04
-	+galleryItem(
+	+artworkCard(
 		"Name",
-		"portrait_honorary_s04.png",
-		"portrait_honorary_s04-thumb.png",
+		"portrait_honorary_s04",
 		"Portrait painting of a university professor",
 		"2000",
 		"oil",
@@ -4549,18 +3984,16 @@ mixin portraitHonoraryS04
 		"00",
 		"00",
 		"3-4",
-		namePortraitHonorary,
-		linkPortraitHonorary,
+		portraitHonorary,
 		"brown",
 		"portrait",
 		"realism",
 		"man"		
 	)
 mixin portraitHonoraryS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_honorary_s05.png",
-		"portrait_honorary_s05-thumb.png",
+		"portrait_honorary_s05",
 		"Portrait painting of a university professor",
 		"2000",
 		"oil",
@@ -4568,8 +4001,7 @@ mixin portraitHonoraryS05
 		"00",
 		"00",
 		"2-3",
-		namePortraitHonorary,
-		linkPortraitHonorary,
+		portraitHonorary,
 		"brown",
 		"portrait",
 		"realism",
@@ -4578,10 +4010,9 @@ mixin portraitHonoraryS05
 
 //- Selected Portraits Volume 1
 mixin portraitSelectedVol1G01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_g01.png",
-		"portrait_selected01_g01-thumb.png",
+		"portrait_selected01_g01",
 		"Portrait painting of three young boys",
 		"2000",
 		"watercolour",
@@ -4589,18 +4020,16 @@ mixin portraitSelectedVol1G01
 		"00",
 		"00",
 		"15-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"assorted",
 		"triptych",
 		"boy",
 		"child"
 	)
 mixin portraitSelectedVol1S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s01.png",
-		"portrait_selected01_s01-thumb.png",
+		"portrait_selected01_s01",
 		"Portrait painting of a young boy",
 		"2000",
 		"watercolour",
@@ -4608,18 +4037,16 @@ mixin portraitSelectedVol1S01
 		"00",
 		"00",
 		"5-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"realism",
 		"boy",
 		"child"
 	)
 mixin portraitSelectedVol1S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s02.png",
-		"portrait_selected01_s02-thumb.png",
+		"portrait_selected01_s02",
 		"Portrait painting of a young boy",
 		"2000",
 		"watercolour",
@@ -4627,17 +4054,15 @@ mixin portraitSelectedVol1S02
 		"00",
 		"00",
 		"5-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"boy",
 		"child"
 	)
 mixin portraitSelectedVol1S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s03.png",
-		"portrait_selected01_s03-thumb.png",
+		"portrait_selected01_s03",
 		"Portrait painting of a young boy",
 		"2000",
 		"watercolour",
@@ -4645,17 +4070,15 @@ mixin portraitSelectedVol1S03
 		"00",
 		"00",
 		"5-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"boy",
 		"child"
 	)
 mixin portraitSelectedVol1S04
-	+galleryItem(
+	+artworkCard(
 		"Valentynki",
-		"portrait_selected01_s04.png",
-		"portrait_selected01_s04-thumb.png",
+		"portrait_selected01_s04",
 		"Painting of a boy and girl",
 		"2000",
 		"acrylic",
@@ -4663,18 +4086,16 @@ mixin portraitSelectedVol1S04
 		"00",
 		"00",
 		"9-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"child",
 		"boy",
 		"girl"
 	)
 mixin portraitSelectedVol1S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s05.png",
-		"portrait_selected01_s05-thumb.png",
+		"portrait_selected01_s05",
 		"Portrait painting of Michelle Obama",
 		"2000",
 		"mixed-media",
@@ -4682,8 +4103,7 @@ mixin portraitSelectedVol1S05
 		"00",
 		"00",
 		"1-1",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"",
 		""
@@ -4698,10 +4118,9 @@ mixin portraitSelectedVol1S05
 //- mixin portraitSelectedVol1S12
 //- mixin portraitSelectedVol1S13
 mixin portraitSelectedVol1S14
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s14.png",
-		"portrait_selected01_s14-thumb.png",
+		"portrait_selected01_s14",
 		"Portrait painting of a young woman with blonde hair",
 		"2000",
 		"oil",
@@ -4709,17 +4128,15 @@ mixin portraitSelectedVol1S14
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"woman",
 		"nude"
 	)
 mixin portraitSelectedVol1S15
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"portrait_selected01_s15.png",
-		"portrait_selected01_s15-thumb.png",
+		"portrait_selected01_s15",
 		"Portrait painting of a man with dark hair",
 		"2000",
 		"oil",
@@ -4727,17 +4144,15 @@ mixin portraitSelectedVol1S15
 		"00",
 		"00",
 		"4-5",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"",
 		""
 	)
 mixin portraitSelectedVol1S16
-	+galleryItem(
+	+artworkCard(
 		"So Says Barden",
-		"portrait_selected01_s16.png",
-		"portrait_selected01_s16-thumb.png",
+		"portrait_selected01_s16",
 		"Portrait painting of Javier Barden",
 		"2000",
 		"acrylic",
@@ -4745,17 +4160,15 @@ mixin portraitSelectedVol1S16
 		"00",
 		"00",
 		"5-6",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"man",
 		"mature"
 	)
 mixin portraitSelectedVol1S17
-	+galleryItem(
+	+artworkCard(
 		"Orange Distraction",
-		"portrait_selected01_s17.png",
-		"portrait_selected01_s17-thumb.png",
+		"portrait_selected01_s17",
 		"Portrait painting of an adult man with blue eyes",
 		"2009",
 		"acrylic",
@@ -4763,8 +4176,7 @@ mixin portraitSelectedVol1S17
 		"00",
 		"00",
 		"5-7",
-		namePortraitSelectedVol1,
-		linkPortraitSelectedVol1,
+		portraitSelectedVol1,
 		"portrait",
 		"man",
 		"mature"
@@ -4865,10 +4277,9 @@ mixin portraitSelectedVol1S17
 
 //- Assorted Landscapes Vol. 2
 mixin assortedLandscapesVol2S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s01.png",
-		"assorted_landscapes02_s01-thumb.png",
+		"assorted_landscapes02_s01",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4876,17 +4287,15 @@ mixin assortedLandscapesVol2S01
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s02.png",
-		"assorted_landscapes02_s02-thumb.png",
+		"assorted_landscapes02_s02",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4894,17 +4303,15 @@ mixin assortedLandscapesVol2S02
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s03.png",
-		"assorted_landscapes02_s03-thumb.png",
+		"assorted_landscapes02_s03",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4912,17 +4319,15 @@ mixin assortedLandscapesVol2S03
 		"00",
 		"00",
 		"4-5",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s04.png",
-		"assorted_landscapes02_s04-thumb.png",
+		"assorted_landscapes02_s04",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4930,17 +4335,15 @@ mixin assortedLandscapesVol2S04
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s05.png",
-		"assorted_landscapes02_s05-thumb.png",
+		"assorted_landscapes02_s05",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4948,17 +4351,15 @@ mixin assortedLandscapesVol2S05
 		"00",
 		"00",
 		"4-5",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s06.png",
-		"assorted_landscapes02_s06-thumb.png",
+		"assorted_landscapes02_s06",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4966,17 +4367,15 @@ mixin assortedLandscapesVol2S06
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s07.png",
-		"assorted_landscapes02_s07-thumb.png",
+		"assorted_landscapes02_s07",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -4984,17 +4383,15 @@ mixin assortedLandscapesVol2S07
 		"00",
 		"00",
 		"14-11",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s08.png",
-		"assorted_landscapes02_s08-thumb.png",
+		"assorted_landscapes02_s08",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5002,17 +4399,15 @@ mixin assortedLandscapesVol2S08
 		"00",
 		"00",
 		"3-4",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s09.png",
-		"assorted_landscapes02_s09-thumb.png",
+		"assorted_landscapes02_s09",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5020,17 +4415,15 @@ mixin assortedLandscapesVol2S09
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol2S10
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes02_s10.png",
-		"assorted_landscapes02_s10-thumb.png",
+		"assorted_landscapes02_s10",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5038,8 +4431,7 @@ mixin assortedLandscapesVol2S10
 		"00",
 		"00",
 		"4-3",
-		nameAssortedLandscapesVol2,
-		linkAssortedLandscapesVol2,
+		assortedLandscapesVol2,
 		"assorted",
 		"landscape",
 		""
@@ -5047,10 +4439,9 @@ mixin assortedLandscapesVol2S10
 
 //- Assorted Animals
 mixin assortedAnimalsS01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s01.png",
-		"assorted_animals_s01-thumb.png",
+		"assorted_animals_s01",
 		"Painting of a dead wolf",
 		"2000",
 		"acrylic",
@@ -5058,17 +4449,15 @@ mixin assortedAnimalsS01
 		"00",
 		"00",
 		"6-5",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"animal",
 		""
 	)
 mixin assortedAnimalsS02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s02.png",
-		"assorted_animals_s02-thumb.png",
+		"assorted_animals_s02",
 		"Painting of a cat",
 		"2000",
 		"acrylic",
@@ -5076,17 +4465,15 @@ mixin assortedAnimalsS02
 		"00",
 		"00",
 		"1-1",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"animal",
 		""
 	)
 mixin assortedAnimalsS03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s03.png",
-		"assorted_animals_s03-thumb.png",
+		"assorted_animals_s03",
 		"Painting of a dog",
 		"2000",
 		"acrylic",
@@ -5094,36 +4481,31 @@ mixin assortedAnimalsS03
 		"00",
 		"00",
 		"6-5",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"animal",
 		""
 	)
 mixin assortedAnimalsS04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s04.png",
-		"assorted_animals_s04-thumb.png",
-		"Painting of a group of horses running",
+		"assorted_animals_s04",
 		"2000",
 		"acrylic",
 		"canvas",
 		"00",
 		"00",
 		"4-3",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"horse",
 		"animal",
 		""
 	)
 mixin assortedAnimalsS05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s05.png",
-		"assorted_animals_s05-thumb.png",
+		"assorted_animals_s05",
 		"Portrait of a horse",
 		"2000",
 		"acrylic",
@@ -5131,18 +4513,16 @@ mixin assortedAnimalsS05
 		"00",
 		"00",
 		"1-1",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"horse",
 		"animal",
 		"portrait"
 	)
 mixin assortedAnimalsS06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s06.png",
-		"assorted_animals_s06-thumb.png",
+		"assorted_animals_s06",
 		"Portrait painting of a brown horse",
 		"2000",
 		"acrylic",
@@ -5150,18 +4530,16 @@ mixin assortedAnimalsS06
 		"00",
 		"00",
 		"1-1",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"horse",
 		"animal",
 		"portrait"
 	)
 mixin assortedAnimalsS07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s07.png",
-		"assorted_animals_s07-thumb.png",
+		"assorted_animals_s07",
 		"Painting of a brown dog sleeping",
 		"2000",
 		"watercolour",
@@ -5169,17 +4547,15 @@ mixin assortedAnimalsS07
 		"00",
 		"00",
 		"3-2",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"animal",
 		""
 	)
 mixin assortedAnimalsS08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_animals_s08.png",
-		"assorted_animals_s08-thumb.png",
+		"assorted_animals_s08",
 		"Portrait painting of a white horse",
 		"2000",
 		"acrylic",
@@ -5187,8 +4563,7 @@ mixin assortedAnimalsS08
 		"00",
 		"00",
 		"3-4",
-		nameAssortedAnimals,
-		linkAssortedAnimals,
+		assortedAnimals,
 		"assorted",
 		"horse",
 		"animal",
@@ -5204,10 +4579,9 @@ mixin assortedAnimalsS08
 
 //- Assorted Landscapes Volume 1
 mixin assortedLandscapesVol1S01
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s01.png",
-		"assorted_landscapes01_s01-thumb.png",
+		"assorted_landscapes01_s01",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5215,17 +4589,15 @@ mixin assortedLandscapesVol1S01
 		"00",
 		"00",
 		"3-2",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S02
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s02.png",
-		"assorted_landscapes01_s02-thumb.png",
+		"assorted_landscapes01_s02",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5233,17 +4605,15 @@ mixin assortedLandscapesVol1S02
 		"00",
 		"00",
 		"2-3",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S03
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s03.png",
-		"assorted_landscapes01_s03-thumb.png",
+		"assorted_landscapes01_s03",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5251,17 +4621,15 @@ mixin assortedLandscapesVol1S03
 		"00",
 		"00",
 		"11-14",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S04
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s04.png",
-		"assorted_landscapes01_s04-thumb.png",
+		"assorted_landscapes01_s04",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5269,17 +4637,15 @@ mixin assortedLandscapesVol1S04
 		"00",
 		"00",
 		"11-14",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S05
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s05.png",
-		"assorted_landscapes01_s05-thumb.png",
+		"assorted_landscapes01_s05",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5287,17 +4653,15 @@ mixin assortedLandscapesVol1S05
 		"00",
 		"00",
 		"23-16",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S06
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s06.png",
-		"assorted_landscapes01_s06-thumb.png",
+		"assorted_landscapes01_s06",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5305,17 +4669,15 @@ mixin assortedLandscapesVol1S06
 		"00",
 		"00",
 		"8-11",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S07
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s07.png",
-		"assorted_landscapes01_s07-thumb.png",
+		"assorted_landscapes01_s07",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5323,17 +4685,15 @@ mixin assortedLandscapesVol1S07
 		"00",
 		"00",
 		"4-5",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S08
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s08.png",
-		"assorted_landscapes01_s08-thumb.png",
+		"assorted_landscapes01_s08",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5341,17 +4701,15 @@ mixin assortedLandscapesVol1S08
 		"00",
 		"00",
 		"5-4",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""
 	)
 mixin assortedLandscapesVol1S09
-	+galleryItem(
+	+artworkCard(
 		"Untitled",
-		"assorted_landscapes01_s09.png",
-		"assorted_landscapes01_s09-thumb.png",
+		"assorted_landscapes01_s09",
 		"Landscape painting",
 		"2000",
 		"acrylic",
@@ -5359,8 +4717,7 @@ mixin assortedLandscapesVol1S09
 		"00",
 		"00",
 		"8-11",
-		nameAssortedLandscapesVol1,
-		linkAssortedLandscapesVol1,
+		assortedLandscapesVol1,
 		"assorted",
 		"landscape",
 		""

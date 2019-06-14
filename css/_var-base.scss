@@ -110,7 +110,7 @@ $widthBigDesktop: 1440px;
 		clear: both;
 	}
 }
-// Hide completely
+// Hide element completely
 %hideItem {
 	display: none !important;
 	visibility: hidden !important;
@@ -144,7 +144,7 @@ $widthBigDesktop: 1440px;
 	}
 }
 
-// Block centering
+// Block element centering
 %marginAuto {
 	float: none;
 	margin: {

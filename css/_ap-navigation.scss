@@ -1,21 +1,12 @@
 // Navigation
 
 // Shared navigation styles
-$navBackground: rgba($colorWhite04, .96);
-$navBorder: $colorWhite01;
-
-
-%navBarShadow {
-	box-shadow: 
-		0 4px 0 -2px rgba($colorBrand04, .04),
-		0 2px 0 -1px rgba($colorBrand04, .02);
-}
-
+$navBackground: rgba($colorWhite05, .96);
+$navBorder: 1px solid $colorWhite01;
 
 // Nav bar heights
 $navBarHeightPhone: $grd * 7;
 $navBarHeightTablet: $grd * 7.5;
-$navBarHeightDesktop: $grd * 8;
 
 // Shared height for nav bars and child elements
 %navBarHeight {
@@ -23,82 +14,127 @@ $navBarHeightDesktop: $grd * 8;
 	@include forTabletPortraitUp {
 		height: $navBarHeightTablet;
 	}
-	@include forDesktopUp {
-		height: $navBarHeightDesktop;
-	}
 }
-
+// Navigation bar
 %navBarContainer {
 	@extend %widthFull;
 	@extend %navBarHeight;
-	position: relative;
-	background-color: $navBackground;
+	@extend %transitionFast;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	transform-origin: top center;
 }
-
+// Scrollable navigation bar
+%navBarContainerScrollable {
+	@extend %navBarContainer;
+	// Allow horizonal scrolling
+	overflow-x: scroll;
+	overflow-y: hidden;
+	// Inertial scrolling behavior in webkit browsers
+	-webkit-overflow-scrolling: touch;
+	// Attempt* to hide scrollbars
+	// IE
+	-ms-overflow-style: none;
+	// Firefox
+	scrollbar-width: none;
+	// Chrome and Safari
+	&::-webkit-scrollbar {
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+	&::-webkit-scrollbar-thumb {
+		visibility: hidden;
+	}
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		width: 0;
+		height: 0;
+	}
+}
+// Item lists
 %navBarList {
 	@extend %widthFull;
-	display: block;
+	width: 100vw;
 	height: 100%;
 	overflow: hidden;
 }
-
-%navBarLabel {
-	@extend %fontExtendedBold;
-	@extend %fontExtraSmall;
-	line-height: $navBarHeightPhone + 3px;
-	white-space: nowrap;
-	color: $colorBlack01;
-	@include forTabletPortraitUp {
-		height: $navBarHeightTablet + 3px;
+// Deprecated
+// Scrollable item lists
+%navBarListScrolling {
+	@extend %widthFull;
+	height: 100%;
+	// Allow horizonal scrolling
+	overflow-x: scroll;
+	overflow-y: hidden;
+	// Inertial scrolling behavior in webkit browsers
+	-webkit-overflow-scrolling: touch;
+	// Attempt to hide scrollbars
+	// IE
+	-ms-overflow-style: none;
+	// Firefox
+	scrollbar-width: none;
+	// Chrome and Safari
+	&::-webkit-scrollbar {
+		visibility: hidden;
+		width: 0;
+		height: 0;
 	}
-	@include forDesktopUp {
-		height: $navBarHeightDesktop;
+	&::-webkit-scrollbar-thumb {
+		visibility: hidden;
 	}
-	span {
-		// Position text labels above pseudo element styles
-		position: relative;
+	&::-webkit-scrollbar-track {
+		background: transparent;
+		width: 0;
+		height: 0;
 	}
 }
-
 // Opt-in padding for list items and links
 %navBarPadding {
 	padding: {
-		right: $grd * 2.5;
-		left: $grd * 2.5;
+		right: $grd * 2;
+		left: $grd * 2;
 	}
-	@include forTabletOnly {
+	@include forTabletPortraitUp {
 		padding: {
 			right: $grd * 2.25;
 			left: $grd * 2.25;
 		}
 	}
-	@include forPhoneOnly {
-		padding: {
-			right: $grd * 2;
-			left: $grd * 2;
-		}
-	}
 }
-
+// List items
 %navBarItem {
-	@extend %navBarLabel;
+	@extend %fontExtendedBold;
+	@extend %fontMicro;
 	position: relative;
 	display: block;
 	height: 100%;
 	overflow: hidden;
+	white-space: nowrap;
+	color: $colorBlack01;
+	span {
+		// Position text labels above pseudo element styles
+		position: relative;
+		font-size: fontSizeXXS;
+		line-height: $navBarHeightPhone;
+		@include forTabletPortraitUp {
+			font-size: fontSizeXS;
+			line-height: $navBarHeightTablet;
+		}
+	}
 }
-
+// Links within list items
 %navBarLink {
 	@extend %navBarItem;
 	@extend %navBarPadding;
-	@extend %navBarLabel;
 	@extend %hoverBackground;
+	@extend %hoverUnderline;
+	@extend %transitionFast;
 	&:hover,
-	&:focus,
-	&:active {
-		span {
-			text-decoration: underline;
-		}
+	&:focus {
 		svg {
 			opacity: 1;
 			path {
@@ -113,120 +149,29 @@ $navBarHeightDesktop: $grd * 8;
 	}
 	svg {
 		@extend %transitionFast;
-		display: block;
+		display: inline-block;
 		position: relative;
-		top: $grd * 2.5;
 		width: $grd * 2;
 		height: $grd * 2;
-		background: {
-			repeat: no-repeat;
-			size: cover;
-		}
 		opacity: .92;
 		@include forTabletPortraitUp {
 			display: inline-block;
 			width: $grd * 2.25;
 			height: $grd * 2.25;
 		}
-		@include forTabletUp {
-			width: $grd * 2;
-			height: $grd * 2;
-			// top: $grd;
-		}
 		path {
 			fill: $colorBlack01;
 		}
 	}
 }
-
-
-
-
-
-// Shared nav bar styles – break this up
-%navBarStyle {
-	@extend %widthFull;
-	@extend %navBarHeight;
-	position: relative;
-	background: $navBackground;
-	color: $colorBrand04;
-	ul {
-		@extend %navBarHeight;
-		@extend %widthFull;
-		overflow: hidden;
-		border-bottom: $navBorder;
+// Links with photo backgrounds
+%navBarLinkAlt {
+	@extend %navBarLink;
+	color: $colorWhite01;
+	background: {
+		repeat: no-repeat;
+		size: cover;
 	}
-	li {
-		// position: relative;
-		display: block;
-		height: 100%;
-		overflow: hidden;
-	}
-	li a {
-		@extend %navBarPadding;
-		@extend %hoverBackground;
-		position: relative;
-		display: block;
-		height: 100%;
-		text-align: center;
-		overflow: hidden;
-		background: {
-			repeat: no-repeat;
-			size: cover;
-		}
-		&:hover,
-		&:focus,
-		&:active {
-			span {
-				text-decoration: underline;
-			}
-			svg {
-				opacity: 1;
-				path {
-					fill: $colorBrand01;
-				}
-			}
-		}
-		&:active {
-			svg {
-				transform: $translateNormal;
-			}
-		}
-	}
-	a span {
-		@extend %navBarHeight;
-		@extend %navBarLabel;
-		// Position label over pseudo elements
-		position: relative;
-		display: inline-block;
-	}
-	a svg {
-		@extend %transitionFast;
-		position: relative;
-		top: -1px;
-		display: inline-block;
-		width: $grd * 2.25;
-		height: $grd * 2.25;
-		opacity: .92;
-		@include forTabletOnly {
-			width: $grd * 2;
-			height: $grd * 2;
-			top: $grd;
-		}
-		@include forPhoneOnly {
-			width: $grd * 2;
-			height: $grd * 2;
-			top: $grd * 1.625;
-		}
-		path {
-			fill: $colorBrand04;
-		}
-	}
-}
-
-// Shared style for nav links with photo backgrounds
-// This is used in combination with %navBarStyle
-%navLinkAltStyle {
 	&:hover,
 	&:focus {
 		&::before {
@@ -236,32 +181,151 @@ $navBarHeightDesktop: $grd * 8;
 			fill: $colorWhite01;
 		}
 	}
-	// Link pseudo element background
+	// Photo background overlay
 	&::before {
+		content: "";
 		opacity: 1;
+		// Position above photo background
 		z-index: 2;
-		background-color: rgba($colorBrand04, .48);
-		background-image: 
-		linear-gradient(
-			rgba($colorBrand04, .32),
-			rgba($colorBrand04, .64),
-			rgba($colorBrand04, 0)
-		);
+		background: {
+			image:
+				linear-gradient(
+					rgba($colorBrand04, .32),
+					rgba($colorBrand04, .64),
+					rgba($colorBrand04, 0)
+				);
+			color: rgba($colorBrand04, .48);
+		}
 	}
 	span {
+		// Position above pseudo element
 		z-index: 3;
-		color: $colorWhite01;
-		text-shadow: 0 2px 0 rgba($colorBrand04, .16);
 	}
 	svg {
-		z-index: 2;
+		// Position above pseudo element
+		z-index: 3;
 		path {
 			fill: $colorWhite01;
 		}
 	}
 }
+// Show navigation bar
+%navBarVisible {
+	transform: $translateNormal;
+	opacity: 1;
+}
+// Hide navigation bar offscreen
+%navBarHidden {
+	transform: translate3d(0, -100%, 0);
+	opacity: .01;
+}
 
-// Current page style for Work, About, CV nav links
+// Main website navigation bar for large displays
+.ap-c-nav-main {
+	@extend %hidePhone;
+	@extend %navBarContainer;
+	@extend %navBarVisible;
+	// Position above submenu nav
+	z-index: 30;
+	transform: translate3d(0, 0, 0);
+	background: transparent;
+	// Logo link container
+	.ap-c-nav-main__home {
+		@extend %navBarHeight;
+		position: absolute;
+		display: none;
+		padding: 0;
+		left: 0;
+		transform: none;
+		@include forTabletPortraitUp {
+			display: block;
+			// Centering hack
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		// Logo svg
+		svg {
+			@extend %navBarHeight;
+			width: auto;
+			padding: $grd / 2;
+			width: $logoWidth / 4.5;
+			height: $logoHeight / 4.5;
+			@include forTabletPortraitUp {
+				width: $logoWidth / 4;
+				height: $logoHeight / 4;
+			}
+		}
+	}
+	&__list {
+		@extend %navBarList;
+		position: relative;
+		// &::before {
+		// 	@extend %positionAbsolute;
+		// 	display: block;
+		// 	z-index: 10;
+		// 	background-color: $navBackground;
+		// 	opacity: .01;
+		// }
+	}
+	&__item {
+		@extend %navBarItem;
+		// White text labels until scrolling page downward
+		color: $colorWhite01;
+		svg path {
+			// White icons until scrolling page downward
+			fill: $colorWhite01;
+		}
+	}
+	// Work, About, CV
+	&__item--site {
+		float: left;
+	}
+	// Instagram and Email
+	&__item--social {
+		float: right;
+		span {
+			@extend %labelSpaceBefore;
+		}
+	}
+	&__link {
+		@extend %navBarLink;
+		color: $colorWhite01;
+	}
+	// Styles removed by JS when scrolling page upward
+	&.ap-is-hidden {
+		@extend %navBarHidden;
+	}
+	svg path {
+		fill: $colorWhite01;
+	}
+	// Styles added by JS when page is scrolled past a certain point
+	&.ap-is-undocked {
+		background: $navBackground;
+		.ap-c-nav-main__list {
+			@extend %shadowSmall;
+			// &::before {
+			// 	opacity: 1;
+			// }
+		}
+		.ap-c-nav-main__item {
+			color: $colorBlack01;
+			span {
+				color: $colorBlack01;
+			}
+		}
+		.ap-c-nav-main__item--site {
+			border-right: $navBorder;
+		}
+		.ap-c-nav-main__item--social {
+			border-left: $navBorder;
+		}
+		svg path {
+			fill: $colorGray01;
+		}
+	}
+}
+
+// Current page link styling for Work, About, and CV
 %navCurrentPage {
 	&::before {
 		// Maintain background color for current page link
@@ -272,7 +336,6 @@ $navBarHeightDesktop: $grd * 8;
 		text-decoration: underline;
 	}
 }
-
 // Current page links
 .ap-c-nav-main__item {
 	// Body class parent selector
@@ -293,342 +356,293 @@ $navBarHeightDesktop: $grd * 8;
 	}
 }
 
-// Wraps the nav group, hides one of the navs
-.ap-c-nav-container {
-	@extend %navBarHeight;
-	@extend %transitionFast;
-	display: block;
-	position: fixed;
-	z-index: 30;
-	top: 0;
-	right: 0;
-	left: 0;
-	width: 100%;
-	width: 100vw;
-	// Overflow is used to show and hide main menu and submenu
-	overflow: hidden;
-	// JS style triggered when page is scrolling down
-	&.ap-is-scrolled {
-		@extend %navBarShadow;
-	}
-}
-
-
-// Home, About, Tag pages, All Tags
-// Pages that do not have a submenu
-// .ap-p-main--home,
-// .ap-p-main--about,
-// .ap-p-main--tag {
-// 	.ap-c-nav-container.ap-is-scrolled {
-// 		height: 0;
-// 		transition-property:
-// 			transform,
-// 			opacity,
-// 			height;
-// 	}
-// }
-
-// Groups main nav and page section nav
-// Targeted by JS scroll events
-.ap-c-nav-group {
-	@extend %transitionFast;
-	display: block;
-	width: 100%;
-	width: 100vw;
-	height: auto;
-	// JS style triggered when page is scrolling down
-	&.ap-is-scrolled {
-		// @extend %navBarShadow;
-		// .ap-p-tag & {
-		// 	height: 0;
-		// }
-		// Transform values match "%navBarHeight"
-		// Push container to reveal submenu navigation
-		// Make these 3dtransforms
-		transform: translate3d(0, -64px, 0);
-		@include forTabletOnly {
-			transform: translate3d(0, -60px, 0);
-		}
-		@include forPhoneOnly {
-			transform: translate3d(0, -56px, 0);
-		}
-	}
-}
-
-// Main website navigation
-.ap-c-nav-main {
-	@extend %navBarContainer;
-	background: none;
-	color: $colorWhite01;
-	// pseudo element background
-	&::before {
-		@extend %positionAbsolute;
-		@extend %transitionFast;
-		content: "";
-		z-index: -1;
-		background-color: $navBackground;
-		opacity: .01;
-	}
-	// a span {
-	// 	@include forDesktopOnly {
-	// 		font-size: 14px;
-	// 	}
-	// 	@include forBigDesktopUp {
-	// 		font-size: 16px;
-	// 	}
-	// }
-	// a svg {
-	// 	path {
-	// 		fill: $colorWhite01;
-	// 	}
-	// }
-	// Logo link container
-	.ap-c-nav-main__home {
-		@extend %navBarHeight;
-		position: absolute;
-		display: block;
-		padding: 0;
-		left: 0;
-		transform: none;
-		@include forTabletPortraitUp {
-			// Centering hack
-			left: 50%;
-			transform: translateX(-50%);
-		}
-		// Logo svg
-		svg {
-			@extend %navBarHeight;
-			width: auto;
-			padding: $grd / 2;
-			width: $logoWidth / 4.5;
-			height: $logoHeight / 4.5;
-			@include forTabletPortraitUp {
-				width: $logoWidth / 4;
-				height: $logoHeight / 4;
-			}
-		}
-	}
-	&__list {
-		@extend %navBarList;
-		display: none;
-		@include forTabletPortraitUp {
-			display: block;
-		}
-		// @extend %hidePhone;
-		// Overwrite extend border styles
-		border-bottom: none;
-	}
-	&__item {
-		@extend %navBarItem;
-		float: left;
-	}
-	&__item {
-		@extend %navBarLink;
-	}
-	// Instagram and Email
-	&__item--social {
-		float: right;
-		border-color: rgba($colorWhite01, .32);
-		span {
-			&::before {
-				content: "\00a0";
-				display: inline-block;
-			}
-		}
-	}
-}
-
-// JS triggered style for main nav bar when scrolled
-.ap-c-nav-main.ap-is-scrolled {
-	color: $colorBrand04;
-	&::before {
-		// Reveal main bar background when scrolling
-		opacity: 1;
-	}
-	// Add border to nav bar while scrolling
-	ul {
-		border-bottom: $navBorder;
-	}
-	a {
-		&:hover,
-		&:focus {
-			span {
-				color: $colorBrand01;
-			}
-			svg {
-				path {
-					fill: $colorBrand01;
-				}
-			}
-		}
-	}
-	svg {
-		path {
-			fill: $colorBrand04;
-		}
-	}
-	.ap-c-nav-main__item {
-		border-right: $navBorder;
-	}
-	.ap-c-nav-main__item--social {
-		border-left: $navBorder;
-	}
-}
+// Mobile navigation
+$mobileNavOffset: $grd * 1.5;
+$mobileNavRadius: $grd * 3;
 
 // Mobile nav open and close toggles
 .ap-c-nav-toggle {
 	@extend %showPhone;
 	@extend %fontExtendedBold;
-	@extend %fontExtraSmall;
+	@extend %fontMicro;
+	@extend %shadowSmall;
+	@extend %transitionFast;
+	// Hidden on large screens
 	display: none;
-	position: absolute;
+	position: fixed;
 	z-index: 40;
-	top: 0;
-	right: 0;
-	height: $grd * 7;
-	padding: {
-		right: $grd * 2;
-		left: $grd * 2;
-	}
+	width: auto; 
+	// overflow: auto;
+	height: $grd * 5.5;
+	bottom: $mobileNavOffset;
+	right: $mobileNavOffset;
 	font-size: 14px;
-	line-height: $grd * 6.75;
+	line-height: $grd * 5.5;
+	text-align: left;
+	color: $colorBrand01;
+	background-color: $navBackground;
+	border-radius: $mobileNavRadius;
+	transition-delay: 0;
 	cursor: pointer;
 	span {
 		position: relative;
-		display: inline-block;
-		padding-right: $grd / 2;
+		display: block;
+		float: left;
+		width: $grd * 7;
+		height: 100%;
+		padding-left: $grd * 1.75;
 		user-select: none;
 	}
 	svg {
+		@extend %transitionFast;
 		position: relative;
-		display: inline-block;
-		width: $grd * 2.25;
-		height: $grd * 2.25;
+		display: block;
+		float: right;
+		width: $grd * 5.5;
+		height: $grd * 5.5;
+		padding: 10%;
+		// border: 1px solid white;
+		border-radius: $mobileNavRadius;
+		// background: blue;
+		path {
+			fill: $colorBrand01;
+		}
+	}
+	// Open mobile nav toggle
+	&--open {
+		// JS triggered style that is removed when scrolling up
+		&.ap-is-hidden {
+			transform: 
+				translate3d(0, 96px, 0)
+				$scaleDownHide;
+			// Delay button entry
+			transition-delay: .3s;
+		}
 	}
 	// Close mobile nav toggle
 	&--close {
-		color: $colorBrand01;
+		right: $mobileNavOffset / 2;
+		bottom: $mobileNavOffset / 2;
+		color: $colorWhite01;
+		background-color: $colorBrand01;
+		box-shadow: none;
+		svg path {
+			fill: $colorWhite01;
+		}
 	}
 }
 
 // Mobile nav layout
 .ap-c-nav-mobile {
-	@extend %positionFixed;
-	@extend %fontExtendedBold;
-	@extend %animationFadeIn;
-	// Hidden until displayed by javascript
-	display: none;
+	@extend %transitionFast;
+	// Hidden until called by javascript
+	display: block;
+	position: fixed;
+	top: $mobileNavOffset / 2;
+	right: $mobileNavOffset / 2;
+	bottom: $mobileNavOffset / 2;
+	left: $mobileNavOffset / 2;
 	// Position above other navigation
 	z-index: 50;
-	width: 100%;
-	min-height: 100%;
-	font-size: 16px;
-	text-align: center;
-	line-height: $grd * 11.75;
-	background: $navBackground;
-	overflow: hidden;
-	// JS triggered active style
-	&.ap-is-active {
-		@extend %showPhone;
-		@include forPhoneOnly {
-			animation-play-state: running;
+	background-color: $navBackground;
+	border-bottom-right-radius: $mobileNavRadius + 4px;
+	opacity: 0;
+	transform:
+		$scaleDownHide
+		translate3d(-32px, -32px, 0);
+	transform-origin: bottom right;
+	&::before {
+		@extend %positionAbsolute;
+		@extend %shadowOverlay;
+		@extend %transitionSlow;
+		content: "";
+		background-color: $colorWhite05;
+		border-bottom-right-radius: $mobileNavRadius + 4px;
+		opacity: .01;
+	}
+	@include forTabletPortraitUp {
+		// Hide on non-mobile screens sizes
+		display: none;
+		visibility: hidden;
+	}
+	// Home logo link
+	&__home {
+		@extend %widthFull;
+		position: relative;
+		height: $logoHeight / 3.75;
+		margin: {
+			top: $grd * 3;
+			bottom: $grd * 4;
+		}
+		&:active {
+			svg path {
+				fill: $colorBrand01;
+			}
+		}
+		a {
+			@extend %marginAuto;
+			display: block;
+			width: $logoWidth / 3.75;
+			height: $logoHeight / 3.75;
+		}
+		svg {
+			display: block;
+			width: 100%;
+			height: 100%;
+			path {
+				fill: $colorBrand03;
+			}
 		}
 	}
-	// Unordered list
+	// Nav lists
 	&__list {
+		position: relative;
+		display: block;
+		width: 50%;
+		text-align: left;
+		overflow: hidden;
+	}
+	&__list--site {
+		float: left;
+	}
+	&__list--social {
+		float: right;
+	}
+	&__list--contact {
 		width: 100%;
-		margin-top: 25%;
+		margin-top: $grd * 2;
 	}
 	// List items containing links
 	&__item {
-		display: block;
-		width: 100%;
-		height: $grd * 12;
+		@extend %widthFull;
+		height: $grd * 7;
+		line-height: $grd * 6.75;
+		overflow: hidden;
 	}
-	// Homepage
-	&__item--home {
-		height: $grd * 18;
-		svg {
-			width: $grd * 24;
-			height: auto;
+	&__item--label {
+		@extend %fontExtendedNormal;
+		height: $grd * 2;
+		line-height: $grd * 2;
+		padding: {
+			right: $mobileNavOffset * 1.75;
+			left: $mobileNavOffset * 1.75;
 		}
+		font-size: 12px;
+		color: $colorBrand05;
+	}
+	&__item--site {
+		border-bottom: $navBorder;
 	}
 	// Instagram and email
 	&__item--social {
-		position: absolute;
-		bottom: 0;
-		width: 50%;
-		border-top: $navBorder;
+		border-left: $navBorder;
+		border-bottom: $navBorder;
 		span {
-			padding-left: $grd * .75;
+			@extend %labelSpaceBefore;
+		}
+	}
+	&__item--contact {
+		width: 100%;
+		border-bottom: $navBorder;
+		span {
+			@extend %labelSpaceBefore;
+		}
+	}
+	// Links within list items
+	&__link {
+		@extend %fontExtendedBold;
+		position: relative;
+		display: block;
+		height: 100%;
+		font-size: $fontSizeXXS;
+		padding: {
+			right: $mobileNavOffset * 1.75;
+			left: $mobileNavOffset * 1.75;
+		}
+		color: $colorBrand04;
+		// Mobile tap style
+		&:active {
+			color: $colorBrand01;
+			background-color: rgba($colorBrand01, .24);
+			svg path {
+				fill: $colorBrand01;
+			}
 		}
 		svg {
 			position: relative;
 			width: $grd * 2.25;
 			height: $grd * 2.25;
 			top: -1px;
-		}
-		&:first-of-type {
-			left: 0;
-			
-		}
-		&:last-of-type {
-			right: 0;
-			.ap-c-nav-mobile__link {
-				border-left: $navBorder;
+			path {
+				fill: $colorBrand03;
 			}
 		}
 	}
-	// Links within list items
-	&__link {
-		@extend %hoverBackground;
-		position: relative;
-		display: block;
-		width: 100%;
-		height: 100%;
-		padding: {
-			right: $grd * 2;
-			left: $grd * 2;
+	// Style added by JS when mobile menu toggle is pressed
+	&.ap-is-visible {
+		opacity: 1;
+		transform:
+			$scaleNormal
+			$translateNormal;
+		&::before {
+			opacity: 1;
 		}
-		border-bottom: $navBorder;
-		// Mobile tap style
-		// &:active {
-		// 	background-color: rgba($colorBrand01, .24); 
-		// }
 	}
 }
 
 // Section navigation used for Work page and CV page
 .ap-c-nav-section {
-	@extend %navBarStyle;
-	// Allow horizontal scrolling
-	overflow-x: auto;
-	&__edge {
-		// Faded edge indicating horizontal scrolling
-		@extend %navBarHeight;
-		content: "";
-		display: block;
-		position: absolute;
-		z-index: 50;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		width: $grd * 4;
-		pointer-events: none;
-		// Hide for now
-		display: none;
+	// Hidden for now
+	@extend %hideItem;
+	@extend %navBarContainerScrollable;
+	@extend %navBarHidden;
+	background-color: $navBackground;
+	// Position below main navigation
+	z-index: 20;
+	@include forTabletUp {
+		// Remove scrolling behavior on large displays
+		overflow: hidden;
 	}
 	// Nav list – scrolls horizontally on small screens
 	&__list {
-		// Enable inertial scrolling in webkit
-		-webkit-overflow-scrolling: touch;
+		@extend %navBarList;
 	}
 	// Link container
 	&__item {
+		@extend %navBarItem;
+		text-align: center;
 		border-right: $navBorder;
 		background-position: center top;
+		padding: $grd $grd / 2;
+		@include forTabletUp {
+			padding: 0;
+		}
+		&:first-of-type {
+			padding-left: $grd * 2;
+			@include forTabletUp {
+				padding-left: 0;
+			}
+		}
+		&:last-of-type {
+			padding-right: $grd * 2;
+			@include forTabletUp {
+				padding-right: 0;
+			}
+		}
 		&:last-of-type {
 			border-right: none;
+		}
+	}
+	// Links
+	&__link {
+		@extend %navBarLink;
+		@extend %shadowSmall;
+		border-radius: $mobileNavRadius;
+		background-color: gray;
+		@include forTabletUp {
+			border-radius: 0;
+			background-color: transparent;
+			box-shadow: none;
 		}
 	}
 	// Section anchor link
@@ -730,7 +744,7 @@ $navBarHeightDesktop: $grd * 8;
 			min-width: $grd * 16;
 		}
 		a {
-			@extend %navLinkAltStyle;
+			@extend %navBarLinkAlt;
 			&:hover,
 			&:focus {
 				.ap-c-nav-section__slide {
@@ -751,26 +765,25 @@ $navBarHeightDesktop: $grd * 8;
 			min-width: $grd * 16;
 		}
 	}
+	// Styles removed by JS when scrolling page downward
+	&.ap-is-visible {
+		@extend %navBarVisible;
+	}
+	// Styles removed by JS when page is scrolled past a certain point
+	&.ap-is-inactive {
+		@extend %hideItem;
+	}
 }
 
-// Hide webkit scrollbar
-.ap-c-nav-section::-webkit-scrollbar {
-	visibility: hidden;
-	width: 0;
-	height: 0;
-}
-.ap-c-nav-section::-webkit-scrollbar-thumb {
- 	visibility: hidden;
-}
-.ap-c-nav-section::-webkit-scrollbar-track {
-	background: transparent;
-	width: 0;
- 	height: 0;
-}
 
 // Series header navigation
 .ap-c-nav-series {
+	// Hidden for now
+	@extend %hideItem;
 	@extend %navBarContainer;
+	@extend %navBarHidden;
+	// Position below main navigation
+	z-index: 15;
 	&__list {
 		@extend %navBarList;
 		display: block;
@@ -837,7 +850,7 @@ $navBarHeightDesktop: $grd * 8;
 		}
 	}
 	&__link--prevnext {
-		@extend %navLinkAltStyle;
+		@extend %navBarLinkAlt;
 		// max-width: $grd * 20;
 		overflow: hidden;
 		white-space: nowrap;
@@ -878,228 +891,9 @@ $navBarHeightDesktop: $grd * 8;
 			}
 		}
 	}
-}
-
-// Collection "splash" navigation
-.ap-c-nav-collections {
-	@extend %widthFull;
-	// @extend %paddingLeftRight;
-	// Position between parent sections
-	position: relative;
-	// z-index: 2;
-	// transform: translateY(-50%);
-	// overflow: auto;
-	// List within nav
-	&__list {
-		@extend %widthWrap;
-		// position: relative;
-		// transform: translateY(50%);
-	}
-	// List items containing links
-	&__item {
-		position: relative;
-		display: block;
-		float: left;
-		width: 25%;
-		// Allow pseudo element visibility
-		overflow: visible;
-		@include forTabletOnly {
-			width: 50%;
-		}
-		@include forSmallPhoneOnly {
-			width: 100%;
-		}
-	}
-	// Collection link
-	&__link {
-		@extend %shadowSmall;
-		@extend %hoverShadow;
-		@extend %transitionFast;
-		display: block;
-		width: 100%;
-		// Maintain 2:3 aspect ratio
-		height: 0;
-		padding-bottom: 3 / 2 * 100%;
-		overflow: hidden;
-		background-color: $colorBrand01;
-		// Interaction styles
-		&:hover, 
-		&:focus {
-			box-shadow: none;
-			transform: $scaleUpSmall;
-			z-index: 3;
-			&::before {
-				// Reveal pseudo shadow
-				opacity: 1;
-			}
-			.ap-c-nav-collections__cover {
-				// Hide thumbnail image to reveal slideshow divs
-				opacity: .01;
-			}
-			.ap-c-nav-collections__slide {
-				// Play slide animation
-				animation-play-state: running;
-			}
-			.ap-c-nav-collections__text {
-				&::before {
-					background-color: rgba($colorBrand03, .32);
-				}
-			}
-			.ap-c-nav-collections__text-title {
-				span {
-					text-decoration-color: rgba($colorWhite01, .92);
-				}
-			}
-			svg {
-				opacity: 1;
-				transform: translateX(4px);
-				@include forPhoneOnly {
-					transform: translateX(3px);
-				}
-			}
-		}
-	}
-	// Animated slide background
-	&__slide {
-		@extend %positionAbsolute;
-		@extend %animationSlideshow;
-		display: block;
-		// background-image sprite url is defined in _scn-collections.pug
-		background: {
-			size: cover;
-			repeat: no-repeat;
-			color: $colorBrand03;
-		}
-		opacity: 0;
-	}
-	// Slide 1
-	&__slide--1 {
-		background-position: center center;
-	}
-	// Slide 2
-	&__slide--2 {
-		background-position: top center;
-		animation-delay: .67s;
-	}
-	// Slide 3
-	&__slide--3 {
-		background-position: bottom center;
-		animation-delay: 1.34s;
-	}
-	// Thumbnail cover image element
-	&__cover {
-		@extend %positionAbsolute;
-		@extend %transitionFast;
-		// Value matches animation delay
-		transition-delay: .33s;
-	}
-	// Contains all anchor content except the img element
-	&__text {
-		@extend %positionAbsolute;
-		padding-top: 60%;
-		text-align: center;
-		color: $colorWhite01;
-		@include forPhoneOnly {
-			padding-top: 56%;
-		}
-		&::before {
-			@extend %positionAbsolute;
-			@extend %transitionFast;
-			content: "";
-			z-index: 2;
-			background: rgba($colorBrand04, .8);
-			box-shadow: 
-				inset 0 0 2px 2px rgba($colorBrand01, .32),
-				inset 0 0 0 1px rgba($colorBrand01, .24);
-			@include forTabletOnly {
-				top: $grd * 2;
-				right: $grd * 2;
-				bottom: $grd * 2;
-				left: $grd * 2;
-			}
-			@include forPhoneOnly {
-				top: $grd * 1.5;
-				right: $grd * 1.5;
-				bottom: $grd * 1.5;
-				left: $grd * 1.5;
-			}
-		}
-		
-	}
-	// Name of collection
-	&__text-title {
-		@extend %fontExtendedBold;
-		@extend %fontMedium;
-		display: inline-block;
-		position: relative;
-		z-index: 2;
-		width: 100%;
-		line-height: 1;
-		white-space: nowrap;
-		// Compensating for icon size
-		padding-left: $grd * 3;
-		@include forTabletOnly {
-			padding-left: $grd * 2.5;
-		}
-		@include forPhoneOnly {
-			padding-left: $grd * 2;
-		}
-		span {
-			@extend %transitionFast;
-			text-decoration: underline;
-			text-decoration-color: rgba($colorWhite01, .01);
-		}
-		// Arrow icon next to title
-		svg {
-			@extend %transitionFast;
-			// display: block;
-			position: relative;
-			width: $grd * 3;
-			height: auto;
-			bottom: 3px;
-			opacity: .01;
-			transition-property:
-				transform,
-				opacity;
-			path {
-				fill: rgba($colorWhite01, .92);
-			}
-			@include forTabletOnly {
-				width: $grd * 2.5;
-				bottom: 3px;
-			}
-			@include forPhoneOnly {
-				width: $grd * 2;
-				bottom: 2px;
-			}
-		}
-	}
-	// Number of series
-	&__text-series {
-		@extend %fontExtendedNormal;
-		@extend %fontExtraSmall;
-		display: inline-block;
-		position: relative;
-		z-index: 2;
-		margin-bottom: $grd / 2;
-		line-height: 1;
-		white-space: nowrap;
-		&::after {
-			// Stylized border garnish thing
-			content: "—————";
-			letter-spacing: -2px;
-		}
-		@include forTabletOnly {
-			&::after {
-				content: "————";
-			}
-		}
-		@include forPhoneOnly {
-			margin-bottom: $grd;
-			&::after {
-				content: "——–";
-			}
-		}
+	// Styles removed by JS when scrolling page downward
+	&.ap-is-visible {
+		@extend %navBarVisible;
 	}
 }
 
@@ -1109,11 +903,12 @@ $navBarHeightDesktop: $grd * 8;
 	@extend %hoverShadow;
 	@extend %transitionFast;
 	// Hidden until activated by JS triggered style
-	display: none;
+	display: block;
 	position: fixed;
-	z-index: 100;
+	z-index: 40;
 	bottom: $grd * 1.5;
-	right: $grd * 1.5;
+	right: auto;
+	left: $grd * 1.5;
 	width: $grd * 5.5;
 	height: $grd * 5.5;
 	outline: 0;
@@ -1124,13 +919,13 @@ $navBarHeightDesktop: $grd * 8;
 		border: 0;
 		transform: $translateUp;
 		&::before {
-			content: "";
-			z-index: -1;
-			background-color: $colorBrand01;
+			opacity: 1;
 			border-radius: 50%;
 		}
 		svg path {
-			fill: $colorWhite01;
+			@include forTabletPortraitUp {
+				fill: $colorWhite01;
+			}
 		}
 	}
 	&:active {
@@ -1139,10 +934,13 @@ $navBarHeightDesktop: $grd * 8;
 	}
 	&::before {
 		border-radius: 50%;
+		background-color: $colorBrand01;
 	}
 	@include forTabletPortraitUp {
+		// Change position on phones
 		bottom: $grd * 2.5;
 		right: $grd * 2.5;
+		left: auto;
 		width: $grd * 6;
 		height: $grd * 6;
 	}
@@ -1154,7 +952,6 @@ $navBarHeightDesktop: $grd * 8;
 	}
 	// Button icon
 	svg {
-		// @extend %marginAuto;
 		@extend %transitionFast;
 		display: block;
 		position: relative;
@@ -1165,17 +962,15 @@ $navBarHeightDesktop: $grd * 8;
 			fill: $colorBrand01;
 		}
 	}
-	// JS triggered style that is removed when scrolling up
+	// Styles removed by JS when scrolling page downward
 	&.ap-is-hidden {
 		transform: 
 			translate3d(0, 96px, 0)
 			$scaleDownHide;
-		// Delay button entry
-		transition-delay: .3s;
 	}
-	// JS triggered style that is added when scrolled down
-	&.ap-is-active {
-		// Button becomes unavailable when nearing the top of page
-		display: block;
+	// Styles removed by JS when page is scrolled past a certain point
+	// Button becomes available when far enough from page top
+	&.ap-is-inactive {
+		@extend %hideItem;
 	}
 }

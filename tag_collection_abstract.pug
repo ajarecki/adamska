@@ -5,9 +5,11 @@ extends partial/_tmp-tag.pug
 block config
 	-
 		var tag = {
-			id:   tagAbstract.id,
-			name: tagAbstract.name,
-			link: tagAbstract.link,
+			id:    tagAbstract.id,
+			name:  tagAbstract.name,
+			link:  tagAbstract.link,
+			hero1: "background_intro_tags.png",
+			hero2: "background_outro_figurative02.png"
 		}
 
 block galleryContent
@@ -15,26 +17,18 @@ block galleryContent
 	+abstractGraceS02
 	+abstractGraceS03
 	+abstractGraceS04
-	+abstractGraceS01
-	+abstractGraceS02
-	+abstractGraceS03
-	+abstractGraceS04
-	+abstractGraceS01
-	+abstractGraceS02
-	+abstractGraceS03
-	+abstractGraceS04
 
 //- block relatedTags
-//- 	+tagSliderPopular
+	+tagSliderPopular
 
 block relatedSeries01
-	+seriesAbstractShapes
+	+seriesCard(abstractShapes)
 
 block relatedSeries02
-	+seriesAbstractFigural
+	+seriesCard(abstractFigural)
 
 block relatedSeries03
-	+seriesAbstractSelectedVol1
+	+seriesCard(abstractSelectedVol1)
 
 block relatedSeries04
-	+seriesAbstractFlames
+	+seriesCard(abstractFlames)

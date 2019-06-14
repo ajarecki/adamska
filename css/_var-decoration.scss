@@ -11,7 +11,7 @@ $scaleUpSmall: scale3d(1.025, 1.025, 1);
 $scaleUpLarge: scale3d(1.0425, 1.0425, 1);
 $scaleDownSmall: scale3d(.975, .975, 1);
 $scaleDownLarge: scale3d(.9575, .9575, 1);
-$scaleDownHide: scale3d(.01, .01, 1);
+$scaleDownHide: scale3d(.001, .001, 1);
 $translateNormal: translate3d(0, 0, 0);
 $translateRight: translate3d(4px, 0, 0);
 $translateLeft: translate3d(-4px, 0, 0);
@@ -28,7 +28,7 @@ $logoHeight: 224px;
 	box-shadow: 
 	    0 4px 0 -2px rgba($colorBrand04, .12),
 	    0 0 0 1px rgba($colorBrand03, .02),
-		inset 0 0 0 1px rgba($colorBrand03, .08);
+		inset 0 0 0 1px rgba($colorBrand05, .24);
 }
 %shadowLarge {
 	box-shadow: 
@@ -37,7 +37,16 @@ $logoHeight: 224px;
 		inset 0 -1px 1px 2px rgba($colorBrand03, .08),
 		inset 0 0 0 2px rgba($colorBrand03, .08);
 }
-%shadowHeadline {
+// Shadow for large overlay-type elements
+%shadowOverlay {
+	box-shadow:
+		0 0 16px 8px rgba($colorBrand04, .24),
+		0 6px 3px -3px rgba($colorBrand04, .16),
+		0 0 0 1px rgba($colorBrand04, .08),
+		inset 0 -1px 1px 2px rgba($colorBrand03, .08),
+		inset 0 0 0 2px rgba($colorBrand03, .04);
+}
+%headlineShadow {
 	text-shadow: 
 		0 .5px 0 $colorBrand02,
 		0 1px 0 $colorBrand01;
@@ -46,12 +55,32 @@ $logoHeight: 224px;
 // Text
 // Text underline when hovered
 %hoverUnderline {
+	text-decoration: none;
+	span {
+		text-decoration: none;
+	}
 	&:hover,
 	&:focus {
 		text-decoration: underline;
+		text-decoration-skip-ink: auto;
 		span {
 			text-decoration: underline;
+			text-decoration-skip-ink: auto;
 		}
+	}
+}
+// Non-breaking space before text label
+%labelSpaceBefore {
+	&::before {
+		content: "\00a0";
+		display: inline-block;
+	}
+}
+// Non-breaking space after text label
+%labelSpaceAfter {
+	&::after {
+		content: "\00a0";
+		display: inline-block;
 	}
 }
 // Line on sides effects
@@ -100,26 +129,26 @@ $logoHeight: 224px;
 	}
 }
 // Photo banner header text
-%heroHeadline {
+%headlineBackground {
+	@extend %headlineShadow;
 	background-image: 
 		linear-gradient(
 			-26deg,
-			rgba($colorBrand05, .48),
-			rgba($colorBrand04, .72)
+			rgba($colorBrand05, .52),
+			rgba($colorBrand05, 0),
+			rgba($colorBrand05, .52)
 		);
-	text-shadow: 
-		0 .5px 0 $colorBrand02,
-		0 1px 0 $colorBrand01;
+	background-color: rgba($colorBrand03, .48);
 }
 
 // Transitions
-// transition-property beyond transform and opacity are set individually for improved performance 
-// timing-function reference: 
+// transition-property beyond transform and opacity are set individually for improved performance
+// timing-function reference:
 // https://material.io/design/motion/speed.html#easing
 %transitionVeryFast {
 	transition: {
 		duration: .08s;
-		// Standard curve 
+		// Standard curve
 		timing-function: cubic-bezier(.4, 0, .2, 1);
 		property: 
 			transform,
@@ -147,81 +176,66 @@ $logoHeight: 224px;
 }
 
 // Pseudo element effects
-// Overlay edge
-%overlayEdge {
-	// Relative positioning required
-	position: relative;
+// Reveal pseudo styles when hovered or focused
+%hoverShowPseudo {
 	&::before {
-		@extend %positionAbsolute;
 		@extend %transitionFast;
 		content: "";
-		z-index: 2;
-		user-select: none;
-		box-shadow: 
-			inset 0 0 2px 2px rgba($colorWhite02, .24),
-			inset 0 0 0 1px rgba($colorWhite02, .16);
-	}
-}
-// Hover background
-%hoverBackground {
-	position: relative;
-	&:hover,
-	&:focus,
-	&:active {
-		&::before {
-			// Reveal pseudo element
-			opacity: 1;
-		}
-	}
-	&::before {
-		@extend %positionAbsolute;
-		@extend %transitionFast;
-		content: "";
-		background-color: rgba($colorBrand01, .24);
-		// Hide initially, .01 prevents browser repaint
+		// Hide initially, .01 value avoids browser repaint for better performance
 		opacity: .01;
-	}
-}
-// Hover shadow
-%hoverShadow {
-	position: relative;
-	user-select: none;
-	&:hover,
-	&:focus,
-	&:active {
-		&::before {
-			opacity: 1;
+		@include forPhoneOnly {
+			// Remove on mobile
+			display: none;
 		}
-	}
-	&::before {
-		@extend %positionAbsolute;
-		@extend %shadowLarge;
-		@extend %transitionFast;
-		content: "";
-		opacity: .01;
-	}
-}
-%hoverLinkBackground {
-	@extend %hoverBackground;
-	position: relative;
-	color: inherit;
-	z-index: 2;
-	span {
-		position: relative;
-		color: inherit;
 	}
 	&:hover,
 	&:focus {
-		color: $colorWhite01;
-		span {
-			color: inherit;
+		&::before {
+			content: "";
+			// Reveal pseudo elements
+			opacity: 1;
 		}
 	}
+}
+// Reveal background style when hovered or focused
+%hoverBackground {
+	@extend %hoverShowPseudo;
+	position: relative;
 	&::before {
-		background-color: rgba($colorBrand01, .96);
-		z-index: -1;
+		@extend %positionAbsolute;
+		background-color: rgba($colorBrand01, .24);
 	}
 }
+// Reveal shadow style when hovered or focused
+%hoverShadow {
+	@extend %hoverShowPseudo;
+	position: relative;
+	&::before {
+		@extend %positionAbsolute;
+		@extend %shadowLarge;
+	}
+}
+
+// Inline link style when hovered or focused
+%hoverLinkBackground {
+	@extend %hoverBackground;
+	display: inline-block;
+	position: relative;
+	color: inherit;
+	&::before {
+		background-color: rgba($colorBrand01, .92);
+		z-index: -1;
+	}
+	&:hover,
+	&:focus {
+		@include forTabletPortraitUp {
+			z-index: 2;
+			color: $colorWhite01;
+		}
+	}
+}
+
+// Reveal svg icons when hovered or focused
 %hoverShowIcon {
 	&:hover,
 	&:focus {
@@ -234,6 +248,43 @@ $logoHeight: 224px;
 		opacity: .01;
 	}
 }
+
+// Slider/scrolling object components
+// Fade out edges – used on sliders and navigation lists
+// z-index and left/right positioning are applied individually
+// Shared slider edge styles
+%sliderEdge {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: $grd * 2;
+	pointer-events: none;
+	@include forTabletPortraitUp {
+		width: $grd * 3;
+	}
+}
+%sliderEdgeRight {
+	@extend %sliderEdge;
+	background-image:
+		linear-gradient(
+			to right,
+			rgba($colorWhite02, 1),
+			rgba($colorWhite02, .67),
+			rgba($colorWhite02, 0)
+		);
+}
+%sliderEdgeLeft {
+	@extend %sliderEdge;
+	background-image:
+		linear-gradient(
+			to left,
+			rgba($colorWhite02, 1),
+			rgba($colorWhite02, .67),
+			rgba($colorWhite02, 0)
+		);
+}
+
 
 // Backgrounds
 
@@ -415,7 +466,7 @@ $patternHeight: 192px;
 
 // Create half backgrounds
 
-%backgroundStyle {
+%backgroundStackedStyle {
 	&::before,
 	&::after {
 		content: "";
@@ -437,15 +488,30 @@ $patternHeight: 192px;
 	}
 }
 
-%backgroundLight {
-	@extend %backgroundStyle;
+%backgroundStyle {
+	&::before {
+		@extend %positionAbsolute;
+		content: "";
+		height: 100%;
+	}
+	&::before {
+		z-index: -1;
+		top: 0;
+		background-position: bottom center;
+	}
+}
+
+%backgroundStackedLight {
+	@extend %backgroundStackedStyle;
 	background-image: 
 		linear-gradient(
-			rgba($colorWhite01, 1),
-			rgba($colorWhite01, 0),
 			rgba($colorWhite05, 1),
 			rgba($colorWhite05, 0),
-			rgba($colorWhite01, 1)
+			rgba($colorWhite01, 0),
+			rgba($colorWhite01, 1),
+			rgba($colorWhite01, 0),
+			rgba($colorWhite05, 0),
+			rgba($colorWhite05, 1)
 		);
 	&::before {
 		@extend %patternWhite;
@@ -457,25 +523,36 @@ $patternHeight: 192px;
 	}
 }
 
-%backgroundLightAlternate {
+%backgroundLight {
 	@extend %backgroundStyle;
 	background-image: 
 		linear-gradient(
-			rgba($colorWhite01, 1),
-			rgba($colorWhite01, 0),
 			rgba($colorWhite05, 1),
 			rgba($colorWhite05, 0),
+			rgba($colorWhite01, 0),
 			rgba($colorWhite01, 1)
 		);
 	&::before {
 		@extend %patternOffwhite;
 		background-color: $colorWhite01;
 	}
-	&::after {
+}
+
+%backgroundLightAlternate {
+	@extend %backgroundStyle;
+	background-image: 
+		linear-gradient(
+			rgba($colorWhite01, 1),
+			rgba($colorWhite01, 0),
+			rgba($colorWhite05, 0),
+			rgba($colorWhite05, 1)
+		);
+	&::before {
 		@extend %patternWhite;
 		background-color: $colorWhite05;
 	}
 }
+
 
 %backgroundDark {
 	@extend %backgroundStyle;
@@ -518,12 +595,13 @@ $patternHeight: 192px;
 }
 
 // Animations
-
-// Slideshows — used in cards and navigation components
+// Slideshow animations — used in cards and navigation components
+// Animation reference:
+// https://snook.ca/archives/html_and_css/simplest-css-slideshow
 %animationSlideshow {
 	animation: {
-		name: slideshow; 
-		duration: 2s;
+		name: slideshow;
+		duration: 1.98s;
 		timing-function: ease-in;
 		iteration-count: infinite;
 		fill-mode: forwards;
@@ -531,7 +609,7 @@ $patternHeight: 192px;
 		play-state: paused;
 	}
 }
-// Basic fade in — used in mobile navigation
+// Basic fade in
 %animationFadeIn {
 	animation: {
 		name: fadeIn;
@@ -543,35 +621,53 @@ $patternHeight: 192px;
 		play-state: paused;
 	}
 }
+// Basic fade out
+%animationFadeOut {
+	animation: {
+		name: fadeOut;
+		duration: .33s;
+		timing-function: ease-in;
+		iteration-count: infinite;
+		fill-mode: forwards;
+		direction: normal;
+		play-state: paused;
+	}
+}
 
 // Animation keyframes
 // "%animationSlideshow" keyframes
 @keyframes slideshow {
-	0% { 
-		// .01 avoids browser repaint
-		opacity: .01; 
+	0% {
+		opacity: 0;
 	}
-	11% { 
-		opacity: 1; 
+	11.11% {
+		opacity: 1;
 	}
-	33% { 
-		opacity: 1; 
+	33.33% {
+		opacity: 1;
 	}
-	44% { 
-		opacity: .01; 
+	44.44% {
+		opacity: 0;
 	}
-	100% { 
-		opacity: .01; 
+	100% {
+		opacity: 0;
 	}
 }
 // "%animationFadeIn" keyframes
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
-		transform: $scaleUpLarge;
 	}
 	100% { 
-		opacity: 1; 
-		transform: $scaleNormal;
+		opacity: 1;
+	}
+}
+// "%animationFadeOut" keyframes
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% { 
+		opacity: 0;
 	}
 }

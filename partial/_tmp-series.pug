@@ -11,20 +11,22 @@ mixin seriesMediums(...mediumList)
 	ul.ap-c-mdl-series__tags
 		each item in mediumList
 			li
-				a(
-					href= urlRootTag + item
-					title= "All artworks created with" + item
-				)= item
+				span= item
+				//- a(
+				//- 	href= urlRootTag + item
+				//- 	title= "All artworks created with" + item
+				//- )= item
 
 //- Series material list mixin
 mixin seriesMaterials(...materialList)
 	ul.ap-c-mdl-series__tags
 		each item in materialList
 			li
-				a(
-					href= urlRootTag + item
-					title= "All artworks created with " + item
-				)= item
+				span= item
+				//- a(
+				//- 	href= urlRootTag + item
+				//- 	title= "All artworks created with " + item
+				//- )= item
 
 //- Series page parameters
 block config
@@ -43,21 +45,6 @@ block config
 		Footer background overlay image,
 		Footer background base image
 
-	//- Overwritable defaults
-	//- -
-	//- 	var series = {
-	//- 		name:    "Untitled Series",
-	//- 		subhead: `${series.colname} Series`,
-	//- 		info:    "Series of artworks by Grazyna Adamska Jarecka",
-	//- 		date:    "Various Dates",
-	//- 		border1: "background_border_intro_04.png",
-	//- 		border2: "background_border_outro_03.png"
-	//- 	}
-	//- -
-	//- 	var page = {
-	//- 		subhead: "This is a test"
-	//- 	}
-
 doctype html
 html(lang="en")
 	head
@@ -71,7 +58,7 @@ html(lang="en")
 				name="description" 
 				content= `${series.info}`
 			)
-		block headOpengraph
+		//- block headOpengraph
 			meta(
 				property="og:title"
 				content= `${series.name}`
@@ -101,6 +88,8 @@ html(lang="en")
 			//- Page header
 			div.ap-c-scn__header
 				header.ap-c-scn__header-container
+					//- div.ap-c-scn__header-logo
+						include _gaj-logo.svg
 					h1.ap-c-scn__header-title
 						//- Title of series
 						span #{series.name}
@@ -110,8 +99,6 @@ html(lang="en")
 
 		//- Series-specific content
 		main.ap-c-scn.ap-c-scn--main
-			//- Main header content background
-			div.ap-c-scn__background
 			//- Outro CTA banner background – overlay image + main image + placeholder image
 			div.ap-c-scn__banner(
 				style= `background-image:
@@ -126,6 +113,7 @@ html(lang="en")
 					div.ap-c-mdl-series__summary
 						h2.ap-c-mdl-series__label Summary
 						p #{series.summary}
+						block seriesSummary
 					ul.ap-c-mdl-series__list
 						li.ap-c-mdl-series__item
 							h3.ap-c-mdl-series__label Dates
@@ -143,10 +131,11 @@ html(lang="en")
 						li.ap-c-mdl-series__item
 							h3.ap-c-mdl-series__label Collection
 							//- Collection link and label
-							a.ap-c-mdl-series__details(
-								href= `${series.collink}`
-								title= `All ${series.colname} Series`
-							) #{series.colname}
+							span #{series.colname}
+							//- a.ap-c-mdl-series__details(
+							//- 	href= `${series.collink}`
+							//- 	title= `All ${series.colname} Series`
+							//- ) #{series.colname}
 
 			//- Series gallery
 			section.ap-c-scn.ap-c-scn--gallery
@@ -169,7 +158,7 @@ html(lang="en")
 				ul.ap-c-mdl-collection__list
 					li.ap-c-mdl-collection__item.ap-l-crd--spotlight
 						block nextSeries
-							+seriesAbstractGrace
+							+seriesCard(abstractGrace)
 
 		//- Related series section
 		section.ap-c-scn.ap-c-scn--related
@@ -218,8 +207,3 @@ html(lang="en")
 
 		//- Local scripts
 		script(src="/js/adamska.js")
-
-		//- Local library scripts
-		//- script(src="js/plugins.js")
-
-		//- Add plugins.js for init scripts and import colcade so you can put global scripts before plugins

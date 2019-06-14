@@ -12,10 +12,8 @@ mixin pressItem(pressSource, pressTitle, pressLink)
 			target="_blank"
 		)
 			article.ap-c-mdl-press__entry
-				p.ap-c-mdl-press__label 
-					span= pressSource
-				h4.ap-c-mdl-press__title
-					span= pressTitle
+				p.ap-c-mdl-press__label= pressSource
+				h4.ap-c-mdl-press__title= pressTitle
 				//- Button appearance
 				span.ap-c-btn-uncontained
 					span Website

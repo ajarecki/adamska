@@ -3,22 +3,14 @@
 // Shared content module styles
 %overhangSection {
 	position: relative;
+	// Position above intro section
 	z-index: 2;
-	transform: translateY($grd * -16);
-	@include forPhoneUp {
-		transform: translateY($grd * -18);
-	}
-	@include forTabletPortraitUp {
-		transform: translateY($grd * -24);
-	}
+	top: $grd * -12;
 	@include forTabletLandscapeUp {
-		transform: translateY($grd * -28);
-	}
-	@include forDesktopUp {
-		transform: translateY($grd * -32);
+		top: $grd * -20;
 	}
 	@include forBigDesktopUp {
-		transform: translateY($grd * -36);
+		top: $grd * -24;
 	}
 }
 
@@ -39,11 +31,11 @@
 	// Headings
 	&__label {
 		@extend %widthFull;
-		@extend %fontExtendedBold;
+		@extend %fontExtendedNormal;
 		@extend %fontMicro;
 		@extend %lineRight;
 		overflow: hidden;
-		line-height: 2;
+		// line-height: 2;
 		// Recolor line
 		&::after {
 			background-color: $colorGray07;
@@ -65,6 +57,7 @@
 		color: $colorGray01;
 		p {
 			@extend %paddingTopBottomQuarter;
+			@extend %lineHeightBody;
 		}
 		@include forPhoneOnly {
 			width: 100%;
@@ -146,13 +139,7 @@ $gallerySpacing: 4%;
 		right: 12%;
 		left: 12%;
 	}
-	@include forSmallPhoneOnly {
-		padding: {
-			right: 12%;
-			left: 12%;
-		}
-	}
-	@include forPhoneOnly {
+	@include forPhoneUp {
 		padding: {
 			right: 14%;
 			left: 14%;
@@ -170,12 +157,6 @@ $gallerySpacing: 4%;
 			left: 4%;
 		}
 	}
-	// @include forBigDesktopUp {
-	// 	padding: {
-	// 		right: 5%;
-	// 		left: 5%;
-	// 	}
-	// }
 	// Gallery columns
 	&__column {
 		display: block;
@@ -185,17 +166,17 @@ $gallerySpacing: 4%;
 			// Fallback width
 			// 100% width - 4% margin / 2
 			width: 48%;
-			width: calc(48% - 8px);
+			// width: calc(48% - 8px);
 		}
 		@include forDesktopUp {
 			// 100% width - 8% margin / 3
 			width: 30.6666%;
-			width: calc(30.66% - 8px);
+			// width: calc(30.66% - 8px);
 		}
 		@include forBigDesktopUp {
 			// 100% width - 12% margin / 4
 			width: 22%;
-			width: calc(22% - 8px);
+			// width: calc(22% - 8px);
 		}
 	}
 	// First column
@@ -299,7 +280,7 @@ $gallerySpacing: 4%;
 	&__label {
 		@extend %widthFull;
 		@extend %marginBottomQuarter;
-		@extend %fontExtendedBold;
+		@extend %fontExtendedNormal;
 		@extend %fontMicro;
 		@extend %lineRight;
 		color: $colorBlack01;
@@ -309,6 +290,7 @@ $gallerySpacing: 4%;
 		@extend %paddingRightHalf;
 		@extend %fontNormal;
 		@extend %fontRegular;
+		
 		float: left;
 		width: 50%;
 		color: $colorGray01;
@@ -321,6 +303,7 @@ $gallerySpacing: 4%;
 		}
 		// Contact text
 		p {
+			@extend %lineHeightBody;
 			max-width: $grd * 80;
 			a {
 				@extend %hoverLinkBackground;
@@ -329,7 +312,7 @@ $gallerySpacing: 4%;
 		// Email button
 		.ap-c-btn-contained {
 			@extend %buttonIconLeft;
-			@extend %marginTopQuarter;
+			@extend %buttonMarginTop;
 		}
 	}
 	// Navigation container
@@ -352,15 +335,18 @@ $gallerySpacing: 4%;
 	// Navigation list container
 	&__group {
 		display: block;
-		width: 33%;
-		padding-right: $grd * 2;
+		width: 100%;
+		padding: {
+			right: 0;
+			bottom: $grd * 4;
+		}
 		&:last-of-type {
 			padding-right: 0;
 		}
-		@include forPhoneOnly {
-			width: 100%;
+		@include forTabletPortraitUp {
+			width: 33.33%;
 			padding: {
-				right: 0;
+				right: $grd * 2;
 				bottom: $grd * 6;
 			}
 		}
@@ -376,6 +362,7 @@ $gallerySpacing: 4%;
 		// Footer navigation links
 		.ap-c-btn-uncontained {
 			padding: $grd * 1.5 0;
+			color: $colorBrand04;
 			&:hover,
 			&:focus {
 				span {
@@ -393,8 +380,12 @@ $gallerySpacing: 4%;
 		@extend %paddingTopHalf;
 		@extend %paddingLeftRight;
 		border-top: $borderDark;
+		padding-bottom: $grd * 10;
 		text-align: center;
 		color: $colorGray01;
+		@include forTabletPortraitUp {
+			padding-bottom: 0;
+		}
 		// Text
 		p {
 			@extend %paddingTopHalf;
@@ -464,17 +455,15 @@ $gallerySpacing: 4%;
 			z-index: 2;
 			background-color: $colorWhite02;
 			border-color: transparent;
-			span {
-				// Recolor all text
+			.ap-c-mdl-press__label {
 				color: $colorBrand01;
-			}
-			.ap-c-mdl-press__link-label {
 				transform: translate3d(24px, 0, 0);
 				@include forPhoneOnly {
 					transform: translate3d(16px, 0, 0);
 				}
 			}
-			.ap-c-mdl-press__link-title {
+			.ap-c-mdl-press__title {
+				color: $colorBrand01;
 				text-decoration: underline;
 				transform: translate3d(24px, 0, 0);
 				@include forPhoneOnly {
@@ -483,6 +472,7 @@ $gallerySpacing: 4%;
 			}
 			.ap-c-btn-uncontained {
 				span {
+					color: $colorBrand01;
 					text-decoration: underline;
 				}
 				svg {
@@ -517,10 +507,10 @@ $gallerySpacing: 4%;
 	&__label {
 		@extend %fontExtendedNormal;
 		@extend %fontMicro;
+		@extend %lineHeightLabel;
 		@extend %transitionFast;
 		position: relative;
 		margin-bottom: $grd;
-		line-height: 1;
 		white-space: nowrap;
 		color: $colorBlack01;
 		@include forTabletOnly {
@@ -529,10 +519,12 @@ $gallerySpacing: 4%;
 	}
 	&__title {
 		@extend %fontExtendedBold;
-		@extend %fontExtraSmall;
+		@extend %fontSmall;
+		@extend %lineHeightHeadline;
 		@extend %transitionFast;
 		position: relative;
 		max-width: 80%;
+		padding-right: $grd * 2;
 		color: $colorBlack01;
 	}
 	// 'Visit Website' link
@@ -552,9 +544,9 @@ $gallerySpacing: 4%;
 			padding-left: $grd * 3;
 		}
 		span {
-			@extend %fontExtraSmall;
+			@extend %fontMicro;
 			line-height: 3.5;
-			color: $colorGray01;
+			color: $colorBrand04;
 			@include forTabletOnly {
 				line-height: 5;
 			}
@@ -565,7 +557,7 @@ $gallerySpacing: 4%;
 		svg {
 			transform: none;
 			path {
-				fill: $colorGray01;
+				fill: $colorBrand03;
 			}
 			@include forPhoneOnly {
 				width: $grd * 2;
@@ -579,6 +571,7 @@ $gallerySpacing: 4%;
 // Curriculum Vitae content
 .ap-c-mdl-cv {
 	@extend %widthModule;
+	@extend %paddingTopBottomHalf;
 	@extend %paddingLeftRightHalf;
 	@extend %overhangSection;
 	@extend %shadowSmall;
@@ -587,13 +580,22 @@ $gallerySpacing: 4%;
 	// CV Main Header container
 	&__header {
 		@extend %widthFull;
-		@extend %paddingTopHalf;
 		@extend %fontExtendedBold;
 		@extend %fontRegular;
+		@extend %lineHeightHeadline;
+		@include forPhoneOnly {
+			font-size: 3.25vw;
+		}
+	}
+	.ap-c-btn-contained {
+		// Hidden for now
+		@extend %hideItem;
+		@extend %buttonMarginTop;
 	}
 	// CV document section
 	&__section {
 		@extend %widthFull;
+		overflow: auto;
 		// Negative margin compensates for pseudo element anchor positioning hack
 		margin-bottom: $grd * -10;
 		@include forTabletOnly {
@@ -606,6 +608,7 @@ $gallerySpacing: 4%;
 			margin-bottom: $grd * -14;
 		}
 		// This pseudo is used to add edit the landing position of the hash tag links associated with each section
+		// Reference:
 		// https://css-tricks.com/hash-tag-links-padding/
 		&::before { 
 			content: ""; 
@@ -724,7 +727,7 @@ $gallerySpacing: 4%;
 	}
 	// Entry titles
 	&__title {
-		@extend %fontExtraSmall;
+		@extend %fontMicro;
 		// Display table fallbacks
 		display: table-cell;
 		vertical-align: top;
@@ -763,12 +766,15 @@ $gallerySpacing: 4%;
 	overflow: auto;
 	// Portrait image container
 	&__photo {
+		@extend %widthFull;
 		position: relative;
-		display: block;
 		float: left;
-		width: 40%;
+		// Square aspect ratio
+		height: 0;
+		padding-bottom: 100%;
 		overflow: hidden;
 		background-color: $colorBrand05;
+		// Overlay pattern image
 		&::before {
 			@extend %positionAbsolute;
 			content: "";
@@ -777,52 +783,65 @@ $gallerySpacing: 4%;
 				size: cover;
 			}
 		}
-		@include forTabletOnly {
-			width: 100%;
-			height: $grd * 56;
+		@include forTabletPortraitUp {
+			padding-bottom: 2 / 3 * 100%;
 		}
-		@include forPhoneOnly {
-			height: $grd * 44;
+		@include forTabletLandscapeUp {
+			width: 40%;
+			// Switch to fixed dimensions
+			height: auto;
+			padding-bottom: 0;
 		}
 		img {
-			@include forTabletOnly {
-				margin-top: -36%;
+			// Image element positioning
+			margin-top: -40%;
+			@include forTabletPortraitUp {
+				margin-top: -50%;
 			}
-			@include forPhoneOnly {
-				margin-top: $grd * -8;
+			@include forTabletLandscapeUp {
+				margin-top: 0;
 			}
 		}
 	}
 	// Text content container
-	&__text {
+	&__container {
+		@extend %widthFull;
+		@extend %paddingTopHalf;
+		@extend %paddingBottom;
+		@extend %paddingLeftRightHalf;
 		position: relative;
-		display: block;
-		width: 60%;
-		float: right;
-		@include forTabletOnly {
-			width: 100%;
+		@include forTabletLandscapeUp {
+			float: right;
+			width: 60%;
 		}
 	}
 	// Intro passage
 	&__header {
-		@extend %paddingTopBottomHalf;
-		@extend %paddingLeftRightHalf;
+		@extend %paddingBottomHalf;
 		@extend %fontNormal;
 		@extend %fontRegular;
-		background-color: $colorBrand05;
-		color: $colorWhite01;
+		border-bottom: $borderDark;
+		color: $colorBlack01;
+		p {
+			@extend %lineHeightBody;
+		}
 	}
 	// Main article
 	&__body {
 		@extend %widthFull;
-		@extend %paddingTopBottomHalf;
-		@extend %paddingLeftRightHalf;
+		@extend %paddingTopHalf;
 		@extend %fontNormal;
 		@extend %fontSmall;
+		@extend %lineHeightBody;
 		color: $colorGray01;
 		p {
 			@extend %paddingBottomQuarter;
+			@extend %lineHeightBody;
 		}
+	}
+	// "See Work" button
+	.ap-c-btn-contained {
+		@extend %buttonMarginTop;
 	}
 }
 
@@ -842,11 +861,12 @@ $gallerySpacing: 4%;
 	}
 	// Headline text
 	&__title {
+		@extend %marginBottomQuarter;
 		@extend %fontExtendedBold;
 		@extend %fontMedium;
-		@extend %shadowHeadline;
-		@extend %marginBottomQuarter;
+		@extend %lineHeightHeadline;
 		@extend %lineRight;
+		@extend %headlineShadow;
 		color: $colorWhite01;
 	}
 	// Paragraph text
@@ -859,6 +879,220 @@ $gallerySpacing: 4%;
 	}
 	// About page link
 	.ap-c-btn-contained {
-		@extend %marginTopThird;
+		@extend %buttonMarginTop;
+	}
+	// line-height seems to only work when applied on the p element
+	p {
+		@extend %lineHeightBody;
+	}
+}
+
+// Collections "poster" navigation
+.ap-c-mdl-collections {
+	@extend %widthFull;
+	@extend %paddingLeftRightHalf;
+	position: relative;
+	// List within nav
+	&__list {
+		@extend %widthWrap;
+	}
+	// List items containing links
+	&__item {
+		@extend %widthFull;
+		position: relative;
+		float: left;
+		// Allow visibility for transforms
+		overflow: visible;
+		background-color: $colorBrand05;
+		@include forSmallPhoneUp {
+			width: 50%;
+		}
+		@include forTabletUp {
+			width: 25%;
+		}
+	}
+	// Collection link
+	&__link {
+		@extend %widthFull;
+		@extend %shadowSmall;
+		@extend %transitionFast;
+		@extend %hoverShowIcon;
+		position: relative;
+		// 5:4 aspect ratio
+		height: 0;
+		padding-bottom: 5 / 4 * 100%;
+		overflow: hidden;
+		background: {
+			size: cover;
+			repeat: no-repeat;
+		}
+		@include forPhoneOnly {
+			// Remove background on phones
+			background-image: none !important;
+		}
+		@include forTabletPortraitUp {
+			// 3:4 aspect ratio
+			padding-bottom: 4 / 3 * 100%;
+		}
+		@include forDesktopUp {
+			// 2:3 aspect ratio
+			padding-bottom: 3 / 2 * 100%;
+		}
+		&:hover,
+		&:focus {
+			box-shadow: none;
+			transform: $scaleUpSmall;
+			z-index: 5;
+			.ap-c-mdl-collections__cover {
+				// Hide thumbnail image to reveal underlying slideshow elements
+				@include forTabletPortraitUp {
+					opacity: .01;
+				}
+			}
+			.ap-c-mdl-collections__slide {
+				visibility: visible;
+				// Play slide animation
+				animation-play-state: running;
+			}
+			.ap-c-mdl-collections__collection span {
+				text-decoration: underline;
+			}
+			svg {
+				transform: $translateRight;
+			}
+		}
+	}
+	// Animated slide background
+	&__slide {
+		@extend %positionAbsolute;
+		@extend %animationSlideshow;
+		display: block;
+		visibility: hidden;
+		// background-image source is defined in "_scn-collections.pug"
+		background: {
+			size: cover;
+			repeat: no-repeat;
+		}
+		@include forPhoneOnly {
+			// Remove slideshow on phones
+			display: none;
+			background-image: none !important;
+		}
+	}
+	// Slide 1
+	&__slide--1 {
+		background-position: center center;
+	}
+	// Slide 2
+	&__slide--2 {
+		background-position: top center;
+		animation-delay: 1s;
+	}
+	// Slide 3
+	&__slide--3 {
+		background-position: bottom center;
+		animation-delay: 2s;
+	}
+	// Thumbnail cover image element
+	&__cover {
+		@extend %positionAbsolute;
+		@extend %transitionFast;
+		opacity: 1;
+		// Corresponmds with animation-delay
+		// transition-delay: .33s;
+	}
+	// Contains all anchor content except the img element
+	&__title {
+		@extend %positionAbsolute;
+		padding-top: 44%;
+		text-align: center;
+		color: $colorWhite01;
+		@include forTabletPortraitUp {
+			padding-top: 52%;
+		}
+		@include forTabletUp {
+			padding-top: 56%;
+		}
+		&::before {
+			@extend %positionAbsolute;
+			@extend %transitionFast;
+			content: "";
+			z-index: 2;
+			background-image:
+				linear-gradient(
+					-26deg,
+					rgba($colorBrand04, 0),
+					rgba($colorBrand04, .72),
+					rgba($colorBrand04, 0)
+				);
+			box-shadow:
+				inset 0 0 0 1px rgba($colorWhite01, .08),
+				inset -1px -1px 1px 1px rgba($colorWhite01, .08);
+		}
+	}
+	// Number of series
+	&__count {
+		@extend %fontExtendedNormal;
+		@extend %fontMicro;
+		@extend %lineHeightLabel;
+		display: inline-block;
+		position: relative;
+		z-index: 2;
+		margin-bottom: $grd / 2;
+		white-space: nowrap;
+		&::after {
+			// Stylized border garnish thing
+			content: "——–";
+			letter-spacing: -2px;
+		}
+		@include forTabletPortraitUp {
+			&::after {
+				content: "——–";
+			}
+			margin-bottom: $grd * .75;
+		}
+		@include forDesktopUp {
+			margin-bottom: $grd;
+			&::after {
+				content: "—————";
+			}
+		}
+	}
+	// Name of collection
+	&__collection {
+		@extend %fontExtendedBold;
+		@extend %fontMedium;
+		@extend %lineHeightLabel;
+		display: inline-block;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		white-space: nowrap;
+		// Compensating for space taken up by icon
+		padding-left: $grd * 2;
+		@include forTabletUp {
+			padding-left: $grd * 2.5;
+		}
+		@include forDesktopUp {
+			padding-left: $grd * 3;
+		}
+		// Arrow icon next to title
+		svg {
+			position: relative;
+			width: $grd * 2.25;
+			bottom: 2px;
+			right: 6px;
+			path {
+				fill: $colorWhite01;
+			}
+			@include forTabletUp {
+				width: $grd * 3;
+				bottom: 3px;
+				right: 9px;
+			}
+			@include forDesktopUp {
+				width: $grd * 3.25;
+			}
+		}
 	}
 }

@@ -9,7 +9,7 @@
 		@extend %backgroundLargeHeight;
 	}
 	&--main {
-		@extend %backgroundLight;
+		@extend %backgroundStackedLight;
 	}
 	// Featured series section
 	&--featured {
@@ -19,27 +19,26 @@
 	// Selected press section
 	&--press {
 		@extend %paddingTopBottom;
+		// @extend %backgroundLight;
 		background-color: $colorWhite01;
 	}
 	// Mini bio section
 	&--grazyna {
 		@extend %paddingTopBottomHalf;
 		overflow: hidden;
-		background-color: $colorWhite05;
+		background-color: $colorWhite03;
 	}
 	// Main website footer
 	&--footer {
 		@extend %paddingTopBottom;
 		@extend %paddingLeftRight;
-		background-color: $colorWhite05;
+		background-color: $colorWhite03;
 	}
+	// Lightbox item sections
 	&--gallery {
 		@extend %paddingTopDouble;
 		// Special padding to comensate for space taken by series info panel
 		padding-top: $grd * 32;
-		// @include forPhoneOnly {
-		// 	padding-top: $grd * 24;
-		// }
 		@include forTabletPortraitUp {
 			padding-top: $grd * 18;
 		}
@@ -62,9 +61,6 @@
 		height: 0;
 		overflow: visible;
 	}
-	&--poster {
-		@extend %paddingLeftRightHalf;
-	}
 	// About content module container
 	&--about {
 		@extend %paddingLeftRightHalf;
@@ -76,31 +72,7 @@
 	// Collection sections on the Work page
 	&--collection {
 		@extend %paddingBottomHalf;
-		@extend %paddingLeftRight;
-		// Figurative series collection
-		// &-figurative {
-		// 	@extend %backgroundLight;
-		// }
-		// // Abstract series section
-		// &-abstract {
-		// 	@extend %backgroundLight;
-		// }
-		// // Portrait series section
-		// &-portrait {
-		// 	@extend %backgroundLight;
-		// }
-		// // Assorted series section
-		// &-assorted {
-		// 	@extend %backgroundLight;
-		// }
 	}
-	// Slider sections
-	// &--slider {
-	// }
-	// Tag slider sections
-	// &--tag {
-
-	// }
 	// Instagram slider section
 	&--instagram {
 		@extend %backgroundLightAlternate;
@@ -109,22 +81,23 @@
 	&--next {
 		@extend %paddingTop;
 		@extend %paddingBottom;
-		background-color: $colorWhite01;
+		@extend %backgroundLightAlternate;
+		// background-color: $colorWhite01;
 	}
 	// Related series section
 	&--related {
 		@extend %paddingBottom;
-		@extend %backgroundLightAlternate;
+		@extend %backgroundLight;
 	}
 }
 
 // Large title style
 %titlePrimary {
 	@extend %fontLarge;
+	@extend %lineHeightHeadline;
 	@extend %lineLeftRight;
 	text-align: center;
 }
-
 // Section header containers
 .ap-c-scn__header {
 	@extend %widthFull;
@@ -134,11 +107,31 @@
 	&-container {
 		@extend %widthWrap;
 		position: relative;
-		overflow: hidden;
 		// Page intro section specificity
 		.ap-c-scn--intro & {
 			overflow: visible;
 			text-align: center;
+		}
+	}
+	// Intro header logo – visible on mobile only
+	&-logo {
+		@extend %marginAuto;
+		display: block;
+		width: $logoWidth / 3.75;
+		height: $logoHeight / 3.75;
+		margin: {
+			top: $grd * 10;
+			bottom: $grd * 10;
+		}
+		@include forTabletPortraitUp {
+			// Hide on large displays as logo is already visible in the menu
+			display: none;
+		}
+		svg {
+			width: 100%;
+			path {
+				fill: $colorWhite01;
+			}
 		}
 	}
 	// Header headline text
@@ -154,13 +147,14 @@
 		color: $colorBlack01;
 		// Page intro section specificity
 		.ap-c-scn--intro & {
-			@extend %paddingTopDouble;
-			padding-bottom: 0;
-			// @extend %paddingBottom;
+			@extend %paddingTopAndHalf;
+			// Fallback font sizes
 			@extend %fontExtendedBold;
+			font-size: 5vw;
 			text-align: center;
 			white-space: normal;
 			color: $colorWhite01;
+			// padding-top: 0;
 			// Remove pseudo element effects
 			&::before,
 			&::after {
@@ -174,7 +168,7 @@
 				font-size: 2.75vw;
 			}
 			span {
-				@extend %heroHeadline;
+				@extend %headlineBackground;
 			}
 		}
 		// Featured series section specificity
@@ -197,9 +191,12 @@
 	}
 	// Subtitles
 	&-subtitle {
+		// Hidden for now
+		@extend %hideItem;
 		@extend %widthFull;
-		@extend %fontExtendedNormal;
+		@extend %fontExtendedBold;
 		@extend %fontRegular;
+		@extend %lineHeightHeadline;
 		position: relative;
 		span {
 			@extend %widthFull;
@@ -211,20 +208,25 @@
 	}
 	// Section header buttons
 	.ap-c-btn-contained {
-		position: absolute;
-		right: 0;
-		top: 4%;
-		@include forSmallPhoneOnly {
-			// Reposition button on phones
-			position: relative;
-			display: inline-block;
-			right: auto;
-			top: auto;
-			margin: {
-				top: $grd * 2;
-				bottom: $grd * 2;
-				// right: 0;
-			}
+		position: relative;
+		display: inline-block;
+		right: auto;
+		top: auto;
+		margin: {
+			top: $grd;
+			bottom: $grd;
+		}
+		@include forSmallPhoneUp {
+			position: absolute;
+			right: 0;
+			top: -10%;
+			margin: 0;
+		}
+		@include forTabletPortraitUp {
+			top: -5%;
+		}
+		@include forDesktopUp {
+			top: -2%;
 		}
 		// Press section specifity
 		.ap-c-scn--press & {
@@ -263,7 +265,7 @@
 			font-size: 4vw;
 		}
 		p {
-			@extend %heroHeadline;
+			@extend %headlineBackground;
 			display: inline;
 			a {
 				@extend %hoverLinkBackground;
@@ -341,32 +343,6 @@ $backgroundSmallHeight: 768px;
 	}
 }
 
-// %backgroundFooterOverlay01 {
-// 	background-image: 
-// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_01.png");
-// }
-// %backgroundFooterOverlay02 {
-// 	background-image: 
-// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_02.png");
-// }
-// %backgroundFooterOverlay03 {
-// 	background-image: 
-// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_03.png");
-// }
-// %backgroundFooterOverlay04 {
-// 	background-image: 
-// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_04.png");
-// }
-
-// %backgroundFooterImage01 {
-// 	background-image: 
-// 		url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/background_border_outro_04.png");
-// }
-
-// %backgroundFooterImage {
-	
-// }
-
 // Section background element
 .ap-c-scn__banner {
 	position: absolute;
@@ -412,7 +388,7 @@ $backgroundSmallHeight: 768px;
 				);
 		}
 	}
-	// Mini bio section background
+	// Mini-bio section background
 	.ap-c-scn--grazyna & {
 		@extend %backgroundSmallHeight;
 		@extend %backgroundSmallSize;
@@ -430,18 +406,13 @@ $backgroundSmallHeight: 768px;
 	}
 }
 
-// Main section background pattern
-.ap-c-scn__background {
-	@extend %positionAbsolute;
-	@extend %sectionBackground01;
-}
 
 // Video element size
 $videoWidth: 1280px;
 $videoHeight: 720px;
 
 // Video container on home and work page
-.ap-c-scn__hero {
+.ap-c-scn__video {
 	@extend %marginAuto;
 	@extend %shadowSmall;
 	display: block;
@@ -468,7 +439,7 @@ $videoHeight: 720px;
 		height: $videoHeight * .625;
 	}
 	// Video element
-	&-video {
+	video {
 		@extend %positionAbsolute;
 		width: 100%;
 		height: auto;

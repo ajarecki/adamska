@@ -1,9 +1,9 @@
 //- Series page navigation for each individual series
 
 //- Work navigation item mixin
-	Declare:
+	Properties correspond with object in "_config.pug"
+	Properties include:
 	Title of current series,
-	Address to current series,
 	Title of collection the series belongs to,
 	Address of collection the series belongs to,
 	Title of previous series in queue,
@@ -11,28 +11,29 @@
 	Background image source of previous series link,
 	Title of next series in queue,
 	Address of next series in queue,
-	Background image source of next series link,
-//- mixin navSeries(seriesName, seriesLink, collectionName, collectionLink, prevSeriesName, prevSeriesLink, prevBackground, nextSeriesName, nextSeriesLink, nextBackground)
+	Background image source of next series link
 mixin navSeries(seriesData, collectionData, prevSeriesData, nextSeriesData)
 	nav.ap-c-nav-series
 		ul.ap-c-nav-series__list
+			//- Previous series
 			li.ap-c-nav-series__item.ap-c-nav-series__item--previous
 				a.ap-c-nav-series__link.ap-c-nav-series__link--prevnext(
 					href= prevSeriesData.link
 					title= `Previous Series: ${prevSeriesData.name}`
-					style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${prevSeriesData.cover});`
+					style= `background-image: url(${urlRootImage}c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${prevSeriesData.cover});`
 				)
 					+icon(iconArrowLeft)
 					span= prevSeriesData.name
+			//- Next series
 			li.ap-c-nav-series__item.ap-c-nav-series__item--next
 				a.ap-c-nav-series__link.ap-c-nav-series__link--prevnext(
 					href= nextSeriesData.link
 					title= `Next Series: ${nextSeriesData.name}`
-					style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${nextSeriesData.cover});`
+					style= `background-image: url(${urlRootImage}c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:best/v1/ui/${nextSeriesData.cover});`
 				)
-					//- span Next&emsp;
 					span= nextSeriesData.name
 					+icon(iconArrowRight)
+			//- Series parent collection
 			li.ap-c-nav-series__item.ap-c-nav-series__item--collection
 				a.ap-c-nav-series__link(
 					href= collectionData.link
@@ -40,9 +41,10 @@ mixin navSeries(seriesData, collectionData, prevSeriesData, nextSeriesData)
 				)
 					span= `${collectionData.name} Series`
 					+icon(iconChevronRight)
+			//- Current series title
 			li.ap-c-nav-series__item.ap-c-nav-series__item--title
 				span= seriesData.name
-			//- Social Sharing
+			//- Sharing options
 			li.ap-c-nav-series__item.ap-c-nav-series__item--share
 				a.ap-c-nav-series__link(
 					href= `mailto:?subject=${seriesData.link}&body=${seriesData.link}`

@@ -10,9 +10,9 @@ block config
 			id:      cv.id,
 			link:    cv.link,
 			header:  "Curriculum Vitae",
-			hero1:   "background_main_intro-cv.png",
+			hero1:   "background_intro_main-cv.png",
 			hero2:   "background_outro_abstract.png",
-			border1: "background_border_outro_01.png"
+			border1: "background_border_intro_01.png"
 		}
 
 block navSubmenu
@@ -20,15 +20,19 @@ block navSubmenu
 
 //- CV section header mixin
 mixin cvHeader(sectionTitle)
-	h3.ap-c-mdl-cv__subtitle=sectionTitle
+	h3.ap-c-mdl-cv__subtitle= sectionTitle
 
 //- CV list item mixin
+	Declare:
+	Entry date,
+	Primary information (Bolded),
+	Secondary information
 mixin cvItem(itemYear, textEmphasis, textStandard)
 	li.ap-c-mdl-cv__item
-		span.ap-c-mdl-cv__date=itemYear
+		span.ap-c-mdl-cv__date= itemYear
 		span.ap-c-mdl-cv__title
-			span.ap-c-mdl-cv__emphasis=textEmphasis
-			span.ap-c-mdl-cv__standard=textStandard
+			span.ap-c-mdl-cv__emphasis= textEmphasis
+			span.ap-c-mdl-cv__standard= textStandard
 
 block mainContent
 	section.ap-c-scn.ap-c-scn--cv

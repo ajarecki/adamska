@@ -14,7 +14,7 @@ block config
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
 			collink: workAbstract.link,
-			summary: ""
+			summary: "The shapes or forms juxtaposed with innovative textures are discovered during the process of painting or pulled from everyday sources. I seek for balance and build directional thrust. Examining of all areas and involving the units in different amount of attention they may call for allows the image to be perceived less statically. Through a chosen configuration of the parts, I imaginatively stimulate allusion of movement."
 		}
 
 block seriesMediums
@@ -38,14 +38,20 @@ block galleryContent
 	+abstractShapesS05
 	+abstractShapesS06
 
+//- block relatedTags
+	+tagSliderPopular
+
+block nextSeries
+	+seriesCard(abstractSelectedVol1)
+
 block relatedSeries01
-	+seriesAbstractGrace
+	+seriesCard(abstractGrace)
 
 block relatedSeries02
-	+seriesAbstractAttachments
+	+seriesCard(abstractAttachments)
 
 block relatedSeries03
-	+seriesAbstractFlames
+	+seriesCard(abstractFlames)
 
 block relatedSeries04
-	+seriesAbstractLandscapes
+	+seriesCard(abstractLandscapes)

@@ -49,6 +49,19 @@
 		background-color: $colorBrand01;
 	}
 }
+// Offset spacing for buttons near passages of text
+%buttonMarginTop {
+	margin-top: $grd * 3;
+	@include forTabletPortraitUp {
+		margin-top: $grd * 4;
+	}
+	@include forDesktopUp {
+		margin-top: $grd * 5;
+	}
+	@include forBigDesktopUp {
+		margin-top: $grd * 6;
+	}
+}
 
 // Button components
 // Standard boxed buttons
@@ -191,9 +204,9 @@
 }
 // Unboxed buttons
 .ap-c-btn-uncontained {
+	@extend %lineHeightLabel;
 	display: inline-block;
 	color: $colorBrand01;
-	line-height: 1;
 	white-space: nowrap;
 	text-decoration: none;
 	border: 0;
@@ -243,6 +256,78 @@
 		@include forBigDesktopUp {
 			width: $grd * 2.25;
 			height: $grd * 2.25;
+		}
+	}
+}
+
+.ap-c-btn-control {
+	@extend %shadowSmall;
+	@extend %hoverShadow;
+	@extend %transitionFast;
+	bottom: $grd * 1.5;
+	right: auto;
+	left: $grd * 1.5;
+	width: $grd * 5.5;
+	height: $grd * 5.5;
+	outline: 0;
+	background-color: rgba($colorWhite01, .92);
+	border-radius: 50%;
+	&:hover,
+	&:focus {
+		border: 0;
+		transform: $translateUp;
+		svg path {
+			fill: $colorWhite01;
+		}
+	}
+	&:active {
+		outline: 0;
+		transform: $translateNormal;
+	}
+	&::before {
+		z-index: -1;
+		border-radius: 50%;
+		background-color: rgba($colorBrand01, .96);
+	}
+	@include forTabletPortraitUp {
+		// Change position on phones
+		bottom: $grd * 2.5;
+		right: $grd * 2.5;
+		left: auto;
+		width: $grd * 6;
+		height: $grd * 6;
+	}
+	@include forBigDesktopUp {
+		bottom: $grd * 3;
+		right: $grd * 3;
+		width: $grd * 6.5;
+		height: $grd * 6.5;
+	}
+	// Button label
+	span {
+		font-size: 14px;
+		line-height: $grd * 5.5;
+		color: $colorBrand01;
+		user-select: none;
+		@include forTabletPortraitUp {
+			font-size: 16px;
+			line-height: $grd * 6;
+		}
+		@include forBigDesktopUp {
+			font-size: 18px;
+			line-height: $grd * 6.5;
+		}
+	}
+	// Button icon
+	svg {
+		@extend %transitionFast;
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding: 25%;
+		path {
+			fill: $colorBrand01;
 		}
 	}
 }

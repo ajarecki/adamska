@@ -12,7 +12,7 @@
 	Link slide image source
 mixin navItemWork(sectionLink, sectionLabel, linkBackground)
 	li.ap-c-nav-section__item
-		a(
+		a.ap-c-nav-section__link(
 			href= sectionLink
 			style="background-image: url(https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:good/v1/ui/sprite_collection-nav_" + linkBackground + ");"
 		)
@@ -57,7 +57,6 @@ mixin navWork
 				"Assorted",
 				"assorted.png"
 			)
-		div.ap-c-nav-section__edge
 
 
 //- Curriculum Vitae page section navigation
@@ -68,7 +67,7 @@ mixin navWork
 	Section title
 mixin navItemCV(sectionLink, sectionLabel)
 	li.ap-c-nav-section__item
-		a(href=sectionLink)
+		a.ap-c-nav-section__link(href= sectionLink)
 			span= sectionLabel
 			+icon(iconPageSection)
 
@@ -104,7 +103,6 @@ mixin navCV
 				"#education",
 				"Education"
 			)
-		div.ap-c-nav-section__edge
 
 
 //-  Main website navigation
@@ -115,38 +113,42 @@ nav.ap-c-nav-mobile
 	div.ap-c-nav-toggle.ap-c-nav-toggle--close(aria-label="Close Menu")
 		span Close
 		+icon(iconExit)
-	ul.ap-c-nav-mobile__list
-		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--home
+	div.ap-c-nav-mobile__home
+		a(
+			href= home.link
+			title= home.info
+		)
+			include _gaj-logo.svg
+	ul.ap-c-nav-mobile__list.ap-c-nav-mobile__list--site
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--label
+			span Website
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--site
 			a.ap-c-nav-mobile__link(
 				href= home.link
 				title= home.info
 			)
-				include _gaj-logo.svg
-		li.ap-c-nav-mobile__item
+				span Home
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--site
 			a.ap-c-nav-mobile__link(
 				href= work.link
 				title= work.info
 			)
 				span Work
-		li.ap-c-nav-mobile__item
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--site
 			a.ap-c-nav-mobile__link(
 				href= about.link
 				title= about.info
 			)
 				span About
-		li.ap-c-nav-mobile__item
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--site
 			a.ap-c-nav-mobile__link(
 				href= cv.link
 				title= cv.info
 			)
 				span CV
-		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
-			a.ap-c-nav-mobile__link(
-				href= email.link
-				title= email.info
-			)
-				+icon(iconEmail)
-				span Email
+	ul.ap-c-nav-mobile__list.ap-c-nav-mobile__list--social
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--label
+			span Social
 		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
 			a.ap-c-nav-mobile__link(
 				href= instagram.link
@@ -155,56 +157,92 @@ nav.ap-c-nav-mobile
 			)
 				+icon(iconInstagram)
 				span Instagram
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
+			a.ap-c-nav-mobile__link(
+				href= facebook.link
+				title= facebook.info
+				target="_blank"
+			)
+				+icon(iconFacebook)
+				span Facebook
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
+			a.ap-c-nav-mobile__link(
+				href= instagram.link
+				title= instagram.info
+				target="_blank"
+			)
+				+icon(iconSaatchiArt)
+				span Saatchi Art
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--social
+			a.ap-c-nav-mobile__link(
+				href= linkedin.link
+				title= linkedin.info
+				target="_blank"
+			)
+				+icon(iconLinkedIn)
+				span LinkedIn
+	ul.ap-c-nav-mobile__list.ap-c-nav-mobile__list--contact
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--label
+			span Email
+		li.ap-c-nav-mobile__item.ap-c-nav-mobile__item--contact
+			a.ap-c-nav-mobile__link(
+				href= email.link
+				title= email.info
+			)
+				+icon(iconEmail)
+				span= email.name
 
 //- Header navigation bar with opt-in submenu
-div.ap-c-nav-container
+//- div.ap-c-nav-container
 	div.ap-c-nav-group
-		nav.ap-c-nav-main
-			a.ap-c-nav-main__home(
-				href= home.link
-				title= home.info
+
+nav.ap-c-nav-main
+	a.ap-c-nav-main__home(
+		href= home.link
+		title= home.info
+	)
+		include _gaj-logo.svg
+	ul.ap-c-nav-main__list
+		li.ap-c-nav-main__item.ap-c-nav-main__item--site
+			a.ap-c-nav-main__link(
+				href= work.link
+				title= work.info
 			)
-				include _gaj-logo.svg
-			//- JS trigger that opens mobile nav overlay
-			div.ap-c-nav-toggle.ap-c-nav-toggle--open(aria-label="Menu")
-				span Menu
-				+icon(iconMenu)
-			ul.ap-c-nav-main__list
-				li.ap-c-nav-main__item
-					a.ap-c-nav-main__link(
-						href= work.link
-						title= work.info
-					)
-						span Work
-				li.ap-c-nav-main__item
-					a.ap-c-nav-main__link(
-						href= about.link
-						title= about.info
-					)
-						span About
-				li.ap-c-nav-main__item
-					a.ap-c-nav-main__link(
-						href= cv.link
-						title= cv.info
-					)
-						span CV
-				li.ap-c-nav-main__item.ap-c-nav-main__item--social
-					a.ap-c-nav-main__link(
-						href= email.link
-						title= email.info
-					)
-						+icon(iconEmail)
-						span Email
-				li.ap-c-nav-main__item.ap-c-nav-main__item--social
-					a.ap-c-nav-main__link(
-						href= instagram.link
-						title= instagram.info
-						target="_blank"
-					)
-						+icon(iconInstagram)
-						span Instagram
-		//- Opt-in submenu navigation for pages that require it
-		block navSubmenu
+				span Work
+		li.ap-c-nav-main__item.ap-c-nav-main__item--site
+			a.ap-c-nav-main__link(
+				href= about.link
+				title= about.info
+			)
+				span About
+		li.ap-c-nav-main__item.ap-c-nav-main__item--site
+			a.ap-c-nav-main__link(
+				href= cv.link
+				title= cv.info
+			)
+				span CV
+		li.ap-c-nav-main__item.ap-c-nav-main__item--social
+			a.ap-c-nav-main__link(
+				href= email.link
+				title= email.info
+			)
+				+icon(iconEmail)
+				span Email
+		li.ap-c-nav-main__item.ap-c-nav-main__item--social
+			a.ap-c-nav-main__link(
+				href= instagram.link
+				title= instagram.info
+				target="_blank"
+			)
+				+icon(iconInstagram)
+				span Instagram
+//- Opt-in submenu navigation for pages that require it
+block navSubmenu
+
+//- JS trigger that opens mobile nav overlay
+div.ap-c-nav-toggle.ap-c-nav-toggle--open(aria-label="Menu")
+	span Menu
+	+icon(iconMenu)
 
 //- Back to top button
 a.ap-c-nav-top(

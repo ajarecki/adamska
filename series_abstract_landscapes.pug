@@ -14,7 +14,7 @@ block config
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
 			collink: workAbstract.link,
-			summary: ""
+			summary: "A series of abstracted images exploring scenery of the forest near which I live in Canada."
 		}
 
 block seriesMediums
@@ -24,6 +24,7 @@ block seriesMediums
 
 block seriesMaterials
 	+seriesMaterials(
+		"wood",
 		"canvas"
 	)
 
@@ -54,14 +55,20 @@ block galleryContent
 	+abstractLandscapesS20
 	+abstractLandscapesS21
 
+//- block relatedTags
+	+tagSliderPopular
+
+block nextSeries
+	+seriesCard(abstractFlames)
+
 block relatedSeries01
-	+seriesAbstractSelectedVol1
+	+seriesCard(abstractSelectedVol1)
 
 block relatedSeries02
-	+seriesAbstractShapes
+	+seriesCard(abstractShapes)
 
 block relatedSeries03
-	+seriesAbstractGrace
+	+seriesCard(abstractGrace)
 
 block relatedSeries04
-	+seriesAbstractFlames
+	+seriesCard(abstractFlames)

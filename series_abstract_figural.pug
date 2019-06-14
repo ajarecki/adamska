@@ -14,7 +14,7 @@ block config
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
 			collink: workAbstract.link,
-			summary: ""
+			summary: "A series of abstract works which emerging forms of the human figure."
 		}
 
 block seriesMediums
@@ -39,14 +39,20 @@ block galleryContent
 	+abstractFiguralS06
 	+abstractFiguralS07
 
+//- block relatedTags
+	+tagSliderPopular
+
+block nextSeries
+	+seriesCard(abstractLandscapes)
+
 block relatedSeries01
-	+seriesAbstractFlames
+	+seriesCard(abstractFlames)
 
 block relatedSeries02
-	+seriesAbstractSelectedVol1
+	+seriesCard(abstractSelectedVol1)
 
 block relatedSeries03
-	+seriesAbstractAttachments
+	+seriesCard(abstractAttachments)
 
 block relatedSeries04
-	+seriesAbstractLandscapes
+	+seriesCard(abstractLandscapes)

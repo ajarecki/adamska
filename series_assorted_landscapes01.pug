@@ -14,16 +14,18 @@ block config
 			hero2:   workAssorted.hero,
 			colname: workAssorted.name,
 			collink: workAssorted.link,
-			summary: ""
+			summary: "An assorted of landscape works"
 		}
 
 block seriesMediums
 	+seriesMediums(
+		"watercolour",
 		"acrylic"
 	)
 
 block seriesMaterials
 	+seriesMaterials(
+		"paper",
 		"canvas"
 	)
 
@@ -41,11 +43,17 @@ block galleryContent
 	+assortedLandscapesVol1S08
 	+assortedLandscapesVol1S09
 
+//- block relatedTags
+	+tagSliderPopular
+
+block nextSeries
+	+seriesCard(figurativeSelectedVol3)
+
 block relatedSeries01
-	+seriesAssortedLandscapesVol2
+	+seriesCard(assortedLandscapesVol2)
 
 block relatedSeries02
-	+seriesAssortedAnimals
+	+seriesCard(assortedAnimals)
 
 block relatedSeries03
 	//- Null

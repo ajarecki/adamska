@@ -211,7 +211,7 @@ $colorActive: $colorBrand01;
 // Item counter
 #lg-counter {
 	@extend %fontExtendedNormal;
-	@extend %fontExtraSmall;
+	@extend %fontMicro;
 	color: $colorNormal;
 	display: inline-block;
 	padding: {
@@ -332,6 +332,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .lg-outer .lg-dropdown {
 	// @extend %positionAbsolute;
 	@extend %fontRegular;
+	@extend %lineHeightLabel;
 	@extend %transitionFast;
 	display: block;
 	visibility: hidden;
@@ -364,10 +365,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 // Span within sharing link
 .lg-outer .lg-dropdown .lg-dropdown-text {
 	@extend %fontExtendedBold;
+	@extend %lineHeightHeadline;
 	font-size: 24px;
 	// display: inline-block;
 	width: 100%;
-	line-height: 1;
 	// margin-top: -3px;
 	// padding: 12px;
 	// vertical-align: middle;

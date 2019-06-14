@@ -6,27 +6,27 @@
 	Source image address,
 	Source image alt text
 mixin collectionLink(collectionData, imageAlt)
-	li.ap-c-nav-collections__item
-		a.ap-c-nav-collections__link(
+	li.ap-c-mdl-collections__item
+		a.ap-c-mdl-collections__link(
 			href= collectionData.link
-			style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_1152,w_768/c_scale,f_auto,h_864,q_auto:best,w_576/v1/ui/${collectionData.cover});`
+			style= `background-image: url(${urlRootImage}c_crop,g_north,h_1152,w_768/c_scale,f_auto,q_auto:good,w_192,e_blur:512/v1/ui/${collectionData.cover});`
 		)
-			div.ap-c-nav-collections__slide.ap-c-nav-collections__slide--3(
-				style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
+			div.ap-c-mdl-collections__slide.ap-c-mdl-collections__slide--3(
+				style= `background-image: url(${urlRootImage}c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
 			)
-			div.ap-c-nav-collections__slide.ap-c-nav-collections__slide--2(
-				style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
+			div.ap-c-mdl-collections__slide.ap-c-mdl-collections__slide--2(
+				style= `background-image: url(${urlRootImage}c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
 			)
-			div.ap-c-nav-collections__slide.ap-c-nav-collections__slide--1(
-				style= `background-image: url(https://res.cloudinary.com/adamska/image/upload/c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
+			div.ap-c-mdl-collections__slide.ap-c-mdl-collections__slide--1(
+				style= `background-image: url(${urlRootImage}c_scale,f_auto,h_2592,q_auto:good,w_576/v1/ui/${collectionData.cover});`
 			)
-			img.ap-c-nav-collections__cover(
-				src= `https://res.cloudinary.com/adamska/image/upload/c_crop,g_north,h_1152,w_768/c_scale,f_auto,h_864,q_auto:best,w_576/v1/ui/${collectionData.cover}`
+			img.ap-c-mdl-collections__cover(
+				src= `${urlRootImage}c_crop,g_north,h_1152,w_768/c_scale,f_auto,h_864,q_auto:best,w_576/v1/ui/${collectionData.cover}`
 				alt= imageAlt + " by Grazyna Adamska Jarecka"
 			)
-			article.ap-c-nav-collections__text
-				span.ap-c-nav-collections__text-series= `${collectionData.count} Series`
-				h4.ap-c-nav-collections__text-title
+			article.ap-c-mdl-collections__title
+				span.ap-c-mdl-collections__count= `${collectionData.count} Series`
+				h4.ap-c-mdl-collections__collection
 					span= collectionData.name
 					+icon(iconArrowRight)
 
@@ -40,8 +40,8 @@ section.ap-c-scn.ap-c-scn--poster
 		work.info,
 		"_self"
 	)
-	div.ap-c-nav-collections
-		ul.ap-c-nav-collections__list
+	div.ap-c-mdl-collections
+		ul.ap-c-mdl-collections__list
 			+collectionLink(
 				workFigurative,
 				"Figurative paintings"
