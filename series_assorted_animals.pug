@@ -13,18 +13,20 @@ block config
 			hero1:   assortedAnimals.hero,
 			hero2:   workAssorted.hero,
 			colname: workAssorted.name,
-			collink: workAssorted.link,
-			summary: "An assortment of paintings featuring animals."
+			collink: workAssorted.link
 		}
+
+block seriesSummary
+	p An assortment of paintings depicting animals.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

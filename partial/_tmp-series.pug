@@ -11,10 +11,10 @@ mixin seriesMediums(...mediumList)
 	ul.ap-c-mdl-series__tags
 		each item in mediumList
 			li
-				span= item
+				span= item.name
 				//- a(
-				//- 	href= urlRootTag + item
-				//- 	title= "All artworks created with" + item
+				//- 	href= item.link
+				//- 	title= item.info
 				//- )= item
 
 //- Series material list mixin
@@ -22,7 +22,7 @@ mixin seriesMaterials(...materialList)
 	ul.ap-c-mdl-series__tags
 		each item in materialList
 			li
-				span= item
+				span= item.name
 				//- a(
 				//- 	href= urlRootTag + item
 				//- 	title= "All artworks created with " + item
@@ -112,8 +112,9 @@ html(lang="en")
 				article.ap-c-mdl-series
 					div.ap-c-mdl-series__summary
 						h2.ap-c-mdl-series__label Summary
-						p #{series.summary}
+						//- Series description/statement
 						block seriesSummary
+							p No description available.
 					ul.ap-c-mdl-series__list
 						li.ap-c-mdl-series__item
 							h3.ap-c-mdl-series__label Dates
@@ -131,7 +132,7 @@ html(lang="en")
 						li.ap-c-mdl-series__item
 							h3.ap-c-mdl-series__label Collection
 							//- Collection link and label
-							span #{series.colname}
+							span.ap-c-mdl-series__details #{series.colname}
 							//- a.ap-c-mdl-series__details(
 							//- 	href= `${series.collink}`
 							//- 	title= `All ${series.colname} Series`

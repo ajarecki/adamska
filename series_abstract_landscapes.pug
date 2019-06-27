@@ -13,19 +13,21 @@ block config
 			hero1:   abstractLandscapes.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: "A series of abstracted images exploring scenery of the forest near which I live in Canada."
+			collink: workAbstract.link
 		}
+
+block seriesSummary
+	p A series of abstracted images exploring scenery of the forest near which I live in Canada.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"wood",
-		"canvas"
+		tagWood,
+		tagCanvas
 	)
 
 block navSubmenu

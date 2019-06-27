@@ -13,19 +13,20 @@ block config
 			hero1:   figurativeExamination.hero,
 			hero2:   workFigurative.hero,
 			colname: workFigurative.name,
-			collink: workFigurative.link,
-			summary: ""
+			collink: workFigurative.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"plastic",
-		"canvas"
+		tagPlastic,
+		tagCanvas
 	)
 
 block navSubmenu

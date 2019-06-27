@@ -13,21 +13,22 @@ block config
 			hero1:   portraitSkype.hero,
 			hero2:   workPortrait.hero,
 			colname: workPortrait.name,
-			collink: workPortrait.link,
-			summary: ""
+			collink: workPortrait.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic",
-		"pastel",
-		"paper"
+		tagAcrylic,
+		tagPastel,
+		tagPaper
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"paper",
-		"plastic"
+		tagPaper,
+		tagPlastic
 	)
 
 block navSubmenu

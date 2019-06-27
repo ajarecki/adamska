@@ -13,18 +13,21 @@ block config
 			hero1:   abstractGrace.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: "I'm interested in the qualities of the material I use. These paintings are executed on sheets of plastic. Things are not left to chance, nor held to process. Constant is the an impulse or an idea that stays with a painting and drives it, from its beginning to the end. This notion guides my attempt toward a minimal expression of my own simple and meditative art. The work indicates three paths; one of transparency, one of color (or rather, no color), and one of pattern. These three paths often converge, and often seem inseparable."
+			collink: workAbstract.link
 		}
+
+block seriesSummary
+	p I'm interested in the qualities of the material I use. These paintings are executed on sheets of plastic. Things are not left to chance, nor held to process. Constant is the an impulse or an idea that stays with a painting and drives it, from its beginning to the end.
+	p This notion guides my attempt toward a minimal expression of my own simple and meditative art. The work indicates three paths; one of transparency, one of color (or rather, no color), and one of pattern. These three paths often converge, and often seem inseparable.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"plastic"
+		tagPlastic
 	)
 
 block navSubmenu

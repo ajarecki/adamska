@@ -1,8 +1,8 @@
 // Navigation
 
 // Shared navigation styles
-$navBackground: rgba($colorWhite05, .96);
-$navBorder: 1px solid $colorWhite01;
+$navBackground: rgba($colorWhite01, .96);
+$navBorder: 1px solid $colorBrand05;
 
 // Nav bar heights
 $navBarHeightPhone: $grd * 7;
@@ -131,20 +131,18 @@ $navBarHeightTablet: $grd * 7.5;
 	@extend %navBarItem;
 	@extend %navBarPadding;
 	@extend %hoverBackground;
-	@extend %hoverUnderline;
 	@extend %transitionFast;
+	@extend %svgColorBlack;
 	&:hover,
 	&:focus {
-		svg {
-			opacity: 1;
-			path {
-				fill: $colorBrand01;
-			}
+		@extend %svgColorBrand;
+		span {
+			text-decoration: underline;
 		}
 	}
 	&:active {
 		svg {
-			transform: $translateNormal;
+			@extend %translateNormal;
 		}
 	}
 	svg {
@@ -153,25 +151,18 @@ $navBarHeightTablet: $grd * 7.5;
 		position: relative;
 		width: $grd * 2;
 		height: $grd * 2;
-		opacity: .92;
 		@include forTabletPortraitUp {
 			display: inline-block;
 			width: $grd * 2.25;
 			height: $grd * 2.25;
-		}
-		path {
-			fill: $colorBlack01;
 		}
 	}
 }
 // Links with photo backgrounds
 %navBarLinkAlt {
 	@extend %navBarLink;
+	@extend %backgroundImage;
 	color: $colorWhite01;
-	background: {
-		repeat: no-repeat;
-		size: cover;
-	}
 	&:hover,
 	&:focus {
 		&::before {
@@ -211,7 +202,7 @@ $navBarHeightTablet: $grd * 7.5;
 }
 // Show navigation bar
 %navBarVisible {
-	transform: $translateNormal;
+	@extend %translateNormal;
 	opacity: 1;
 }
 // Hide navigation bar offscreen
@@ -232,7 +223,9 @@ $navBarHeightTablet: $grd * 7.5;
 	// Logo link container
 	.ap-c-nav-main__home {
 		@extend %navBarHeight;
+		@extend %svgColorWhite;
 		position: absolute;
+		z-index: 2;
 		display: none;
 		padding: 0;
 		left: 0;
@@ -259,13 +252,6 @@ $navBarHeightTablet: $grd * 7.5;
 	&__list {
 		@extend %navBarList;
 		position: relative;
-		// &::before {
-		// 	@extend %positionAbsolute;
-		// 	display: block;
-		// 	z-index: 10;
-		// 	background-color: $navBackground;
-		// 	opacity: .01;
-		// }
 	}
 	&__item {
 		@extend %navBarItem;
@@ -284,28 +270,30 @@ $navBarHeightTablet: $grd * 7.5;
 	&__item--social {
 		float: right;
 		span {
-			@extend %labelSpaceBefore;
+			@extend %spaceBefore;
 		}
 	}
 	&__link {
 		@extend %navBarLink;
 		color: $colorWhite01;
+		&:hover,
+		&:focus {
+			svg path {
+				fill: $colorWhite01;
+			}
+		}
 	}
 	// Styles removed by JS when scrolling page upward
 	&.ap-is-hidden {
 		@extend %navBarHidden;
 	}
-	svg path {
-		fill: $colorWhite01;
-	}
 	// Styles added by JS when page is scrolled past a certain point
 	&.ap-is-undocked {
+		@extend %svgColorBlack;
 		background: $navBackground;
 		.ap-c-nav-main__list {
 			@extend %shadowSmall;
-			// &::before {
-			// 	opacity: 1;
-			// }
+			border-bottom: $navBorder;
 		}
 		.ap-c-nav-main__item {
 			color: $colorBlack01;
@@ -319,8 +307,17 @@ $navBarHeightTablet: $grd * 7.5;
 		.ap-c-nav-main__item--social {
 			border-left: $navBorder;
 		}
-		svg path {
-			fill: $colorGray01;
+		.ap-c-nav-main__link,
+		.ap-c-nav-main__home {
+			&:hover,
+			&:focus {
+				span {
+					color: $colorBrand01;
+				}
+				svg path {
+					fill: $colorBrand01;
+				}
+			}
 		}
 	}
 }
@@ -523,6 +520,7 @@ $mobileNavRadius: $grd * 3;
 		@extend %fontExtendedNormal;
 		height: $grd * 2;
 		line-height: $grd * 2;
+		margin-top: $grd * 2;
 		padding: {
 			right: $mobileNavOffset * 1.75;
 			left: $mobileNavOffset * 1.75;
@@ -538,14 +536,14 @@ $mobileNavRadius: $grd * 3;
 		border-left: $navBorder;
 		border-bottom: $navBorder;
 		span {
-			@extend %labelSpaceBefore;
+			@extend %spaceBefore;
 		}
 	}
 	&__item--contact {
 		width: 100%;
 		border-bottom: $navBorder;
 		span {
-			@extend %labelSpaceBefore;
+			@extend %spaceBefore;
 		}
 	}
 	// Links within list items
@@ -675,12 +673,9 @@ $mobileNavRadius: $grd * 3;
 	&__slide {
 		@extend %hidePhone;
 		@extend %positionAbsolute;
+		@extend %backgroundImage;
 		@extend %animationSlideshow;
 		@extend %transitionFast;
-		background: {
-			repeat: no-repeat;
-			size: cover;
-		}
 		visibility: hidden;
 		// Opacity is altered by the animation
 		opacity: 0;
@@ -699,11 +694,13 @@ $mobileNavRadius: $grd * 3;
 	}
 	&__slide--2 {
 		background-position: center center; 
-		animation-delay: .67s;
+		// animation-delay: .67s;
+		animation-delay: .34s;
 	}
 	&__slide--3 {
 		background-position: bottom center; 
-		animation-delay: 1.34s;
+		// animation-delay: 1.34s;
+		animation-delay: .67s;
 	}
 	// Link label
 	a span {
@@ -875,8 +872,7 @@ $mobileNavRadius: $grd * 3;
 			&:hover,
 			&:focus {
 				svg {
-					// Previous arrow animation
-					transform: $translateLeft;
+					@extend %translateLeft;
 				}
 			}
 		}
@@ -885,8 +881,7 @@ $mobileNavRadius: $grd * 3;
 			&:hover,
 			&:focus {
 				svg {
-					// Next arrow animation
-					transform: $translateRight;
+					@extend %translateRight;
 				}
 			}
 		}
@@ -916,8 +911,8 @@ $mobileNavRadius: $grd * 3;
 	border-radius: 50%;
 	&:hover,
 	&:focus {
+		@extend %translateUp;
 		border: 0;
-		transform: $translateUp;
 		&::before {
 			opacity: 1;
 			border-radius: 50%;
@@ -929,8 +924,8 @@ $mobileNavRadius: $grd * 3;
 		}
 	}
 	&:active {
+		@extend %translateNormal;
 		outline: 0;
-		transform: $translateNormal;
 	}
 	&::before {
 		border-radius: 50%;

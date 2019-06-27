@@ -13,18 +13,19 @@ block config
 			hero1:   abstractSelectedVol1.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: ""
+			collink: workAbstract.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

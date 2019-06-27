@@ -13,20 +13,22 @@ block config
 			hero1:   assortedLandscapesVol1.hero,
 			hero2:   workAssorted.hero,
 			colname: workAssorted.name,
-			collink: workAssorted.link,
-			summary: "An assorted of landscape works"
+			collink: workAssorted.link
 		}
+
+block seriesSummary
+	p An assorted of landscape works
 
 block seriesMediums
 	+seriesMediums(
-		"watercolour",
-		"acrylic"
+		tagWatercolour,
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"paper",
-		"canvas"
+		tagPaper,
+		tagCanvas
 	)
 
 block navSubmenu

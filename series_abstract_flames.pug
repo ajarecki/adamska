@@ -13,18 +13,20 @@ block config
 			hero1:   abstractFlames.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: "These paintings are inspired by images of bleached coral reefs. The mortality of coral reefs due to bleaching events caused by rising sea temperatures has proved to be an unlikely subject for abstract painting. The stark bone-whiteness of dying corals contrasts with the healthy, bright-red formations, mingling together, mediating upon their battle for life."
+			collink: workAbstract.link
 		}
+
+block seriesSummary
+	p These paintings are inspired by images of bleached coral reefs. The mortality of coral reefs due to bleaching events caused by rising sea temperatures has proved to be an unlikely subject for abstract painting. The stark bone-whiteness of dying corals contrasts with the healthy, bright-red formations, mingling together, mediating upon their battle for life.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

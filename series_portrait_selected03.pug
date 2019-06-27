@@ -13,18 +13,19 @@ block config
 			hero1:   portraitSelectedVol3.hero,
 			hero2:   workPortrait.hero,
 			colname: workPortrait.name,
-			collink: workPortrait.link,
-			summary: ""
+			collink: workPortrait.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

@@ -1,111 +1,82 @@
 // Base styles
 
-// Global
+// Root base styles
 html {
-	@extend %resetBox;
 	box-sizing: border-box;
-	font-size: 1rem;
+	font-size: 1em;
 	text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	// Smooth scrolling between hashstag links
 	scroll-behavior: smooth;
 }
-*, 
-*::before, 
+// Inherit border-box sizing
+*,
+*::before,
 *::after {
 	box-sizing: inherit;
 }
+// Body base styles
 body {
-	@extend %resetBox;
 	// Fill entire viewport
 	width: 100%;
 	width: 100vw;
 	min-height: 100vh;
+	// Remove default margin
+	margin: 0;
 }
 
-// Resets
-div, 
-main, 
-header, 
-footer, 
-section, 
-address, 
-video, 
-nav, 
-figure, 
-ul, 
-li, 
-ol, 
-article {
-	@extend %resetBox;
-	display: block;
-	float: left;
-}
-h1, 
-h2, 
-h3, 
+// Remove default margins
+h1,
+h2,
+h3,
 h4,
-p, 
-span, 
-small {
-	@extend %resetBox;
+p,
+blockquote,
+figure,
+fieldset {
+	margin: 0;
 }
-audio, 
-canvas, 
+
+// Remove gap between objects and their containers
+audio,
+canvas,
 iframe,
-img, 
-svg, 
+img,
+svg,
 video {
-	@extend %resetBox;
 	vertical-align: middle;
 }
-ul, 
-ol, 
+
+// Adjust default list styles
+ul,
+ol,
 li {
-	@extend %resetBox;
+	display: block;
 	list-style: none;
 	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
-// Text
-p, 
-span, 
-figcaption, 
-cite, 
-small {
-	font-family: inherit;
-	font-size: inherit;
-	line-height: inherit;
-	white-space: inherit;
-}
-
-// Links
+// Remove default link styles
 a {
 	color: inherit;
 	text-decoration: none;
-	text-decoration-skip-ink: auto;
-	&:hover,
-	&:focus,
-	&:active {
-		color: $colorBrand01;
-	}
-}
-p a {
-	text-decoration: underline;
 }
 
-// Buttons
-a, 
+// Focus styles
+// Reference: https://css-tricks.com/focusing-on-focus-styles/
+a,
 button {
-	outline: 0;
 	&:focus {
 		outline: {
-			width: 3px;		
-			style: solid;
-			color: rgba($colorBrand01, .32);
+			width: 1px;
+			style: dashed;
+			color: rgba($colorBrand01, .48);
 		}
 	}
-	&:active, 
+	&:active,
 	&:visited {
 		outline: 0;
 	}
@@ -115,11 +86,13 @@ button {
 	}
 }
 
-// Graphics
-img, 
-svg, 
-video {
-	// Scale within containers
+// Images
+img {
+	// Broken image text styles
+	@extend %fontNormal;
+	@extend %fontMicro;
+	@extend %lineHeightHeadline;
+	// Scale images within containers
 	max-width: 100%;
 	height: auto;
 	// Prevent highlighting
@@ -129,9 +102,9 @@ video {
 }
 
 // Selected text
-// Styling reference: 
-// https://css-tricks.com/almanac/selectors/s/selection/
+// Reference: https://css-tricks.com/almanac/selectors/s/selection/
 ::selection {
 	color: $colorWhite01;
 	background: $colorBrand01;
+	text-shadow: none;
 }

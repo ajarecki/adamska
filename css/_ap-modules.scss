@@ -9,24 +9,28 @@
 	@include forTabletLandscapeUp {
 		top: $grd * -20;
 	}
+	@include forTabletUp {
+		top: $grd * -24;
+	}
 	@include forBigDesktopUp {
 		top: $grd * -24;
 	}
 }
 
+// —add fixed heights or min-heights otherwise it will cover the gallery title
 // Series info container
 .ap-c-mdl-series {
 	@extend %widthModule;
-	@extend %paddingTopBottomQuarter;
-	@extend %overhangSection;
 	@extend %shadowSmall;
 	position: relative;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	align-items: stretch;
+	padding: $grd $grd * 2;
 	background-color: $colorWhite02;
-	@include forPhoneOnly {
-		flex-direction: column;
+	transform: translateY(-32%);
+	@include forTabletPortraitUp {
+		flex-direction: row;
 	}
 	// Headings
 	&__label {
@@ -35,46 +39,37 @@
 		@extend %fontMicro;
 		@extend %lineRight;
 		overflow: hidden;
-		// line-height: 2;
-		// Recolor line
-		&::after {
-			background-color: $colorGray07;
-		}
 		.ap-c-mdl-series__summary & {
 			@extend %fontSmall;
 		}
 	}
 	// Summary container
 	&__summary {
-		// @extend %paddingTopBottomQuarter;
-		@extend %paddingLeftRightThird;
+		@extend %widthFull;
 		@extend %fontNormal;
 		@extend %fontRegular;
-		// Fallback display and float
-		display: block;
 		float: left;
-		width: 64%;
-		color: $colorGray01;
-		p {
-			@extend %paddingTopBottomQuarter;
-			@extend %lineHeightBody;
+		padding: $grd $grd;
+		@include forTabletPortraitUp {
+			width: 64%;
+			padding: $grd * 2 $grd * 2;
 		}
-		@include forPhoneOnly {
-			width: 100%;
+		p {
+			@extend %lineHeightBody;
+			color: $colorGray01;
+			padding: $grd * 2 0;
 		}
 	}
 	// Details list
 	&__list {
-		// @extend %paddingTopBottomQuarter;
-		@extend %paddingLeftRightThird;
-		// Fallback display and float
-		display: block;
+		@extend %widthFull;
 		float: right;
-		width: 36%;
-		border-left: $borderMedium;
-		@include forPhoneOnly {
-			width: 100%;
-			border-left: 0;
+		border-left: 0;
+		padding: $grd $grd;
+		@include forTabletPortraitUp {
+			width: 36%;
+			border-left: $borderMedium;
+			padding: $grd * 2 $grd * 2;
 		}
 	}
 	// List items
@@ -90,12 +85,12 @@
 		@extend %fontExtendedNormal;
 		@extend %fontSmall;
 		display: inline-block;
+		margin-top: $grd * 2;
 	}
 	// Mediums and materials
 	&__tags {
+		@extend %spaceAfter;
 		a {
-			// @extend %hoverLinkBackground;
-			text-transform: capitalize;
 			&::before {
 				content: ",\00a0";
 				display: inline-block;
@@ -108,10 +103,6 @@
 				content: "";
 			}
 		}
-	}
-	// Any link within container
-	a {
-		text-decoration: underline;
 	}
 }
 
@@ -225,13 +216,14 @@ $gallerySpacing: 4%;
 	}
 }
 
+// —replace with sass math grid
 // Series collection list container
 .ap-c-mdl-collection {
-	@extend %widthFull;
-	@extend %paddingLeftRight;
+	@extend %widthWrap;
+	// @extend %paddingLeftRight;
 	// Series card list
 	&__list {
-		@extend %widthWrap;
+		@extend %widthFull;
 		display: flex;
 		flex-basis: 100%;
 		flex-direction: row;
@@ -241,28 +233,17 @@ $gallerySpacing: 4%;
 	// List item containing card
 	&__item {
 		position: relative;
-		width: 46.86%;
-		margin-bottom: $grd * 2;
-		@include forDesktopOnly {
-		}
-		@include forTabletOnly {
-			width: 48%;
-			bottom: $grd * 1.5;
-		}
-		@include forPhoneOnly {
-			width: 100%;
-			margin: {
-				right: auto;
-				left: auto;
-				bottom: $grd;
-			}
+		width: 100%;
+		margin-bottom: $grd * 4;
+		@include forTabletLandscapeUp {
+			width: 46.86%;
+			margin-bottom: 0;
 		}
 		// Spotlight series specificity
 		&.ap-l-crd--spotlight {
 			width: 100%;
-			margin-bottom: $grd * 10;
-			@include forPhoneOnly {
-				margin-bottom: $grd * 3;
+			@include forTabletPortraitUp {
+				margin-bottom: $grd * 10;
 			}
 			// Next series section specificity
 			.ap-c-scn--next & {
@@ -275,7 +256,8 @@ $gallerySpacing: 4%;
 // Website footer content
 .ap-c-mdl-footer {
 	@extend %widthWrap;
-	position: relative;
+	overflow: auto;
+	color: $colorBlack01;
 	// Headings
 	&__label {
 		@extend %widthFull;
@@ -283,31 +265,20 @@ $gallerySpacing: 4%;
 		@extend %fontExtendedNormal;
 		@extend %fontMicro;
 		@extend %lineRight;
-		color: $colorBlack01;
 	}
 	// Contact info container
 	&__contact {
+		@extend %widthFull;
 		@extend %paddingRightHalf;
-		@extend %fontNormal;
-		@extend %fontRegular;
-		
 		float: left;
-		width: 50%;
-		color: $colorGray01;
-		@include forTabletOnly {
-			width: 100%;
+		@include forPhoneOnly {
 			padding: {
 				right: 0;
 				bottom: $grd * 12;
 			}
 		}
-		// Contact text
-		p {
-			@extend %lineHeightBody;
-			max-width: $grd * 80;
-			a {
-				@extend %hoverLinkBackground;
-			}
+		@include forTabletPortraitUp {
+			width: 50%;
 		}
 		// Email button
 		.ap-c-btn-contained {
@@ -315,30 +286,39 @@ $gallerySpacing: 4%;
 			@extend %buttonMarginTop;
 		}
 	}
+	// Contact text
+	&__body {
+		@extend %fontNormal;
+		@extend %fontRegular;
+		@extend %lineHeightBody;
+		@extend %inlineLinks;
+		max-width: $grd * 80;
+	}
 	// Navigation container
 	&__navigation {
+		@extend %widthFull;
 		@extend %paddingLeftHalf;
 		@extend %paddingBottomHalf;
-		display: block;
 		float: right;
-		width: 50%;
-		border-left: $borderDark;
-		@include forTabletOnly {
-			width: 100%;
+		border-left: 0;
+		@include forPhoneOnly {
 			padding: {
 				bottom: $grd * 8;
 				left: 0;
 			}
-			border-left: 0;
+		}
+		@include forTabletPortraitUp {
+			width: 50%;
+			border-left: $borderDark;
 		}
 	}
 	// Navigation list container
 	&__group {
-		display: block;
-		width: 100%;
+		@extend %widthFull;
+		float: left;
 		padding: {
 			right: 0;
-			bottom: $grd * 4;
+			bottom: $grd * 2;
 		}
 		&:last-of-type {
 			padding-right: 0;
@@ -361,24 +341,23 @@ $gallerySpacing: 4%;
 		@extend %hoverShowIcon;
 		// Footer navigation links
 		.ap-c-btn-uncontained {
+			@extend %svgColorBrand;
 			padding: $grd * 1.5 0;
-			color: $colorBrand04;
+			color: $colorBlack01;
 			&:hover,
 			&:focus {
-				span {
-					color: $colorBrand01;
-				}
+				color: $colorBrand01;
 				svg {
-					transform: $translateRight;
+					@extend %translateRight;
 				}
 			}
 		}
 	}
-	// Credits container
-	&__fine {
+	// Fineprint/logo container
+	&__credits {
 		@extend %widthFull;
 		@extend %paddingTopHalf;
-		@extend %paddingLeftRight;
+		overflow: auto;
 		border-top: $borderDark;
 		padding-bottom: $grd * 10;
 		text-align: center;
@@ -386,30 +365,20 @@ $gallerySpacing: 4%;
 		@include forTabletPortraitUp {
 			padding-bottom: 0;
 		}
-		// Text
-		p {
-			@extend %paddingTopHalf;
-			@extend %fontExtendedNormal;
-			@extend %fontMicro;
-			a {
-				text-decoration: underline;
-			}
-		}
 	}
 	// Logo link
 	&__logo {
+		@extend %marginAuto;
+		@extend %clearfix;
+		clear: right;
 		&:hover,
 		&:focus {
-			svg path {
-				fill: $colorBrand01;
-			}
+			@extend %svgColorBrand;
 		}
 		svg {
+			@extend %svgColorBlack;
 			width: $logoWidth * .25;
 			height: $logoHeight * .25;
-			path {
-				fill: $colorBrand03;
-			}
 			@include forPhoneOnly {
 				width: $logoWidth * .2;
 				height: $logoHeight * .2;
@@ -420,35 +389,48 @@ $gallerySpacing: 4%;
 			}
 		}
 	}
+	// Text
+	&__fineprint {
+		@extend %paddingTopHalf;
+		@extend %fontExtendedNormal;
+		@extend %fontMicro;
+		@extend %lineHeightBody;
+		@extend %inlineLinks;
+		display: inline-block;
+		// Line break
+		br {
+			display: inline-block;
+			@include forTabletPortraitUp {
+				display: none;
+			}
+		}
+	}
 }
 
 // Selected media content
 .ap-c-mdl-press {
-	@extend %widthFull;
+	@extend %blockRelative;
 	@extend %paddingLeftRight;
-	position: relative;
+	color: $colorBlack01;
 	&__list {
 		@extend %widthWrap;
 		position: relative;
 	}
 	// List element containing link
 	&__item {
-		@extend %widthFull;
-		height: $grd * 12;
+		@extend %blockRelative;
+		overflow: visible;
 	}
 	// Link wrapping content
 	&__link {
-		@extend %widthFull;
+		@extend %blockRelative;
+		@extend %heightFull;
 		@extend %hoverShadow;
-		position: relative;
-		height: 100%;
-		padding: {
-			top: $grd * 3;
-			bottom: $grd * 3;
-			right: $grd * 3;
-		}
+		overflow: visible;
+		padding:
+			$grd * 3 0;
 		border-bottom: $borderMedium;
-		background-color: $colorWhite01;
+		// background-color: $colorWhite01;
 		&:hover,
 		&:focus {
 			// Position active item above others so shadow style is visible
@@ -471,15 +453,10 @@ $gallerySpacing: 4%;
 				}
 			}
 			.ap-c-btn-uncontained {
-				span {
-					color: $colorBrand01;
-					text-decoration: underline;
-				}
+				@extend %svgColorBrand;
+				color: $colorBrand01;
 				svg {
 					transform: $translateUpRight;
-					path {
-						fill: $colorBrand01;
-					}
 				}
 			}
 		}
@@ -498,23 +475,29 @@ $gallerySpacing: 4%;
 			}
 		}
 	}
+	// Press link content container
+	&__wrap {
+		@extend %blockRelative;
+		@extend %heightFull;
+		overflow: auto;
+		// background: blue;
+	}
 	// Contains label and title
-	&__entry {
-		@extend %widthFull;
+	&__header {
+		@extend %heightFull;
 		position: relative;
-		height: 100%;
+		float: left;
+		width: 88%;
+		padding-right: $grd * 2;
 	}
 	&__label {
 		@extend %fontExtendedNormal;
 		@extend %fontMicro;
-		@extend %lineHeightLabel;
+		@extend %singleLine;
 		@extend %transitionFast;
-		position: relative;
 		margin-bottom: $grd;
-		white-space: nowrap;
-		color: $colorBlack01;
-		@include forTabletOnly {
-			margin-bottom: $grd * 2;
+		@include forTabletUp {
+			margin-bottom: $grd * 1.5;
 		}
 	}
 	&__title {
@@ -522,47 +505,47 @@ $gallerySpacing: 4%;
 		@extend %fontSmall;
 		@extend %lineHeightHeadline;
 		@extend %transitionFast;
-		position: relative;
-		max-width: 80%;
-		padding-right: $grd * 2;
-		color: $colorBlack01;
+		text-overflow: ellipsis;
 	}
 	// 'Visit Website' link
 	.ap-c-btn-uncontained {
-		display: block;
-		position: absolute;
-		height: 100%;
-		top: 0;
-		right: 0;
-		padding: {
-			right: $grd * .75;
-			left: $grd * 3.5;
-		}
+		@extend %heightFull;
+		@extend %svgColorBlack;
+		text-align: center;
+		width: 12%;
+		float: right;
 		color: $colorBlack01;
 		border-left: $borderMedium;
-		@include forTabletOnly {
-			padding-left: $grd * 3;
+		padding:
+			$grd * 2 0 $grd * 2 $grd * 2;
+		@include forTabletPortraitUp {
+			padding:
+				$grd * 2 $grd * 2 $grd * 2 $grd * 3;
+		}
+		&:hover,
+		&:focus {
+			span {
+				text-decoration: none;
+			}
+			svg {
+				transform: none;
+			}
 		}
 		span {
 			@extend %fontMicro;
-			line-height: 3.5;
-			color: $colorBrand04;
-			@include forTabletOnly {
-				line-height: 5;
-			}
-			@include forPhoneOnly {
-				display: none;
+			display: none; // Hidden on phones
+			@include forTabletPortraitUp {
+				display: inline-block;
 			}
 		}
 		svg {
-			transform: none;
-			path {
-				fill: $colorBrand03;
-			}
-			@include forPhoneOnly {
-				width: $grd * 2;
-				height: $grd * 2;
-				margin-top: $grd * 3;
+			width: $grd * 2.25;
+			height: $grd * 2.25;
+			margin-top: $grd / 2;
+			@include forTabletPortraitUp {
+				width: $grd * 1.75;
+				height: $grd * 1.75;
+				margin-top: 0;
 			}
 		}
 	}
@@ -715,6 +698,7 @@ $gallerySpacing: 4%;
 		line-height: 1.6125;
 		white-space: nowrap;
 		color: $colorGray06;
+		margin-right: $grd;
 		@include forTabletOnly {
 			width: $grd * 4;
 		}
@@ -767,21 +751,19 @@ $gallerySpacing: 4%;
 	// Portrait image container
 	&__photo {
 		@extend %widthFull;
+		@extend %backgroundImage;
 		position: relative;
 		float: left;
 		// Square aspect ratio
 		height: 0;
 		padding-bottom: 100%;
 		overflow: hidden;
-		background-color: $colorBrand05;
 		// Overlay pattern image
 		&::before {
 			@extend %positionAbsolute;
 			content: "";
-			background: {
-				image: url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/grazyna-adamska-jarecka_portrait-border.png");
-				size: cover;
-			}
+			background-image:
+				url("https://res.cloudinary.com/adamska/image/upload/f_auto,q_auto:best/v1/ui/grazyna-adamska-jarecka_portrait-border.png");
 		}
 		@include forTabletPortraitUp {
 			padding-bottom: 2 / 3 * 100%;
@@ -850,15 +832,7 @@ $gallerySpacing: 4%;
 	@extend %widthWrap;
 	position: relative;
 	overflow: auto;
-	@include forBigDesktopUp {
-		max-width: $widthDesktop;
-	}
-	// Module content container
-	&__container {
-		@extend %widthFull;
-		@extend %paddingAll;
-		color: $colorWhite01;
-	}
+	color: $colorWhite01;
 	// Headline text
 	&__title {
 		@extend %marginBottomQuarter;
@@ -866,24 +840,19 @@ $gallerySpacing: 4%;
 		@extend %fontMedium;
 		@extend %lineHeightHeadline;
 		@extend %lineRight;
-		@extend %headlineShadow;
-		color: $colorWhite01;
+		color: inherit;
 	}
 	// Paragraph text
 	&__body {
 		@extend %fontNormal;
 		@extend %fontRegular;
-		a {
-			@extend %hoverLinkBackground;
-		}
+		@extend %lineHeightBody;
+		@extend %inlineLinks;
+		max-width: $grd * 96;
 	}
 	// About page link
 	.ap-c-btn-contained {
 		@extend %buttonMarginTop;
-	}
-	// line-height seems to only work when applied on the p element
-	p {
-		@extend %lineHeightBody;
 	}
 }
 
@@ -903,7 +872,6 @@ $gallerySpacing: 4%;
 		float: left;
 		// Allow visibility for transforms
 		overflow: visible;
-		background-color: $colorBrand05;
 		@include forSmallPhoneUp {
 			width: 50%;
 		}
@@ -914,6 +882,7 @@ $gallerySpacing: 4%;
 	// Collection link
 	&__link {
 		@extend %widthFull;
+		@extend %backgroundImage;
 		@extend %shadowSmall;
 		@extend %transitionFast;
 		@extend %hoverShowIcon;
@@ -922,10 +891,6 @@ $gallerySpacing: 4%;
 		height: 0;
 		padding-bottom: 5 / 4 * 100%;
 		overflow: hidden;
-		background: {
-			size: cover;
-			repeat: no-repeat;
-		}
 		@include forPhoneOnly {
 			// Remove background on phones
 			background-image: none !important;
@@ -958,21 +923,17 @@ $gallerySpacing: 4%;
 				text-decoration: underline;
 			}
 			svg {
-				transform: $translateRight;
+				@extend %translateRight;
 			}
 		}
 	}
 	// Animated slide background
 	&__slide {
 		@extend %positionAbsolute;
+		@extend %backgroundImage;
 		@extend %animationSlideshow;
 		display: block;
 		visibility: hidden;
-		// background-image source is defined in "_scn-collections.pug"
-		background: {
-			size: cover;
-			repeat: no-repeat;
-		}
 		@include forPhoneOnly {
 			// Remove slideshow on phones
 			display: none;

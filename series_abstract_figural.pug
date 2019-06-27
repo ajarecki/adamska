@@ -13,18 +13,20 @@ block config
 			hero1:   abstractFigural.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: "A series of abstract works which emerging forms of the human figure."
+			collink: workAbstract.link
 		}
+
+block seriesSummary
+	p A series of abstract works which emerging forms of the human figure.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

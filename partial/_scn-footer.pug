@@ -34,7 +34,7 @@ section.ap-c-scn.ap-c-scn--footer
 		//- Contact
 		address.ap-c-mdl-footer__contact
 			h4.ap-c-mdl-footer__label Contact
-			p To contact Grazyna in regard to exhibitions, commisions, lessons, or other inquiries, send an email to #[a(href= email.link title= email.info) #[span= email.name]]
+			p.ap-c-mdl-footer__body To contact Grazyna in regard to exhibitions, commisions, lessons, or other inquiries, send an email to #[a(href= email.link title= email.info) #[span= email.name]]
 			+button(
 				"Contact Grazyna",
 				iconEmail,
@@ -123,12 +123,11 @@ section.ap-c-scn.ap-c-scn--footer
 						iconExternal,
 						"_blank"
 					)
-		//- Credits
-		footer.ap-c-mdl-footer__fine
+		//- Fineprint
+		footer.ap-c-mdl-footer__credits
 			a.ap-c-mdl-footer__logo(
 				href= home.link 
 				title= home.info
 			)
 				include _gaj-logo.svg
-			p
-				small Copyright &copy; 2009 &ndash; 2019 Grazyna Adamska-Jarecka. Website designed and developed by <a href="https://jarecki.co/" title="Developer website" target="_blank">Andrew Jarecki</a>
+			small.ap-c-mdl-footer__fineprint Copyright &copy; 2009 &ndash; 2019 <br>Grazyna Adamska-Jarecka. Website designed and developed by <a href="https://jarecki.co/" title="Developer website" target="_blank">Andrew Jarecki</a>

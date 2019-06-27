@@ -24,7 +24,7 @@ window.addEventListener("scroll", function(){
 	// Detects new state and compares it with the new one
 	if ((document.body.getBoundingClientRect()).top > scrollPos)
 		navMain.classList.remove("ap-is-hidden"),
-		// navSection.classList.remove("ap-is-visible"),
+		// navSection.classList.remove("ap-is-visible"), // Use different classes
 		// navSeries.classList.remove("ap-is-visible"),
 		btnNavOpen.classList.remove("ap-is-hidden"),
 		btnTop.classList.remove("ap-is-hidden");

@@ -11,12 +11,14 @@ mixin pressItem(pressSource, pressTitle, pressLink)
 			href= pressLink
 			target="_blank"
 		)
-			article.ap-c-mdl-press__entry
-				p.ap-c-mdl-press__label= pressSource
-				h4.ap-c-mdl-press__title= pressTitle
+			article.ap-c-mdl-press__wrap
+				header.ap-c-mdl-press__header
+					span.ap-c-mdl-press__label= pressSource
+					h4.ap-c-mdl-press__title= pressTitle
 				//- Button appearance
 				span.ap-c-btn-uncontained
 					span Website
+					| &nbsp;
 					+icon(iconExternal)
 
 //- Selected press section

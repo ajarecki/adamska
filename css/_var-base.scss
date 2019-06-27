@@ -96,19 +96,177 @@ $widthBigDesktop: 1440px;
 	}
 }
 
+// Flexbox fallbacks
+@mixin noFlexbox {
+	@supports not (display: flex) {
+		@content;
+	}
+}
+
+// Sass math layout trick
+// Reference: https://www.youtube.com/watch?v=LRrHk4rZtWw
+@mixin grid(
+	$numPerRow,
+	$margin
+) {
+	width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+	&:nth-child(n) {
+		margin: {
+			right: $margin;
+			bottom: $margin;
+		}
+	}
+	&:nth-child(#{$numPerRow}n) {
+		margin: 0;
+	}
+}
+
+@mixin display(
+	$display: null,
+	$visibility: null,
+	$float: null
+) {
+	display: $display;
+	visibility: $visibility;
+	float: $float;
+}
+
+@mixin size(
+	$width: null,
+	$height: null
+) {
+	width: $width;
+	height: $height;
+}
+
+@mixin sizeSquare($width) {
+	width: $width;
+	height: $width;
+}
+
+// Aspect ratio sizing
+@mixin sizeAspectRatio(
+	$width,
+	$ratio1,
+	$ratio2
+) {
+	width: $width;
+	height: (($width / $ratio1) * $ratio2);
+}
+
+// Maintain aspect ratio hack
+@mixin aspectRatio(
+	$width,
+	$height,
+	$percentage
+) {
+	padding-bottom: $height / $width * $percentage;
+}
+
+// Remove aspect ratio styles
+%noAspectRatio {
+	height: auto;
+	overflow: visible;
+	padding-bottom: 0;
+}
+
+@mixin position(
+	$position: null,
+	$top: null,
+	$right: null,
+	$bottom: null,
+	$left: null,
+	$index: null
+) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+	z-index: $index;
+}
+
+@mixin margin(
+	$margin: null,
+	$top: null,
+	$right: null,
+	$bottom: null,
+	$left: null
+) {
+	margin: $margin;
+	margin: {
+		top: $top;
+		right: $right;
+		bottom: $bottom;
+		left: $left;
+	}
+}
+
+@mixin marginResponsive(
+	$top,
+	$right,
+	$bottom,
+	$left
+) {
+	margin:
+		$top $right $bottom $left;
+	@include forTabletPortraitUp {
+		margin:
+			$top * 1.25 $right * 1.25 $bottom * 1.25 $left * 1.25;
+	}
+	@include forTabletUp {
+		margin:
+			$top * 1.5 $right * 1.5 $bottom * 1.5 $left * 1.5;
+	}
+	@include forBigDesktopUp {
+		margin:
+			$top * 2 $right * 2 $bottom * 2 $left * 2;
+	}
+}
+
+@mixin padding(
+	$padding: null,
+	$top: null,
+	$right: null,
+	$bottom: null,
+	$left: null
+) {
+	padding: $padding;
+	padding: {
+		top: $top;
+		right: $right;
+		bottom: $bottom;
+		left: $left;
+	}
+}
+
+@mixin paddingResponsive(
+	$top,
+	$right,
+	$bottom,
+	$left
+) {
+	padding:
+		$top $right $bottom $left;
+	@include forTabletPortraitUp {
+		padding:
+			$top * 1.25 $right * 1.25 $bottom * 1.25 $left * 1.25;
+	}
+	@include forTabletUp {
+		padding:
+			$top * 1.5 $right * 1.5 $bottom * 1.5 $left * 1.5;
+	}
+	@include forBigDesktopUp {
+		padding:
+			$top * 2 $right * 2 $bottom * 2 $left * 2;
+	}
+}
+
 // Utilities
 // Reset browser styles
 %resetBox {
 	margin: 0;
 	padding: 0;
-}
-// Clearfix hack
-%clearFix {
-	&::after {
-		content: "";
-		display: block; 
-		clear: both;
-	}
 }
 // Hide element completely
 %hideItem {
@@ -144,6 +302,16 @@ $widthBigDesktop: 1440px;
 	}
 }
 
+// Contain floats
+// `overflow: auto` is preferred
+%clearfix {
+	&::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+}
+
 // Block element centering
 %marginAuto {
 	float: none;
@@ -154,21 +322,21 @@ $widthBigDesktop: 1440px;
 }
 
 // Positioning
-%positionFull {
+%positionAbsolute {
+	display: block;
+	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 }
-%positionAbsolute {
-	@extend %positionFull;
-	display: block;
-	position: absolute;
-}
 %positionFixed {
-	@extend %positionFull;
 	display: block;
 	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 // Widths
@@ -179,17 +347,54 @@ $widthBigDesktop: 1440px;
 }
 // Container max-width opt-in
 %widthWrap {
-	@extend %widthFull;
-	@extend %marginAuto;
+	display: block;
+	width: 100%;
 	// max-width matches mixin "forBigDesktopUp" min-width
 	max-width: $widthBigDesktop;
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	float: none;
 }
 // Module content container max-width opt-in
 %widthModule {
-	@extend %widthFull;
-	@extend %marginAuto;
+	display: block;
+	height: 100%;
 	max-width: $widthBigDesktop - 128px;
+	margin: {
+		left: auto;
+		right: auto;
+	}
+	float: none;
 }
+// Match parent height (maybe)
+%heightFull {
+	display: block;
+	height: 100%;
+}
+// Used with aspect ratio padding hack
+%heightCollapsed {
+	height: 0;
+	overflow: hidden;
+}
+
+// Full relative positioned block
+%blockRelative {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+// Full absolute positioned block
+%blockAbsolute {
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
 
 // Spacing
 // Vertical values are larger than their respective horizontal values

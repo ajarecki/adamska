@@ -102,7 +102,7 @@
 	// Interaction styles
 	&:hover, 
 	&:focus {
-		transform: $translateUp;
+		@extend %translateUp;
 		box-shadow: none;
 		// Reveal pseudo element
 		&::before {
@@ -113,7 +113,7 @@
 		}
 		svg {
 			// Default icon animation
-			transform: $translateRight;
+			@extend %translateRight;
 			path {
 				fill: $colorWhite01;
 			}
@@ -215,44 +215,38 @@
 		// Overwrite potential modifier variable pseudo elements styles
 		display: none;
 	}
-	// Interaction styles
-	&:hover, 
+	&:hover,
 	&:focus {
+		color: $colorBrand01;
 		span {
 			text-decoration: underline;
 		}
 		svg {
 			// Default icon animation
-			transform: $translateRight;
-			path {
-				fill: $colorBrand01;
-			}
+			@extend %translateRight;
+			@extend %svgColorBrand;
 		}
 	}
 	// Text label
 	span {
 		@extend %fontExtendedBold;
 		@extend %fontSmall;
+		@extend %spaceAfter;
 		display: inline-block;
+		color: inherit;
 		@include forPhoneOnly {
 			font-size: 14px;
-		}
-		&::after {
-			// Add whitespace after label
-			content: "\0020";
-			display: inline-block;
 		}
 	}
 	// Button icon
 	svg {
+		@extend %svgColorBrand;
 		@extend %transitionFast;
 		position: relative;
 		width: $grd * 2;
 		height: $grd * 2;
 		bottom: 2px;
-		path {
-			fill: $colorBrand01;
-		}
+		left: -8px;
 		@include forBigDesktopUp {
 			width: $grd * 2.25;
 			height: $grd * 2.25;
@@ -274,15 +268,13 @@
 	border-radius: 50%;
 	&:hover,
 	&:focus {
+		@extend %translateUp;
+		@extend %svgColorWhite;
 		border: 0;
-		transform: $translateUp;
-		svg path {
-			fill: $colorWhite01;
-		}
 	}
 	&:active {
+		@extend %translateNormal;
 		outline: 0;
-		transform: $translateNormal;
 	}
 	&::before {
 		z-index: -1;
@@ -320,14 +312,12 @@
 	}
 	// Button icon
 	svg {
+		@extend %svgColorBrand;
 		@extend %transitionFast;
 		display: block;
 		position: relative;
 		width: 100%;
 		height: 100%;
 		padding: 25%;
-		path {
-			fill: $colorBrand01;
-		}
 	}
 }

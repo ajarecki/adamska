@@ -63,36 +63,27 @@
 	}
 	// Anchor link thumbnail image and slideshow container
 	&__thumb {
+		@extend %blockRelative;
 		@extend %fontNormal;
 		@extend %fontMicro;
+		@extend %backgroundImage;
 		@extend %transitionFast;
 		@extend %shadowSmall;
-		display: block;
-		position: relative;
-		width: 100%;
 		height: 0;
 		// Aspect ratio
 		padding-top: 320 / 960 * 100%;
 		overflow: hidden;
 		color: $colorWhite01;
-		background: {
-			color: $colorBrand03;
-			size: cover;
-		}
 		transform-origin: bottom center;
 	}
 	// Animation poster container
 	&__slide {
-		@extend %hidePhone;
-		@extend %positionAbsolute;
+		@extend %blockAbsolute;
+		@extend %backgroundImage;
 		@extend %animationSlideshow;
-		display: block;
-		// background-image is defined in _crd-series.pug
-		background: {
-			size: cover;
-			repeat: no-repeat;
-		}
+		@extend %transitionFast;
 		@include forPhoneOnly {
+			display: none;
 			// Do not show/load slide images on phones
 			background-image: none !important;
 		}
@@ -160,26 +151,23 @@
 	// Anchor link text container
 	&__info {
 		@extend %shadowSmall;
+		@extend %backgroundImage;
 		@extend %transitionFast;
 		@extend %hoverShadow;
 		display: block;
 		position: relative;
-		// Fallback width
-		width: 92%;
+		width: 92%; // Fallback
 		width: calc(100% - 64px);
 		left: 32px;
-		padding: {
-			top: $grd * 3;
-			bottom: $grd * 3;
-			left: $grd * 4;
-		}
-		background: {
-			size: cover;
-			repeat: no-repeat;
-			color: $colorWhite01;
-		}
-		// Layer info on top of the thumbnail images
+		padding: $grd * 3 $grd * 4;
+		// border: $borderLight;
+		text-align: left;
+		color: $colorWhite01;
+		// Position info on top of the thumbnail images
 		transform: translate3d(0, -50%, 0);
+		&::before {
+			background-color: rgba($colorWhite05, .64);
+		}
 		@include forDesktopOnly {
 			width: calc(100% - 48px);
 			left: 24px;
@@ -207,30 +195,32 @@
 	}
 	// Series title
 	&__title {
+		@extend %backgroundImage;
 		@extend %fontExtendedBold;
 		@extend %fontRegular;
 		@extend %lineHeightHeadline;
+		position: relative;
 		display: inline-block;
 		width: 100%;
 		margin-bottom: $grd * 1.75;
-		text-align: left;
-		white-space: nowrap;
-		text-overflow: clip;
-		color: $colorBlack01;
-		// Prevent title from breaching card bounds
 		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 		@include forTabletOnly {
 			margin-bottom: $grd * 1.5;
 		}
 		@include forPhoneOnly {
-			width: auto;
+			// width: auto;
+			font-size: 14px;
 			margin-bottom: $grd * .75;
-			padding-right: $grd * 2;
-			overflow: auto;
+			// padding-right: $grd * 2;
+			// overflow: auto;
 		}
 	}
 	// Element containing details
 	&__details {
+		@extend %backgroundImage;
+		position: relative;
 		display: inline-block;
 		width: 100%;
 	}
@@ -239,10 +229,9 @@
 		@extend %fontExtendedNormal;
 		@extend %fontMicro;
 		@extend %lineHeightLabel;
+		@extend %svgColorWhite;
 		display: inline-block;
-		text-align: left;
 		white-space: nowrap;
-		color: $colorGray01;
 	}
 	// Icons
 	svg {
@@ -251,9 +240,6 @@
 		@include forPhoneOnly {
 			width: $grd * 1.25;
 			height: $grd * 1.25;
-		}
-		path {
-			fill: $colorGray01;
 		}
 	}
 }
@@ -276,10 +262,12 @@
 			transform: none;
 			&::before {
 				transform: $scaleUpSmall;
+				display: none;
 			}
 			&::after {
 				opacity: .48;
 				transform: $scaleUpSmall;
+				display: none;
 			}
 		}
 		.ap-c-crd-series__title {
@@ -313,37 +301,22 @@
 			padding-top: 512 / 960 * 100%;
 		}
 	}
-	&__overlay {
-		display: block;
-		visibility: visible;
-		@include forPhoneOnly {
-			display: block;
-			visibility: visible;
-		}
-	}
 	// Thumbnail cover image
 	&__cover {
+		width: 100%;
 		@include forTabletPortraitUp {
-			// Adjust main thumbnail image size
-			width: 56%;
-		}
-		@include forTabletOnly {
-			width: 88%;
+			width: 56%; // Adjust cover size
 		}
 	}
 	// Info panel
 	&__info {
-		// Styled as an overlay
-		@extend %positionAbsolute;
-		width: 100%;
+		@extend %blockAbsolute;
 		padding: {
 			top: 8%;
 			left: 4%;
 		}
-		background: {
-			image: none !important;
-			color: transparent;
-		}
+		background: none !important; // Remove hardcoded background
+		border: 0;
 		box-shadow: none;
 		transform: none;
 		@include forPhoneOnly {
@@ -355,13 +328,11 @@
 		// Hover shadow
 		&::before {
 			display: none;
-			box-shadow: 
-				0 24px 12px -12px rgba($colorBrand04, .12),
-				0 12px 6px -6px rgba($colorBrand03, .16);
 		}
 		// Underlay panel
 		&::after {
-			@extend %positionAbsolute;
+			display: none;
+			// @extend %positionAbsolute;
 			@extend %transitionFast;
 			content: "";
 			z-index: 1;
@@ -372,43 +343,37 @@
 					rgba($colorBrand04, .32) 8%,
 					rgba($colorBrand01, 0) 57%
 				);
-			@include forPhoneOnly {
-				display: block;
-			}
+			// @include forPhoneOnly {
+			// 	display: block;
+			// }
 		}
 	}
 	// Series title
 	&__title {
 		@extend %fontMedium;
-		@extend %lineHeightHeadline;
-		position: relative;
+		@extend %lineHeightLabel;
 		z-index: 2;
-		color: $colorWhite01;
-		@include forPhoneOnly {
-			width: 100%;
-		}
+		width: auto;
+		float: left;
+		padding: 1% 1.5%;
 	}
 	// Series details container
 	&__details {
-		position: relative;
 		z-index: 2;
+		width: auto;
+		float: left;
+		clear: left;
+		padding: 1% 1.5%;
 	}
 	// Series detail items
 	&__item {
 		@extend %fontSmall;
-		color: $colorWhite01;
-	}
-	// Icons
-	svg {
-		path {
-			// Change icon color
-			fill: $colorWhite01;
-		}
 	}
 }
 
-// Remove card thumbnail overlay images on phones for non-featured series cards
+// Styles for non-featured series cards
 li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
+	// Remove card thumbnail overlay images on phones
 	.ap-c-crd-series__overlay {
 		@include forPhoneOnly {
 			display: none !important;
@@ -416,41 +381,41 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 			background-image: none !important;
 		}
 	}
+	.ap-c-crd-series__title {
+		background: none !important; // Remove hardcoded background
+	}
+	.ap-c-crd-series__details {
+		background: none !important;
+	}
 }
 
 
 // Gallery item cards
 .ap-c-crd-artwork {
-	@extend %widthFull;
+	@extend %blockRelative;
 	@extend %marginAuto;
-	position: relative;
-	padding-bottom: $grd;
-	margin-bottom: $grd * 1.5;
-	background-color: rgba($colorWhite05, .92);
-	&:hover, 
+	@extend %shadowSmall;
+	@extend %hoverShadow;
+	@extend %transitionFast;
+	max-width: 512px;
+	margin-bottom: $grd * 4;
+	@include forTabletPortraitUp {
+		margin-bottom: $grd * 6;
+	}
+	&:hover,
 	&:focus {
-		.ap-c-crd-artwork__thumb {
-			transform: $scaleUpSmall;
-		}
-		.ap-c-crd-artwork__image {
-			opacity: .72;
-			// transform: scale(.98);
-		}
+		transform: $scaleUpSmall;
+		box-shadow: none;
+		// .ap-c-crd-artwork__thumb {
+			// transform: $scaleUpSmall;
+		// }
+		// .ap-c-crd-artwork__image {
+		// 	opacity: .72;
+		// }
 		.ap-c-crd-artwork__icon {
 			opacity: 1;
 			svg {
-				transform: scale3d(1, 1, 1);
-			}
-		}
-		.ap-c-crd-artwork__info {
-			// Add title underline
-			span {
-				// Recolor all text
-				color: $colorBrand01;
-			}
-			a span {
-				// Underline links and tags
-				text-decoration: underline;
+				transform: $scaleNormal;
 			}
 		}
 	}
@@ -459,75 +424,42 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 			transform: $scaleNormal;
 		}
 	}
-	@include forTabletPortraitUp {
-		padding-bottom: $grd * 1.75;
-		margin-bottom: $grd * 3.25;
-	}
-	@include forBigDesktopUp {
-		padding-bottom: $grd * 2;
-		margin-bottom: $grd * 3.5;
-	}
 	// Thumbnail image container
 	&__thumb {
-		@extend %shadowSmall;
-		@extend %hoverShadow;
-		@extend %transitionFast;
-		display: block;
-		width: 100%;
+		@extend %widthFull;
+		@extend %backgroundImage;
+		// @extend %hoverShadow;
+		@extend %heightCollapsed;
+		// @extend %transitionFast;
 		// These work with the aspect ratio classes ap-l-ratio
-		height: 0;
+		// height: 0;
 		cursor: zoom-in;
-		overflow: hidden;
-		// background-image is defined individually for each item in "_crd-artwork.pug"
-		background: {
-			color: $colorWhite05;
-			repeat: repeat;
-			size: cover;
-		}
-		transform-origin: bottom center;
+		// overflow: hidden;
+		// transform-origin: bottom center;
 	}
 	// Image element within container
 	&__image {
-		@extend %positionAbsolute;
+		// @extend %blockAbsolute;
+		@extend %widthFull;
 		@extend %fontNormal;
 		@extend %fontMicro;
-		@extend %transitionFast;
-		width: 100%;
-		text-align: center;
-		// Alt text color for broken images
-		color: rgba($colorBlack01, .8);
+		// @extend %transitionFast;
+		height: auto;
 	}
-	// Information container
+	// Piece description container
 	&__info {
-		display: inline-block;
-		width: 100%;
-		padding: {
-			top: $grd * 1.75;
-			left: $grd * 1.75;
-		}
-		background: {
-			size: cover;
-			repeat: no-repeat;
-		}
+		@extend %widthFull;
+		@extend %backgroundImage;
+		padding: $grd * 2 $grd * 1.75;
+		// border-top: $borderLight;
+		color: $colorWhite01;
 		// Show arrow cursor for non-hyperlinked text
 		cursor: default;
-		@include forTabletOnly {
-			padding: {
-				top: $grd * 1.5;
-				left: $grd * 1.5;
-			}
-		}
-		@include forPhoneOnly {
-			padding: {
-				top: $grd;
-				left: $grd;
-			}
+		@include forTabletPortraitUp {
+			padding: $grd * 1.5;
 		}
 		@include forBigDesktopUp {
-			padding: {
-				top: $grd * 2;
-				left: $grd * 2;
-			}
+			padding: $grd * 2;
 		}
 		a {
 			text-decoration: none;
@@ -537,28 +469,25 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 	}
 	// Title container
 	&__title {
+		@extend %widthFull;
 		@extend %fontMicro;
-		display: block;
-		width: 100%;
 	}
 	// Item title
 	&__piece {
 		@extend %fontExtendedBold;
 		display: inline-block;
 		white-space: nowrap;
-		text-overflow: clip;
-		color: $colorBlack01;
+		text-overflow: ellipsis;
 	}
 	// Associated series link
 	&__series {
 		// Hidden for now
-		@extend %hideItem;
+		// @extend %hideItem;
 		@extend %fontMicro;
 		@extend %fontExtendedNormal;
-		// display: inline-block;
+		display: inline-block;
 		white-space: nowrap;
 		text-overflow: clip;
-		color: $colorGray04;
 		// Series page specificity
 		.ap-p-series & {
 			// Hide series link when element is within a series pages
@@ -571,24 +500,17 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 		@extend %fontMicro;
 		display: inline-block;
 		margin-top: $grd;
-		color: $colorGray05;
-		// Capitalize medium names as they are referenced from tag labels
-		a {
-			text-transform: capitalize;
-		}
 	}
 	// Tag list
 	&__tags {
 		// Hiding for now
 		@extend %hideItem;
+		// @extend %widthFull;
 		@extend %fontNormal;
 		@extend %fontMicro;
 		@extend %lineHeightLabel;
-		// display: block;
-		width: 100%;
 		margin-top: $grd * 2;
 		color: $colorGray05;
-		text-transform: capitalize;
 		padding: 4px;
 		// Tag list item
 		li {
@@ -604,8 +526,6 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 	}
 	// Overlay expand signal
 	&__icon {
-		// Remove on phones
-		@extend %hidePhone;
 		@extend %transitionFast;
 		display: block;
 		position: absolute;
@@ -653,6 +573,11 @@ li.ap-c-mdl-collection__item:not(.ap-l-crd--spotlight) {
 // Press item specificity
 // Use as parent selector
 // .ap-l--press & {
+// }
+
+// Try adjacent sibling selector
+// .v--inverse  {
+// 	color: $colorBlack01;
 // }
 
 // Aspect ratio padding – listed width by height

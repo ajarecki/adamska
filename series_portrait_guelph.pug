@@ -13,18 +13,19 @@ block config
 			hero1:   portraitGuelph.hero,
 			hero2:   workPortrait.hero,
 			colname: workPortrait.name,
-			collink: workPortrait.link,
-			summary: ""
+			collink: workPortrait.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"watercolour"
+		tagWatercolour
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"paper"
+		tagPaper
 	)
 
 block navSubmenu

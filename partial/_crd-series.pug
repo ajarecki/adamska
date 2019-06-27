@@ -40,8 +40,12 @@ mixin seriesCard(seriesData)
 			href= seriesData.link
 			style= `background-image:url(${urlRootImage}c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:good/c_scale,w_64,e_blur:512/v1/ui/${seriesData.cover});`
 		)
-			h3.ap-c-crd-series__title= seriesData.name
-			span.ap-c-crd-series__details
+			h3.ap-c-crd-series__title(
+				style= `background-image:url(${urlRootImage}c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:good/c_scale,w_64,e_blur:512/v1/ui/${seriesData.cover});`
+			)= seriesData.name
+			span.ap-c-crd-series__details(
+				style= `background-image:url(${urlRootImage}c_crop,g_north,h_512,w_960,x_0,y_0,f_auto,q_auto:good/c_scale,w_64,e_blur:512/v1/ui/${seriesData.cover});`
+			)
 				span.ap-c-crd-series__item
 					+icon(iconDate)
 					| &nbsp;

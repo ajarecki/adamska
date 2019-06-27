@@ -13,18 +13,19 @@ block config
 			hero1:   portraitConte.hero,
 			hero2:   workPortrait.hero,
 			colname: workPortrait.name,
-			collink: workPortrait.link,
-			summary: ""
+			collink: workPortrait.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"conte-crayon"
+		tagConte
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

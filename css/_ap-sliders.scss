@@ -2,12 +2,11 @@
 
 // Slider components
 .ap-c-sld {
-	@extend %widthFull;
-	position: relative;
+	@extend %blockRelative;
 	display: flex;
 	height: auto;
 	// Inertial scrolling behavior
-  	-webkit-overflow-scrolling: touch;
+	-webkit-overflow-scrolling: touch;
 	scroll-behavior: smooth;
 	// Slide list
 	&__list {
@@ -20,8 +19,7 @@
 		position: relative;
 		width: auto;
 		// Enable horizontal scrolling
-		overflow-x: scroll;
-		overflow-y: visible;
+		overflow-x: auto;
 	}
 	// List item containing link
 	&__item {

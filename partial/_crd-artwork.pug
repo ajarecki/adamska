@@ -33,7 +33,9 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 			div.ap-c-crd-artwork__icon
 				+icon(iconExpand)
 		//- Info and details
-		figcaption.ap-c-crd-artwork__info
+		figcaption.ap-c-crd-artwork__info(
+			style="background-image: url(" + urlRootImage + "c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+		)
 			//- Title and series
 			div.ap-c-crd-artwork__title
 				h4.ap-c-crd-artwork__piece= pieceName
@@ -42,11 +44,11 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 					a(href= seriesData.link)= seriesData.name
 			//- Mediums and materials
 			div.ap-c-crd-artwork__spec
-				span= pieceYear
+				span= pieceYear.name
 					| &nbsp;&mdash;&nbsp;
-				span= pieceMedium
+				span= pieceMedium.name
 					| &nbsp;on&nbsp;
-				span= pieceMaterial
+				span= pieceMaterial.name
 					| &comma;&nbsp;
 				span= pieceWidth
 					| &nbsp;&times;&nbsp;
@@ -106,9 +108,12 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 				a(href= tagData.link)= tagData.name
 
 
-//- Separate Press/documentation item mixin? "documentCard"
+//- Separate Press/documentation item mixin –  "documentCard"
 	Does not include piece-specific info
 
+//- tag2000 is probably a placeholder, not the actual year
+
+//- tagNull object could help for 
 
 //- Artwork gallery card components
 
@@ -126,44 +131,44 @@ mixin abstractGraceS01
 		"22", "22.1",
 		"50-49",
 		abstractGrace,
-		"red", "green", "blue",
-		"black", "abstract", "pattern"
+		tagBlack, tagGrey, tagWhite,
+		tagAbstract, tagPattern
 	)
 mixin abstractGraceS02
 	+artworkCard(
 		"Border Land",
 		"abstract_grace_s02",
 		"Abstract painting",
-		"2011", "acrylic", "plastic",
+		tag2011, tagAcrylic, tagPlastic,
 		"28", "23",
 		"11-9",
 		abstractGrace,
-		"red", "green", "blue",
-		"abstract"
+		tagGrey, tagWhite, tagWhite,
+		tagAbstract
 	)
 mixin abstractGraceS03
 	+artworkCard(
 		"Grace to No Grace Ratio",
 		"abstract_grace_s03",
 		"Abstract painting",
-		"2011", "acrylic", "plastic",
+		tag2011, tagAcrylic, tagPlastic,
 		"28", "23",
-		"11-9",
+		"11-9 v--inverse",
 		abstractGrace,
-		"white", "green", "blue",
-		"abstract"
+		tagWhite, tagGreen, tagBlue,
+		tagAbstract
 	)
 mixin abstractGraceS04
 	+artworkCard(
 		"Grace in Droplets",
 		"abstract_grace_s04",
 		"Abstract painting",
-		"2011", "acrylic", "plastic",
+		tag2011, tagAcrylic, tagPlastic,
 		"23", "28",
 		"9-11",
 		abstractGrace,
-		"grey", "green", "blue",
-		"abstract"
+		tagGrey, tagGreen, tagBlue,
+		tagAbstract
 	)
 
 //- Selected Abstract Works Volume 1
@@ -172,11 +177,11 @@ mixin abstractSelectedVol1S01
 		"Untitled",
 		"abstract_selected01_s01",
 		"Abstract acrylic painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract",
+		tagAbstract,
 		"tagname1",
 		"tagname2",
 		"tagname3"
@@ -186,132 +191,132 @@ mixin abstractSelectedVol1S02
 		"Untitled",
 		"abstract_selected01_s02",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"14-11",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S03
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s03",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"4-3",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S04
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s04",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S05
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s05",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"4-3",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S06
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s06",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"4-3",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S07
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s07",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"7-6",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S08
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s08",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S09
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s09",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S10
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s10",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S11
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s11",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S12
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s12",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"1-1",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 mixin abstractSelectedVol1S13
 	+artworkCard(
 		"Untitled",
 		"abstract_selected01_s13",
 		"Abstract painting",
-		"0000", "acrylic", "canvas",
+		"0000", tagAcrylic, tagCanvas,
 		"00", "00",
 		"3-4",
 		abstractSelectedVol1,
-		"abstract"
+		tagAbstract
 	)
 	
 //- Abstracted Landscapes
@@ -320,15 +325,15 @@ mixin abstractLandscapesS01
 		"Untitled",
 		"abstract_landscapes_s01",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"8-7",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS02
@@ -336,15 +341,15 @@ mixin abstractLandscapesS02
 		"Orange le Vert",
 		"abstract_landscapes_s02",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"48",
 		"30",
 		"16-10",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS03
@@ -352,15 +357,15 @@ mixin abstractLandscapesS03
 		"Untitled",
 		"abstract_landscapes_s03",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS04
@@ -368,15 +373,15 @@ mixin abstractLandscapesS04
 		"Untitled",
 		"abstract_landscapes_s04",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS05
@@ -384,15 +389,15 @@ mixin abstractLandscapesS05
 		"Untitled",
 		"abstract_landscapes_s05",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS06
@@ -400,15 +405,15 @@ mixin abstractLandscapesS06
 		"Untitled",
 		"abstract_landscapes_s06",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"6-5",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS07
@@ -416,15 +421,15 @@ mixin abstractLandscapesS07
 		"Untitled",
 		"abstract_landscapes_s07",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS08
@@ -432,15 +437,15 @@ mixin abstractLandscapesS08
 		"Untitled",
 		"abstract_landscapes_s08",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS09
@@ -448,15 +453,15 @@ mixin abstractLandscapesS09
 		"Untitled",
 		"abstract_landscapes_s09",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS10
@@ -464,15 +469,15 @@ mixin abstractLandscapesS10
 		"Untitled",
 		"abstract_landscapes_s10",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS11
@@ -480,15 +485,15 @@ mixin abstractLandscapesS11
 		"Untitled",
 		"abstract_landscapes_s11",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS12
@@ -496,15 +501,15 @@ mixin abstractLandscapesS12
 		"Untitled",
 		"abstract_landscapes_s12",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS13
@@ -512,15 +517,15 @@ mixin abstractLandscapesS13
 		"Untitled",
 		"abstract_landscapes_s13",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS14
@@ -528,15 +533,15 @@ mixin abstractLandscapesS14
 		"Untitled",
 		"abstract_landscapes_s14",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS15
@@ -544,47 +549,47 @@ mixin abstractLandscapesS15
 		"Test",
 		"abstract_landscapes_s15",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractLandscapes,
-		"abstract",
-		"landscape"
+		tagAbstract,
+		tagLandscape
 	)
 mixin abstractLandscapesS16
 	+artworkCard(
 		"Untitled",
 		"abstract_landscapes_s16",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-4",
 		abstractLandscapes,
-		"green",
-		"abstract",
-		"landscape"
+		tagGreen,
+		tagAbstract,
+		tagLandscape
 	)
 mixin abstractLandscapesS17
 	+artworkCard(
 		"Untitled",
 		"abstract_landscapes_s17",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-4",
 		abstractLandscapes,
-		"blue",
-		"abstract",
-		"landscape",
+		tagBlue,
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS18
@@ -592,15 +597,15 @@ mixin abstractLandscapesS18
 		"Untitled",
 		"abstract_landscapes_s18",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		abstractLandscapes,
-		"abstract",
-		"landscape",
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS19
@@ -608,16 +613,16 @@ mixin abstractLandscapesS19
 		"Untitled",
 		"abstract_landscapes_s19",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		abstractLandscapes,
-		"blue",
-		"abstract",
-		"landscape",
+		tagBlue,
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS20
@@ -625,16 +630,16 @@ mixin abstractLandscapesS20
 		"Untitled",
 		"abstract_landscapes_s20",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"14-11",
 		abstractLandscapes,
-		"blue",
-		"abstract",
-		"landscape",
+		tagBlue,
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 mixin abstractLandscapesS21
@@ -642,16 +647,16 @@ mixin abstractLandscapesS21
 		"Untitled",
 		"abstract_landscapes_s21",
 		"Abstracted landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		abstractLandscapes,
-		"brown",
-		"abstract",
-		"landscape",
+		tagBrown,
+		tagAbstract,
+		tagLandscape,
 		""
 	)
 
@@ -662,16 +667,16 @@ mixin abstractFiguralS01
 		"Deadline Anxiety",
 		"abstract_figural_s01",
 		"Abstract figure painting",
-		"2018",
-		"acrylic",
-		"canvas",
+		tag2018,
+		tagAcrylic,
+		tagCanvas,
 		"46",
 		"36",
 		"23-18",
 		abstractFigural,
 		"yellow",
-		"abstract",
-		"figurative",
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 mixin abstractFiguralS02
@@ -679,16 +684,16 @@ mixin abstractFiguralS02
 		"Dominative Moments",
 		"abstract_figural_s02",
 		"Abstract figure painting",
-		"2018",
-		"acrylic",
-		"canvas",
+		tag2018,
+		tagAcrylic,
+		tagCanvas,
 		"48",
 		"40",
 		"6-5",
 		abstractFigural,
-		"green",
-		"abstract",
-		"figurative",
+		tagGreen,
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 mixin abstractFiguralS03
@@ -697,15 +702,15 @@ mixin abstractFiguralS03
 		"abstract_figural_s03",
 		"Abstract figure painting",
 		"2014",
-		"acrylic",
-		"canvas",
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFigural,
-		"blue",
-		"abstract",
-		"figurative",
+		tagBlue,
+		tagAbstract,
+		tagFigurative,
 		""
 )
 mixin abstractFiguralS04
@@ -713,16 +718,16 @@ mixin abstractFiguralS04
 		"Dynamic Identities",
 		"abstract_figural_s04",
 		"Abstract figure painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFigural,
-		"purple",
-		"abstract",
-		"figurative",
+		tagPurple,
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 mixin abstractFiguralS05
@@ -730,16 +735,16 @@ mixin abstractFiguralS05
 		"Untitled",
 		"abstract_figural_s05",
 		"Abstract figure painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFigural,
-		"purple",
-		"abstract",
-		"figurative",
+		tagPurple,
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 mixin abstractFiguralS06
@@ -747,16 +752,16 @@ mixin abstractFiguralS06
 		"Untitled",
 		"abstract_figural_s06",
 		"Abstract figure painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-4",
 		abstractFigural,
-		"brown",
-		"abstract",
-		"figurative",
+		tagBrown,
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 mixin abstractFiguralS07
@@ -764,16 +769,16 @@ mixin abstractFiguralS07
 		"Untitled",
 		"abstract_figural_s07",
 		"Abstract figure painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFigural,
 		"yellow",
-		"abstract",
-		"figurative",
+		tagAbstract,
+		tagFigurative,
 		""
 	)
 
@@ -783,14 +788,14 @@ mixin abstractFlamesS01
 		"Untitled",
 		"abstract_flames_s01",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -799,14 +804,14 @@ mixin abstractFlamesS02
 		"Untitled",
 		"abstract_flames_s02",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -815,14 +820,14 @@ mixin abstractFlamesS03
 		"Untitled",
 		"abstract_flames_s03",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -831,14 +836,14 @@ mixin abstractFlamesS04
 		"Untitled",
 		"abstract_flames_s04",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -847,14 +852,14 @@ mixin abstractFlamesS05
 		"Untitled",
 		"abstract_flames_s05",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -863,14 +868,14 @@ mixin abstractFlamesS06
 		"Untitled",
 		"abstract_flames_s06",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -879,14 +884,14 @@ mixin abstractFlamesS07
 		"Untitled",
 		"abstract_flames_s07",
 		"Abstract painting of flames",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -895,14 +900,14 @@ mixin abstractFlamesS08
 		"Untitled",
 		"abstract_flames_s08",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"23-20",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -911,14 +916,14 @@ mixin abstractFlamesS09
 		"Untitled",
 		"abstract_flames_s09",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -927,14 +932,14 @@ mixin abstractFlamesS10
 		"Untitled",
 		"abstract_flames_s10",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -943,14 +948,14 @@ mixin abstractFlamesS11
 		"Untitled",
 		"abstract_flames_s11",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"14-11",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -959,14 +964,14 @@ mixin abstractFlamesS12
 		"Untitled",
 		"abstract_flames_s12",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -975,14 +980,14 @@ mixin abstractFlamesS13
 		"Untitled",
 		"abstract_flames_s13",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -991,14 +996,14 @@ mixin abstractFlamesS14
 		"Untitled",
 		"abstract_flames_s14",
 		"Abstract painting of corals",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractFlames,
-		"abstract",
+		tagAbstract,
 		"",
 		""
 	)
@@ -1009,15 +1014,15 @@ mixin abstractShapesS01
 		"Untitled",
 		"abstract_shapes_s01",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractShapes,
 		"yellow",
-		"abstract",
+		tagAbstract,
 		""		
 	)
 mixin abstractShapesS02
@@ -1025,15 +1030,15 @@ mixin abstractShapesS02
 		"Untitled",
 		"abstract_shapes_s02",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractShapes,
 		"pink",
-		"abstract",
+		tagAbstract,
 		""		
 	)
 mixin abstractShapesS03
@@ -1041,15 +1046,15 @@ mixin abstractShapesS03
 		"Untitled",
 		"abstract_shapes_s03",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractShapes,
-		"blue",
-		"abstract",
+		tagBlue,
+		tagAbstract,
 		""		
 	)
 mixin abstractShapesS04
@@ -1057,15 +1062,15 @@ mixin abstractShapesS04
 		"Untitled",
 		"abstract_shapes_s04",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractShapes,
 		"yellow",
-		"abstract",
+		tagAbstract,
 		""		
 	)
 mixin abstractShapesS05
@@ -1073,15 +1078,15 @@ mixin abstractShapesS05
 		"Untitled",
 		"abstract_shapes_s05",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		abstractShapes,
 		"yellow",
-		"abstract",
+		tagAbstract,
 		""		
 	)
 mixin abstractShapesS06
@@ -1089,15 +1094,15 @@ mixin abstractShapesS06
 		"Untitled",
 		"abstract_shapes_s06",
 		"Abstract painting of shapes and textures",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"7-6",
 		abstractShapes,
-		"blue",
-		"abstract",
+		tagBlue,
+		tagAbstract,
 		""		
 	)
 
@@ -1107,15 +1112,15 @@ mixin abstractAttachmentsS01
 		"Pocket-Sized Voids",
 		"abstract_attachments_s01",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"30",
 		"4-5",
 		abstractAttachments,
 		"black",
-		"abstract",
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS02
@@ -1123,15 +1128,15 @@ mixin abstractAttachmentsS02
 		"Tangled Promises",
 		"abstract_attachments_s02",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"30",
 		"11-14",
 		abstractAttachments,
-		"blue",
-		"abstract",
+		tagBlue,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS03
@@ -1139,15 +1144,15 @@ mixin abstractAttachmentsS03
 		"Untitled Journey",
 		"abstract_attachments_s03",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"30",
 		"4-5",
 		abstractAttachments,
 		"yellow",
-		"abstract",
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS04
@@ -1155,15 +1160,15 @@ mixin abstractAttachmentsS04
 		"Attachment Delivered",
 		"abstract_attachments_s04",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"22",
 		"28",
 		"11-14",
 		abstractAttachments,
-		"brown",
-		"abstract",
+		tagBrown,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS05
@@ -1171,15 +1176,15 @@ mixin abstractAttachmentsS05
 		"Attachment",
 		"abstract_attachments_s05",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"32",
 		"3-4",
 		abstractAttachments,
-		"brown",
-		"abstract",
+		tagBrown,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS06
@@ -1187,15 +1192,15 @@ mixin abstractAttachmentsS06
 		"Miniature Rebellions",
 		"abstract_attachments_s06",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"18",
 		"24",
 		"3-4",
 		abstractAttachments,
 		"pink",
-		"abstract",
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS07
@@ -1203,15 +1208,15 @@ mixin abstractAttachmentsS07
 		"Third Chances",
 		"abstract_attachments_s07",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"32",
 		"3-4",
 		abstractAttachments,
-		"blue",
-		"abstract",
+		tagBlue,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS08
@@ -1219,15 +1224,15 @@ mixin abstractAttachmentsS08
 		"Clip Composition",
 		"abstract_attachments_s08",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"32",
 		"3-4",
 		abstractAttachments,
-		"grey",
-		"abstract",
+		tagGrey,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS09
@@ -1235,15 +1240,15 @@ mixin abstractAttachmentsS09
 		"Formative Years",
 		"abstract_attachments_s09",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"16",
 		"20",
 		"3-4",
 		abstractAttachments,
-		"purple",
-		"abstract",
+		tagPurple,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS10
@@ -1251,15 +1256,15 @@ mixin abstractAttachmentsS10
 		"Above & Beneath I",
 		"abstract_attachments_s10",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"24",
 		"1-1",
 		abstractAttachments,
-		"grey",
-		"abstract",
+		tagGrey,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS11
@@ -1267,15 +1272,15 @@ mixin abstractAttachmentsS11
 		"Above & Beneath II",
 		"abstract_attachments_s11",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"32",
 		"32",
 		"1-1",
 		abstractAttachments,
-		"grey",
-		"abstract",
+		tagGrey,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS12
@@ -1283,15 +1288,15 @@ mixin abstractAttachmentsS12
 		"Untitled",
 		"abstract_attachments_s12",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"16",
 		"22",
 		"8-11",
 		abstractAttachments,
 		"pink",
-		"abstract",
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS13
@@ -1299,15 +1304,15 @@ mixin abstractAttachmentsS13
 		"Color Field",
 		"abstract_attachments_s13",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"32",
 		"32",
 		"1-1",
 		abstractAttachments,
-		"grey",
-		"abstract",
+		tagGrey,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS14
@@ -1315,15 +1320,15 @@ mixin abstractAttachmentsS14
 		"Untitled",
 		"abstract_attachments_s14",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		abstractAttachments,
-		"grey",
-		"abstract",
+		tagGrey,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS15
@@ -1331,15 +1336,15 @@ mixin abstractAttachmentsS15
 		"Untitled",
 		"abstract_attachments_s15",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"plastic",
+		tag2019,
+		tagAcrylic,
+		tagPlastic,
 		"24",
 		"32",
 		"3-4",
 		abstractAttachments,
-		"green",
-		"abstract",
+		tagGreen,
+		tagAbstract,
 		""
 	)
 mixin abstractAttachmentsS16
@@ -1347,15 +1352,15 @@ mixin abstractAttachmentsS16
 		"Neon Routes",
 		"abstract_attachments_s16",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"48",
 		"36",
 		"4-3",
 		abstractAttachments,
 		"black",
-		"abstract",
+		tagAbstract,
 		""
 	)
 //- S17 - not ready
@@ -1364,15 +1369,15 @@ mixin abstractAttachmentsS17
 		"No Easy Route",
 		"abstract_attachments_s17",
 		"Abstract painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"24",
 		"32",
 		"3-4",
 		abstractAttachments,
 		"yellow",
-		"abstract",
+		tagAbstract,
 		""
 	)
 
@@ -1383,30 +1388,30 @@ mixin figurativeBodyG01
 		"Untitled",
 		"figurative_body_g01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
-		"4-3",
+		"5-3",
 		figurativeBody,
-		"figurative",
-		"woman",
-		"nude"
+		tagFigurative,
+		tagWoman,
+		tagNude
 	)
 mixin figurativeBodyS01
 	+artworkCard(
 		"Untitled",
 		"figurative_body_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-6",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS02
@@ -1414,14 +1419,14 @@ mixin figurativeBodyS02
 		"Untitled",
 		"figurative_body_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"6-5",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS03
@@ -1429,14 +1434,14 @@ mixin figurativeBodyS03
 		"Untitled",
 		"figurative_body_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-6",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS04
@@ -1444,14 +1449,14 @@ mixin figurativeBodyS04
 		"Untitled",
 		"figurative_body_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"3-2",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS04b
@@ -1459,14 +1464,14 @@ mixin figurativeBodyS04b
 		"Untitled",
 		"figurative_body_s04b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-4",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS04c
@@ -1474,14 +1479,14 @@ mixin figurativeBodyS04c
 		"(Detail)",
 		"figurative_body_s04c",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"3-2",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS04d
@@ -1489,29 +1494,29 @@ mixin figurativeBodyS04d
 		"(Detail)",
 		"figurative_body_s04d",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-4",
 		figurativeBody,
-		"figurative",
-		"triptych"
+		tagFigurative,
+		tagTriptych
 	)
 mixin figurativeBodyS05
 	+artworkCard(
 		"Untitled",
 		"figurative_body_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"4-3",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS05b
@@ -1519,14 +1524,14 @@ mixin figurativeBodyS05b
 		"Untitled",
 		"figurative_body_s05b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"7-5",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS06
@@ -1534,14 +1539,14 @@ mixin figurativeBodyS06
 		"Untitled",
 		"figurative_body_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-8",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS06b
@@ -1549,14 +1554,14 @@ mixin figurativeBodyS06b
 		"Untitled",
 		"figurative_body_s06b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"4-3",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 //- S06c is currently unpublished
@@ -1565,14 +1570,14 @@ mixin figurativeBodyS06c
 		"(Details)",
 		"figurative_body_s06c",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"1-1",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeBodyS07
@@ -1580,14 +1585,14 @@ mixin figurativeBodyS07
 		"Untitled",
 		"figurative_body_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"4-3",
 		figurativeBody,
-		"figurative",
+		tagFigurative,
 		""
 	)
 
@@ -1597,195 +1602,195 @@ mixin figurativeExaminationS01
 		"Untitled",
 		"figurative_examination_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS02
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS02b
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s02b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"16-9",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS03
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"8-11",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS04
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"1-1",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS05
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"8-17",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS06
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"2-1",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationG01
 	+artworkCard(
 		"Exhibition Documentation",
 		"figurative_examination_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"3-2",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS07
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"10-19",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS08
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s08",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"2-3",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS09
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s09",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"16-10",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS10
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s10",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"3-5",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeExaminationS11
 	+artworkCard(
 		"Untitled",
 		"figurative_examination_s11",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"8-9",
 		figurativeExamination,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 
 //- Image of Disengagement
@@ -1794,195 +1799,195 @@ mixin figurativeDisengagementS01
 		"Untitled",
 		"figurative_disengagement_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"49-50",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS02
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"6-7",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS03
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"6-7",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS04
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS05
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-10",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS06
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-5",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS07
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-4",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS08
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s08",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"1-1",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS09
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s09",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-4",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS10
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s10",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"1-1",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS11
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s11",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-4",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS12
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s12",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"4-3",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeDisengagementS13
 	+artworkCard(
 		"Untitled",
 		"figurative_disengagement_s13",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-4",
 		figurativeDisengagement,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 
 //- Coping Behaviors
@@ -1991,346 +1996,346 @@ mixin figurativeCopingG01
 		"Untitled",
 		"figurative_coping_g01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-6",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG01b
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g01b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG01c
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g01c",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG01d
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g01d",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-1",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG02
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"7-8",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG02b
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g02b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG03
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingG03b
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_g03b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS01
 	+artworkCard(
 		"Fourfold Rocking",
 		"figurative_coping_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"9-5",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS02
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"9-5",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS03
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"9-5",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS04
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"9-5",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS05
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS05b
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s05b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS06
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS06b
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s06b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS07
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-4",
 		figurativeCoping,
 		"pink",
-		"figurative"
+		tagFigurative
 	)
 mixin figurativeCopingS08
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s08",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS10
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s10",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-9",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS11
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s11",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-9",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS12
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s12",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-9",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingS13
 	+artworkCard(
 		"Untitled",
 		"figurative_coping_s13",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeCoping,
-		"green",
-		"figurative",
-		"nude"
+		tagGreen,
+		tagFigurative,
+		tagNude
 	)
 mixin figurativeCopingP01
 	+artworkCard(
 		"Fourfold Rocking – Exhibition Document",
 		"figurative_coping_p01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"7-10",
 		figurativeCoping,
-		"figurative",
-		"nude"
+		tagFigurative,
+		tagNude
 	)
 
 //- Selected Figurative Works Vol. 2
@@ -2339,14 +2344,14 @@ mixin figurativeSelectedVol2G01
 		"Untitled",
 		"figurative_selected02_g01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"4-5",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2G01b
@@ -2354,14 +2359,14 @@ mixin figurativeSelectedVol2G01b
 		"Untitled",
 		"figurative_selected02_g01b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"7-5",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S01
@@ -2369,14 +2374,14 @@ mixin figurativeSelectedVol2S01
 		"Untitled",
 		"figurative_selected02_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-8",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S02
@@ -2384,14 +2389,14 @@ mixin figurativeSelectedVol2S02
 		"Untitled",
 		"figurative_selected02_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-8",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S03
@@ -2399,14 +2404,14 @@ mixin figurativeSelectedVol2S03
 		"Untitled",
 		"figurative_selected02_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-8",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S04
@@ -2414,14 +2419,14 @@ mixin figurativeSelectedVol2S04
 		"Untitled",
 		"figurative_selected02_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-8",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S05
@@ -2429,14 +2434,14 @@ mixin figurativeSelectedVol2S05
 		"Untitled",
 		"figurative_selected02_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-8",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S06
@@ -2444,14 +2449,14 @@ mixin figurativeSelectedVol2S06
 		"Untitled",
 		"figurative_selected02_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"14-11",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S06b
@@ -2459,14 +2464,14 @@ mixin figurativeSelectedVol2S06b
 		"(Detail)",
 		"figurative_selected02_s06b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"8-5",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol2S07
@@ -2474,14 +2479,14 @@ mixin figurativeSelectedVol2S07
 		"Untitled",
 		"figurative_selected02_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		figurativeSelectedVol2,
-		"figurative",
+		tagFigurative,
 		""
 	)
 
@@ -2491,15 +2496,15 @@ mixin figurativeSelectedVol3S01
 		"Kaleidoscope Selfie",
 		"figurative_selected03_s01",
 		"Figurative painting",
-		"2019",
-		"acrylic",
-		"canvas",
+		tag2019,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"11-13",
 		figurativeSelectedVol3,
 		"orange",
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S02
@@ -2507,15 +2512,15 @@ mixin figurativeSelectedVol3S02
 		"ASAP",
 		"figurative_selected03_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"11-13",
 		figurativeSelectedVol3,
-		"gray",
-		"figurative",
+		tagGrey,
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S03
@@ -2523,15 +2528,15 @@ mixin figurativeSelectedVol3S03
 		"Untitled",
 		"figurative_selected03_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"7-8",
 		figurativeSelectedVol3,
-		"purple",
-		"figurative",
+		tagPurple,
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S03b
@@ -2539,15 +2544,15 @@ mixin figurativeSelectedVol3S03b
 		"Untitled",
 		"figurative_selected03_s03b",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol3,
-		"purple",
-		"figurative",
+		tagPurple,
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S04
@@ -2555,14 +2560,14 @@ mixin figurativeSelectedVol3S04
 		"Untitled",
 		"figurative_selected03_s04",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"7-8",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S05
@@ -2570,14 +2575,14 @@ mixin figurativeSelectedVol3S05
 		"Untitled",
 		"figurative_selected03_s05",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S06
@@ -2585,14 +2590,14 @@ mixin figurativeSelectedVol3S06
 		"Untitled",
 		"figurative_selected03_s06",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S07
@@ -2600,14 +2605,14 @@ mixin figurativeSelectedVol3S07
 		"Untitled",
 		"figurative_selected03_s07",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S08
@@ -2615,14 +2620,14 @@ mixin figurativeSelectedVol3S08
 		"Untitled",
 		"figurative_selected03_s08",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S09
@@ -2630,14 +2635,14 @@ mixin figurativeSelectedVol3S09
 		"Untitled",
 		"figurative_selected03_s09",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"7-10",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol3S10
@@ -2645,14 +2650,14 @@ mixin figurativeSelectedVol3S10
 		"Untitled",
 		"figurative_selected03_s10",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-1",
 		figurativeSelectedVol3,
-		"figurative",
+		tagFigurative,
 		""
 	)
 
@@ -2662,14 +2667,14 @@ mixin figurativeSelectedVol1S01
 		"Untitled",
 		"figurative_selected01_s01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S02
@@ -2677,14 +2682,14 @@ mixin figurativeSelectedVol1S02
 		"Untitled",
 		"figurative_selected01_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S03
@@ -2692,14 +2697,14 @@ mixin figurativeSelectedVol1S03
 		"Untitled",
 		"figurative_selected01_s03",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 //- 4 – 7 not ready
@@ -2712,14 +2717,14 @@ mixin figurativeSelectedVol1S08
 		"Untitled",
 		"figurative_selected01_s08",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S09
@@ -2727,14 +2732,14 @@ mixin figurativeSelectedVol1S09
 		"Untitled",
 		"figurative_selected01_s09",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S10
@@ -2742,14 +2747,14 @@ mixin figurativeSelectedVol1S10
 		"Untitled",
 		"figurative_selected01_s10",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S11
@@ -2757,14 +2762,14 @@ mixin figurativeSelectedVol1S11
 		"Untitled",
 		"figurative_selected01_s11",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S12
@@ -2772,14 +2777,14 @@ mixin figurativeSelectedVol1S12
 		"Untitled",
 		"figurative_selected01_s12",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1S13
@@ -2787,14 +2792,14 @@ mixin figurativeSelectedVol1S13
 		"Untitled",
 		"figurative_selected01_s13",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 mixin figurativeSelectedVol1G01
@@ -2802,14 +2807,14 @@ mixin figurativeSelectedVol1G01
 		"Untitled",
 		"figurative_selected01_g01",
 		"Figurative painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		figurativeSelectedVol1,
-		"figurative",
+		tagFigurative,
 		""
 	)
 
@@ -2821,97 +2826,97 @@ mixin portraitConteS01
 		"Untitled",
 		"portrait_family_s01",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"3-2",
 		portraitConte,
 		"orange",
-		"portrait",
-		"man"
+		tagPortrait,
+		tagMan
 	)
 mixin portraitConteS02
 	+artworkCard(
 		"Untitled",
 		"portrait_family_s02",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"3-2",
 		portraitConte,
 		"orange",
-		"portrait",
-		"man"
+		tagPortrait,
+		tagMan
 	)
 mixin portraitConteS03
 	+artworkCard(
 		"Untitled",
 		"portrait_family_s03",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitConte,
-		"white",
-		"portrait",
-		"man"
+		tagWhite,
+		tagPortrait,
+		tagMan
 	)
 mixin portraitConteS04
 	+artworkCard(
 		"Untitled",
 		"portrait_family_s04",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitConte,
-		"white",
-		"portrait",
-		"man"
+		tagWhite,
+		tagPortrait,
+		tagMan
 	)
 mixin portraitConteS05
 	+artworkCard(
 		"Untitled",
 		"portrait_family_s05",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitConte,
-		"white",
-		"portrait",
-		"man"
+		tagWhite,
+		tagPortrait,
+		tagMan
 	)
 mixin portraitConteG01
 	+artworkCard(
 		"Untitled",
 		"portrait_family_g01",
 		"Portrait drawing",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"12-5",
 		portraitConte,
-		"white",
-		"portrait",
-		"triptych",
-		"woman"
+		tagWhite,
+		tagPortrait,
+		tagTriptych,
+		tagWoman
 	)
 
 //- Selected Portraits Vol. 2
@@ -2920,15 +2925,15 @@ mixin portraitSelectedVol2G01
 		"Untitled",
 		"portrait_selected02_g01",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"3-2",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S01
@@ -2936,15 +2941,15 @@ mixin portraitSelectedVol2S01
 		"Untitled",
 		"portrait_selected02_s01",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S02
@@ -2952,15 +2957,15 @@ mixin portraitSelectedVol2S02
 		"Untitled",
 		"portrait_selected02_s02",
 		"Figurative painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S03
@@ -2968,15 +2973,15 @@ mixin portraitSelectedVol2S03
 		"Untitled",
 		"portrait_selected02_s03",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S04
@@ -2984,15 +2989,15 @@ mixin portraitSelectedVol2S04
 		"Untitled",
 		"portrait_selected02_s04",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S05
@@ -3000,15 +3005,15 @@ mixin portraitSelectedVol2S05
 		"Untitled",
 		"portrait_selected02_s05",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S06
@@ -3016,15 +3021,15 @@ mixin portraitSelectedVol2S06
 		"Untitled",
 		"portrait_selected02_s06",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S08
@@ -3032,15 +3037,15 @@ mixin portraitSelectedVol2S08
 		"Untitled",
 		"portrait_selected02_s08",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S09
@@ -3048,15 +3053,15 @@ mixin portraitSelectedVol2S09
 		"Untitled",
 		"portrait_selected02_s09",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol2,
-		"cyan",
-		"portrait",
+		tagBlue,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S10
@@ -3064,15 +3069,15 @@ mixin portraitSelectedVol2S10
 		"Untitled",
 		"portrait_selected02_s10",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"5-6",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S11
@@ -3080,15 +3085,15 @@ mixin portraitSelectedVol2S11
 		"Untitled",
 		"portrait_selected02_s11",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"blue",
-		"portrait",
+		tagBlue,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S12
@@ -3096,15 +3101,15 @@ mixin portraitSelectedVol2S12
 		"Untitled",
 		"portrait_selected02_s12",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"brown",
-		"portrait",
+		tagBrown,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S13
@@ -3112,15 +3117,15 @@ mixin portraitSelectedVol2S13
 		"Self Portrait (Mirror)",
 		"portrait_selected02_s13",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"brown",
-		"portrait",
+		tagBrown,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S14
@@ -3128,15 +3133,15 @@ mixin portraitSelectedVol2S14
 		"Jeff",
 		"portrait_selected02_s14",
 		"Portrait painting",
-		"2000",
-		"acrylic",
+		tag2000,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S15
@@ -3144,15 +3149,15 @@ mixin portraitSelectedVol2S15
 		"Untitled",
 		"portrait_selected02_s15",
 		"Portrait painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S16
@@ -3160,15 +3165,15 @@ mixin portraitSelectedVol2S16
 		"Untitled",
 		"portrait_selected02_s16",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"blue",
-		"portrait",
+		tagBlue,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2G03
@@ -3176,32 +3181,32 @@ mixin portraitSelectedVol2G03
 		"Untitled",
 		"portrait_selected02_g03",
 		"Portrait painting",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"3-2",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
-		"diptych",
-		"man"
+		tagWhite,
+		tagPortrait,
+		tagDiptych,
+		tagMan
 	)
 mixin portraitSelectedVol2S17
 	+artworkCard(
 		"Untitled",
 		"portrait_selected02_s17",
 		"Portrait painting",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S18
@@ -3209,15 +3214,15 @@ mixin portraitSelectedVol2S18
 		"Untitled",
 		"portrait_selected02_s18",
 		"Portrait painting",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S19
@@ -3225,15 +3230,15 @@ mixin portraitSelectedVol2S19
 		"Untitled",
 		"portrait_selected02_s19",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S20
@@ -3241,15 +3246,15 @@ mixin portraitSelectedVol2S20
 		"Untitled",
 		"portrait_selected02_s20",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"green",
-		"portrait",
+		tagGreen,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2G02
@@ -3257,34 +3262,34 @@ mixin portraitSelectedVol2G02
 		"Untitled",
 		"portrait_selected02_g02",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"8-5",
 		portraitSelectedVol2,
-		"portrait",
-		"realism",
-		"diptych",
-		"man",
-		"woman",
-		"mature"
+		tagPortrait,
+		tagRealism,
+		tagDiptych,
+		tagMan,
+		tagWoman,
+		tagAdult
 	)
 mixin portraitSelectedVol2S21
 	+artworkCard(
 		"Untitled",
 		"portrait_selected02_s21",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"brown",
-		"portrait",
+		tagBrown,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S22
@@ -3292,15 +3297,15 @@ mixin portraitSelectedVol2S22
 		"Untitled",
 		"portrait_selected02_s22",
 		"Portrait painting",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"brown",
-		"portrait",
+		tagBrown,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S23
@@ -3308,15 +3313,15 @@ mixin portraitSelectedVol2S23
 		"Untitled",
 		"portrait_selected02_s23",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol2,
-		"white",
-		"portrait",
+		tagWhite,
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol2S24
@@ -3324,15 +3329,15 @@ mixin portraitSelectedVol2S24
 		"Untitled",
 		"portrait_selected02_s24",
 		"Portrait painting",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"5-6",
 		portraitSelectedVol2,
-		"grey",
-		"portrait",
+		tagGrey,
+		tagPortrait,
 		""
 	)
 
@@ -3342,15 +3347,15 @@ mixin portraitSkypeS01
 		"Untitled",
 		"portrait_skype_s01",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"4-7",
 		portraitSkype,
-		"purple",
-		"portrait",
+		tagPurple,
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS01b
@@ -3358,14 +3363,14 @@ mixin portraitSkypeS01b
 		"Untitled",
 		"portrait_skype_s01b",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"10-9",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS01c
@@ -3373,14 +3378,14 @@ mixin portraitSkypeS01c
 		"Untitled",
 		"portrait_skype_s01c",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"9-10",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS01d
@@ -3388,14 +3393,14 @@ mixin portraitSkypeS01d
 		"Untitled",
 		"portrait_skype_s01d",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"5-7",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS01e
@@ -3403,14 +3408,14 @@ mixin portraitSkypeS01e
 		"Untitled",
 		"portrait_skype_s01e",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"1-1",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS01f
@@ -3418,14 +3423,14 @@ mixin portraitSkypeS01f
 		"Untitled",
 		"portrait_skype_s01f",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"1-1",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS02
@@ -3433,14 +3438,14 @@ mixin portraitSkypeS02
 		"Untitled",
 		"portrait_skype_s02",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS02b
@@ -3448,14 +3453,14 @@ mixin portraitSkypeS02b
 		"Untitled",
 		"portrait_skype_s02b",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"7-6",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS03
@@ -3463,14 +3468,14 @@ mixin portraitSkypeS03
 		"Untitled",
 		"portrait_skype_s03",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"15-14",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS03b
@@ -3478,14 +3483,14 @@ mixin portraitSkypeS03b
 		"Untitled",
 		"portrait_skype_s03b",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"6-7",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS03c
@@ -3493,14 +3498,14 @@ mixin portraitSkypeS03c
 		"Untitled",
 		"portrait_skype_s03c",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"6-7",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS04
@@ -3508,14 +3513,14 @@ mixin portraitSkypeS04
 		"Untitled",
 		"portrait_skype_s04",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"1-1",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS05
@@ -3523,15 +3528,15 @@ mixin portraitSkypeS05
 		"Untitled",
 		"portrait_skype_s05",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"1-1",
 		portraitSkype,
 		"black",
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS05b
@@ -3539,15 +3544,15 @@ mixin portraitSkypeS05b
 		"Untitled",
 		"portrait_skype_s05b",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"6-5",
 		portraitSkype,
 		"black",
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSkypeS06
@@ -3555,14 +3560,14 @@ mixin portraitSkypeS06
 		"Untitled",
 		"portrait_skype_s06",
 		"Portrait painting of a Skype conversation",
-		"2000",
-		"conte",
-		"paper",
+		tag2000,
+		tagConte,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSkype,
-		"portrait",
+		tagPortrait,
 		""
 	)
 
@@ -3572,14 +3577,14 @@ mixin portraitSelectedVol3G01
 		"Untitled",
 		"portrait_selected03_g01",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"2-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S01
@@ -3587,14 +3592,14 @@ mixin portraitSelectedVol3S01
 		"Untitled",
 		"portrait_selected03_s01",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S02
@@ -3602,14 +3607,14 @@ mixin portraitSelectedVol3S02
 		"Untitled",
 		"portrait_selected03_s02",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S03
@@ -3617,14 +3622,14 @@ mixin portraitSelectedVol3S03
 		"Untitled",
 		"portrait_selected03_s03",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"canvas",
+		tag2018,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S04
@@ -3632,14 +3637,14 @@ mixin portraitSelectedVol3S04
 		"Untitled",
 		"portrait_selected03_s04",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S05
@@ -3647,14 +3652,14 @@ mixin portraitSelectedVol3S05
 		"Untitled",
 		"portrait_selected03_s05",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S06
@@ -3662,14 +3667,14 @@ mixin portraitSelectedVol3S06
 		"Untitled",
 		"portrait_selected03_s06",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S07
@@ -3677,14 +3682,14 @@ mixin portraitSelectedVol3S07
 		"Untitled",
 		"portrait_selected03_s07",
 		"Portrait painting",
-		"2018",
-		"acrylic",
+		tag2018,
+		tagAcrylic,
 		"wood",
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S08
@@ -3692,14 +3697,14 @@ mixin portraitSelectedVol3S08
 		"Untitled",
 		"portrait_selected03_s08",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S09
@@ -3707,14 +3712,14 @@ mixin portraitSelectedVol3S09
 		"Untitled",
 		"portrait_selected03_s07",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S10
@@ -3722,14 +3727,14 @@ mixin portraitSelectedVol3S10
 		"Untitled",
 		"portrait_selected03_s10",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S11
@@ -3737,14 +3742,14 @@ mixin portraitSelectedVol3S11
 		"Untitled",
 		"portrait_selected03_s11",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"00",
 		"00",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S12
@@ -3752,14 +3757,14 @@ mixin portraitSelectedVol3S12
 		"Untitled",
 		"portrait_selected03_s12",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S13
@@ -3767,14 +3772,14 @@ mixin portraitSelectedVol3S13
 		"Untitled",
 		"portrait_selected03_s13",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S14
@@ -3782,14 +3787,14 @@ mixin portraitSelectedVol3S14
 		"Untitled",
 		"portrait_selected03_s14",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S15
@@ -3797,14 +3802,14 @@ mixin portraitSelectedVol3S15
 		"Untitled",
 		"portrait_selected03_s15",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S16
@@ -3812,14 +3817,14 @@ mixin portraitSelectedVol3S16
 		"Untitled",
 		"portrait_selected03_s16",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S17
@@ -3827,14 +3832,14 @@ mixin portraitSelectedVol3S17
 		"Untitled",
 		"portrait_selected03_s17",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S18
@@ -3842,14 +3847,14 @@ mixin portraitSelectedVol3S18
 		"Untitled",
 		"portrait_selected03_s18",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S19
@@ -3857,14 +3862,14 @@ mixin portraitSelectedVol3S19
 		"Untitled",
 		"portrait_selected03_s19",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"32",
 		"3-4",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 mixin portraitSelectedVol3S20
@@ -3872,14 +3877,14 @@ mixin portraitSelectedVol3S20
 		"Untitled",
 		"portrait_selected03_s20",
 		"Portrait painting",
-		"2018",
-		"acrylic",
-		"paper",
+		tag2018,
+		tagAcrylic,
+		tagPaper,
 		"24",
 		"30",
 		"4-5",
 		portraitSelectedVol3,
-		"portrait",
+		tagPortrait,
 		""
 	)
 
@@ -3925,87 +3930,87 @@ mixin portraitHonoraryS01
 		"Name",
 		"portrait_honorary_s01",
 		"Portrait painting of a university professor",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		portraitHonorary,
-		"blue",
-		"portrait",
-		"figurative",
-		"realism",
-		"man"
+		tagBlue,
+		tagPortrait,
+		tagFigurative,
+		tagRealism,
+		tagMan
 	)
 mixin portraitHonoraryS02
 	+artworkCard(
 		"Name",
 		"portrait_honorary_s02",
 		"Portrait painting of a university professor",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		portraitHonorary,
-		"blue",
-		"portrait",
-		"figurative",
-		"realism",
-		"man"		
+		tagBlue,
+		tagPortrait,
+		tagFigurative,
+		tagRealism,
+		tagMan
 	)
 mixin portraitHonoraryS03
 	+artworkCard(
 		"Name",
 		"portrait_honorary_s03",
 		"Portrait painting of a university professor",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"11-9",
 		portraitHonorary,
-		"grey",
-		"portrait",
-		"figurative",
-		"man"		
+		tagGrey,
+		tagPortrait,
+		tagFigurative,
+		tagMan
 	)
 mixin portraitHonoraryS04
 	+artworkCard(
 		"Name",
 		"portrait_honorary_s04",
 		"Portrait painting of a university professor",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		portraitHonorary,
-		"brown",
-		"portrait",
-		"realism",
-		"man"		
+		tagBrown,
+		tagPortrait,
+		tagRealism,
+		tagMan
 	)
 mixin portraitHonoraryS05
 	+artworkCard(
 		"Untitled",
 		"portrait_honorary_s05",
 		"Portrait painting of a university professor",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		portraitHonorary,
-		"brown",
-		"portrait",
-		"realism",
-		"man"		
+		tagBrown,
+		tagPortrait,
+		tagRealism,
+		tagMan
 	)
 
 //- Selected Portraits Volume 1
@@ -4014,82 +4019,82 @@ mixin portraitSelectedVol1G01
 		"Untitled",
 		"portrait_selected01_g01",
 		"Portrait painting of three young boys",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"15-7",
 		portraitSelectedVol1,
-		"assorted",
-		"triptych",
-		"boy",
-		"child"
+		"",
+		tagTriptych,
+		tagBoy,
+		tagChild
 	)
 mixin portraitSelectedVol1S01
 	+artworkCard(
 		"Untitled",
 		"portrait_selected01_s01",
 		"Portrait painting of a young boy",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"5-7",
 		portraitSelectedVol1,
-		"portrait",
-		"realism",
-		"boy",
-		"child"
+		tagPortrait,
+		tagRealism,
+		tagBoy,
+		tagChild
 	)
 mixin portraitSelectedVol1S02
 	+artworkCard(
 		"Untitled",
 		"portrait_selected01_s02",
 		"Portrait painting of a young boy",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"5-7",
 		portraitSelectedVol1,
-		"portrait",
-		"boy",
-		"child"
+		tagPortrait,
+		tagBoy,
+		tagChild
 	)
 mixin portraitSelectedVol1S03
 	+artworkCard(
 		"Untitled",
 		"portrait_selected01_s03",
 		"Portrait painting of a young boy",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"5-7",
 		portraitSelectedVol1,
-		"portrait",
-		"boy",
-		"child"
+		tagPortrait,
+		tagBoy,
+		tagChild
 	)
 mixin portraitSelectedVol1S04
 	+artworkCard(
 		"Valentynki",
 		"portrait_selected01_s04",
 		"Painting of a boy and girl",
-		"2000",
-		"acrylic",
-		"plastic",
+		tag2000,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"9-7",
 		portraitSelectedVol1,
-		"portrait",
-		"child",
-		"boy",
+		tagPortrait,
+		tagChild,
+		tagBoy,
 		"girl"
 	)
 mixin portraitSelectedVol1S05
@@ -4097,14 +4102,14 @@ mixin portraitSelectedVol1S05
 		"Untitled",
 		"portrait_selected01_s05",
 		"Portrait painting of Michelle Obama",
-		"2000",
+		tag2000,
 		"mixed-media",
 		"wood",
 		"00",
 		"00",
 		"1-1",
 		portraitSelectedVol1,
-		"portrait",
+		tagPortrait,
 		"",
 		""
 	)
@@ -4122,30 +4127,30 @@ mixin portraitSelectedVol1S14
 		"Untitled",
 		"portrait_selected01_s14",
 		"Portrait painting of a young woman with blonde hair",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol1,
-		"portrait",
-		"woman",
-		"nude"
+		tagPortrait,
+		tagWoman,
+		tagNude
 	)
 mixin portraitSelectedVol1S15
 	+artworkCard(
 		"Untitled",
 		"portrait_selected01_s15",
 		"Portrait painting of a man with dark hair",
-		"2000",
+		tag2000,
 		"oil",
-		"canvas",
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		portraitSelectedVol1,
-		"portrait",
+		tagPortrait,
 		"",
 		""
 	)
@@ -4154,32 +4159,32 @@ mixin portraitSelectedVol1S16
 		"So Says Barden",
 		"portrait_selected01_s16",
 		"Portrait painting of Javier Barden",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-6",
 		portraitSelectedVol1,
-		"portrait",
-		"man",
-		"mature"
+		tagPortrait,
+		tagMan,
+		tagAdult
 	)
 mixin portraitSelectedVol1S17
 	+artworkCard(
 		"Orange Distraction",
 		"portrait_selected01_s17",
 		"Portrait painting of an adult man with blue eyes",
-		"2009",
-		"acrylic",
-		"plastic",
+		tag2009,
+		tagAcrylic,
+		tagPlastic,
 		"00",
 		"00",
 		"5-7",
 		portraitSelectedVol1,
-		"portrait",
-		"man",
-		"mature"
+		tagPortrait,
+		tagMan,
+		tagAdult
 	)
 
 //- Next Update
@@ -4281,15 +4286,15 @@ mixin assortedLandscapesVol2S01
 		"Untitled",
 		"assorted_landscapes02_s01",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S02
@@ -4297,15 +4302,15 @@ mixin assortedLandscapesVol2S02
 		"Untitled",
 		"assorted_landscapes02_s02",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S03
@@ -4313,15 +4318,15 @@ mixin assortedLandscapesVol2S03
 		"Untitled",
 		"assorted_landscapes02_s03",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S04
@@ -4329,15 +4334,15 @@ mixin assortedLandscapesVol2S04
 		"Untitled",
 		"assorted_landscapes02_s04",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S05
@@ -4345,15 +4350,15 @@ mixin assortedLandscapesVol2S05
 		"Untitled",
 		"assorted_landscapes02_s05",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S06
@@ -4361,15 +4366,15 @@ mixin assortedLandscapesVol2S06
 		"Untitled",
 		"assorted_landscapes02_s06",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S07
@@ -4377,15 +4382,15 @@ mixin assortedLandscapesVol2S07
 		"Untitled",
 		"assorted_landscapes02_s07",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"14-11",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S08
@@ -4393,15 +4398,15 @@ mixin assortedLandscapesVol2S08
 		"Untitled",
 		"assorted_landscapes02_s08",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S09
@@ -4409,15 +4414,15 @@ mixin assortedLandscapesVol2S09
 		"Untitled",
 		"assorted_landscapes02_s09",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol2S10
@@ -4425,15 +4430,15 @@ mixin assortedLandscapesVol2S10
 		"Untitled",
 		"assorted_landscapes02_s10",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedLandscapesVol2,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 
@@ -4443,15 +4448,15 @@ mixin assortedAnimalsS01
 		"Untitled",
 		"assorted_animals_s01",
 		"Painting of a dead wolf",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"6-5",
 		assortedAnimals,
-		"assorted",
-		"animal",
+		"",
+		tagAnimal,
 		""
 	)
 mixin assortedAnimalsS02
@@ -4459,15 +4464,15 @@ mixin assortedAnimalsS02
 		"Untitled",
 		"assorted_animals_s02",
 		"Painting of a cat",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		assortedAnimals,
-		"assorted",
-		"animal",
+		"",
+		tagAnimal,
 		""
 	)
 mixin assortedAnimalsS03
@@ -4475,31 +4480,31 @@ mixin assortedAnimalsS03
 		"Untitled",
 		"assorted_animals_s03",
 		"Painting of a dog",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"6-5",
 		assortedAnimals,
-		"assorted",
-		"animal",
+		"",
+		tagAnimal,
 		""
 	)
 mixin assortedAnimalsS04
 	+artworkCard(
 		"Untitled",
 		"assorted_animals_s04",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-3",
 		assortedAnimals,
-		"assorted",
-		"horse",
-		"animal",
+		"",
+		tagHorse,
+		tagAnimal,
 		""
 	)
 mixin assortedAnimalsS05
@@ -4507,49 +4512,49 @@ mixin assortedAnimalsS05
 		"Untitled",
 		"assorted_animals_s05",
 		"Portrait of a horse",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		assortedAnimals,
-		"assorted",
-		"horse",
-		"animal",
-		"portrait"
+		"",
+		tagHorse,
+		tagAnimal,
+		tagPortrait
 	)
 mixin assortedAnimalsS06
 	+artworkCard(
 		"Untitled",
 		"assorted_animals_s06",
 		"Portrait painting of a brown horse",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"1-1",
 		assortedAnimals,
-		"assorted",
-		"horse",
-		"animal",
-		"portrait"
+		"",
+		tagHorse,
+		tagAnimal,
+		tagPortrait
 	)
 mixin assortedAnimalsS07
 	+artworkCard(
 		"Untitled",
 		"assorted_animals_s07",
 		"Painting of a brown dog sleeping",
-		"2000",
-		"watercolour",
-		"paper",
+		tag2000,
+		tagWatercolour,
+		tagPaper,
 		"00",
 		"00",
 		"3-2",
 		assortedAnimals,
-		"assorted",
-		"animal",
+		"",
+		tagAnimal,
 		""
 	)
 mixin assortedAnimalsS08
@@ -4557,17 +4562,17 @@ mixin assortedAnimalsS08
 		"Untitled",
 		"assorted_animals_s08",
 		"Portrait painting of a white horse",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-4",
 		assortedAnimals,
-		"assorted",
-		"horse",
-		"animal",
-		"portrait"
+		"",
+		tagHorse,
+		tagAnimal,
+		tagPortrait
 	)
 
 //- Next update
@@ -4583,15 +4588,15 @@ mixin assortedLandscapesVol1S01
 		"Untitled",
 		"assorted_landscapes01_s01",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"3-2",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S02
@@ -4599,15 +4604,15 @@ mixin assortedLandscapesVol1S02
 		"Untitled",
 		"assorted_landscapes01_s02",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"2-3",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S03
@@ -4615,15 +4620,15 @@ mixin assortedLandscapesVol1S03
 		"Untitled",
 		"assorted_landscapes01_s03",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"11-14",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S04
@@ -4631,15 +4636,15 @@ mixin assortedLandscapesVol1S04
 		"Untitled",
 		"assorted_landscapes01_s04",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"11-14",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S05
@@ -4647,15 +4652,15 @@ mixin assortedLandscapesVol1S05
 		"Untitled",
 		"assorted_landscapes01_s05",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"23-16",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S06
@@ -4663,15 +4668,15 @@ mixin assortedLandscapesVol1S06
 		"Untitled",
 		"assorted_landscapes01_s06",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"8-11",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S07
@@ -4679,15 +4684,15 @@ mixin assortedLandscapesVol1S07
 		"Untitled",
 		"assorted_landscapes01_s07",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"4-5",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S08
@@ -4695,15 +4700,15 @@ mixin assortedLandscapesVol1S08
 		"Untitled",
 		"assorted_landscapes01_s08",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"5-4",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)
 mixin assortedLandscapesVol1S09
@@ -4711,14 +4716,14 @@ mixin assortedLandscapesVol1S09
 		"Untitled",
 		"assorted_landscapes01_s09",
 		"Landscape painting",
-		"2000",
-		"acrylic",
-		"canvas",
+		tag2000,
+		tagAcrylic,
+		tagCanvas,
 		"00",
 		"00",
 		"8-11",
 		assortedLandscapesVol1,
-		"assorted",
-		"landscape",
+		"",
+		tagLandscape,
 		""
 	)

@@ -27,6 +27,12 @@ $colorWhite03:#f9f9f9;
 $colorWhite04:#f6f6f6;
 $colorWhite05:#f3f3f3;
 
+// Transparent whites
+$colorWhiteTransparent01: rgba($colorWhite01, .96);
+$colorWhiteTransparent02: rgba($colorWhite01, .92);
+$colorWhiteTransparent03: rgba($colorWhite01, .8);
+
+
 // "Brand" colors
 // IBM Indigo 70, 80, 90
 $colorBrand01:#473793;

@@ -13,18 +13,19 @@ block config
 			hero1:   assortedStill.hero,
 			hero2:   workAssorted.hero,
 			colname: workAssorted.name,
-			collink: workAssorted.link,
-			summary: ""
+			collink: workAssorted.link
 		}
+
+block seriesSummary
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas"
+		tagCanvas
 	)
 
 block navSubmenu

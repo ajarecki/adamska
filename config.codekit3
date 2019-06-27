@@ -2,9 +2,70 @@
 "AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https://codekitapp.com/",
 "buildSteps": [
 	{
+		"name": "Process Styles",
+		"stepType": 0,
+		"uuidString": "820AEF49-097E-44A1-BBC8-C9F40DEA45A3"
+		},
+	{
+		"name": "Copy Fonts",
+		"stepType": 0,
+		"uuidString": "FDCCE571-8DC2-47C1-A8BC-167B3275192C"
+		},
+	{
+		"itemsToProcess": [
+			"/--index.pug",
+			"/-about.pug",
+			"/-cv.pug",
+			"/-tags.pug",
+			"/-work.pug",
+			"/Ω-404.pug"
+			],
+		"name": "Process Main Pages",
+		"stepType": 0,
+		"uuidString": "4E9A4E7F-E5D1-40DC-A602-1A91B0F2FC81"
+		},
+	{
+		"itemsToProcess": [
+			"/series_abstract_attachments.pug",
+			"/series_abstract_figural.pug",
+			"/series_abstract_flames.pug",
+			"/series_abstract_grace.pug",
+			"/series_abstract_landscapes.pug",
+			"/series_abstract_selected01.pug",
+			"/series_abstract_shapes.pug",
+			"/series_assorted_animals.pug",
+			"/series_assorted_landscapes01.pug",
+			"/series_assorted_landscapes02.pug",
+			"/series_figurative_body.pug",
+			"/series_figurative_coping.pug",
+			"/series_figurative_disengagement.pug",
+			"/series_figurative_examination.pug",
+			"/series_figurative_selected01.pug",
+			"/series_figurative_selected02.pug",
+			"/series_figurative_selected03.pug",
+			"/series_portrait_honorary.pug",
+			"/series_portrait_selected01.pug",
+			"/series_portrait_selected02.pug",
+			"/series_portrait_selected03.pug",
+			"/series_portrait_skype.pug"
+			],
+		"name": "Process Series Pages",
+		"stepType": 0,
+		"uuidString": "76044D40-3DB2-4428-9D8C-A8D04BDC5FD1"
+		},
+	{
 		"name": "Process All Remaining Files and Folders",
 		"stepType": 1,
 		"uuidString": "3950382E-B0AD-48B6-A791-18D3C419C2CB"
+		},
+	{
+		"itemsToProcess": [
+			"/js/adamska.js",
+			"/js/colcade.js"
+			],
+		"name": "Process Scripts",
+		"stepType": 0,
+		"uuidString": "4B1A287D-7151-4678-AA76-6EF2D1897EA4"
 		}
 	],
 "creatorBuild": "29156",
@@ -257,128 +318,6 @@
 		"oS": 3,
 		"uL": 1
 		},
-	"/font/adamska-icons.eot": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/adamska-icons.eot",
-		"oF": 1
-		},
-	"/font/adamska-icons.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "/build/font/adamska-icons.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"/font/adamska-icons.ttf": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/adamska-icons.ttf",
-		"oF": 1
-		},
-	"/font/adamska-icons.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/adamska-icons.woff",
-		"oF": 1
-		},
-	"/font/family-bold.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-bold.woff",
-		"oF": 1
-		},
-	"/font/family-bold.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-bold.woff2",
-		"oF": 1
-		},
-	"/font/family-extended-bold.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-extended-bold.woff",
-		"oF": 1
-		},
-	"/font/family-extended-bold.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-extended-bold.woff2",
-		"oF": 1
-		},
-	"/font/family-extended-normal.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-extended-normal.woff",
-		"oF": 1
-		},
-	"/font/family-extended-normal.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-extended-normal.woff2",
-		"oF": 1
-		},
-	"/font/family-light.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-light.woff",
-		"oF": 1
-		},
-	"/font/family-light.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-light.woff2",
-		"oF": 1
-		},
-	"/font/family-normal.woff": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-normal.woff",
-		"oF": 1
-		},
-	"/font/family-normal.woff2": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/font/family-normal.woff2",
-		"oF": 1
-		},
-	"/humans.txt": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/build/humans.txt",
-		"oF": 1
-		},
 	"/js/_js-plugins.pug": {
 		"cB": 0,
 		"cOD": 1,
@@ -600,9 +539,9 @@
 		"eSQ": 1,
 		"ft": 4096,
 		"hM": 0,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "/build/README.html",
-		"oF": 0,
+		"oF": 1,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,
@@ -979,32 +918,6 @@
 		"oAP": "/build/404.html",
 		"oF": 2,
 		"oS": 0
-		},
-	"/Ω-humans.txt": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/build/humans.txt",
-		"oF": 2
-		},
-	"/Ω-robots.txt": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/build/robots.txt",
-		"oF": 2
-		},
-	"/Ω-test.pug": {
-		"cB": 0,
-		"cOD": 1,
-		"ft": 512,
-		"hM": 0,
-		"oA": 0,
-		"oAP": "/build/test.html",
-		"oF": 2,
-		"oS": 0
 		}
 	},
 "hooks": [
@@ -1017,7 +930,7 @@
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-soon",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 582178018.566944
+	"lastBuiltDate": 583361575.50562501
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -2891,7 +2804,7 @@
 		"autoOutputPathStyle": 0,
 		"bundleFormat": 0,
 		"createSourceMap": 0,
-		"minifyOutput": 1,
+		"minifyOutput": 0,
 		"syntaxCheckerStyle": 3,
 		"transpilerStyle": 0
 		},

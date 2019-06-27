@@ -1,23 +1,110 @@
 // Shared decorative styles
 
 // Borders
-$borderLight: 1px solid $colorWhite01;
-$borderMedium: 1px solid $colorGray09;
-$borderDark: 1px solid $colorBrand05;
+$borderLight:
+	1px solid $colorWhite01;
+$borderMedium:
+	1px solid $colorGray09;
+$borderDark:
+	1px solid $colorBrand05;
 
 // Transformations
-$scaleNormal: scale3d(1, 1, 1);
-$scaleUpSmall: scale3d(1.025, 1.025, 1);
-$scaleUpLarge: scale3d(1.0425, 1.0425, 1);
-$scaleDownSmall: scale3d(.975, .975, 1);
-$scaleDownLarge: scale3d(.9575, .9575, 1);
-$scaleDownHide: scale3d(.001, .001, 1);
-$translateNormal: translate3d(0, 0, 0);
-$translateRight: translate3d(4px, 0, 0);
-$translateLeft: translate3d(-4px, 0, 0);
-$translateUp: translate3d(0, -4px, 0);
-$translateDown: translate3d(0, 4px, 0);
-$translateUpRight: translat3d(4px, -4px, 0);
+// Standard transform values
+$scaleNormal:
+	scale3d(1, 1, 1);
+$scaleUpSmall:
+	scale3d(1.025, 1.025, 1);
+$scaleUpLarge:
+	scale3d(1.0425, 1.0425, 1);
+$scaleDownSmall:
+	scale3d(.975, .975, 1);
+$scaleDownLarge: 
+	cale3d(.9575, .9575, 1);
+$scaleDownHide:
+	scale3d(.001, .001, 1);
+$translateNormal:
+	translate3d(0, 0, 0);
+$translateRight:
+	translate3d(4px, 0, 0);
+$translateLeft:
+	translate3d(-4px, 0, 0);
+$translateUp:
+	translate3d(0, -4px, 0);
+$translateDown:
+	translate3d(0, 4px, 0);
+$translateUpRight:
+	translat3d(4px, -4px, 0);
+
+// Transform extends
+%scaleNormal {
+	transform: $scaleNormal;
+}
+%scaleUpSmall {
+	transform: $scaleUpSmall;
+}
+%scaleUpLarge {
+	transform: $scaleUpLarge;
+}
+%scaleDownSmall {
+	transform: $scaleDownSmall;
+}
+%scaleDownLarge {
+	transform: $scaleDownLarge;
+}
+%scaleDownHide {
+	transform: $scaleDownHide;
+}
+%translateNormal {
+	transform: $translateNormal;
+}
+%translateRight {
+	transform: $translateRight;
+}
+%translateLeft {
+	transform: $translateLeft;
+}
+%translateUp {
+	transform: $translateUp;
+}
+%translateDown {
+	transform: $translateDown;
+}
+%translateUpRight {
+	transform: $translateUpRight;
+}
+
+// SVG fill color mixin
+@mixin svgColor($svgColor) {
+	svg path,
+	svg rect {
+		fill: $svgColor;
+	}
+}
+// Common svg fill colors
+%svgColorWhite {
+	svg path {
+		fill: $colorWhite01;
+	}
+}
+%svgColorBlack {
+	svg path {
+		fill: $colorGray01;
+	}
+}
+%svgColorBrand {
+	svg path {
+		fill: $colorBrand01;
+	}
+}
+
+// Opacities
+%opacityFull {
+	opacity: 1;
+}
+%opacityHidden {
+	// Using .01 avoids browser repaint for better performance
+	opacity: .01;
+}
 
 // Logo image sizing utilities
 $logoWidth: 480px;
@@ -46,43 +133,8 @@ $logoHeight: 224px;
 		inset 0 -1px 1px 2px rgba($colorBrand03, .08),
 		inset 0 0 0 2px rgba($colorBrand03, .04);
 }
-%headlineShadow {
-	text-shadow: 
-		0 .5px 0 $colorBrand02,
-		0 1px 0 $colorBrand01;
-}
 
-// Text
-// Text underline when hovered
-%hoverUnderline {
-	text-decoration: none;
-	span {
-		text-decoration: none;
-	}
-	&:hover,
-	&:focus {
-		text-decoration: underline;
-		text-decoration-skip-ink: auto;
-		span {
-			text-decoration: underline;
-			text-decoration-skip-ink: auto;
-		}
-	}
-}
-// Non-breaking space before text label
-%labelSpaceBefore {
-	&::before {
-		content: "\00a0";
-		display: inline-block;
-	}
-}
-// Non-breaking space after text label
-%labelSpaceAfter {
-	&::after {
-		content: "\00a0";
-		display: inline-block;
-	}
-}
+
 // Line on sides effects
 %lineLeftRight {
 	color: $colorBlack01;
@@ -130,8 +182,7 @@ $logoHeight: 224px;
 }
 // Photo banner header text
 %headlineBackground {
-	@extend %headlineShadow;
-	background-image: 
+	background-image:
 		linear-gradient(
 			-26deg,
 			rgba($colorBrand05, .52),
@@ -139,6 +190,9 @@ $logoHeight: 224px;
 			rgba($colorBrand05, .52)
 		);
 	background-color: rgba($colorBrand03, .48);
+	text-shadow: 
+		0 .5px 0 $colorBrand02,
+		0 1px 0 $colorBrand01;
 }
 
 // Transitions
@@ -216,25 +270,6 @@ $logoHeight: 224px;
 	}
 }
 
-// Inline link style when hovered or focused
-%hoverLinkBackground {
-	@extend %hoverBackground;
-	display: inline-block;
-	position: relative;
-	color: inherit;
-	&::before {
-		background-color: rgba($colorBrand01, .92);
-		z-index: -1;
-	}
-	&:hover,
-	&:focus {
-		@include forTabletPortraitUp {
-			z-index: 2;
-			color: $colorWhite01;
-		}
-	}
-}
-
 // Reveal svg icons when hovered or focused
 %hoverShowIcon {
 	&:hover,
@@ -287,6 +322,14 @@ $logoHeight: 224px;
 
 
 // Backgrounds
+
+// Base styles for elements with photo background images
+%backgroundImage {
+	background: {
+		size: cover;
+		repeat: no-repeat;
+	}
+}
 
 // Background gradients
 // Transparent to off-white

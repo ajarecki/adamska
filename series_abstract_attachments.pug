@@ -13,19 +13,21 @@ block config
 			hero1:   abstractAttachments.hero,
 			hero2:   workAbstract.hero,
 			colname: workAbstract.name,
-			collink: workAbstract.link,
-			summary: "Pure abstraction is non-objective. If I paint a paper clip and introduce it to other formal elements that are non-objective, such as colour, line, etc., and then I follow how to relate color, shapes, line and the space occupied by the painting , treating it as it as though it was a pure abstract."
+			collink: workAbstract.link
 		}
+
+block seriesSummary
+	p Pure abstraction is non-objective. If I paint a paper clip and introduce it to other formal elements that are non-objective, such as colour, line, etc., and then I follow how to relate color, shapes, line and the space occupied by the painting , treating it as it as though it was a pure abstract.
 
 block seriesMediums
 	+seriesMediums(
-		"acrylic"
+		tagAcrylic
 	)
 
 block seriesMaterials
 	+seriesMaterials(
-		"canvas",
-		"plastic"
+		tagCanvas,
+		tagPlastic
 	)
 
 block navSubmenu

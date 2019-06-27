@@ -2,8 +2,7 @@
 
 // Sections
 .ap-c-scn {
-	@extend %widthFull;
-	position: relative;
+	@extend %blockRelative;
 	// Page header sections
 	&--intro {
 		@extend %backgroundLargeHeight;
@@ -15,18 +14,18 @@
 	&--featured {
 		@extend %paddingTopDouble;
 		@extend %paddingBottomHalf;
+		@extend %paddingLeftRight;
 	}
 	// Selected press section
 	&--press {
 		@extend %paddingTopBottom;
-		// @extend %backgroundLight;
 		background-color: $colorWhite01;
 	}
 	// Mini bio section
 	&--grazyna {
-		@extend %paddingTopBottomHalf;
+		@extend %paddingAll;
 		overflow: hidden;
-		background-color: $colorWhite03;
+		background-color: $colorBrand04;
 	}
 	// Main website footer
 	&--footer {
@@ -35,31 +34,10 @@
 		background-color: $colorWhite03;
 	}
 	// Lightbox item sections
-	&--gallery {
-		@extend %paddingTopDouble;
-		// Special padding to comensate for space taken by series info panel
-		padding-top: $grd * 32;
-		@include forTabletPortraitUp {
-			padding-top: $grd * 18;
-		}
-		@include forTabletLandscapeUp {
-			padding-top: $grd * 20;
-		}
-		@include forTabletUp {
-			padding-top: $grd * 24;
-		}
-		@include forDesktopUp {
-			padding-top: $grd * 26;
-		}
-		@include forBigDesktopUp {
-			padding-top: $grd * 28;
-		}
-	}
+	// &--gallery {
+	// }
 	&--series {
 		@extend %paddingLeftRight;
-		// Remove extra space caused by transform positioning on inner content
-		height: 0;
-		overflow: visible;
 	}
 	// About content module container
 	&--about {
@@ -72,6 +50,7 @@
 	// Collection sections on the Work page
 	&--collection {
 		@extend %paddingBottomHalf;
+		@extend %paddingLeftRight;
 	}
 	// Instagram slider section
 	&--instagram {
@@ -81,6 +60,7 @@
 	&--next {
 		@extend %paddingTop;
 		@extend %paddingBottom;
+		@extend %paddingLeftRight;
 		@extend %backgroundLightAlternate;
 		// background-color: $colorWhite01;
 	}
@@ -88,6 +68,7 @@
 	&--related {
 		@extend %paddingBottom;
 		@extend %backgroundLight;
+		@extend %paddingLeftRight;
 	}
 }
 
@@ -100,9 +81,8 @@
 }
 // Section header containers
 .ap-c-scn__header {
-	@extend %widthFull;
+	@extend %blockRelative;
 	@extend %paddingLeftRight;
-	position: relative;
 	// Content wrapper
 	&-container {
 		@extend %widthWrap;
@@ -147,7 +127,8 @@
 		color: $colorBlack01;
 		// Page intro section specificity
 		.ap-c-scn--intro & {
-			@extend %paddingTopAndHalf;
+			// @extend %paddingTopAndHalf;
+			padding-top: 18%;
 			// Fallback font sizes
 			@extend %fontExtendedBold;
 			font-size: 5vw;
@@ -156,11 +137,15 @@
 			color: $colorWhite01;
 			// padding-top: 0;
 			// Remove pseudo element effects
+			.ap-p-series & {
+				padding-top: 20%;
+			}
 			&::before,
 			&::after {
 				display: none;
 			}
 			@include forTabletPortraitUp {
+				padding-top: 12%;
 				// Scale text based on browser width
 				font-size: 3.25vw;
 			}
@@ -169,6 +154,8 @@
 			}
 			span {
 				@extend %headlineBackground;
+				@extend %lineHeightBody;
+				padding: .5% 1.25%;
 			}
 		}
 		// Featured series section specificity
@@ -266,10 +253,10 @@
 		}
 		p {
 			@extend %headlineBackground;
+			@extend %lineHeightBody;
+			@extend %inlineLinks;
 			display: inline;
-			a {
-				@extend %hoverLinkBackground;
-			}
+			padding: .25% .75%;
 		}
 	}
 	// Call to action button
@@ -300,7 +287,7 @@ $backgroundSmallHeight: 768px;
 		height: $backgroundLargeHeight * .325;
 	}
 }
-// Small background container height
+// Small background container height – 2 rows
 %backgroundSmallHeight {
 	height: $backgroundSmallHeight * 1.5;
 	@include forBigDesktopOnly {
@@ -308,6 +295,16 @@ $backgroundSmallHeight: 768px;
 	}
 	@include forTabletOnly {
 		height: $backgroundSmallHeight * .65;
+	}
+}
+// 3 rows
+%backgroundSmallHeightAlt {
+	height: $backgroundSmallHeight * 2.25;
+	@include forBigDesktopOnly {
+		height: $backgroundSmallHeight * 1.5;
+	}
+	@include forTabletOnly {
+		height: $backgroundSmallHeight * .975;
 	}
 }
 // Large background size
@@ -356,7 +353,7 @@ $backgroundSmallHeight: 768px;
 		position: top center;
 	}
 	&::before {
-		@extend %positionAbsolute;
+		@extend %blockAbsolute;
 		content: "";
 	}
 	// Hero header backgrounds
@@ -390,7 +387,7 @@ $backgroundSmallHeight: 768px;
 	}
 	// Mini-bio section background
 	.ap-c-scn--grazyna & {
-		@extend %backgroundSmallHeight;
+		@extend %backgroundSmallHeightAlt;
 		@extend %backgroundSmallSize;
 		bottom: 0;
 		&::before {
@@ -440,7 +437,7 @@ $videoHeight: 720px;
 	}
 	// Video element
 	video {
-		@extend %positionAbsolute;
+		@extend %blockAbsolute;
 		width: 100%;
 		height: auto;
 	}

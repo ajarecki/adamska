@@ -123,3 +123,148 @@ $fontSizeXXXS: 12px;
 		font-size: 14px;
 	}
 }
+
+// These can be optionally in correspiondence with font size extends
+%spacingExtraLarge {
+	letter-spacing: -.625px;
+	@include forTabletPortraitUp {
+		letter-spacing: -.75px;
+	}
+	@include forTabletUp {
+		letter-spacing: -.875px;
+	}
+	@include forBigDesktopUp {
+		letter-spacing: -1px;
+	}
+}
+%spacingLarge {
+	letter-spacing: -.5px;
+	@include forTabletPortraitUp {
+		letter-spacing: -.625px;
+	}
+	@include forTabletUp {
+		letter-spacing: -.75px;
+	}
+	@include forBigDesktopUp {
+		letter-spacing: -.875px;
+	}
+}
+%spacingMedium {
+	letter-spacing: -.375px;
+	@include forTabletPortraitUp {
+		letter-spacing: -.5px;
+	}
+	@include forTabletUp {
+		letter-spacing: -.625px;
+	}
+	@include forBigDesktopUp {
+		letter-spacing: -.75px;
+	}
+}
+%spacingRegular {
+	letter-spacing: -.25px;
+	@include forTabletPortraitUp {
+		letter-spacing: -.375px;
+	}
+	@include forTabletUp {
+		letter-spacing: -.5px;
+	}
+	@include forBigDesktopUp {
+		letter-spacing: -.625px;
+	}
+}
+%spacingSmall {
+	letter-spacing: normal;
+	@include forTabletPortraitUp {
+		letter-spacing: -.25px;
+	}
+	@include forTabletUp {
+		letter-spacing: -.375px;
+	}
+	@include forBigDesktopUp {
+		letter-spacing: -.5px;
+	}
+}
+%spacingMicro {
+	letter-spacing: normal;
+	@include forBigDesktopUp {
+		letter-spacing: -.25px;
+	}
+}
+
+// Shared text styles
+
+// Labels and single-line headers
+%singleLine {
+	display: inline-block;
+	line-height: 1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// Non-breaking spaces before/after text
+%spaceBefore {
+	&::before {
+		content: "\00a0";
+		display: inline-block;
+	}
+}
+%spaceAfter {
+	&::after {
+		content: "\00a0";
+		display: inline-block;
+	}
+}
+
+// Deprecated
+// Inline link style when hovered or focused
+%hoverLinkBackground {
+	@extend %hoverBackground;
+	display: inline-block;
+	position: relative;
+	color: inherit;
+	&::before {
+		background-color: rgba($colorBrand01, .92);
+		z-index: -1;
+	}
+	&:hover,
+	&:focus {
+		@include forTabletPortraitUp {
+			z-index: 2;
+			color: $colorWhite01;
+		}
+	}
+}
+
+// Style text links within parent element
+%inlineLinks {
+	a {
+		display: inline-block;
+		position: relative; // Needed for hover effect
+		z-index: 2;
+		color: inherit;
+		text-decoration: {
+			line: underline;
+			skip: auto;
+			style: solid;
+			color: inherit;
+		}
+		&::before {
+			@extend %blockAbsolute;
+			@extend %transitionFast;
+			content: "";
+			display: inline-block;
+			background-color: rgba($colorBrand01, .92);
+			z-index: -1;
+			opacity: .01;
+		}
+		&:hover,
+		&:focus {
+			z-index: 2;
+			color: $colorWhite01;
+			&::before {
+				opacity: 1;
+			}
+		}
+	}
+}

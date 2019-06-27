@@ -1,10 +1,10 @@
 //- Configuration
 
 //- Address partials
-- var urlRoot = "https://adamska.ca/"
-- var urlRootTag = urlRoot + "tag-"
-- var urlRootImage = "https://res.cloudinary.com/adamska/image/upload/"
-- var urlRootVideo = "https://res.cloudinary.com/adamska/video/upload/"
+- var urlRoot = "https://adamska.ca/";
+- var urlRootTag = urlRoot + "tag-";
+- var urlRootImage = "https://res.cloudinary.com/adamska/image/upload/";
+- var urlRootVideo = "https://res.cloudinary.com/adamska/video/upload/";
 
 //- Main pages
 	id   — An identifier used to assign classes
@@ -102,13 +102,13 @@
 //- Add email protection
 
 //- adamskapainting@gmail.com Encoded email address
-- var emailEncoded = "#{'&#097;&#100;&#097;&#109;&#115;&#107;&#097;&#112;&#097;&#105;&#110;&#116;&#105;&#110;&#103;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;'}!"
-//- -
-//- 	var email = {
-//- 		name: `${emailEncoded}`,
-//- 		link: `mailto:${emailEncoded}`,
-//- 		info: "Contact Grazyna by Email"
-//- 	}
+- var emailEncoded = "${'&#097;&#100;&#097;&#109;&#115;&#107;&#097;&#112;&#097;&#105;&#110;&#116;&#105;&#110;&#103;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;'}!"
+-
+	var email = {
+		name: "adamskapaintng@gmail.com",
+		link: "mailto:&#097;&#100;&#097;&#109;&#115;&#107;&#097;&#112;&#097;&#105;&#110;&#116;&#105;&#110;&#103;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;",
+		info: "Contact Grazyna by Email"
+	}
 
 -
 	var email = {
@@ -659,6 +659,16 @@
 		count: "",
 		hero:  ""
 	};
+-
+	var tagPastel = {
+		id:    "pastel",
+		name:  "Pastel",
+		link:  "https://adamska.ca/tag-pastel",
+		thumb: "grazyna-adamska-jarecka_portrait_skype_s02-thumb.png",
+		info:  "Work created using pastel",
+		count: ""
+	};
+
 //- Remove Mixed Media? Kind of vague
 -
 	var tagMixedMedia = {
@@ -666,7 +676,7 @@
 		name:  "Mixed Media",
 		link:  "https://adamska.ca/tag-mixed-media",
 		thumb: "grazyna-adamska-jarecka_-thumb.png",
-		info:  "Work created with mixed media",
+		info:  "Work created with several mediums",
 		count: ""
 	};
 
