@@ -1,0 +1,599 @@
+//- Gallery cards
+
+//- Artwork piece card mixin – classes referenced by lightGallery.js
+	Declare:
+	Piece name,
+	Image source address (used for both full-size and thumbnail),
+	Thumbnails image alt text,
+	Piece year created,
+	Piece medium,
+	Piece material,
+	Piece width in inches,
+	Piece height inches,
+	Image aspect ratio class,
+	Title of series piece belongs to,
+	Series link address,
+	List of tags relavent to piece
+mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, pieceMaterial, pieceWidth, pieceHeight, aspectRatio, seriesData, ...tagList)
+	//- Lightbox image and caption
+	figure.ap-c-crd-artwork(
+		data-src= urlRootImage + "f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + ".png"
+		data-sub-html=".ap-c-crd-artwork__info"
+	)
+		//- Thumbnail container
+		div.ap-c-crd-artwork__thumb(
+			class="ap-l-ratio--" + aspectRatio
+			style="background-image: url(" + urlRootImage + "c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+		)
+			//- Thumbnail image
+			img.ap-c-crd-artwork__image(
+				src= urlRootImage + "f_auto,q_auto:best/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png"
+				alt= imageAlt + " by Grazyna Adamska Jarecka"
+			)
+			div.ap-c-crd-artwork__icon
+				+icon(iconExpand)
+		//- Info and details
+		figcaption.ap-c-crd-artwork__info(
+			style="background-image: url(" + urlRootImage + "c_scale,e_blur:512,f_auto,q_auto:good,w_64/v1/work/grazyna-adamska-jarecka_" + imageSource + "-thumb.png);"
+		)
+			//- Title and series
+			div.ap-c-crd-artwork__title
+				h4.ap-c-crd-artwork__piece= pieceName
+				span.ap-c-crd-artwork__series
+					| &ensp;&mdash;&ensp;in&nbsp;
+					a(href= seriesData.link)= seriesData.name
+			//- Mediums and materials
+			div.ap-c-crd-artwork__spec
+				span= pieceYear.name
+					| &nbsp;&mdash;&nbsp;
+				span= pieceMedium
+					| &nbsp;on&nbsp;
+				span= pieceMaterial
+					| &comma;&nbsp;
+				span= pieceWidth
+					| &nbsp;&times;&nbsp;
+				span= pieceHeight
+					| &nbsp;in
+
+mixin abstractAttachmentsS01
+	+artworkCard('Pocket-Sized Voids','abstract_attachments_s01','Abstract work composed of colorful paper clip forms emerging in circular groups from a  jet black abyss.', tag2019,'Acrylic','Canvas','30','24','4-5',abstractAttachments)
+mixin abstractAttachmentsS02
+	+artworkCard('Tangled Promises','abstract_attachments_s02','Painting of paper clip forms linking across sky blue hues.', tag2019,'Acrylic','Canvas','30','24','11-14',abstractAttachments)
+mixin abstractAttachmentsS03
+	+artworkCard('Untitled Journey','abstract_attachments_s03','Abstract painting', tag2019,'Acrylic','Canvas','30','24','4-5',abstractAttachments)
+mixin abstractAttachmentsS04
+	+artworkCard('Attachment Delivered','abstract_attachments_s04','Rose-colored paperclip forms emerging from a beige background.', tag2019,'Acrylic','Canvas','30','24','11-14',abstractAttachments)
+mixin abstractAttachmentsS05
+	+artworkCard('Attachment','abstract_attachments_s05','Abstract painting', tag2019,'Acrylic','Canvas','24','18','3-4',abstractAttachments)
+mixin abstractAttachmentsS06
+	+artworkCard('Miniature Rebellions','abstract_attachments_s06','Abstract painting', tag2019,'Acrylic','Canvas','24','18','3-4',abstractAttachments)
+mixin abstractAttachmentsS07
+	+artworkCard('Third Chances','abstract_attachments_s07','Abstract painting', tag2019,'Acrylic','Canvas','24','18','3-4',abstractAttachments)
+mixin abstractAttachmentsS08
+	+artworkCard('Clip Composition','abstract_attachments_s08','Abstract painting', tag2019,'Acrylic','Canvas','24','18','3-4',abstractAttachments)
+mixin abstractAttachmentsS09
+	+artworkCard('Formative Years','abstract_attachments_s09','Abstract painting', tag2019,'Acrylic','Canvas','20','16','3-4',abstractAttachments)
+mixin abstractAttachmentsS10
+	+artworkCard('Rise and Set','abstract_attachments_s10','Abstract painting', tag2019,'Acrylic','Canvas','18','18','1-1',abstractAttachments)
+mixin abstractAttachmentsS11
+	+artworkCard('Tarnished Bonds','abstract_attachments_s11','Abstract painting', tag2019,'Acrylic','Canvas','22','22','1-1',abstractAttachments)
+mixin abstractAttachmentsS12
+	+artworkCard('Uninvited Guests','abstract_attachments_s12','Abstract painting', tag2019,'Acrylic','Canvas','22','16','8-11',abstractAttachments)
+mixin abstractAttachmentsS13
+	+artworkCard('Grid of Attachment','abstract_attachments_s13','Abstract painting', tag2019,'Acrylic','Canvas','20','20','1-1',abstractAttachments)
+mixin abstractAttachmentsS14
+	+artworkCard('Never Eclipsed','abstract_attachments_s14','Abstract painting', tag2019,'Acrylic','Canvas','24','18','4-3',abstractAttachments)
+mixin abstractAttachmentsS15
+	+artworkCard('We Are Not Connected','abstract_attachments_s15','Abstract painting', tag2019,'Acrylic','Plastic','48','36','3-4',abstractAttachments)
+mixin abstractAttachmentsS16
+	+artworkCard('Bent Out Links','abstract_attachments_s16','Abstract painting', tag2019,'Acrylic','Canvas','12','16','4-3',abstractAttachments)
+mixin abstractFiguralS01
+	+artworkCard('Deadline Anxiety','abstract_figural_s01','Abstract painting', tag2019,'Oil','Canvas','36','48','23-18',abstractFigural)
+mixin abstractFiguralS02
+	+artworkCard('Dominative Moments','abstract_figural_s02','Abstract painting', tag2018,'Oil','Canvas','36','48','6-5',abstractFigural)
+mixin abstractFiguralS03
+	+artworkCard('Dynamic Formations','abstract_figural_s03','Abstract painting', tag2014,'Acrylic, Acrylic Ink','Canvas','36','48','4-3',abstractFigural)
+mixin abstractFiguralS04
+	+artworkCard('Dynamic Identities','abstract_figural_s04','Abstract painting', tag2016,'Acrylic, Acrylic Ink','Canvas','30','40','4-3',abstractFigural)
+mixin abstractFiguralS05
+	+artworkCard('Royal Court','abstract_figural_s05','Abstract painting', tag2016,'Acrylic, Acrylic Ink','Canvas','36','48','4-3',abstractFigural)
+mixin abstractFiguralS06
+	+artworkCard('Feline Frolics #2','abstract_figural_s06','Abstract painting', tag2016,'Acrylic, Acrylic Ink','Canvas','30','40','5-4',abstractFigural)
+mixin abstractFiguralS07
+	+artworkCard('Feline Frolics #1','abstract_figural_s07','Abstract painting', tag2016,'Acrylic, Acrylic Ink','Canvas','30','40','4-3',abstractFigural)
+mixin abstractFlamesS01
+	+artworkCard('Blase Lashes','abstract_flames_s01','Abstract painting', tag2018,'Acrylic','Canvas','30','24','4-5',abstractFlames)
+mixin abstractFlamesS02
+	+artworkCard('Ponytail Palm','abstract_flames_s02','Abstract painting', tag2018,'Acrylic','Canvas','40','30','3-4',abstractFlames)
+mixin abstractFlamesS03
+	+artworkCard('150 Flames','abstract_flames_s03','Abstract painting', tag2017,'Acrylic','Canvas','30','30','1-1',abstractFlames)
+mixin abstractFlamesS04
+	+artworkCard('Synthetic Flames','abstract_flames_s04','Abstract painting', tag2017,'Acrylic','Wood Panel','12','12','1-1',abstractFlames)
+mixin abstractFlamesS05
+	+artworkCard('Red Reef #1','abstract_flames_s05','Abstract painting', tag2016,'Acrylic','Wood Panel','12','12','1-1',abstractFlames)
+mixin abstractFlamesS06
+	+artworkCard('Red Shapes','abstract_flames_s06','Abstract painting', tag2016,'Acrylic','Wood Panel','12','16','4-3',abstractFlames)
+mixin abstractFlamesS07
+	+artworkCard('Flame Derivatives','abstract_flames_s07','Abstract painting', tag2016,'Acrylic','Canvas','12','16','4-3',abstractFlames)
+mixin abstractFlamesS08
+	+artworkCard('Coral Bleaching Study','abstract_flames_s08','Abstract painting', tag2016,'Acrylic','Canvas','40','46','23-20',abstractFlames)
+mixin abstractFlamesS09
+	+artworkCard('Blue Reef Composition #2','abstract_flames_s09','Abstract painting', tag2017,'Oil','Canvas','36','36','1-1',abstractFlames)
+mixin abstractFlamesS10
+	+artworkCard('Blue Reef Composition #1','abstract_flames_s10','Abstract painting', tag2018,'Acrylic','Canvas','14','14','1-1',abstractFlames)
+mixin abstractFlamesS11
+	+artworkCard('Blue Reef','abstract_flames_s11','Abstract painting', tag2017,'Acrylic','Canvas','11','14','14-11',abstractFlames)
+mixin abstractFlamesS12
+	+artworkCard('Red Coral Reef','abstract_flames_s12','Abstract painting', tag2017,'Acrylic','Canvas','12','16','4-3',abstractFlames)
+mixin abstractFlamesS13
+	+artworkCard('Red Reef #2','abstract_flames_s13','Abstract painting', tag2017,'Acrylic','Canvas','12','16','4-3',abstractFlames)
+mixin abstractFlamesS14
+	+artworkCard('White Corals','abstract_flames_s14','Abstract painting', tag2017,'Acrylic','Canvas','12','12','1-1',abstractFlames)
+mixin abstractGraceS01
+	+artworkCard('Grace/No Grace Ratio','abstract_grace_s01','Abstract painting', tag2011,'Acrylic, Acrylic Ink, Coffee, Gesso','Plastic','22','22','50-49',abstractGrace)
+mixin abstractGraceS02
+	+artworkCard('Big Event','abstract_grace_s02','Abstract painting', tag2011,'Gesso','Plastic','25.5','27.5','11-9',abstractGrace)
+mixin abstractGraceS03
+	+artworkCard('Grace/No Grace','abstract_grace_s03','Abstract painting', tag2011,'Gesso, Acrylic','Plastic','24.5','30','11-9',abstractGrace)
+mixin abstractGraceS04
+	+artworkCard('Grace in Droplets','abstract_grace_s04','Abstract painting', tag2011,'Acrylic, Gesso, Coffee','Plastic','30','24','9-11',abstractGrace)
+mixin abstractLandscapesS01
+	+artworkCard('Pulp Forest','abstract_landscapes_s01','Abstract painting', tag2017,'Acrylic','Canvas','42','48','16-10',abstractLandscapes)
+mixin abstractLandscapesS02
+	+artworkCard('Orange et Vert','abstract_landscapes_s02','Abstract painting', tag2016,'Acrylic','Canvas','30','48','1-1',abstractLandscapes)
+mixin abstractLandscapesS03
+	+artworkCard('White Thorn Three','abstract_landscapes_s03','Abstract painting', tag2015,'Acrylic','Wood Panel','24','24','1-1',abstractLandscapes)
+mixin abstractLandscapesS04
+	+artworkCard('Echoes of Growth (Small Version)','abstract_landscapes_s04','Abstract painting', tag2013,'Acrylic','Wood Panel','12','12','1-1',abstractLandscapes)
+mixin abstractLandscapesS05
+	+artworkCard('All at Eramosa','abstract_landscapes_s05','Abstract painting', tag2014,'Acrylic','Canvas','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS06
+	+artworkCard('Sienna Colour Woods','abstract_landscapes_s06','Abstract painting', tag2015,'Acrylic','Canvas','30','36','6-5',abstractLandscapes)
+mixin abstractLandscapesS07
+	+artworkCard('Preserved Resources','abstract_landscapes_s07','Abstract painting', tag2014,'Acrylic','Wood Panel','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS08
+	+artworkCard('This Forest Has Ideas','abstract_landscapes_s08','Abstract painting', tag2015,'Acrylic','Wood Panel','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS09
+	+artworkCard('La Forêt Étrange','abstract_landscapes_s09','Abstract painting', tag2014,'Acrylic','Canvas','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS10
+	+artworkCard('Hollow','abstract_landscapes_s10','Abstract painting', tag2015,'Acrylic','Wood Panel','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS11
+	+artworkCard('Pine Port','abstract_landscapes_s11','Abstract painting', tag2014,'Acrylic','Wood Panel','30','30','1-1',abstractLandscapes)
+mixin abstractLandscapesS12
+	+artworkCard('Colour Coat Threes','abstract_landscapes_s12','Abstract painting', tag2015,'Acrylic','Canvas','24','24','1-1',abstractLandscapes)
+mixin abstractLandscapesS13
+	+artworkCard('Marks at Parks','abstract_landscapes_s13','Abstract painting', tag2015,'Acrylic','Canvas','30','24','4-5',abstractLandscapes)
+mixin abstractLandscapesS14
+	+artworkCard('Free Rhythm','abstract_landscapes_s14','Abstract painting', tag2015,'Acrylic','Canvas','24','24','1-1',abstractLandscapes)
+mixin abstractLandscapesS15
+	+artworkCard('Test','abstract_landscapes_s15','Abstract painting', tag2015,'Acrylic','Wood Panel','23','23','5-4',abstractLandscapes)
+mixin abstractLandscapesS17
+	+artworkCard('Heavy Billow','abstract_landscapes_s17','Abstract painting', tag2016,'Acrylic','Canvas','24','30','5-4',abstractLandscapes)
+mixin abstractLandscapesS18
+	+artworkCard('Conservatory','abstract_landscapes_s18','Abstract painting', tag2016,'Acrylic, Gesso','Lexan Plastic','52','48','3-4',abstractLandscapes)
+mixin abstractLandscapesS19
+	+artworkCard('Blue Brick Sky','abstract_landscapes_s19','Abstract painting', tag2016,'Acrylic','Canvas','48','36','3-4',abstractLandscapes)
+mixin abstractLandscapesS20
+	+artworkCard('Gold Spattered Blue View','abstract_landscapes_s20','Abstract painting', tag2015,'Acrylic, Acrylic Ink','Lexan Plastic','40','48','14-11',abstractLandscapes)
+mixin abstractLandscapesS21
+	+artworkCard('Untitled Demo Painting','abstract_landscapes_s21','Abstract painting', tag2016,'Acrylic','Canvas','24','18','4-5',abstractLandscapes)
+mixin abstractSelectedVol1S01
+	+artworkCard('Greenhouse','abstract_selected01_s01','Abstract painting', tag2015,'Acrylic','Canvas','42','42','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S02
+	+artworkCard('Hand to Object','abstract_selected01_s02','Abstract painting', tag2015,'Oil','Canvas','20','28','14-11',abstractSelectedVol1)
+mixin abstractSelectedVol1S03
+	+artworkCard('Red Shapes','abstract_selected01_s03','Abstract painting', tag2016,'Acrylic, Oil Pastel','Wood Panel','12','16','4-3',abstractSelectedVol1)
+mixin abstractSelectedVol1S04
+	+artworkCard('Leaves and Stones','abstract_selected01_s04','Abstract painting', tag2016,'Acrylic','Canvas','36','36','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S05
+	+artworkCard('X and Y Painting','abstract_selected01_s05','Abstract painting', tag2016,'Acrylic','Canvas','30','40','4-3',abstractSelectedVol1)
+mixin abstractSelectedVol1S06
+	+artworkCard('Reconnection','abstract_selected01_s06','Abstract painting', tag2016,'Acrylic','Canvas','36','48','4-3',abstractSelectedVol1)
+mixin abstractSelectedVol1S07
+	+artworkCard('Coffee on Mars','abstract_selected01_s07','Abstract painting', tag2016,'Acrylic','Canvas','40','46','7-6',abstractSelectedVol1)
+mixin abstractSelectedVol1S08
+	+artworkCard('Acorns and Lemons','abstract_selected01_s08','Abstract painting', tag2016,'Acrylic','Wood Panel','8','8','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S09
+	+artworkCard('Cypers Wall','abstract_selected01_s09','Abstract painting', tag2014,'Acrylic','Wood Panel','12','12','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S10
+	+artworkCard('Squared Drops','abstract_selected01_s10','Abstract painting', tag2017,'Acrylic','Wood Panel','12','12','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S11
+	+artworkCard('Imprecise Machine','abstract_selected01_s11','Abstract painting', tag2014,'Acrylic','Wood Panel','12','12','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S12
+	+artworkCard('Second Thoughts','abstract_selected01_s12','Abstract painting', tag2014,'Acrylic','Wood Panel','24','24','1-1',abstractSelectedVol1)
+mixin abstractSelectedVol1S13
+	+artworkCard('Ear Shape Family','abstract_selected01_s13','Abstract painting', tag2014,'Acrylic','Wood Panel','16','12','3-4',abstractSelectedVol1)
+mixin abstractShapesS01
+	+artworkCard('Agility Test','abstract_shapes_s01','Abstract painting', tag2017,'Acrylic','Wood Panel','36','36','1-1',abstractShapes)
+mixin abstractShapesS02
+	+artworkCard('Frisby Flip','abstract_shapes_s02','Abstract painting', tag2017,'Acrylic','Wood Panel','36','36','1-1',abstractShapes)
+mixin abstractShapesS03
+	+artworkCard('You Are In There','abstract_shapes_s03','Abstract painting', tag2017,'Oil','Wood Panel','36','36','1-1',abstractShapes)
+mixin abstractShapesS04
+	+artworkCard('Fear Not','abstract_shapes_s04','Abstract painting', tag2017,'Acrylic, Acrylic Ink','Canvas','48','46','1-1',abstractShapes)
+mixin abstractShapesS05
+	+artworkCard('Straw Luck','abstract_shapes_s05','Abstract painting', tag2017,'Acrylic','Canvas','40','40','1-1',abstractShapes)
+mixin abstractShapesS06
+	+artworkCard('Wide Sleeve','abstract_shapes_s06','Abstract painting', tag2017,'Acrylic','Canvas','44','52','7-6',abstractShapes)
+mixin assortedAnimalsS01
+	+artworkCard('Dying Wolf','assorted_animals_s01','Abstract painting', tag2013,'Acrylic, Acrylic Ink','Wood Panel','30','36','6-5',assortedAnimals)
+mixin assortedAnimalsS02
+	+artworkCard('Eben\'s Land','assorted_animals_s02','Painting depicting animals', tag2016,'Acrylic','Canvas','12','12','1-1',assortedAnimals)
+mixin assortedAnimalsS03
+	+artworkCard('Mural in Memory of Crumb','assorted_animals_s03','Painting depicting animals', tag2014,'Acrylic','Wall','30','40','6-5',assortedAnimals)
+mixin assortedAnimalsS04
+	+artworkCard('Group of Horses','assorted_animals_s04','Painting depicting animals', tag2014,'Acrylic','Canvas','11','14','4-3',assortedAnimals)
+mixin assortedAnimalsS05
+	+artworkCard('Head of a Horse','assorted_animals_s05','Painting depicting animals', tag2015,'Acrylic','Wood Panel','8','8','1-1',assortedAnimals)
+mixin assortedAnimalsS06
+	+artworkCard('Sketch in Oil (Head of a Horse)','assorted_animals_s06','Painting depicting animals', tag2014,'Oil','Wood Panel','12','12','1-1',assortedAnimals)
+mixin assortedAnimalsS07
+	+artworkCard('Napping Dog','assorted_animals_s07','Painting depicting animals', tag2016,'Watercolour','Paper','12','16','3-2',assortedAnimals)
+mixin assortedAnimalsS08
+	+artworkCard('White Horse','assorted_animals_s08','Painting depicting animals', tag1988,'Oil','Wooden Board','22','18','3-4',assortedAnimals)
+mixin assortedLandscapesVol1S01
+	+artworkCard('Around the Jefferson City Apartment','assorted_landscapes01_s01','Landscape painting', tag1994,'Watercolour','Paper','11.06','8','3-2',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S02
+	+artworkCard('View from Jefferson City Apartment','assorted_landscapes01_s02','Landscape painting', tag1994,'Watercolour','Paper','14','9.35','2-3',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S03
+	+artworkCard('Surroundings of Jefferson City Apartment','assorted_landscapes01_s03','Landscape painting', tag1994,'Watercolour','Paper','15','11','11-14',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S04
+	+artworkCard('Study on a Forest','assorted_landscapes01_s04','Landscape painting', tag1998,'Watercolour','Paper','15','11','11-14',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S05
+	+artworkCard('Swobnica, Poland','assorted_landscapes01_s05','Landscape painting', tag1987,'Watercolour','Paper','8','11.65','23-16',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S06
+	+artworkCard('My Backyard\'s Wall','assorted_landscapes01_s06','Landscape painting', tag1998,'Watercolour','Paper','15','11','8-11',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S07
+	+artworkCard('View on Backyard','assorted_landscapes01_s07','Landscape painting', tag1998,'Watercolour','Paper','15','11','4-5',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S08
+	+artworkCard('Study of Cactuses','assorted_landscapes01_s08','Landscape painting', tag1988,'Watercolour','Paper','11.65','8','5-4',assortedLandscapesVol1)
+mixin assortedLandscapesVol1S09
+	+artworkCard('Surroundings of Szczecin','assorted_landscapes01_s09','Landscape painting', tag1988,'Watercolour','Paper','11.5','8.35','8-11',assortedLandscapesVol1)
+mixin assortedLandscapesVol2S01
+	+artworkCard('Beaver Hub','assorted_landscapes02_s01','Landscape painting', tag2017,'Acrylic','Canvas','30','40','4-3',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S02
+	+artworkCard('Hidden Valley (Entrance View)','assorted_landscapes02_s02','Landscape painting', tag2017,'Acrylic','Paper','9','12','4-3',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S03
+	+artworkCard('Stocle Trail','assorted_landscapes02_s03','Landscape painting', tag2018,'Watercolour','Paper','14','11','4-5',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S04
+	+artworkCard('At Stock Bay','assorted_landscapes02_s04','Landscape painting', tag2018,'Watercolour','Paper','9','11','4-3',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S05
+	+artworkCard('Royal Park, Guelph','assorted_landscapes02_s05','Landscape painting', tag2018,'Watercolour','Paper','14','11','4-5',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S06
+	+artworkCard('Green Algea in Hidden Valley','assorted_landscapes02_s06','Landscape painting', tag2018,'Acrylic','Canvas','9','16','4-3',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S07
+	+artworkCard('Corn Field','assorted_landscapes02_s07','Landscape painting', tag2018,'Acrylic','Paper','11','14','14-11',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S08
+	+artworkCard('Five Minutes Away','assorted_landscapes02_s08','Landscape painting', tag2018,'Watercolour','Paper','16','9','3-4',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S09
+	+artworkCard('Wetland, Hidden Valley','assorted_landscapes02_s09','Landscape painting', tag2017,'Acrylic','Paper','9','11','4-3',assortedLandscapesVol2)
+mixin assortedLandscapesVol2S10
+	+artworkCard('Algae, Hidden Valley','assorted_landscapes02_s10','Landscape painting', tag2017,'Acrylic','Paper','11','14','4-3',assortedLandscapesVol2)
+mixin figurativeBodyG01
+	+artworkCard('Misery of Regression (Arrangement)','figurative_body_g01','Figurative painting of a woman.', tag2005,'Gesso, Coffee, Acrylic','Lexan Plastic','18','24','5-3',figurativeBody)
+mixin figurativeBodyS01
+	+artworkCard('Misery of Regression 3','figurative_body_s01','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Acetate','24','20','5-6',figurativeBody)
+mixin figurativeBodyS02
+	+artworkCard('Misery of Regression 2','figurative_body_s02','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Acetate','24','20','6-5',figurativeBody)
+mixin figurativeBodyS03
+	+artworkCard('Misery of Regression 1','figurative_body_s03','Figurative painting of a woman.', tag2005,'Gesso, Coffee, Acrylic','Acetate','24','20','5-6',figurativeBody)
+mixin figurativeBodyS04
+	+artworkCard('Hugging Pillow Installation','figurative_body_s04','Figurative painting of a woman.', tag2005,'Gesso, Coffee, Acrylic','Acetate','38','52','3-2',figurativeBody)
+mixin figurativeBodyS04b
+	+artworkCard('Hugging Pillow Installation (Alternative View)','figurative_body_s04b','Figurative painting of a woman.', tag2005,'Acrylic, Coffee, Gesso','Acetate','38','52','5-4',figurativeBody)
+mixin figurativeBodyS04c
+	+artworkCard('Hugging Pillow, Fragment of the Installation','figurative_body_s04c','Figurative painting of a woman.', tag2005,'Acrylic, Coffee, Gesso','Acetate','','','3-2',figurativeBody)
+mixin figurativeBodyS04d
+	+artworkCard('Hugging Pillow (Fragment of Installation)','figurative_body_s04d','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Acetate','','','9-4',figurativeBody)
+mixin figurativeBodyS05
+	+artworkCard('Body Drawings (Installation for Peak Gallery, Toronto)','figurative_body_s05','Figurative painting of a woman.', tag2012,'Acrylic, Gesso, Coffee','Acetate', 'Lexan Plastic','54','70','4-3',figurativeBody)
+mixin figurativeBodyS05b
+	+artworkCard('Body Drawings (Installation for Peak Gallery, Toronto)','figurative_body_s05b','Figurative painting of a woman.', tag2012,'Acrylic, Gesso, Coffee','Acetate', 'Lexan Plastic','','','7-5',figurativeBody)
+mixin figurativeBodyS06
+	+artworkCard('Hugging Pillow, installation for 2010 LA Art SHOW of bigger and framed pieces','figurative_body_s06','Figurative painting of a woman.', tag2009,'Acrylic, Gesso, Acrylic Ink','Lexan Plastic','16','12','9-8',figurativeBody)
+mixin figurativeBodyS06b
+	+artworkCard('Anxious Body, part of 2014 solo show @ 3Capacity Gallery','figurative_body_s06b','Figurative painting of a woman.', tag2012,'Acrylic, Gesso, Acrylic Ink','Lexan Plastic','','','4-3',figurativeBody)
+mixin figurativeBodyS07
+	+artworkCard('Anxious Body, Installation','figurative_body_s07','Figurative painting of a woman.', tag2012,'Acrylic, Acrylic Ink, Gesso','Lexan Plastic','36','44','4-3',figurativeBody)
+mixin figurativeCopingG01
+	+artworkCard('Fourfold  Rocking, 4 panels','figurative_coping_g01','Figurative painting of a woman.', tag2011,'Acrylic, Coffee, Gesso','Lexan Plastic','90','50','5-6',figurativeCoping)
+mixin figurativeCopingG01b
+	+artworkCard('Fourfold Rocking, 4 panels, solo show at Gallery M Contemporary, Toronto','figurative_coping_g01b','Figurative painting of a woman.', tag2011,'Acrylic, Gesso, Coffee','Lexan Plastic','90','50','4-3',figurativeCoping)
+mixin figurativeCopingG01c
+	+artworkCard('Fourfold Rocking, rear panel, solo show at Gallery M Contemporary, Toronto','figurative_coping_g01c','Figurative painting of a woman.', tag2011,'Gesso, Coffee, Acrylic','Lexan Plastic','90','50','4-3',figurativeCoping)
+mixin figurativeCopingG01d
+	+artworkCard('Fourfold Rocking, fragment','figurative_coping_g01d','Figurative painting of a woman.', tag2014,'Gesso, Coffee, Acrylic','Lexan Plastic','','','2-1',figurativeCoping)
+mixin figurativeCopingG02
+	+artworkCard('Dual ID, Fronts, of  figures painted on both sides of the plastic film','figurative_coping_g02','Figurative painting of a woman.', tag2013,'Acrylic, Gesso, Acrylic Ink','Acetate','48','36','7-8',figurativeCoping)
+mixin figurativeCopingG02b
+	+artworkCard('Dual ID, Backs, of Figures painted on both sides of plastic film','figurative_coping_g02b','Figurative painting of a woman.', tag2013,'Acrylic, Gesso, Acrylic Ink','Acetate','48','36','3-4',figurativeCoping)
+mixin figurativeCopingG03
+	+artworkCard('Hugging Pillow in the Air of Ice, 3 panels','figurative_coping_g03','Figurative painting of a woman.', tag2005,'Gesso, Coffee, Acrylic','Artex Plastic Film','72','43','1-1',figurativeCoping)
+mixin figurativeCopingG03b
+	+artworkCard('Hugging Pillow in the Air of Ice','figurative_coping_g03b','Figurative painting of a woman.', tag2005,'Gesso, Coffee, Acrylic','Artex Plastic Film','72','43','4-3',figurativeCoping)
+mixin figurativeCopingP01
+	+artworkCard('Fourfold Rocking, at Museum of the City Merida, Mexico','figurative_coping_p01','Figurative painting of a woman.', tag2014,'Gesso, Coffee, Acrylic','Lexan Plastic','90','50','7-10',figurativeCoping)
+mixin figurativeCopingS08
+	+artworkCard('Becoming Transparent','figurative_coping_s08','Figurative painting of a woman.', tag2008,'Mixed Media','Artex Plastic Film','60','42','4-3',figurativeCoping)
+mixin figurativeCopingS10
+	+artworkCard('Hugging Pillow in the Air of Ice, middle panel','figurative_coping_s10','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Artex Plastic Film','72','43','5-9',figurativeCoping)
+mixin figurativeCopingS11
+	+artworkCard('Hugging Pillow in the Air of Ice, rear panel','figurative_coping_s11','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Artex Plastic Film','72','43','5-9',figurativeCoping)
+mixin figurativeCopingS12
+	+artworkCard('Hugging Pillow in the Air of Ice, front panel','figurative_coping_s12','Figurative painting of a woman.', tag2005,'Acrylic, Gesso, Coffee','Artex Plastic Film','72','43','5-9',figurativeCoping)
+mixin figurativeDisengagementS01
+	+artworkCard('On the Edge of the Blue','figurative_disengagement_s01','Figurative painting of a woman.', tag2006,'Acrylic, Coffee, Gesso','Artex Plastic Film','45','42','49-50',figurativeDisengagement)
+mixin figurativeDisengagementS02
+	+artworkCard('On the Edge of the Blue #2','figurative_disengagement_s02','Figurative painting of a woman.', tag2006,'Acrylic, Gesso, Coffee','Acetate','48','42','6-7',figurativeDisengagement)
+mixin figurativeDisengagementS03
+	+artworkCard('Powerless (Melancholia)','figurative_disengagement_s03','Figurative painting of a woman.', tag2006,'Acrylic, Gesso, Coffee','Acetate','44','42','6-7',figurativeDisengagement)
+mixin figurativeDisengagementS04
+	+artworkCard('Missed Deadline','figurative_disengagement_s04','Figurative painting of a woman.', tag2011,'Conté, Acrylic, Gesso','Canvas','30','40','4-3',figurativeDisengagement)
+mixin figurativeDisengagementS05
+	+artworkCard('Discrete Narration','figurative_disengagement_s05','Figurative painting of a woman.', tag2008,'Acrylic, Acrylic Ink','Lexan Plastic','45','42','9-10',figurativeDisengagement)
+mixin figurativeDisengagementS06
+	+artworkCard('Rather Obsession','figurative_disengagement_s06','Figurative painting of a woman.', tag2010,'Acrylic, Gesso, Coffee','Lexan Plastic','42','70','9-5',figurativeDisengagement)
+mixin figurativeDisengagementS07
+	+artworkCard('It\'s Over','figurative_disengagement_s07','Figurative painting of a woman.', tag2008,'Acrylic','Lexan Plastic','24','30','5-4',figurativeDisengagement)
+mixin figurativeDisengagementS08
+	+artworkCard('Yellow Evening','figurative_disengagement_s08','Figurative painting of a woman.', tag2008,'Acrylic, Gesso, Coffee','Lexan Plastic','24','24','1-1',figurativeDisengagement)
+mixin figurativeDisengagementS09
+	+artworkCard('Cellular Disconnection','figurative_disengagement_s09','Figurative painting of a woman.', tag2008,'Acrylic, Gesso, Coffee','Lexan Plastic','18','28','5-4',figurativeDisengagement)
+mixin figurativeDisengagementS10
+	+artworkCard('Equilibrium','figurative_disengagement_s10','Figurative painting of a woman.', tag2008,'Acrylic, Gesso, Coffee','Lexan Plastic','24','24','1-1',figurativeDisengagement)
+mixin figurativeDisengagementS11
+	+artworkCard('I do not Belong','figurative_disengagement_s11','Figurative painting of a woman.', tag2007,'Acrylic, Gesso, Coffee, Acrylic Ink','Acetate','24','30','5-4',figurativeDisengagement)
+mixin figurativeDisengagementS12
+	+artworkCard('Lost in Space','figurative_disengagement_s12','Figurative painting of a woman.', tag2007,'Acrylic, Coffee, Gesso, Acrylic Ink','Acetate','24','30','4-3',figurativeDisengagement)
+mixin figurativeDisengagementS13
+	+artworkCard('Peculiar Disengagement','figurative_disengagement_s13','Figurative painting of a woman.', tag2007,'Acrylic, Acrylic Ink, Gesso, Coffee','Acetate','24','30','5-4',figurativeDisengagement)
+mixin figurativeExaminationG01
+	+artworkCard('Life is Worth of Examining, View on Fragment of the 2006  solo Show in Kipp Gallery, Indiana University of Pennsylvania','figurative_examination_g01','Figurative painting of a woman.', tag2006,'Acrylic','Unstretched Canvas', 'Artex Plastic Film','','','3-2',figurativeExamination)
+mixin figurativeExaminationS01
+	+artworkCard('Ahead','figurative_examination_s01','Figurative painting of a woman.', tag2006,'Acrylic','Canvas','48','36','3-4',figurativeExamination)
+mixin figurativeExaminationS02
+	+artworkCard('Trylogy of Dominoes','figurative_examination_s02','Figurative painting of a woman.', tag2006,'Acrylic','Canvas','48','36','3-4',figurativeExamination)
+mixin figurativeExaminationS02b
+	+artworkCard('Trilogy of Dominoes, fragment','figurative_examination_s02b','Figurative painting of a woman.', tag2006,'Acrylic','Canvas','48','36','16-9',figurativeExamination)
+mixin figurativeExaminationS03
+	+artworkCard('Seat Belt Trauma','figurative_examination_s03','Figurative painting of a woman.', tag2009,'Acrylic, Acrylic Ink','Lexan Plastic','64','42','8-11',figurativeExamination)
+mixin figurativeExaminationS04
+	+artworkCard('Independent Study','figurative_examination_s04','Figurative painting of a woman.', tag2008,'Acrylic, Acrylic Ink, Gesso, Coffee','Lexan','22','22','1-1',figurativeExamination)
+mixin figurativeExaminationS05
+	+artworkCard('Manumission','figurative_examination_s05','Figurative painting of a woman.', tag2006,'Acrylic, Gesso, Coffee','Artex Plastic Film','84','45','8-17',figurativeExamination)
+mixin figurativeExaminationS06
+	+artworkCard('Unzipping','figurative_examination_s06','Figurative painting of a woman.', tag2006,'Acrylic, Gesso, Coffee','Artex Plastic Film','84','54','2-1',figurativeExamination)
+mixin figurativeExaminationS07
+	+artworkCard('Coffeine Body','figurative_examination_s07','Figurative painting of a woman.', tag2006,'Gesso, Coffee','Artex Plastic Film','76','42','10-19',figurativeExamination)
+mixin figurativeExaminationS08
+	+artworkCard('Split','figurative_examination_s08','Figurative painting of a woman.', tag2010,'Oil','Canvas','36','28','2-3',figurativeExamination)
+mixin figurativeExaminationS09
+	+artworkCard('Memories and Fantasies','figurative_examination_s09','Figurative painting of a woman.', tag2006,'Oil, Conté','Canvas','96','56','16-10',figurativeExamination)
+mixin figurativeExaminationS10
+	+artworkCard('Dominoes and Rocking','figurative_examination_s10','Figurative painting of a woman.', tag2006,'Acrylic Ink, Conté, Gesso, Acrylic','Canvas','40','22','3-5',figurativeExamination)
+mixin figurativeExaminationS11
+	+artworkCard('Journey ','figurative_examination_s11','Figurative painting of a woman.', tag2006,'Acrylic Ink, Acrylic, Gesso, Coffee','Unstretched Canvas','54','50','8-9',figurativeExamination)
+mixin figurativeSelectedVol1G01
+	+artworkCard('A boy Sleeping, 3 pieces','figurative_selected01_g01','Figurative painting of a woman.', tag2008,'Acrylic, Gesso, Coffee, Acrylic Ink','Lexan Plastic','20','20','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S01
+	+artworkCard('Drawing from a Model','figurative_selected01_s01','Figurative painting of a woman.', tag2005,'Ink','Paper','16.5','13','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S02
+	+artworkCard('Poised and Playful','figurative_selected01_s02','Figurative painting of a woman.', tag2009,'Mixed Media','Lexan Plastic','41','48','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S03
+	+artworkCard('Leader Woman','figurative_selected01_s03','Figurative painting of a woman.', tag2009,'Mixed Media','Lexan Plastic','30','24','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S08
+	+artworkCard('Nudes and Cellphones','figurative_selected01_s08','Figurative painting of a nudes with cellphones.', tag2005,'Mixed Media','Paper','40','28','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S09
+	+artworkCard('Globalisolation','figurative_selected01_s09','Figurative painting of a woman.', tag2005,'Charcoal','Paper','42','30','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S10
+	+artworkCard('A Boy Dreaming Green','figurative_selected01_s10','Figurative painting of a boy.', tag2008,'Mixed Media','Lexan Plastic','20','20','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S11
+	+artworkCard('A Key to Dreams, A Boy Sleeping series','figurative_selected01_s11','Figurative painting of a boy.', tag2008,'Mixed Media','Lexan Plastic','20','20','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol1S12
+	+artworkCard('Maybe, A Boy Sleeping Series','figurative_selected01_s12','Figurative painting of a boy.', tag2008,'Mixed Media','Lexan Plastic','20','20','4-3',figurativeSelectedVol1)
+mixin figurativeSelectedVol2G01
+	+artworkCard('Poised and Unbalanced-Fragment of 4 Panel Installation','figurative_selected02_g01','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','48','30','4-5',figurativeSelectedVol2)
+mixin figurativeSelectedVol2G01b
+	+artworkCard('Poised and Unbalanced, Fragment of 4 Pannel Installation','figurative_selected02_g01b','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','48','30','7-5',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S01
+	+artworkCard('Poised and Unbalanced, Installation Panel #3','figurative_selected02_s01','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','48','30','5-8',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S02
+	+artworkCard('Poised and Unbalanced-Panel #2 of the Installation','figurative_selected02_s02','Painting of a woman standing in a black robe, facing a chair.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','48','30','5-8',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S03
+	+artworkCard('Poised and Unbalanced, Frontal Panel #1 of the Installation','figurative_selected02_s03','Painting of a woman in a black robe surrounded by empty space.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','48','30','5-8',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S04
+	+artworkCard('Poised and Unbalanced, Rear Panel #4','figurative_selected02_s04','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Artex Plastic Film','48','30','5-8',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S05
+	+artworkCard('Poised and Unbalanced, Painting','figurative_selected02_s05','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','42','48','9-8',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S06
+	+artworkCard('See-Through Study','figurative_selected02_s06','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','40','38','14-11',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S06b
+	+artworkCard('See Through Study, Detail of Bottom Part','figurative_selected02_s06b','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Lexan Plastic','','','8-5',figurativeSelectedVol2)
+mixin figurativeSelectedVol2S07
+	+artworkCard('Independent Land, Childhood','figurative_selected02_s07','Figurative painting of a woman.', tag2014,'Acrylic, Acrylic Ink','Canvas','30','30','1-1',figurativeSelectedVol2)
+mixin figurativeSelectedVol3S01
+	+artworkCard('Kaleidoscope Selfie','figurative_selected03_s01','Figurative painting of a woman.', tag2019,'Acrylic, Acrylic Ink','Canvas','52','44','11-13',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S02
+	+artworkCard('ASAP','figurative_selected03_s02','Painting depicting a pale silhouette of a boy leaning back, hands resting on his head.', tag2018,'Pastel','Paper','27','22','11-13',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S03
+	+artworkCard('Oddness','figurative_selected03_s03','Figurative painting of a woman.', tag2018,'Mixed Media','Lexan Plastic','60','45','7-8',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S03b
+	+artworkCard('Dip of Passage, An Unfinished Fragment','figurative_selected03_s03b','Figurative painting of a woman.', tag2017,'Mixed Media','Lexan Plastic','48','42','4-3',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S04
+	+artworkCard('Inbetweenness','figurative_selected03_s04','Figurative painting of a woman.', tag2018,'Mixed Media','Lexan Plastic','48','42','7-8',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S05
+	+artworkCard('Red Migration','figurative_selected03_s05','Figurative painting of a woman.', tag2017,'Acrylic','Canvas','30','40','4-3',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S06
+	+artworkCard('Migratory Colours','figurative_selected03_s06','Figurative painting of a woman.', tag2018,'Mixed Media','Lexan Plastic','60','45','3-4',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S07
+	+artworkCard(' Ethnic Treat to a Polish-Canadian','figurative_selected03_s07','Figurative painting of a woman.', tag2017,'Coloured Pencils','Paper','30','24','3-4',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S08
+	+artworkCard('Alert or Tired','figurative_selected03_s08','Figurative painting of a woman.', tag2018,'Acrylic','Lexan Plastic','24','24','1-1',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S09
+	+artworkCard('Glow Out','figurative_selected03_s09','Figurative painting of a woman.', tag2018,'Mixed Media','Lexan Plastic','72','48','7-10',figurativeSelectedVol3)
+mixin figurativeSelectedVol3S10
+	+artworkCard('La Donna Furiosa','figurative_selected03_s10','Figurative painting of a woman.', tag2006,'Watercolour, Coffee','Artex Plastic Film','72','42','2-1',figurativeSelectedVol3)
+mixin portraitFamilyG01
+	+artworkCard('Daughter Irena, 3 drawings','portrait_family_g01','A triptych of portrait drawings depicting a young woman in several poses.', tag2002,'Conté','Paper','135','11','12-5',portraitConte)
+mixin portraitFamilyS01
+	+artworkCard('Conte Drawing','portrait_family_s01','A collage of portrait drawings depicting a young man\'s facial expression from multiple angles.', tag2002,'Conté','Paper','24','30','3-2',portraitConte)
+mixin portraitFamilyS02
+	+artworkCard('Marek\'s Multiface','portrait_family_s02','A collage of portrait drawings depicting a middle-aged man\'s facial expression from multiple angles.', tag2003,'Conté','Paper','30','44','3-2',portraitConte)
+mixin portraitFamilyS03
+	+artworkCard('Daughter Irena','portrait_family_s03','Portrait drawing of a young woman.', tag2002,'Conté','Paper','13.5','11','4-5',portraitConte)
+mixin portraitFamilyS04
+	+artworkCard('Daughter Irena','portrait_family_s04','Portrait drawing of a young woman.', tag2002,'Conté','Paper','11','','4-5',portraitConte)
+mixin portraitFamilyS05
+	+artworkCard('Daughter Irena','portrait_family_s05','Portrait drawing of a young woman.', tag2002,'Conté','Paper','13.5','11','4-5',portraitConte)
+mixin portraitHonoraryS01
+	+artworkCard('Dr. Wayne Martin','portrait_honorary_s01','Portrait of a university professor.', tag2015,'Oil','Canvas','40','36','3-4',portraitHonorary)
+mixin portraitHonoraryS02
+	+artworkCard('Dr. Ian Dahoo','portrait_honorary_s02','Portrait of a university professor.', tag2015,'Oil','Canvas','40','30','3-4',portraitHonorary)
+mixin portraitHonoraryS03
+	+artworkCard('Dr.  Frank Schofield in Korea/Sketch ','portrait_honorary_s03','Portrait of a university professor.', tag2006,'Oil','Canvas','30','36','11-9',portraitHonorary)
+mixin portraitHonoraryS04
+	+artworkCard('Dr. Donald Barnum','portrait_honorary_s04','Portrait of a university professor.', tag2001,'Oil','Canvas','20','16','3-4',portraitHonorary)
+mixin portraitHonoraryS05
+	+artworkCard('Portret of Dr. Paul Voroney','portrait_honorary_s05','Portrait of a university professor.', tag2002,'Oil','Canvas','20','16','2-3',portraitHonorary)
+mixin portraitSelectedVol1G01
+	+artworkCard('Kids from California','portrait_selected01_g01','Triptych of watercolor portraits of young sibling boys.', tag2009,'Watercolour','Paper','12','16','15-7',portraitSelectedVol1)
+mixin portraitSelectedVol1S01
+	+artworkCard('Other Portrait of the Boy from California','portrait_selected01_s01','Watercolor portrait of a five year old boy with blue eyes.', tag2009,'Watercolour','Paper','16','12','5-7',portraitSelectedVol1)
+mixin portraitSelectedVol1S02
+	+artworkCard('Girl from California','portrait_selected01_s02','Watercolor portrait of a child looking off to the left side.', tag2009,'Watercolour','Paper','16','12','5-7',portraitSelectedVol1)
+mixin portraitSelectedVol1S03
+	+artworkCard('Boy from California','portrait_selected01_s03','Watercolor portrait of a five year old boy with blue eyes.', tag2009,'Watercolour','Paper','16','12','5-7',portraitSelectedVol1)
+mixin portraitSelectedVol1S04
+	+artworkCard('Andrew and Kate','portrait_selected01_s04','Portrait of a boy and girl.', tag2008,'Acrylic','Plastic','','','9-7',portraitSelectedVol1)
+mixin portraitSelectedVol1S05
+	+artworkCard('Michelle in Coffee','portrait_selected01_s05','Portrait painting.', tag2009,'Coffee, Acrylic','Lexan Plastic','22','22','1-1',portraitSelectedVol1)
+mixin portraitSelectedVol1S14
+	+artworkCard('Daugter Irena','portrait_selected01_s14','Portrait painting.', tag1994,'Oil','Canvas','20','16','4-5',portraitSelectedVol1)
+mixin portraitSelectedVol1S15
+	+artworkCard('Oreste Belluschi Reading a Letter, portrait of an Italian Student','portrait_selected01_s15','Portrait painting.', tag1988,'Oil','Canvas','20','16','4-5',portraitSelectedVol1)
+mixin portraitSelectedVol1S16
+	+artworkCard('Javier Barden, Actor','portrait_selected01_s16','Portrait painting.', tag2011,'Acrylic, Acrylic Ink','Canvas','24','20','5-6',portraitSelectedVol1)
+mixin portraitSelectedVol1S17
+	+artworkCard('Orange Distraction','portrait_selected01_s17','Portrait painting.', tag2009,'Acrylic, Coffee','Lexan Plastic','29','22','5-7',portraitSelectedVol1)
+mixin portraitSelectedVol2G01
+	+artworkCard('Studio Guests and Friends, 6pieces','portrait_selected02_g01','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','3-2',portraitSelectedVol2)
+mixin portraitSelectedVol2G02
+	+artworkCard('Portrait of Parents, 2 pieces','portrait_selected02_g02','Portrait painting.', tag2013,'Oil','Canvas','10','8','8-5',portraitSelectedVol2)
+mixin portraitSelectedVol2G03
+	+artworkCard('Andrzej, son, 2  demo pieces','portrait_selected02_g03','Portrait painting.', tag2012,'Watercolour','Paper','16','12','3-2',portraitSelectedVol2)
+mixin portraitSelectedVol2S01
+	+artworkCard('Jackie','portrait_selected02_s01','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S02
+	+artworkCard('Sonia\'s Profile','portrait_selected02_s02','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S03
+	+artworkCard('Peter\'s Head','portrait_selected02_s03','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S04
+	+artworkCard('Sonia Turning Her Head','portrait_selected02_s04','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S05
+	+artworkCard(' Studio Guest in Ames, IA','portrait_selected02_s05','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S06
+	+artworkCard('Agnieszka F.','portrait_selected02_s06','Portrait painting.', tag2013,'Oil','Wood Panel','24','24','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S08
+	+artworkCard('Mutual Concern','portrait_selected02_s08','Portrait painting.', tag2014,'Oil','Canvas','30','24','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S09
+	+artworkCard('Peter Sitting','portrait_selected02_s09','Portrait painting.', tag2014,'Oil','Canvas','40','30','3-4',portraitSelectedVol2)
+mixin portraitSelectedVol2S10
+	+artworkCard('Day off School for Mr. Cool','portrait_selected02_s10','Portrait painting.', tag2013,'Oil','Canvas','36','30','5-6',portraitSelectedVol2)
+mixin portraitSelectedVol2S11
+	+artworkCard('Belated 20th Birthday','portrait_selected02_s11','Portrait painting.', tag2011,'Oil','Canvas','24','20','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S12
+	+artworkCard('Ms. Alden H.','portrait_selected02_s12','Portrait painting.', tag2013,'Oil','Canvas','30','24','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S13
+	+artworkCard('Self, Portrait from Mirror','portrait_selected02_s13','Portrait painting.', tag2013,'Oil','Canvas','30','24','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S14
+	+artworkCard('Jeff G.','portrait_selected02_s14','Portrait painting of a young man.', tag2013,'Acrylic','Wood Panel','12','12','1-1',portraitSelectedVol2)
+mixin portraitSelectedVol2S15
+	+artworkCard('Ana, Portrait of Girfriend of Ebenezer\'s Brother','portrait_selected02_s15','Portrait painting of a young woman.', tag2016,'Acrylic','Canvas','16','12','3-4',portraitSelectedVol2)
+mixin portraitSelectedVol2S16
+	+artworkCard('Daughter Irena as a Teen','portrait_selected02_s16','Portrait painting of a young woman.', tag2013,'Oil','Canvas','20','16','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S17
+	+artworkCard('Son Andrzej Drawing #2','portrait_selected02_s17','Portrait painting of a young man.', tag2012,'Watercolour','Paper','16','12','3-4',portraitSelectedVol2)
+mixin portraitSelectedVol2S18
+	+artworkCard('Son Andrzej, Demo Watercolor Portrait','portrait_selected02_s18','Portrait painting of a young man.', tag2012,'Watercolour','Paper','16','12','3-4',portraitSelectedVol2)
+mixin portraitSelectedVol2S19
+	+artworkCard('Profile Self-Portrait','portrait_selected02_s19','Self-portrait painting of a woman.', tag2013,'Oil','Canvas','14','11','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S20
+	+artworkCard('My Son Peter','portrait_selected02_s20','Portrait painting of a man.', tag2013,'Oil','Canvas','10','8','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S21
+	+artworkCard('Faustyn – A Portrait of Dad from Photograph','portrait_selected02_s21','Portrait painting of a man.', tag2013,'Oil','Canvas','10','8','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S22
+	+artworkCard('Lucyna, Portrait of Mom from Photograph','portrait_selected02_s22','Portrait painting of a woman.', tag2013,'Oil','Canvas','10','8','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol2S24
+	+artworkCard('Daughter Irena','portrait_selected02_s24','Portrait painting of a young woman.', tag1995,'Oil','Canvas','20','16','4-5',portraitSelectedVol2)
+mixin portraitSelectedVol3G01
+	+artworkCard('Spencer and Nathan','portrait_selected03_g01','Portrait painting of two brothers.', tag2018,'Acrylic','Wood Panel','8','8','2-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S01
+	+artworkCard('Nathan, Grandson of Chandler K.','portrait_selected03_s01','Portrait painting of a boy.', tag2018,'Acrylic','Wood Panel','8','8','1-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S02
+	+artworkCard('Spencer, Grandson of Chandler K.','portrait_selected03_s02','Portrait painting of a boy.', tag2018,'Acrylic','Wood Panel','8','8','1-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S03
+	+artworkCard('Self-Portrait from a Photograph','portrait_selected03_s03','Self portrait by Grazyna Adamska-Jarecka.', tag2019,'Acrylic, Acrylic Ink','Canvas','11','14','4-5',portraitSelectedVol3)
+mixin portraitSelectedVol3S04
+	+artworkCard('Shara B., Portrait from a Photograph','portrait_selected03_s04','Portrait of a young girl in a white dress.', tag2018,'Acrylic','Wood Panel','8','8','1-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S05
+	+artworkCard('Diane B. Portrait from a Photograph','portrait_selected03_s05','Portrait of a young girl in a white dress.', tag2018,'Acrylic','Wood Panel','8','8','1-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S06
+	+artworkCard('Steeve B., Portrait from a Photograph','portrait_selected03_s06','Portrait of a young boy with blonde hair.', tag2018,'Acrylic','Wood Panel','8','8','1-1',portraitSelectedVol3)
+mixin portraitSelectedVol3S07
+	+artworkCard('Portrait of Hendrik from the Model','portrait_selected03_s07','Portrait of a man.', tag2018,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S08
+	+artworkCard('Rolf, Portrait from the Sitter','portrait_selected03_s08','Portrait of a man.', tag2018,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S09
+	+artworkCard('Mother of Helena','portrait_selected03_s09','Portrait of a woman.', tag2016,'Acrylic','Canvas','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S10
+	+artworkCard('Peter, First Sketch from the Sitter','portrait_selected03_s10','Portrait of a man.', tag2018,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S11
+	+artworkCard('Vita, Demo Sketch from Model in Ink','portrait_selected03_s11','Portrait of a woman.', tag2018,'Ink','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S12
+	+artworkCard('Rolf, Class Demo Portrait from Model','portrait_selected03_s12','Portrait of a man.', tag2018,'Acrylic, Acrylic Ink','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S13
+	+artworkCard('Rolf, Sketch in Ink from the Model','portrait_selected03_s13','Portrait of a man.', tag2018,'Acrylic Ink','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S14
+	+artworkCard('Diana\'s Man, Another Demo Sketch','portrait_selected03_s14','Portrait of a man.', tag2018,'Acrylic, Acrylic Ink','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S15
+	+artworkCard('Diana\'s Man, Demo Sketch','portrait_selected03_s15','Portrait of a woman.', tag2018,'Acrylic, Acrylic Ink','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S16
+	+artworkCard('Hendrik, Demo Sketch','portrait_selected03_s16','Portrait of a man.', tag2018,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S17
+	+artworkCard('Hendrik, Portrait from the Sitter','portrait_selected03_s17','Portrait of a woman.', tag2017,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S18
+	+artworkCard('Self-Portrait from Mirror, Demo Work','portrait_selected03_s18','Portrait of a woman.', tag2002,'Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S19
+	+artworkCard('Self, Portrait, Demo Work','portrait_selected03_s19','Portrait of a woman.', tag2014,'Ink, Acrylic','Paper','16','12','3-4',portraitSelectedVol3)
+mixin portraitSelectedVol3S20
+	+artworkCard('Self-Portrait from Mirror, Demo Painting','portrait_selected03_s20','Portrait of a woman.', tag2018,'Acrylic','Canvas','20','16','4-5',portraitSelectedVol3)
+mixin portraitSkypeS01
+	+artworkCard('Face Time','portrait_skype_s01','Portrait depicting conversations over Skype.', tag2017,'Mixed Media','Lexan Plastic','84','48','4-7',portraitSkype)
+mixin portraitSkypeS01b
+	+artworkCard('Face Time hanging at the Group Show in Art Gallery of Mississauga','portrait_skype_s01b','Portrait depicting conversations over Skype.', tag2017,'Mixed Media','Lexan Plastic','84','48','10-9',portraitSkype)
+mixin portraitSkypeS01c
+	+artworkCard('Face Time, one of portraits','portrait_skype_s01c','Portrait depicting conversations over Skype.', tag2017,'Acrylic','Lexan Plastic','12','12','9-10',portraitSkype)
+mixin portraitSkypeS01d
+	+artworkCard('Face Time, one of portraits','portrait_skype_s01d','Portrait depicting conversations over Skype.', tag2017,'Mixed Media','Lexan Plastic','12','12','5-7',portraitSkype)
+mixin portraitSkypeS01e
+	+artworkCard('FaceTime, One of the portraits','portrait_skype_s01e','Portrait depicting conversations over Skype.', tag2017,'Acrylic','Lexan Plastic','12','12','1-1',portraitSkype)
+mixin portraitSkypeS01f
+	+artworkCard('Face Time, one of 27 portraits','portrait_skype_s01f','Portrait depicting conversations over Skype.', tag2017,'Acrylic','Lexan Plastic','12','12','1-1',portraitSkype)
+mixin portraitSkypeS02
+	+artworkCard('Skype Brothers II','portrait_skype_s02','Portrait depicting conversations over Skype.', tag2018,'Pastel','Paper','30','24','3-4',portraitSkype)
+mixin portraitSkypeS02b
+	+artworkCard('Skype Brothers II (Detail)','portrait_skype_s02b','Portrait depicting conversations over Skype.', tag2018,'Pastel','Paper','8','8','7-6',portraitSkype)
+mixin portraitSkypeS03
+	+artworkCard('The Skype Brothers','portrait_skype_s03','Portrait depicting conversations over Skype.', tag2018,'Pastel','Paper', 'Plexiglass','30','32','15-14',portraitSkype)
+mixin portraitSkypeS03b
+	+artworkCard('The Skype Brothers (Detail)','portrait_skype_s03b','Portrait depicting conversations over Skype.', tag2018,'Pastel, Graphite','Paper', 'Plexiglass','8','6','6-7',portraitSkype)
+mixin portraitSkypeS03c
+	+artworkCard('The Skype Brothers (Detail)','portrait_skype_s03c','Portrait depicting conversations over Skype.', tag2018,'Pastel, Graphite','Paper','8','6','6-7',portraitSkype)
+mixin portraitSkypeS04
+	+artworkCard('Skype Séance #1','portrait_skype_s04','Portrait depicting conversations over Skype.', tag2013,'Mixed Media','Wood Panel', 'Resin','36','36','1-1',portraitSkype)
+mixin portraitSkypeS05
+	+artworkCard('Skype Séance #2','portrait_skype_s05','Portrait depicting conversations over Skype.', tag2013,'Acrylic, Gesso','Wood Panel','36','36','1-1',portraitSkype)
+mixin portraitSkypeS05b
+	+artworkCard('Unfinished Fragment of 2013 Skype Séance #2 (Detail)','portrait_skype_s05b','Portrait depicting conversations over Skype.', tag2013,'Acrylic','Wood Panel','','','6-5',portraitSkype)
+mixin portraitSkypeS06
+	+artworkCard('Skype Séance (12 Part White Version)','portrait_skype_s06','Portrait depicting conversations over Skype.', tag2012,'Gesso','Plastic Macrolon','10.5','10.5','3-4',portraitSkype)

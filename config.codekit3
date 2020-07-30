@@ -2,61 +2,12 @@
 "AAInfo": "This is a CodeKit 3 project config file. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. Doing so will cause CodeKit to crash and/or corrupt your project. I know it looks like JSON, but it is *not*. Many numbers in this file are 64-bit long long bitFlags, which JSON does not support. These numbers *cannot* be treated as discrete values and if you attempt to parse this file as standard JSON with any public JSON parser, these values will be corrupted. This file is not backwards-compatible with CodeKit 1 or 2. For more information, see https://codekitapp.com/",
 "buildSteps": [
 	{
+		"itemsToProcess": [
+			"/css/config.scss"
+			],
 		"name": "Process Styles",
 		"stepType": 0,
 		"uuidString": "820AEF49-097E-44A1-BBC8-C9F40DEA45A3"
-		},
-	{
-		"name": "Copy Fonts",
-		"stepType": 0,
-		"uuidString": "FDCCE571-8DC2-47C1-A8BC-167B3275192C"
-		},
-	{
-		"itemsToProcess": [
-			"/--index.pug",
-			"/-about.pug",
-			"/-cv.pug",
-			"/-tags.pug",
-			"/-work.pug",
-			"/Ω-404.pug"
-			],
-		"name": "Process Main Pages",
-		"stepType": 0,
-		"uuidString": "4E9A4E7F-E5D1-40DC-A602-1A91B0F2FC81"
-		},
-	{
-		"itemsToProcess": [
-			"/series_abstract_attachments.pug",
-			"/series_abstract_figural.pug",
-			"/series_abstract_flames.pug",
-			"/series_abstract_grace.pug",
-			"/series_abstract_landscapes.pug",
-			"/series_abstract_selected01.pug",
-			"/series_abstract_shapes.pug",
-			"/series_assorted_animals.pug",
-			"/series_assorted_landscapes01.pug",
-			"/series_assorted_landscapes02.pug",
-			"/series_figurative_body.pug",
-			"/series_figurative_coping.pug",
-			"/series_figurative_disengagement.pug",
-			"/series_figurative_examination.pug",
-			"/series_figurative_selected01.pug",
-			"/series_figurative_selected02.pug",
-			"/series_figurative_selected03.pug",
-			"/series_portrait_honorary.pug",
-			"/series_portrait_selected01.pug",
-			"/series_portrait_selected02.pug",
-			"/series_portrait_selected03.pug",
-			"/series_portrait_skype.pug"
-			],
-		"name": "Process Series Pages",
-		"stepType": 0,
-		"uuidString": "76044D40-3DB2-4428-9D8C-A8D04BDC5FD1"
-		},
-	{
-		"name": "Process All Remaining Files and Folders",
-		"stepType": 1,
-		"uuidString": "3950382E-B0AD-48B6-A791-18D3C419C2CB"
 		},
 	{
 		"itemsToProcess": [
@@ -66,9 +17,25 @@
 		"name": "Process Scripts",
 		"stepType": 0,
 		"uuidString": "4B1A287D-7151-4678-AA76-6EF2D1897EA4"
+		},
+	{
+		"itemsToProcess": [
+			"/--index.pug",
+			"/-about.pug",
+			"/-cv.pug",
+			"/-work.pug"
+			],
+		"name": "Process Main Pages",
+		"stepType": 0,
+		"uuidString": "4E9A4E7F-E5D1-40DC-A602-1A91B0F2FC81"
+		},
+	{
+		"name": "Process All Remaining Files and Folders",
+		"stepType": 1,
+		"uuidString": "3950382E-B0AD-48B6-A791-18D3C419C2CB"
 		}
 	],
-"creatorBuild": "29156",
+"creatorBuild": "32186",
 "files": {
 	"/--index.pug": {
 		"cB": 0,
@@ -130,118 +97,118 @@
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-base.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-buttons.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-buttons.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-cards.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-cards.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-modules.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-modules.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-navigation.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-navigation.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-sections.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-sections.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-sliders.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-sliders.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_ap-typography.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_ap-typography.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_tp-lightgallery.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_tp-lightgallery.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_tp-normalize.css": {
 		"aP": 1,
@@ -257,66 +224,66 @@
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_var-base.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_var-colors.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_var-colors.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_var-decoration.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_var-decoration.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/_var-typography.scss": {
 		"aP": 0,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
 		"oAP": "/build/css/_var-typography.css",
 		"oF": 0,
 		"oS": 0,
-		"uL": 1
+		"sct": 1
 		},
 	"/css/config.scss": {
 		"aP": 1,
 		"bl": 0,
 		"dP": 10,
-		"dS": 0,
+		"ec": 1,
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
 		"oAP": "/build/css/adamska.css",
 		"oF": 2,
 		"oS": 3,
-		"uL": 1
+		"sct": 1
 		},
 	"/js/_js-plugins.pug": {
 		"cB": 0,
@@ -357,6 +324,16 @@
 		"hM": 0,
 		"oA": 1,
 		"oAP": "/build/partial/_config.html",
+		"oF": 0,
+		"oS": 0
+		},
+	"/partial/_crd-artwork-2.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/build/partial/_crd-artwork-2.html",
 		"oF": 0,
 		"oS": 0
 		},
@@ -754,7 +731,7 @@
 		"cOD": 1,
 		"ft": 512,
 		"hM": 0,
-		"oA": 1,
+		"oA": 0,
 		"oAP": "/build/conte-drawings.html",
 		"oF": 3,
 		"oS": 0
@@ -827,6 +804,16 @@
 		"oA": 0,
 		"oAP": "/build/skype-sceance.html",
 		"oF": 2,
+		"oS": 0
+		},
+	"/series_portrait_test.pug": {
+		"cB": 0,
+		"cOD": 1,
+		"ft": 512,
+		"hM": 0,
+		"oA": 0,
+		"oAP": "/build/series_portrait_test.html",
+		"oF": 0,
 		"oS": 0
 		},
 	"/tag_collection_abstract.pug": {
@@ -930,10 +917,11 @@
 	"displayValueWasSetByUser": 1,
 	"iconImageName": "meme-soon",
 	"iconImageWasSetByUser": 0,
-	"lastBuiltDate": 583361575.50562501
+	"lastBuiltDate": 617840763.63638604
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
+	"allowInjectionReloads": 1,
 	"alwaysUseExternalServer": 0,
 	"animateCSSInjections": 0,
 	"autoBuildNewItems": 1,
@@ -945,6 +933,7 @@
 	"babelConfigType": 0,
 	"babelCustomPluginsList": "",
 	"babelCustomPresetsList": "",
+	"babelExcludeString": "/\\/node_modules\\//, /\\/core-js\\//, /\\/bower_components\\//",
 	"babelInsertModuleIDs": 0,
 	"babelModuleID": "",
 	"babelNoComments": 0,
@@ -1084,6 +1073,9 @@
 		"modules-umd": {
 			"active": 0
 			},
+		"named-capturing-groups-regex": {
+			"active": 0
+			},
 		"new-target": {
 			"active": 0
 			},
@@ -1115,6 +1107,9 @@
 			"active": 0
 			},
 		"parameters": {
+			"active": 0
+			},
+		"partial-application": {
 			"active": 0
 			},
 		"pipeline-operator": {
@@ -1209,11 +1204,10 @@
 			}
 		},
 	"babelRetainLines": 0,
+	"babelUseBuiltInsType": 0,
 	"bowerAbbreviatedPath": "bower_components",
-	"bowerAutoCreateInfoFile": 1,
-	"bowerInstallDevDependencies": 0,
-	"bowerSaveDependencies": 1,
-	"bowerSaveDevDependencies": 0,
+	"bowerForceLatestOnConflict": 1,
+	"bowerTargetDependencyListType": 1,
 	"bowerUseExactVersion": 0,
 	"browserRefreshDelay": 0,
 	"browserslistString": ">0.2%, last 2 versions, Firefox ESR, not dead",
@@ -1358,6 +1352,7 @@
 			"flagValue": -1
 			}
 		},
+	"environmentVariablesString": "NODE_ENV:::production",
 	"esLintConfigFileHandlingType": 0,
 	"esLintECMAVersion": 7,
 	"esLintEnvironmentsMask": 1,
@@ -1462,6 +1457,14 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"default-case-last": {
+			"active": 0,
+			"optionString": ""
+			},
+		"default-param-last": {
+			"active": 0,
+			"optionString": ""
+			},
 		"dot-location": {
 			"active": 0,
 			"optionString": "'object'"
@@ -1513,6 +1516,10 @@
 		"global-require": {
 			"active": 0,
 			"optionString": ""
+			},
+		"grouped-accessor-pairs": {
+			"active": 0,
+			"optionString": "'anyOrder'"
 			},
 		"guard-for-in": {
 			"active": 0,
@@ -1690,6 +1697,10 @@
 			"active": 1,
 			"optionString": "{'checkLoops': true}"
 			},
+		"no-constructor-return": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-continue": {
 			"active": 0,
 			"optionString": ""
@@ -1715,6 +1726,10 @@
 			"optionString": ""
 			},
 		"no-dupe-class-members": {
+			"active": 1,
+			"optionString": ""
+			},
+		"no-dupe-else-if": {
 			"active": 1,
 			"optionString": ""
 			},
@@ -1810,6 +1825,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-import-assign": {
+			"active": 1,
+			"optionString": ""
+			},
 		"no-inline-comments": {
 			"active": 0,
 			"optionString": ""
@@ -1851,6 +1870,10 @@
 			"optionString": ""
 			},
 		"no-loop-func": {
+			"active": 0,
+			"optionString": ""
+			},
+		"no-loss-of-precision": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -1970,6 +1993,10 @@
 			"active": 1,
 			"optionString": ""
 			},
+		"no-restricted-exports": {
+			"active": 0,
+			"optionString": "{'restrictedNamedExports': []}"
+			},
 		"no-restricted-globals": {
 			"active": 0,
 			"optionString": "'event', 'fdescribe'"
@@ -2012,6 +2039,10 @@
 			},
 		"no-sequences": {
 			"active": 0,
+			"optionString": ""
+			},
+		"no-setter-return": {
+			"active": 1,
 			"optionString": ""
 			},
 		"no-shadow": {
@@ -2109,6 +2140,10 @@
 		"no-use-before-define": {
 			"active": 0,
 			"optionString": "{'functions': true, 'classes': true, 'variables': true}"
+			},
+		"no-useless-backreference": {
+			"active": 0,
+			"optionString": ""
 			},
 		"no-useless-call": {
 			"active": 0,
@@ -2218,6 +2253,14 @@
 			"active": 0,
 			"optionString": "{'array': true, 'object': true}, {'enforceForRenamedProperties': false}"
 			},
+		"prefer-exponentiation-operator": {
+			"active": 0,
+			"optionString": ""
+			},
+		"prefer-named-capture-group": {
+			"active": 0,
+			"optionString": ""
+			},
 		"prefer-numeric-literals": {
 			"active": 0,
 			"optionString": ""
@@ -2229,6 +2272,10 @@
 		"prefer-promise-reject-errors": {
 			"active": 0,
 			"optionString": "{'allowEmptyReject': false}"
+			},
+		"prefer-regex-literals": {
+			"active": 0,
+			"optionString": ""
 			},
 		"prefer-rest-params": {
 			"active": 0,
@@ -2838,7 +2885,6 @@
 		"autoOutputPathStyle": 0,
 		"createSourceMap": 1,
 		"enableJavascript": 0,
-		"ieCompatibility": 1,
 		"mathStyle": 0,
 		"outputStyle": 0,
 		"rewriteURLStyle": 0,
@@ -2907,13 +2953,13 @@
 		"autoOutputPathReplace1": "sass",
 		"autoOutputPathReplace2": "css",
 		"autoOutputPathStyle": 0,
+		"compilerType": 1,
 		"createSourceMap": 0,
-		"debugStyle": 0,
 		"decimalPrecision": 10,
+		"emitCharset": 1,
 		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
-		"shouldRunBless": 0,
-		"useLibsass": 1
+		"shouldRunBless": 0
 		},
 	"languageDefaultsSLIM": {
 		"autoOutputAction": 0,
@@ -2971,8 +3017,16 @@
 		},
 	"languageDefaultsUserDefined": [
 		],
+	"npmAbbreviatedPath": "",
+	"npmCreatePackageLock": 1,
+	"npmInstallOptionalDependencies": 0,
+	"npmSaveExactVersion": 0,
+	"npmTargetDependencyListType": 1,
 	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
+	"rollupExternals": "",
+	"rollupReplacements": "process.env.NODE_ENV:::$NODE_ENV,,,ENVIRONMENT:::$NODE_ENV",
+	"rollupTreeshakingEnabled": 1,
 	"skippedFoldersString": "log, _logs, logs, _cache, cache, /storage/framework/sessions, node_modules",
 	"sourceFolderName": "source",
 	"susyVersion": 3,

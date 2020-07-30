@@ -46,9 +46,9 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 			div.ap-c-crd-artwork__spec
 				span= pieceYear.name
 					| &nbsp;&mdash;&nbsp;
-				span= pieceMedium.name
+				span= pieceMedium
 					| &nbsp;on&nbsp;
-				span= pieceMaterial.name
+				span= pieceMaterial
 					| &comma;&nbsp;
 				span= pieceWidth
 					| &nbsp;&times;&nbsp;
@@ -121,2706 +121,358 @@ mixin artworkCard(pieceName, imageSource, imageAlt, pieceYear, pieceMedium, piec
 //- Abstract series gallery items
 
 //- Grace / No Grace
-//- Note: Reformat all of these mixins like so:
 mixin abstractGraceS01
-	+artworkCard(
-		"Grace / No Grace",
-		"abstract_grace_s01",
-		"Abstract painting",
-		tag2011, tagAcrylic, tagPlastic,
-		"22", "22.1",
-		"50-49",
-		abstractGrace,
-		tagBlack, tagGrey, tagWhite,
-		tagAbstract, tagPattern
-	)
+	+artworkCard('Grace No Grace Ratio', 'abstract_grace_s01', 'Abstract painting', tag2011, 'Acrylic, Acrylic Ink, Coffee, Gesso', 'Plastic', '22', '22', '50-49', abstractGrace)
 mixin abstractGraceS02
-	+artworkCard(
-		"Border Land",
-		"abstract_grace_s02",
-		"Abstract painting",
-		tag2011, tagAcrylic, tagPlastic,
-		"28", "23",
-		"11-9",
-		abstractGrace,
-		tagGrey, tagWhite, tagWhite,
-		tagAbstract
-	)
+	+artworkCard('Big Event', 'abstract_grace_s02', 'Abstract painting', tag2011, 'Gesso', 'Plastic', '25.5', '27.5', '11-9', abstractGrace)
 mixin abstractGraceS03
-	+artworkCard(
-		"Grace to No Grace Ratio",
-		"abstract_grace_s03",
-		"Abstract painting",
-		tag2011, tagAcrylic, tagPlastic,
-		"28", "23",
-		"11-9 v--inverse",
-		abstractGrace,
-		tagWhite, tagGreen, tagBlue,
-		tagAbstract
-	)
+	+artworkCard('Grace/No Grace', 'abstract_grace_s03', 'Abstract painting', tag2011, 'Gesso, Acrylic', 'Plastic', '24.5', '30', '11-9', abstractGrace)
 mixin abstractGraceS04
-	+artworkCard(
-		"Grace in Droplets",
-		"abstract_grace_s04",
-		"Abstract painting",
-		tag2011, tagAcrylic, tagPlastic,
-		"23", "28",
-		"9-11",
-		abstractGrace,
-		tagGrey, tagGreen, tagBlue,
-		tagAbstract
-	)
+	+artworkCard('Grace in Droplets', 'abstract_grace_s04', 'Abstract painting', tag2011, 'Acrylic, Gesso, Coffee', 'Plastic', '30', '24', '9-11', abstractGrace)
 
 //- Selected Abstract Works Volume 1
 mixin abstractSelectedVol1S01
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s01",
-		"Abstract acrylic painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract,
-		"tagname1",
-		"tagname2",
-		"tagname3"
-	)
+	+artworkCard('Greenhouse', 'abstract_selected01_s01', 'Abstract painting', tag2015, 'Acrylic', 'Canvas', '42', '42', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S02
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s02",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"14-11",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Hand to Object', 'abstract_selected01_s02', 'Abstract painting', tag2015, 'Oil', 'Canvas', '20', '28', '14-11', abstractSelectedVol1)
 mixin abstractSelectedVol1S03
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s03",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"4-3",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Red Shapes', 'abstract_selected01_s03', 'Abstract painting', tag2016, 'Acrylic, Oil Pastel', 'Wood Panel', '12', '16', '4-3', abstractSelectedVol1)
 mixin abstractSelectedVol1S04
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s04",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Leaves and Stones', 'abstract_selected01_s04', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '36', '36', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S05
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s05",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"4-3",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('X and Y Painting', 'abstract_selected01_s05', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '30', '40', '4-3', abstractSelectedVol1)
 mixin abstractSelectedVol1S06
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s06",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"4-3",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Reconnection', 'abstract_selected01_s06', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '36', '48', '4-3', abstractSelectedVol1)
 mixin abstractSelectedVol1S07
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s07",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"7-6",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Coffee on Mars', 'abstract_selected01_s07', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '40', '46', '7-6', abstractSelectedVol1)
 mixin abstractSelectedVol1S08
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s08",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Acorns and Lemons', 'abstract_selected01_s08', 'Abstract painting', tag2016, 'Acrylic', 'Wood Panel', '8', '8', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S09
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s09",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Cypers Wall', 'abstract_selected01_s09', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S10
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s10",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Squared Drops', 'abstract_selected01_s10', 'Abstract painting', tag2017, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S11
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s11",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Imprecise Machine', 'abstract_selected01_s11', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S12
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s12",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"1-1",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Second Thoughts', 'abstract_selected01_s12', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '24', '24', '1-1', abstractSelectedVol1)
 mixin abstractSelectedVol1S13
-	+artworkCard(
-		"Untitled",
-		"abstract_selected01_s13",
-		"Abstract painting",
-		"0000", tagAcrylic, tagCanvas,
-		"00", "00",
-		"3-4",
-		abstractSelectedVol1,
-		tagAbstract
-	)
+	+artworkCard('Ear Shape Family', 'abstract_selected01_s13', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '16', '12', '3-4', abstractSelectedVol1)
 	
 //- Abstracted Landscapes
 mixin abstractLandscapesS01
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s01",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"8-7",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Pulp Forest', 'abstract_landscapes_s01', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '42', '48', '16-10', abstractLandscapes)
 mixin abstractLandscapesS02
-	+artworkCard(
-		"Orange le Vert",
-		"abstract_landscapes_s02",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"48",
-		"30",
-		"16-10",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Orange et Vert', 'abstract_landscapes_s02', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '30', '48', '1-1', abstractLandscapes)
 mixin abstractLandscapesS03
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s03",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('White Thorn Three', 'abstract_landscapes_s03', 'Abstract painting', tag2015, 'Acrylic', 'Wood Panel', '24', '24', '1-1', abstractLandscapes)
 mixin abstractLandscapesS04
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s04",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Echoes of Growth (Small Version)', 'abstract_landscapes_s04', 'Abstract painting', tag2013, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractLandscapes)
 mixin abstractLandscapesS05
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s05",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('All at Eramosa', 'abstract_landscapes_s05', 'Abstract painting', tag2014, 'Acrylic', 'Canvas', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS06
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s06",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"6-5",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Sienna Colour Woods', 'abstract_landscapes_s06', 'Abstract painting', tag2015, 'Acrylic', 'Canvas', '30', '36', '6-5', abstractLandscapes)
 mixin abstractLandscapesS07
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s07",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Preserved Resources', 'abstract_landscapes_s07', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS08
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s08",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('This Forest Has Ideas', 'abstract_landscapes_s08', 'Abstract painting', tag2015, 'Acrylic', 'Wood Panel', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS09
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s09",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('La Forêt Étrange', 'abstract_landscapes_s09', 'Abstract painting', tag2014, 'Acrylic', 'Canvas', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS10
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s10",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Hollow', 'abstract_landscapes_s10', 'Abstract painting', tag2015, 'Acrylic', 'Wood Panel', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS11
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s11",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Pine Port', 'abstract_landscapes_s11', 'Abstract painting', tag2014, 'Acrylic', 'Wood Panel', '30', '30', '1-1', abstractLandscapes)
 mixin abstractLandscapesS12
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s12",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Colour Coat Threes', 'abstract_landscapes_s12', 'Abstract painting', tag2015, 'Acrylic', 'Canvas', '24', '24', '1-1', abstractLandscapes)
 mixin abstractLandscapesS13
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s13",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Marks at Parks', 'abstract_landscapes_s13', 'Abstract painting', tag2015, 'Acrylic', 'Canvas', '30', '24', '4-5', abstractLandscapes)
 mixin abstractLandscapesS14
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s14",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Free Rhythm', 'abstract_landscapes_s14', 'Abstract painting', tag2015, 'Acrylic', 'Canvas', '24', '24', '1-1', abstractLandscapes)
 mixin abstractLandscapesS15
-	+artworkCard(
-		"Test",
-		"abstract_landscapes_s15",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape
-	)
-mixin abstractLandscapesS16
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s16",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-4",
-		abstractLandscapes,
-		tagGreen,
-		tagAbstract,
-		tagLandscape
-	)
+	+artworkCard('Test', 'abstract_landscapes_s15', 'Abstract painting', tag2015, 'Acrylic', 'Wood Panel', '23', '23', '5-4', abstractLandscapes)
 mixin abstractLandscapesS17
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s17",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-4",
-		abstractLandscapes,
-		tagBlue,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Heavy Billow', 'abstract_landscapes_s17', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '24', '30', '5-4', abstractLandscapes)
 mixin abstractLandscapesS18
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s18",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		abstractLandscapes,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Conservatory', 'abstract_landscapes_s18', 'Abstract painting', tag2016, 'Acrylic, Gesso', 'Lexan Plastic', '52', '48', '3-4', abstractLandscapes)
 mixin abstractLandscapesS19
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s19",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		abstractLandscapes,
-		tagBlue,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Blue Brick Sky', 'abstract_landscapes_s19', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '48', '36', '3-4', abstractLandscapes)
 mixin abstractLandscapesS20
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s20",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"14-11",
-		abstractLandscapes,
-		tagBlue,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
+	+artworkCard('Gold Spattered Blue View', 'abstract_landscapes_s20', 'Abstract painting', tag2015, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '40', '48', '14-11', abstractLandscapes)
 mixin abstractLandscapesS21
-	+artworkCard(
-		"Untitled",
-		"abstract_landscapes_s21",
-		"Abstracted landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		abstractLandscapes,
-		tagBrown,
-		tagAbstract,
-		tagLandscape,
-		""
-	)
-
+	+artworkCard('Untitled Demo Painting', 'abstract_landscapes_s21', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '24', '18', '4-5', abstractLandscapes)
 
 //- Figural Abstract Works
 mixin abstractFiguralS01
-	+artworkCard(
-		"Deadline Anxiety",
-		"abstract_figural_s01",
-		"Abstract figure painting",
-		tag2018,
-		tagAcrylic,
-		tagCanvas,
-		"46",
-		"36",
-		"23-18",
-		abstractFigural,
-		"yellow",
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Deadline Anxiety', 'abstract_figural_s01', 'Abstract painting', tag2019, 'Oil', 'Canvas', '36', '48', '23-18', abstractFigural)
 mixin abstractFiguralS02
-	+artworkCard(
-		"Dominative Moments",
-		"abstract_figural_s02",
-		"Abstract figure painting",
-		tag2018,
-		tagAcrylic,
-		tagCanvas,
-		"48",
-		"40",
-		"6-5",
-		abstractFigural,
-		tagGreen,
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Dominative Moments', 'abstract_figural_s02', 'Abstract painting', tag2018, 'Oil', 'Canvas', '36', '48', '6-5', abstractFigural)
 mixin abstractFiguralS03
-	+artworkCard(
-		"Open Closed Value",
-		"abstract_figural_s03",
-		"Abstract figure painting",
-		"2014",
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFigural,
-		tagBlue,
-		tagAbstract,
-		tagFigurative,
-		""
-)
+	+artworkCard('Dynamic Formations', 'abstract_figural_s03', 'Abstract painting', tag2014, 'Acrylic, Acrylic Ink', 'Canvas', '36', '48', '4-3', abstractFigural)
 mixin abstractFiguralS04
-	+artworkCard(
-		"Dynamic Identities",
-		"abstract_figural_s04",
-		"Abstract figure painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFigural,
-		tagPurple,
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Dynamic Identities', 'abstract_figural_s04', 'Abstract painting', tag2016, 'Acrylic, Acrylic Ink', 'Canvas', '30', '40', '4-3', abstractFigural)
 mixin abstractFiguralS05
-	+artworkCard(
-		"Untitled",
-		"abstract_figural_s05",
-		"Abstract figure painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFigural,
-		tagPurple,
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Royal Court', 'abstract_figural_s05', 'Abstract painting', tag2016, 'Acrylic, Acrylic Ink', 'Canvas', '36', '48', '4-3', abstractFigural)
 mixin abstractFiguralS06
-	+artworkCard(
-		"Untitled",
-		"abstract_figural_s06",
-		"Abstract figure painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-4",
-		abstractFigural,
-		tagBrown,
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Feline Frolics #2', 'abstract_figural_s06', 'Abstract painting', tag2016, 'Acrylic, Acrylic Ink', 'Canvas', '30', '40', '5-4', abstractFigural)
 mixin abstractFiguralS07
-	+artworkCard(
-		"Untitled",
-		"abstract_figural_s07",
-		"Abstract figure painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFigural,
-		"yellow",
-		tagAbstract,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Feline Frolics #1', 'abstract_figural_s07', 'Abstract painting', tag2016, 'Acrylic, Acrylic Ink', 'Canvas', '30', '40', '4-3', abstractFigural)
 
 //- Flames, Coral Reefs
 mixin abstractFlamesS01
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s01",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Blase Lashes', 'abstract_flames_s01', 'Abstract painting', tag2018, 'Acrylic', 'Canvas', '30', '24', '4-5', abstractFlames)
 mixin abstractFlamesS02
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s02",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Ponytail Palm', 'abstract_flames_s02', 'Abstract painting', tag2018, 'Acrylic', 'Canvas', '40', '30', '3-4', abstractFlames)
 mixin abstractFlamesS03
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s03",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('150 Flames', 'abstract_flames_s03', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '30', '30', '1-1', abstractFlames)
 mixin abstractFlamesS04
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s04",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Synthetic Flames', 'abstract_flames_s04', 'Abstract painting', tag2017, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractFlames)
 mixin abstractFlamesS05
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s05",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Red Reef #1', 'abstract_flames_s05', 'Abstract painting', tag2016, 'Acrylic', 'Wood Panel', '12', '12', '1-1', abstractFlames)
 mixin abstractFlamesS06
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s06",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Red Shapes ', 'abstract_flames_s06', 'Abstract painting', tag2016, 'Acrylic', 'Wood Panel', '12', '16', '4-3', abstractFlames)
 mixin abstractFlamesS07
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s07",
-		"Abstract painting of flames",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Flame Derivatives', 'abstract_flames_s07', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '12', '16', '4-3', abstractFlames)
 mixin abstractFlamesS08
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s08",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"23-20",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Coral Bleaching Study', 'abstract_flames_s08', 'Abstract painting', tag2016, 'Acrylic', 'Canvas', '40', '46', '23-20', abstractFlames)
 mixin abstractFlamesS09
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s09",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Blue Reef Composition #2', 'abstract_flames_s09', 'Abstract painting', tag2017, 'Oil', 'Canvas', '36', '36', '1-1', abstractFlames)
 mixin abstractFlamesS10
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s10",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Blue Reef Composition #1', 'abstract_flames_s10', 'Abstract painting', tag2018, 'Acrylic', 'Canvas', '14', '14', '1-1', abstractFlames)
 mixin abstractFlamesS11
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s11",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"14-11",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Blue Reef', 'abstract_flames_s11', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '11', '14', '14-11', abstractFlames)
 mixin abstractFlamesS12
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s12",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Red Coral Reef', 'abstract_flames_s12', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '12', '16', '4-3', abstractFlames)
 mixin abstractFlamesS13
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s13",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('Red Reef #2', 'abstract_flames_s13', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '12', '16', '4-3', abstractFlames)
 mixin abstractFlamesS14
-	+artworkCard(
-		"Untitled",
-		"abstract_flames_s14",
-		"Abstract painting of corals",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractFlames,
-		tagAbstract,
-		"",
-		""
-	)
+	+artworkCard('White Corals', 'abstract_flames_s14', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '12', '12', '1-1', abstractFlames)
 
 //- Shapes & Textures
 mixin abstractShapesS01
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s01",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractShapes,
-		"yellow",
-		tagAbstract,
-		""		
-	)
+	+artworkCard('Agility Test', 'abstract_shapes_s01', 'Abstract painting', tag2017, 'Acrylic', 'Wood Panel', '36', '36', '1-1', abstractShapes)
 mixin abstractShapesS02
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s02",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractShapes,
-		"pink",
-		tagAbstract,
-		""		
-	)
+	+artworkCard('Frisby Flip', 'abstract_shapes_s02', 'Abstract painting', tag2017, 'Acrylic', 'Wood Panel', '36', '36', '1-1', abstractShapes)
 mixin abstractShapesS03
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s03",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractShapes,
-		tagBlue,
-		tagAbstract,
-		""		
-	)
+	+artworkCard('You Are In There', 'abstract_shapes_s03', 'Abstract painting', tag2017, 'Oil', 'Wood Panel', '36', '36', '1-1', abstractShapes)
 mixin abstractShapesS04
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s04",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractShapes,
-		"yellow",
-		tagAbstract,
-		""		
-	)
+	+artworkCard('Fear Not', 'abstract_shapes_s04', 'Abstract painting', tag2017, 'Acrylic, Acrylic Ink', 'Canvas', '48', '46', '1-1', abstractShapes)
 mixin abstractShapesS05
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s05",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		abstractShapes,
-		"yellow",
-		tagAbstract,
-		""		
-	)
+	+artworkCard('Straw Luck', 'abstract_shapes_s05', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '40', '40', '1-1', abstractShapes)
 mixin abstractShapesS06
-	+artworkCard(
-		"Untitled",
-		"abstract_shapes_s06",
-		"Abstract painting of shapes and textures",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"7-6",
-		abstractShapes,
-		tagBlue,
-		tagAbstract,
-		""		
-	)
+	+artworkCard('Wide Sleeve', 'abstract_shapes_s06', 'Abstract painting', tag2017, 'Acrylic', 'Canvas', '44', '52', '7-6', abstractShapes)
 
 //- Attachments
 mixin abstractAttachmentsS01
-	+artworkCard(
-		"Pocket-Sized Voids",
-		"abstract_attachments_s01",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"30",
-		"4-5",
-		abstractAttachments,
-		"black",
-		tagAbstract,
-		""
-	)
+	+artworkCard('Pocket-Sized Voids', 'abstract_attachments_s01', 'Abstract work composed of colorful paper clip forms emerging in circular groups from a  jet black abyss.', tag2019, 'Acrylic', 'Canvas', '30', '24', '4-5', abstractAttachments)
 mixin abstractAttachmentsS02
-	+artworkCard(
-		"Tangled Promises",
-		"abstract_attachments_s02",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"30",
-		"11-14",
-		abstractAttachments,
-		tagBlue,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Tangled Promises', 'abstract_attachments_s02', 'Painting of paper clip forms linking across sky blue hues.', tag2019, 'Acrylic', 'Canvas', '30', '24', '11-14', abstractAttachments)
 mixin abstractAttachmentsS03
-	+artworkCard(
-		"Untitled Journey",
-		"abstract_attachments_s03",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"30",
-		"4-5",
-		abstractAttachments,
-		"yellow",
-		tagAbstract,
-		""
-	)
+	+artworkCard('Untitled Journey', 'abstract_attachments_s03', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '30', '24', '4-5', abstractAttachments)
 mixin abstractAttachmentsS04
-	+artworkCard(
-		"Attachment Delivered",
-		"abstract_attachments_s04",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"22",
-		"28",
-		"11-14",
-		abstractAttachments,
-		tagBrown,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Attachment Delivered', 'abstract_attachments_s04', 'Rose-colored paperclip forms emerging from a beige background.', tag2019, 'Acrylic', 'Canvas', '30', '24', '11-14', abstractAttachments)
 mixin abstractAttachmentsS05
-	+artworkCard(
-		"Attachment",
-		"abstract_attachments_s05",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"32",
-		"3-4",
-		abstractAttachments,
-		tagBrown,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Attachment', 'abstract_attachments_s05', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '24', '18', '3-4', abstractAttachments)
 mixin abstractAttachmentsS06
-	+artworkCard(
-		"Miniature Rebellions",
-		"abstract_attachments_s06",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"18",
-		"24",
-		"3-4",
-		abstractAttachments,
-		"pink",
-		tagAbstract,
-		""
-	)
+	+artworkCard('Miniature Rebellions', 'abstract_attachments_s06', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '24', '18', '3-4', abstractAttachments)
 mixin abstractAttachmentsS07
-	+artworkCard(
-		"Third Chances",
-		"abstract_attachments_s07",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"32",
-		"3-4",
-		abstractAttachments,
-		tagBlue,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Third Chances', 'abstract_attachments_s07', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '24', '18', '3-4', abstractAttachments)
 mixin abstractAttachmentsS08
-	+artworkCard(
-		"Clip Composition",
-		"abstract_attachments_s08",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"32",
-		"3-4",
-		abstractAttachments,
-		tagGrey,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Clip Composition', 'abstract_attachments_s08', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '24', '18', '3-4', abstractAttachments)
 mixin abstractAttachmentsS09
-	+artworkCard(
-		"Formative Years",
-		"abstract_attachments_s09",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"16",
-		"20",
-		"3-4",
-		abstractAttachments,
-		tagPurple,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Formative Years', 'abstract_attachments_s09', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '20', '16', '3-4', abstractAttachments)
 mixin abstractAttachmentsS10
-	+artworkCard(
-		"Above & Beneath I",
-		"abstract_attachments_s10",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"24",
-		"1-1",
-		abstractAttachments,
-		tagGrey,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Rise and Set', 'abstract_attachments_s10', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '18', '18', '1-1', abstractAttachments)
 mixin abstractAttachmentsS11
-	+artworkCard(
-		"Above & Beneath II",
-		"abstract_attachments_s11",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"32",
-		"32",
-		"1-1",
-		abstractAttachments,
-		tagGrey,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Tarnished Bonds', 'abstract_attachments_s11', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '22', '22', '1-1', abstractAttachments)
 mixin abstractAttachmentsS12
-	+artworkCard(
-		"Untitled",
-		"abstract_attachments_s12",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"16",
-		"22",
-		"8-11",
-		abstractAttachments,
-		"pink",
-		tagAbstract,
-		""
-	)
+	+artworkCard('Uninvited Guests', 'abstract_attachments_s12', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '22', '16', '8-11', abstractAttachments)
 mixin abstractAttachmentsS13
-	+artworkCard(
-		"Color Field",
-		"abstract_attachments_s13",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"32",
-		"32",
-		"1-1",
-		abstractAttachments,
-		tagGrey,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Grid of Attachment', 'abstract_attachments_s13', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '20', '20', '1-1', abstractAttachments)
 mixin abstractAttachmentsS14
-	+artworkCard(
-		"Untitled",
-		"abstract_attachments_s14",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		abstractAttachments,
-		tagGrey,
-		tagAbstract,
-		""
-	)
+	+artworkCard('Never Eclipsed', 'abstract_attachments_s14', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '24', '18', '4-3', abstractAttachments)
 mixin abstractAttachmentsS15
-	+artworkCard(
-		"Untitled",
-		"abstract_attachments_s15",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagPlastic,
-		"24",
-		"32",
-		"3-4",
-		abstractAttachments,
-		tagGreen,
-		tagAbstract,
-		""
-	)
+	+artworkCard('We Are Not Connected', 'abstract_attachments_s15', 'Abstract painting', tag2019, 'Acrylic', 'Plastic', '48', '36', '3-4', abstractAttachments)
 mixin abstractAttachmentsS16
-	+artworkCard(
-		"Neon Routes",
-		"abstract_attachments_s16",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"48",
-		"36",
-		"4-3",
-		abstractAttachments,
-		"black",
-		tagAbstract,
-		""
-	)
-//- S17 - not ready
-mixin abstractAttachmentsS17
-	+artworkCard(
-		"No Easy Route",
-		"abstract_attachments_s17",
-		"Abstract painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"24",
-		"32",
-		"3-4",
-		abstractAttachments,
-		"yellow",
-		tagAbstract,
-		""
-	)
+	+artworkCard('Bent Out Links', 'abstract_attachments_s16', 'Abstract painting', tag2019, 'Acrylic', 'Canvas', '12', '16', '4-3', abstractAttachments)
 
 //- Body Drawings
-//- S06c not ready
 mixin figurativeBodyG01
-	+artworkCard(
-		"Untitled",
-		"figurative_body_g01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-3",
-		figurativeBody,
-		tagFigurative,
-		tagWoman,
-		tagNude
-	)
+	+artworkCard('Misery of Regression (Arrangement)', 'figurative_body_g01', 'Figurative painting of a woman.', tag2005, 'Gesso, Coffee, Acrylic', 'Lexan Plastic', '18', '24', '5-3', figurativeBody)
 mixin figurativeBodyS01
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-6",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Misery of Regression 3', 'figurative_body_s01', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Acetate', '24', '20', '5-6', figurativeBody)
 mixin figurativeBodyS02
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"6-5",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Misery of Regression 2', 'figurative_body_s02', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Acetate', '24', '20', '6-5', figurativeBody)
 mixin figurativeBodyS03
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-6",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Misery of Regression 1', 'figurative_body_s03', 'Figurative painting of a woman.', tag2005, 'Gesso, Coffee, Acrylic', 'Acetate', '24', '20', '5-6', figurativeBody)
 mixin figurativeBodyS04
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"3-2",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Hugging Pillow Installation', 'figurative_body_s04', 'Figurative painting of a woman.', tag2005, 'Gesso, Coffee, Acrylic', 'Acetate', '38', '52', '3-2', figurativeBody)
 mixin figurativeBodyS04b
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s04b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-4",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Hugging Pillow Installation (Alternative View)', 'figurative_body_s04b', 'Figurative painting of a woman.', tag2005, 'Acrylic, Coffee, Gesso', 'Acetate', '38', '52', '5-4', figurativeBody)
 mixin figurativeBodyS04c
-	+artworkCard(
-		"(Detail)",
-		"figurative_body_s04c",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"3-2",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Hugging Pillow_ Fragment of the Installation', 'figurative_body_s04c', 'Figurative painting of a woman.', tag2005, 'Acrylic, Coffee, Gesso', 'Acetate', '', '', '3-2', figurativeBody)
 mixin figurativeBodyS04d
-	+artworkCard(
-		"(Detail)",
-		"figurative_body_s04d",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-4",
-		figurativeBody,
-		tagFigurative,
-		tagTriptych
-	)
+	+artworkCard('Hugging Pillow (Fragment of Installation)', 'figurative_body_s04d', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Acetate', '', '', '9-4', figurativeBody)
 mixin figurativeBodyS05
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"4-3",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Body Drawings (Installation for Peak Gallery, Toronto)', 'figurative_body_s05', 'Figurative painting of a woman.', tag2012, 'Acrylic, Gesso, Coffee', 'Acetate', 'Lexan Plastic', '54', '70', '4-3', figurativeBody)
 mixin figurativeBodyS05b
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s05b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"7-5",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Body Drawings (Installation for Peak Gallery, Toronto)', 'figurative_body_s05b', 'Figurative painting of a woman.', tag2012, 'Acrylic, Gesso, Coffee', 'Acetate', 'Lexan Plastic', '', '', '7-5', figurativeBody)
 mixin figurativeBodyS06
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-8",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Hugging Pillow -installation for 2010 LA Art SHOW of bigger and framed pieces', 'figurative_body_s06', 'Figurative painting of a woman.', tag2009, 'Acrylic, Gesso, Acrylic Ink', 'Lexan Plastic', '16', '12', '9-8', figurativeBody)
 mixin figurativeBodyS06b
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s06b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"4-3",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
-//- S06c is currently unpublished
-mixin figurativeBodyS06c
-	+artworkCard(
-		"(Details)",
-		"figurative_body_s06c",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"1-1",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Anxious Body- part of 2014 solo show @ 3Capacity Gallery', 'figurative_body_s06b', 'Figurative painting of a woman.', tag2012, 'Acrylic, Gesso, Acrylic Ink', 'Lexan Plastic', '', '', '4-3', figurativeBody)
 mixin figurativeBodyS07
-	+artworkCard(
-		"Untitled",
-		"figurative_body_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"4-3",
-		figurativeBody,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Anxious Body _Installation', 'figurative_body_s07', 'Figurative painting of a woman.', tag2012, 'Acrylic, Acrylic Ink, Gesso', 'Lexan Plastic', '36', '44', '4-3', figurativeBody)
 
 //- Self Examination
-mixin figurativeExaminationS01
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS02
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS02b
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s02b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"16-9",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS03
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"8-11",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS04
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"1-1",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS05
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"8-17",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeExaminationS06
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"2-1",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
 mixin figurativeExaminationG01
-	+artworkCard(
-		"Exhibition Documentation",
-		"figurative_examination_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"3-2",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Life is Worth of Examining_ View on Fragment of the 2006  solo Show in Kipp Gallery, Indiana University of Pennsylvania', 'figurative_examination_g01', 'Figurative painting of a woman.', tag2006, 'Acrylic', 'Unstretched Canvas', 'Artex Plastic Film', '', '', '3-2', figurativeExamination)
+mixin figurativeExaminationS01
+	+artworkCard('Ahead', 'figurative_examination_s01', 'Figurative painting of a woman.', tag2006, 'Acrylic', 'Canvas', '48', '36', '3-4', figurativeExamination)
+mixin figurativeExaminationS02
+	+artworkCard('Trylogy of Dominoes', 'figurative_examination_s02', 'Figurative painting of a woman.', tag2006, 'Acrylic', 'Canvas', '48', '36', '3-4', figurativeExamination)
+mixin figurativeExaminationS02b
+	+artworkCard('Trilogy of Dominoes- fragment', 'figurative_examination_s02b', 'Figurative painting of a woman.', tag2006, 'Acrylic', 'Canvas', '48', '36', '16-9', figurativeExamination)
+mixin figurativeExaminationS03
+	+artworkCard('Seat Belt Trauma', 'figurative_examination_s03', 'Figurative painting of a woman.', tag2009, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '64', '42', '8-11', figurativeExamination)
+mixin figurativeExaminationS04
+	+artworkCard('Independent Study', 'figurative_examination_s04', 'Figurative painting of a woman.', tag2008, 'Acrylic, Acrylic Ink, Gesso, Coffee', 'Lexan', '22', '22', '1-1', figurativeExamination)
+mixin figurativeExaminationS05
+	+artworkCard('Manumission', 'figurative_examination_s05', 'Figurative painting of a woman.', tag2006, 'Acrylic, Gesso, Coffee', 'Artex Plastic Film', '84', '45', '8-17', figurativeExamination)
+mixin figurativeExaminationS06
+	+artworkCard('Unzipping', 'figurative_examination_s06', 'Figurative painting of a woman.', tag2006, 'Acrylic, Gesso, Coffee', 'Artex Plastic Film', '84', '54', '2-1', figurativeExamination)
 mixin figurativeExaminationS07
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"10-19",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Coffeine Body', 'figurative_examination_s07', 'Figurative painting of a woman.', tag2006, 'Gesso, Coffee', 'Artex Plastic Film', '76', '42', '10-19', figurativeExamination)
 mixin figurativeExaminationS08
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s08",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"2-3",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Split', 'figurative_examination_s08', 'Figurative painting of a woman.', tag2010, 'Oil', 'Canvas', '36', '28', '2-3', figurativeExamination)
 mixin figurativeExaminationS09
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s09",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"16-10",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Memories and Fantasies', 'figurative_examination_s09', 'Figurative painting of a woman.', tag2006, 'Oil, Conté', 'Canvas', '96', '56', '16-10', figurativeExamination)
 mixin figurativeExaminationS10
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s10",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"3-5",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Dominoes and Rocking', 'figurative_examination_s10', 'Figurative painting of a woman.', tag2006, 'Acrylic Ink, Conté, Gesso, Acrylic', 'Canvas', '40', '22', '3-5', figurativeExamination)
 mixin figurativeExaminationS11
-	+artworkCard(
-		"Untitled",
-		"figurative_examination_s11",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"8-9",
-		figurativeExamination,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Journey ', 'figurative_examination_s11', 'Figurative painting of a woman.', tag2006, 'Acrylic Ink, Acrylic, Gesso, Coffee', 'Unstretched Canvas', '54', '50', '8-9', figurativeExamination)
 
 //- Image of Disengagement
 mixin figurativeDisengagementS01
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"49-50",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('On the Edge of the Blue', 'figurative_disengagement_s01', 'Figurative painting of a woman.', tag2006, 'Acrylic, Coffee, Gesso', 'Artex Plastic Film', '45', '42', '49-50', figurativeDisengagement)
 mixin figurativeDisengagementS02
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"6-7",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Onthe Edge of the Blue # 2', 'figurative_disengagement_s02', 'Figurative painting of a woman.', tag2006, 'Acrylic, Gesso, Coffee', 'Acetate', '48', '42', '6-7', figurativeDisengagement)
 mixin figurativeDisengagementS03
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"6-7",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Powerless (Melancholia)', 'figurative_disengagement_s03', 'Figurative painting of a woman.', tag2006, 'Acrylic, Gesso, Coffee', 'Acetate', '44', '42', '6-7', figurativeDisengagement)
 mixin figurativeDisengagementS04
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Missed Deadline', 'figurative_disengagement_s04', 'Figurative painting of a woman.', tag2011, 'Conté, Acrylic, Gesso', 'Canvas', '30', '40', '4-3', figurativeDisengagement)
 mixin figurativeDisengagementS05
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-10",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Discrete Narration', 'figurative_disengagement_s05', 'Figurative painting of a woman.', tag2008, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '45', '42', '9-10', figurativeDisengagement)
 mixin figurativeDisengagementS06
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-5",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Rather Obsession', 'figurative_disengagement_s06', 'Figurative painting of a woman.', tag2010, 'Acrylic, Gesso, Coffee', 'Lexan Plastic', '42', '70', '9-5', figurativeDisengagement)
 mixin figurativeDisengagementS07
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-4",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('It\'s Over', 'figurative_disengagement_s07', 'Figurative painting of a woman.', tag2008, 'Acrylic', 'Lexan Plastic', '24', '30', '5-4', figurativeDisengagement)
 mixin figurativeDisengagementS08
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s08",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"1-1",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Yellow Evening', 'figurative_disengagement_s08', 'Figurative painting of a woman.', tag2008, 'Acrylic, Gesso, Coffee', 'Lexan Plastic', '24', '24', '1-1', figurativeDisengagement)
 mixin figurativeDisengagementS09
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s09",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-4",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Cellular Disconnection', 'figurative_disengagement_s09', 'Figurative painting of a woman.', tag2008, 'Acrylic, Gesso, Coffee', 'Lexan Plastic', '18', '28', '5-4', figurativeDisengagement)
 mixin figurativeDisengagementS10
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s10",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"1-1",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Equilibrium', 'figurative_disengagement_s10', 'Figurative painting of a woman.', tag2008, 'Acrylic, Gesso, Coffee', 'Lexan Plastic', '24', '24', '1-1', figurativeDisengagement)
 mixin figurativeDisengagementS11
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s11",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-4",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('I do not Belong', 'figurative_disengagement_s11', 'Figurative painting of a woman.', tag2007, 'Acrylic, Gesso, Coffee, Acrylic Ink', 'Acetate', '24', '30', '5-4', figurativeDisengagement)
 mixin figurativeDisengagementS12
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s12",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"4-3",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Lost in Space', 'figurative_disengagement_s12', 'Figurative painting of a woman.', tag2007, 'Acrylic, Coffee, Gesso, Acrylic Ink', 'Acetate', '24', '30', '4-3', figurativeDisengagement)
 mixin figurativeDisengagementS13
-	+artworkCard(
-		"Untitled",
-		"figurative_disengagement_s13",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-4",
-		figurativeDisengagement,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Peculiar Disengagement', 'figurative_disengagement_s13', 'Figurative painting of a woman.', tag2007, 'Acrylic, Acrylic Ink, Gesso, Coffee', 'Acetate', '24', '30', '5-4', figurativeDisengagement)
 
 //- Coping Behaviors
 mixin figurativeCopingG01
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-6",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Fourfold  Rocking_ 4 panels', 'figurative_coping_g01', 'Figurative painting of a woman.', tag2011, 'Acrylic, Coffee, Gesso', 'Lexan Plastic', '90', '50', '5-6', figurativeCoping)
 mixin figurativeCopingG01b
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g01b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Fourfold Rocking_ 4 panels_solo show at Gallery M Contemporary, Toronto ', 'figurative_coping_g01b', 'Figurative painting of a woman.', tag2011, 'Acrylic, Gesso, Coffee', 'Lexan Plastic', '90', '50', '4-3', figurativeCoping)
 mixin figurativeCopingG01c
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g01c",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Fourfold Rocking_ rear panel_solo show at Gallery M Contemporary, Toronto', 'figurative_coping_g01c', 'Figurative painting of a woman.', tag2011, 'Gesso, Coffee, Acrylic', 'Lexan Plastic', '90', '50', '4-3', figurativeCoping)
 mixin figurativeCopingG01d
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g01d",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-1",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Fourfold Rocking_ fragment', 'figurative_coping_g01d', 'Figurative painting of a woman.', tag2014, 'Gesso, Coffee, Acrylic', 'Lexan Plastic', '', '', '2-1', figurativeCoping)
 mixin figurativeCopingG02
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"7-8",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Dual ID _ Fronts_of  figures painted on both sides of the plastic film', 'figurative_coping_g02', 'Figurative painting of a woman.', tag2013, 'Acrylic, Gesso, Acrylic Ink', 'Acetate', '48', '36', '7-8', figurativeCoping)
 mixin figurativeCopingG02b
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g02b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Dual ID_ Backs_ of Figures painted on both sides of plastic film', 'figurative_coping_g02b', 'Figurative painting of a woman.', tag2013, 'Acrylic, Gesso, Acrylic Ink', 'Acetate', '48', '36', '3-4', figurativeCoping)
 mixin figurativeCopingG03
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Hugging Pillow in the Air of Ice_3 panels', 'figurative_coping_g03', 'Figurative painting of a woman.', tag2005, 'Gesso, Coffee, Acrylic', 'Artex Plastic Film', '72', '43', '1-1', figurativeCoping)
 mixin figurativeCopingG03b
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_g03b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS01
-	+artworkCard(
-		"Fourfold Rocking",
-		"figurative_coping_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"9-5",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS02
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"9-5",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS03
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"9-5",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS04
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"9-5",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS05
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS05b
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s05b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS06
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS06b
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s06b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS07
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-4",
-		figurativeCoping,
-		"pink",
-		tagFigurative
-	)
-mixin figurativeCopingS08
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s08",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS10
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s10",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-9",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS11
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s11",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-9",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS12
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s12",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-9",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
-mixin figurativeCopingS13
-	+artworkCard(
-		"Untitled",
-		"figurative_coping_s13",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeCoping,
-		tagGreen,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Hugging Pillow in the Air of Ice', 'figurative_coping_g03b', 'Figurative painting of a woman.', tag2005, 'Gesso, Coffee, Acrylic', 'Artex Plastic Film', '72', '43', '4-3', figurativeCoping)
 mixin figurativeCopingP01
-	+artworkCard(
-		"Fourfold Rocking – Exhibition Document",
-		"figurative_coping_p01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"7-10",
-		figurativeCoping,
-		tagFigurative,
-		tagNude
-	)
+	+artworkCard('Fourfold Rocking _at Museum of the City Merida, Mexico', 'figurative_coping_p01', 'Figurative painting of a woman.', tag2014, 'Gesso, Coffee, Acrylic', 'Lexan Plastic', '90', '50', '7-10', figurativeCoping)
+mixin figurativeCopingS08
+	+artworkCard('Becoming Transparent', 'figurative_coping_s08', 'Figurative painting of a woman.', tag2008, 'Mixed Media', 'Artex Plastic Film', '60', '42', '4-3', figurativeCoping)
+mixin figurativeCopingS10
+	+artworkCard('Hugging Pillow in the Air of Ice_middle panel', 'figurative_coping_s10', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Artex Plastic Film', '72', '43', '5-9', figurativeCoping)
+mixin figurativeCopingS11
+	+artworkCard('Hugging Pillow in the Air of Ice_ rear panel', 'figurative_coping_s11', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Artex Plastic Film', '72', '43', '5-9', figurativeCoping)
+mixin figurativeCopingS12
+	+artworkCard('Hugging Pillow in the Air of Ice_ front panel', 'figurative_coping_s12', 'Figurative painting of a woman.', tag2005, 'Acrylic, Gesso, Coffee', 'Artex Plastic Film', '72', '43', '5-9', figurativeCoping)
+
+//- Selected Figurative Works Vol. 1
+mixin figurativeSelectedVol1G01
+	+artworkCard('A boy Sleeping -3 pieces', 'figurative_selected01_g01', 'Figurative painting of a woman.', tag2008, 'Acrylic, Gesso, Coffee, Acrylic Ink', 'Lexan Plastic', '20', '20', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S01
+	+artworkCard('Drawing from a Model', 'figurative_selected01_s01', 'Figurative painting of a woman.', tag2005, 'Ink', 'Paper', '16.5', '13', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S02
+	+artworkCard('Poised and Playful', 'figurative_selected01_s02', 'Figurative painting of a woman.', tag2009, 'Mixed Media', 'Lexan Plastic', '41', '48', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S03
+	+artworkCard('Leader Woman', 'figurative_selected01_s03', 'Figurative painting of a woman.', tag2009, 'Mixed Media', 'Lexan Plastic', '30', '24', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S08
+	+artworkCard('Nudes and Cellphones', 'figurative_selected01_s08', 'Figurative painting of a nudes with cellphones.', tag2005, 'Mixed Media', 'Paper', '40', '28', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S09
+	+artworkCard('Globalisolation', 'figurative_selected01_s09', 'Figurative painting of a woman.', tag2005, 'Charcoal', 'Paper', '42', '30', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S10
+	+artworkCard('A Boy Dreaming Green', 'figurative_selected01_s10', 'Figurative painting of a boy.', tag2008, 'Mixed Media', 'Lexan Plastic', '20', '20', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S11
+	+artworkCard('A Key to Dreams _ A Boy Sleeping series', 'figurative_selected01_s11', 'Figurative painting of a boy.', tag2008, 'Mixed Media', 'Lexan Plastic', '20', '20', '4-3', figurativeSelectedVol1)
+mixin figurativeSelectedVol1S12
+	+artworkCard('Maybe -A Boy Sleeping Series', 'figurative_selected01_s12', 'Figurative painting of a boy.', tag2008, 'Mixed Media', 'Lexan Plastic', '20', '20', '4-3', figurativeSelectedVol1)
 
 //- Selected Figurative Works Vol. 2
 mixin figurativeSelectedVol2G01
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_g01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"4-5",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced-Fragment of 4 Panel Installation', 'figurative_selected02_g01', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '48', '30', '4-5', figurativeSelectedVol2)
 mixin figurativeSelectedVol2G01b
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_g01b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"7-5",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced_Fragment of 4 Pannel Installation', 'figurative_selected02_g01b', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '48', '30', '7-5', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S01
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-8",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced_Installation Panel #3', 'figurative_selected02_s01', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '48', '30', '5-8', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S02
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-8",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced-Panel #2 of the Installation', 'figurative_selected02_s02', 'Painting of a woman standing in a black robe, facing a chair.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '48', '30', '5-8', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S03
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-8",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced_ Frontal Panel #1 of the Installation', 'figurative_selected02_s03', 'Painting of a woman in a black robe surrounded by empty space.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '48', '30', '5-8', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S04
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-8",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced_Rear Panel # 4', 'figurative_selected02_s04', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Artex Plastic Film', '48', '30', '5-8', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S05
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-8",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Poised and Unbalanced_Painting', 'figurative_selected02_s05', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '42', '48', '9-8', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S06
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"14-11",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('See-Through Study', 'figurative_selected02_s06', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '40', '38', '14-11', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S06b
-	+artworkCard(
-		"(Detail)",
-		"figurative_selected02_s06b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"8-5",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('See Through Study _Detail of Bottom Part', 'figurative_selected02_s06b', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Lexan Plastic', '', '', '8-5', figurativeSelectedVol2)
 mixin figurativeSelectedVol2S07
-	+artworkCard(
-		"Untitled",
-		"figurative_selected02_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		figurativeSelectedVol2,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Independent Land_Childhood', 'figurative_selected02_s07', 'Figurative painting of a woman.', tag2014, 'Acrylic, Acrylic Ink', 'Canvas', '30', '30', '1-1', figurativeSelectedVol2)
 
 //- Selected Figurative Works Vol. 3
 mixin figurativeSelectedVol3S01
-	+artworkCard(
-		"Kaleidoscope Selfie",
-		"figurative_selected03_s01",
-		"Figurative painting",
-		tag2019,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"11-13",
-		figurativeSelectedVol3,
-		"orange",
-		tagFigurative,
-		""
-	)
+	+artworkCard('Kaleidoscope Selfie', 'figurative_selected03_s01', 'Figurative painting of a woman.', tag2019, 'Acrylic, Acrylic Ink', 'Canvas', '52', '44', '11-13', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S02
-	+artworkCard(
-		"ASAP",
-		"figurative_selected03_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"11-13",
-		figurativeSelectedVol3,
-		tagGrey,
-		tagFigurative,
-		""
-	)
+	+artworkCard('ASAP', 'figurative_selected03_s02', 'Painting depicting a pale silhouette of a boy leaning back, hands resting on his head.', tag2018, 'Pastel', 'Paper', '27', '22', '11-13', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S03
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"7-8",
-		figurativeSelectedVol3,
-		tagPurple,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Oddness', 'figurative_selected03_s03', 'Figurative painting of a woman.', tag2018, 'Mixed Media', 'Lexan Plastic', '60', '45', '7-8', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S03b
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s03b",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol3,
-		tagPurple,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Dip of Passage_An Unfinished Fragment', 'figurative_selected03_s03b', 'Figurative painting of a woman.', tag2017, 'Mixed Media', 'Lexan Plastic', '48', '42', '4-3', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S04
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s04",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"7-8",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Inbetweenness', 'figurative_selected03_s04', 'Figurative painting of a woman.', tag2018, 'Mixed Media', 'Lexan Plastic', '48', '42', '7-8', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S05
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s05",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Red Migration', 'figurative_selected03_s05', 'Figurative painting of a woman.', tag2017, 'Acrylic', 'Canvas', '30', '40', '4-3', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S06
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s06",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Migratory Colours', 'figurative_selected03_s06', 'Figurative painting of a woman.', tag2018, 'Mixed Media', 'Lexan Plastic', '60', '45', '3-4', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S07
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s07",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard(' Ethnic Treat to a Polish-Canadian', 'figurative_selected03_s07', 'Figurative painting of a woman.', tag2017, 'Coloured Pencils', 'Paper', '30', '24', '3-4', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S08
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s08",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Alert or Tired', 'figurative_selected03_s08', 'Figurative painting of a woman.', tag2018, 'Acrylic', 'Lexan Plastic', '24', '24', '1-1', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S09
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s09",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"7-10",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
+	+artworkCard('Glow Out', 'figurative_selected03_s09', 'Figurative painting of a woman.', tag2018, 'Mixed Media', 'Lexan Plastic', '72', '48', '7-10', figurativeSelectedVol3)
 mixin figurativeSelectedVol3S10
-	+artworkCard(
-		"Untitled",
-		"figurative_selected03_s10",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-1",
-		figurativeSelectedVol3,
-		tagFigurative,
-		""
-	)
-
-//- Selected Figurative Works Vol. 1
-mixin figurativeSelectedVol1S01
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S02
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S03
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s03",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-//- 4 – 7 not ready
-//- mixin figurativeSelectedVol1S04
-//- mixin figurativeSelectedVol1S05
-//- mixin figurativeSelectedVol1S06
-//- mixin figurativeSelectedVol1S07
-mixin figurativeSelectedVol1S08
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s08",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S09
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s09",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S10
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s10",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S11
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s11",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S12
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s12",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1S13
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_s13",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
-mixin figurativeSelectedVol1G01
-	+artworkCard(
-		"Untitled",
-		"figurative_selected01_g01",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		figurativeSelectedVol1,
-		tagFigurative,
-		""
-	)
+	+artworkCard('La Donna Furiosa', 'figurative_selected03_s10', 'Figurative painting of a woman.', tag2006, 'Watercolour, Coffee', 'Artex Plastic Film', '72', '42', '2-1', figurativeSelectedVol3)
 
 //- Conté Portraits
-//- Handling medium tag requests for these?
-//- Need exceptions
 mixin portraitConteS01
 	+artworkCard(
 		"Untitled",
@@ -2833,7 +485,6 @@ mixin portraitConteS01
 		"00",
 		"3-2",
 		portraitConte,
-		"orange",
 		tagPortrait,
 		tagMan
 	)
@@ -2849,7 +500,6 @@ mixin portraitConteS02
 		"00",
 		"3-2",
 		portraitConte,
-		"orange",
 		tagPortrait,
 		tagMan
 	)
@@ -2921,974 +571,133 @@ mixin portraitConteG01
 
 //- Selected Portraits Vol. 2
 mixin portraitSelectedVol2G01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_g01",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"3-2",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s01",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S02
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s02",
-		"Figurative painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S03
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s03",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S04
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s04",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S05
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s05",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S06
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s06",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S08
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s08",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S09
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s09",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol2,
-		tagBlue,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S10
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s10",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"5-6",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S11
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s11",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBlue,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S12
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s12",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBrown,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S13
-	+artworkCard(
-		"Self Portrait (Mirror)",
-		"portrait_selected02_s13",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBrown,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S14
-	+artworkCard(
-		"Jeff",
-		"portrait_selected02_s14",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S15
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s15",
-		"Portrait painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S16
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s16",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBlue,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2G03
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_g03",
-		"Portrait painting",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"3-2",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		tagDiptych,
-		tagMan
-	)
-mixin portraitSelectedVol2S17
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s17",
-		"Portrait painting",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S18
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s18",
-		"Portrait painting",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S19
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s19",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S20
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s20",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagGreen,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Studio Guests and Friends_6pieces', 'portrait_selected02_g01', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '3-2', portraitSelectedVol2)
 mixin portraitSelectedVol2G02
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_g02",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"8-5",
-		portraitSelectedVol2,
-		tagPortrait,
-		tagRealism,
-		tagDiptych,
-		tagMan,
-		tagWoman,
-		tagAdult
-	)
+	+artworkCard('Portrait of Parents_2 pieces', 'portrait_selected02_g02', 'Portrait painting.', tag2013, 'Oil', 'Canvas', '10', '8', '8-5', portraitSelectedVol2)
+mixin portraitSelectedVol2G03
+	+artworkCard('Andrzej, son_2  demo pieces', 'portrait_selected02_g03', 'Portrait painting.', tag2012, 'Watercolour', 'Paper', '16', '12', '3-2', portraitSelectedVol2)
+mixin portraitSelectedVol2S01
+	+artworkCard('Jackie', 'portrait_selected02_s01', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S02
+	+artworkCard('Sonia's Profile', 'portrait_selected02_s02', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S03 +artworkCard('Peter's Head', 'portrait_selected02_s03', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S04
+	+artworkCard('Sonia Turning Her Head', 'portrait_selected02_s04', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S05
+	+artworkCard(' Studio Guest in Ames, IA', 'portrait_selected02_s05', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S06
+	+artworkCard('Agnieszka F.', 'portrait_selected02_s06', 'Portrait painting.', tag2013, 'Oil', 'Wood Panel', '24', '24', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S08
+	+artworkCard('Mutual Concern', 'portrait_selected02_s08', 'Portrait painting.', tag2014, 'Oil', 'Canvas', '30', '24', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S09
+	+artworkCard('Peter Sitting', 'portrait_selected02_s09', 'Portrait painting.', tag2014, 'Oil', 'Canvas', '40', '30', '3-4', portraitSelectedVol2)
+mixin portraitSelectedVol2S10
+	+artworkCard('Day off School for Mr. Cool', 'portrait_selected02_s10', 'Portrait painting.', tag2013, 'Oil', 'Canvas', '36', '30', '5-6', portraitSelectedVol2)
+mixin portraitSelectedVol2S11
+	+artworkCard('Belated 20th Birthday', 'portrait_selected02_s11', 'Portrait painting.', tag2011, 'Oil', 'Canvas', '24', '20', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S12
+	+artworkCard('Ms. Alden H.', 'portrait_selected02_s12', 'Portrait painting.', tag2013, 'Oil', 'Canvas', '30', '24', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S13
+	+artworkCard('Self- Portrait from Mirror', 'portrait_selected02_s13', 'Portrait painting.', tag2013, 'Oil', 'Canvas', '30', '24', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S14
+	+artworkCard('Jeff G.', 'portrait_selected02_s14', 'Portrait painting of a young man.', tag2013, 'Acrylic', 'Wood Panel', '12', '12', '1-1', portraitSelectedVol2)
+mixin portraitSelectedVol2S15
+	+artworkCard('Ana_Portrait of Girfriend of Ebenezer\'s Brother', 'portrait_selected02_s15', 'Portrait painting of a young woman.', tag2016, 'Acrylic', 'Canvas', '16', '12', '3-4', portraitSelectedVol2)
+mixin portraitSelectedVol2S16
+	+artworkCard('Daughter Irena as a Teen', 'portrait_selected02_s16', 'Portrait painting of a young woman.', tag2013, 'Oil', 'Canvas', '20', '16', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S17
+	+artworkCard('Son Andrzej Drawing#2', 'portrait_selected02_s17', 'Portrait painting of a young man.', tag2012, 'Watercolour', 'Paper', '16', '12', '3-4', portraitSelectedVol2)
+mixin portraitSelectedVol2S18
+	+artworkCard('Son Andrzej_Demo Watercolor Portrait', 'portrait_selected02_s18', 'Portrait painting of a young man.', tag2012, 'Watercolour', 'Paper', '16', '12', '3-4', portraitSelectedVol2)
+mixin portraitSelectedVol2S19
+	+artworkCard('Profile Self-Portrait', 'portrait_selected02_s19', 'Self-portrait painting of a woman.', tag2013, 'Oil', 'Canvas', '14', '11', '4-5', portraitSelectedVol2)
+mixin portraitSelectedVol2S20
+	+artworkCard('My Son Peter', 'portrait_selected02_s20', 'Portrait painting of a man.', tag2013, 'Oil', 'Canvas', '10', '8', '4-5', portraitSelectedVol2)
 mixin portraitSelectedVol2S21
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s21",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBrown,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Faustyn – A Portrait of Dad from Photograph', 'portrait_selected02_s21', 'Portrait painting of a man.', tag2013, 'Oil', 'Canvas', '10', '8', '4-5', portraitSelectedVol2)
 mixin portraitSelectedVol2S22
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s22",
-		"Portrait painting",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagBrown,
-		tagPortrait,
-		""
-	)
-mixin portraitSelectedVol2S23
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s23",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol2,
-		tagWhite,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Lucyna, Portrait of Mom from Photograph', 'portrait_selected02_s22', 'Portrait painting of a woman.', tag2013, 'Oil', 'Canvas', '10', '8', '4-5', portraitSelectedVol2)
 mixin portraitSelectedVol2S24
-	+artworkCard(
-		"Untitled",
-		"portrait_selected02_s24",
-		"Portrait painting",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"5-6",
-		portraitSelectedVol2,
-		tagGrey,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Daughter Irena', 'portrait_selected02_s24', 'Portrait painting of a young woman.', tag1995, 'Oil', 'Canvas', '20', '16', '4-5', portraitSelectedVol2)
 
 //- Skype Scéance
 mixin portraitSkypeS01
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"4-7",
-		portraitSkype,
-		tagPurple,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Face\' Time', 'portrait_skype_s01', 'Portrait depicting conversations over Skype.', tag2017, 'Mixed Media', 'Lexan Plastic', '84', '48', '4-7', portraitSkype)
 mixin portraitSkypeS01b
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01b",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"10-9",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Face Time hanging at the Group Show in Art Gallery of Mississauga', 'portrait_skype_s01b', 'Portrait depicting conversations over Skype.', tag2017, 'Mixed Media', 'Lexan Plastic', '84', '48', '10-9', portraitSkype)
 mixin portraitSkypeS01c
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01c",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"9-10",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Face Time_ one of portraits', 'portrait_skype_s01c', 'Portrait depicting conversations over Skype.', tag2017, 'Acrylic', 'Lexan Plastic', '12', '12', '9-10', portraitSkype)
 mixin portraitSkypeS01d
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01d",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"5-7",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Face Time_ one of portraits', 'portrait_skype_s01d', 'Portrait depicting conversations over Skype.', tag2017, 'Mixed Media', 'Lexan Plastic', '12', '12', '5-7', portraitSkype)
 mixin portraitSkypeS01e
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01e",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"1-1",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('FaceTime _One of the portraits', 'portrait_skype_s01e', 'Portrait depicting conversations over Skype.', tag2017, 'Acrylic', 'Lexan Plastic', '12', '12', '1-1', portraitSkype)
 mixin portraitSkypeS01f
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s01f",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"1-1",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Face Time_ one of 27 portraits', 'portrait_skype_s01f', 'Portrait depicting conversations over Skype.', tag2017, 'Acrylic', 'Lexan Plastic', '12', '12', '1-1', portraitSkype)
 mixin portraitSkypeS02
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s02",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Skype Brothers II', 'portrait_skype_s02', 'Portrait depicting conversations over Skype.', tag2018, 'Pastel', 'Paper', '30', '24', '3-4', portraitSkype)
 mixin portraitSkypeS02b
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s02b",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"7-6",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Skype Brothers II (Detail)', 'portrait_skype_s02b', 'Portrait depicting conversations over Skype.', tag2018, 'Pastel', 'Paper', '8', '8', '7-6', portraitSkype)
 mixin portraitSkypeS03
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s03",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"15-14",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('The Skype Brothers', 'portrait_skype_s03', 'Portrait depicting conversations over Skype.', tag2018, 'Pastel', 'Paper', 'Plexiglass', '30', '32', '15-14', portraitSkype)
 mixin portraitSkypeS03b
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s03b",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"6-7",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('The Skype Brothers (Detail)', 'portrait_skype_s03b', 'Portrait depicting conversations over Skype.', tag2018, 'Pastel, Graphite', 'Paper', 'Plexiglass', '8', '6', '6-7', portraitSkype)
 mixin portraitSkypeS03c
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s03c",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"6-7",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('The Skype Brothers (Detail)', 'portrait_skype_s03c', 'Portrait depicting conversations over Skype.', tag2018, 'Pastel, Graphite', 'Paper', '8', '6', '6-7', portraitSkype)
 mixin portraitSkypeS04
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s04",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"1-1",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Skype Séance #1', 'portrait_skype_s04', 'Portrait depicting conversations over Skype.', tag2013, 'Mixed Media', 'Wood Panel', 'Resin', '36', '36', '1-1', portraitSkype)
 mixin portraitSkypeS05
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s05",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"1-1",
-		portraitSkype,
-		"black",
-		tagPortrait,
-		""
-	)
+	+artworkCard('Skype Séance #2', 'portrait_skype_s05', 'Portrait depicting conversations over Skype.', tag2013, 'Acrylic, Gesso', 'Wood Panel', '36', '36', '1-1', portraitSkype)
 mixin portraitSkypeS05b
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s05b",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"6-5",
-		portraitSkype,
-		"black",
-		tagPortrait,
-		""
-	)
+	+artworkCard('Unfinished Fragment of 2013 Skype Séance #2 (Detail)', 'portrait_skype_s05b', 'Portrait depicting conversations over Skype.', tag2013, 'Acrylic', 'Wood Panel', '', '', '6-5', portraitSkype)
 mixin portraitSkypeS06
-	+artworkCard(
-		"Untitled",
-		"portrait_skype_s06",
-		"Portrait painting of a Skype conversation",
-		tag2000,
-		tagConte,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSkype,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Skype Séance (12 Part White Version)', 'portrait_skype_s06', 'Portrait depicting conversations over Skype.', tag2012, 'Gesso', 'Plastic Macrolon', '10.5', '10.5', '3-4', portraitSkype)
 
 //- Selected Portraits Volume 3
 mixin portraitSelectedVol3G01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_g01",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"2-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Spencer and Nathan', 'portrait_selected03_g01', 'Portrait painting of two brothers.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '2-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s01",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Nathan, Grandson of Chandler K.', 'portrait_selected03_s01', 'Portrait painting of a boy.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '1-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S02
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s02",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Spencer, Grandson of Chandler K.', 'portrait_selected03_s02', 'Portrait painting of a boy.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '1-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S03
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s03",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Self-Portrait from a Photograph', 'portrait_selected03_s03', 'Self portrait by Grazyna Adamska-Jarecka.', tag2019, 'Acrylic, Acrylic Ink', 'Canvas', '11', '14', '4-5', portraitSelectedVol3)
 mixin portraitSelectedVol3S04
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s04",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Shara B._Portrait from a Photograph', 'portrait_selected03_s04', 'Portrait of a young girl in a white dress.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '1-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S05
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s05",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Diane B. Portrait from a Photograph', 'portrait_selected03_s05', 'Portrait of a young girl in a white dress.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '1-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S06
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s06",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Steeve B._Portrait from a Photograph', 'portrait_selected03_s06', 'Portrait of a young boy with blonde hair.', tag2018, 'Acrylic', 'Wood Panel', '8', '8', '1-1', portraitSelectedVol3)
 mixin portraitSelectedVol3S07
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s07",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		"wood",
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Portrait of Hendrik from the Model', 'portrait_selected03_s07', 'Portrait of a man.', tag2018, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S08
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s08",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Rolf_ Portrait from the Sitter', 'portrait_selected03_s08', 'Portrait of a man.', tag2018, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S09
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s07",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Mother of Helena', 'portrait_selected03_s09', 'Portrait of a woman.', tag2016, 'Acrylic', 'Canvas', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S10
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s10",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Peter_ First Sketch from the Sitter', 'portrait_selected03_s10', 'Portrait of a man.', tag2018, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S11
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s11",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"00",
-		"00",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Vita _Demo Sketch from Model in Ink', 'portrait_selected03_s11', 'Portrait of a woman.', tag2018, 'Ink', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S12
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s12",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Rolf_Class Demo Portrait from Model', 'portrait_selected03_s12', 'Portrait of a man.', tag2018, 'Acrylic, Acrylic Ink', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S13
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s13",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Rolf_ Sketch in Ink from the Model', 'portrait_selected03_s13', 'Portrait of a man.', tag2018, 'Acrylic Ink', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S14
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s14",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Diana\'s Man_Another Demo Sketch', 'portrait_selected03_s14', 'Portrait of a man.', tag2018, 'Acrylic, Acrylic Ink', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S15
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s15",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Diana\'s Man_Demo Sketch', 'portrait_selected03_s15', 'Portrait of a woman.', tag2018, 'Acrylic, Acrylic Ink', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S16
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s16",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Hendrik _ Demo Sketch', 'portrait_selected03_s16', 'Portrait of a man.', tag2018, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S17
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s17",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Hendrik_Portrait from the Sitter', 'portrait_selected03_s17', 'Portrait of a woman.', tag2017, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S18
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s18",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Self-Portrait from Mirror_ Demo Work', 'portrait_selected03_s18', 'Portrait of a woman.', tag2002, 'Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S19
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s19",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"32",
-		"3-4",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Self_Portrait_Demo Work', 'portrait_selected03_s19', 'Portrait of a woman.', tag2014, 'Ink, Acrylic', 'Paper', '16', '12', '3-4', portraitSelectedVol3)
 mixin portraitSelectedVol3S20
-	+artworkCard(
-		"Untitled",
-		"portrait_selected03_s20",
-		"Portrait painting",
-		tag2018,
-		tagAcrylic,
-		tagPaper,
-		"24",
-		"30",
-		"4-5",
-		portraitSelectedVol3,
-		tagPortrait,
-		""
-	)
+	+artworkCard('Self-Portrait from Mirror_ Demo Painting', 'portrait_selected03_s20', 'Portrait of a woman.', tag2018, 'Acrylic', 'Canvas', '20', '16', '4-5', portraitSelectedVol3)
 
 //- Unpublished
+//- Cats
 //- mixin portraitCatsS01
 //- mixin portraitCatsS02
 //- mixin portraitCatsS03
@@ -3904,6 +713,7 @@ mixin portraitSelectedVol3S20
 //- mixin portraitCatsS14
 //- mixin portraitCatsS15
 
+//- Dogs
 //- mixin portraitDogsS01
 //- mixin portraitDogsS02
 //- mixin portraitDogsS03
@@ -3926,268 +736,39 @@ mixin portraitSelectedVol3S20
 
 //- Honorary & Collegiate Portraits
 mixin portraitHonoraryS01
-	+artworkCard(
-		"Name",
-		"portrait_honorary_s01",
-		"Portrait painting of a university professor",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		portraitHonorary,
-		tagBlue,
-		tagPortrait,
-		tagFigurative,
-		tagRealism,
-		tagMan
-	)
+	+artworkCard('Dr. Wayne Martin', 'portrait_honorary_01', 'Portrait of a university professor.', tag2015, 'Oil', 'Canvas', '40', '36', '3-4', portraitHonorary)
 mixin portraitHonoraryS02
-	+artworkCard(
-		"Name",
-		"portrait_honorary_s02",
-		"Portrait painting of a university professor",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		portraitHonorary,
-		tagBlue,
-		tagPortrait,
-		tagFigurative,
-		tagRealism,
-		tagMan
-	)
+	+artworkCard('Dr. Ian Dahoo', 'portrait_honorary_02', 'Portrait of a university professor.', tag2015, 'Oil', 'Canvas', '40', '30', '3-4', portraitHonorary)
 mixin portraitHonoraryS03
-	+artworkCard(
-		"Name",
-		"portrait_honorary_s03",
-		"Portrait painting of a university professor",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"11-9",
-		portraitHonorary,
-		tagGrey,
-		tagPortrait,
-		tagFigurative,
-		tagMan
-	)
+	+artworkCard('Dr. Frank Schofield in Korea/Sketch', 'portrait_honorary_03', 'Portrait of a university professor.', tag2006, 'Oil', 'Canvas', '30', '36', '11-9', portraitHonorary)
 mixin portraitHonoraryS04
-	+artworkCard(
-		"Name",
-		"portrait_honorary_s04",
-		"Portrait painting of a university professor",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		portraitHonorary,
-		tagBrown,
-		tagPortrait,
-		tagRealism,
-		tagMan
-	)
+	+artworkCard('Dr. Donald Barnum', 'portrait_honorary_04', 'Portrait of a university professor.', tag2001, 'Oil', 'Canvas', '20', '16', '3-4', portraitHonorary)
 mixin portraitHonoraryS05
-	+artworkCard(
-		"Untitled",
-		"portrait_honorary_s05",
-		"Portrait painting of a university professor",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		portraitHonorary,
-		tagBrown,
-		tagPortrait,
-		tagRealism,
-		tagMan
-	)
+	+artworkCard('Portrait of Dr. Paul Voroney', 'portrait_honorary_05', 'Portrait of a university professor.', tag2002, 'Oil', 'Canvas', '20', '16', '2-3', portraitHonorary)
 
 //- Selected Portraits Volume 1
 mixin portraitSelectedVol1G01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_g01",
-		"Portrait painting of three young boys",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"15-7",
-		portraitSelectedVol1,
-		"",
-		tagTriptych,
-		tagBoy,
-		tagChild
-	)
+	+artworkCard('Kids from California', 'portrait_selected01_g01', 'Triptych of watercolor portraits of young sibling boys.', tag2009, 'Watercolour', 'Paper', '12', '16', '15-7', portraitSelectedVol1)
 mixin portraitSelectedVol1S01
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s01",
-		"Portrait painting of a young boy",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"5-7",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagRealism,
-		tagBoy,
-		tagChild
-	)
+	+artworkCard('Other Portrait of the Boy from California', 'portrait_selected01_s01', 'Watercolor portrait of a five year old boy with blue eyes.', tag2009, 'Watercolour', 'Paper', '16', '12', '5-7', portraitSelectedVol1)
 mixin portraitSelectedVol1S02
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s02",
-		"Portrait painting of a young boy",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"5-7",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagBoy,
-		tagChild
-	)
+	+artworkCard('Girl from California', 'portrait_selected01_s02', 'Watercolor portrait of a child looking off to the left side.', tag2009, 'Watercolour', 'Paper', '16', '12', '5-7', portraitSelectedVol1)
 mixin portraitSelectedVol1S03
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s03",
-		"Portrait painting of a young boy",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"5-7",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagBoy,
-		tagChild
-	)
+	+artworkCard('Boy from California', 'portrait_selected01_s03', 'Watercolor portrait of a five year old boy with blue eyes.', tag2009, 'Watercolour', 'Paper', '16', '12', '5-7', portraitSelectedVol1)
 mixin portraitSelectedVol1S04
-	+artworkCard(
-		"Valentynki",
-		"portrait_selected01_s04",
-		"Painting of a boy and girl",
-		tag2000,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"9-7",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagChild,
-		tagBoy,
-		"girl"
-	)
+	+artworkCard('Andrew and Kate', 'portrait_selected01_s04', 'Portrait of a boy and girl.', tag2008, 'Acrylic', 'Plastic', '', '', '9-7', portraitSelectedVol1)
 mixin portraitSelectedVol1S05
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s05",
-		"Portrait painting of Michelle Obama",
-		tag2000,
-		"mixed-media",
-		"wood",
-		"00",
-		"00",
-		"1-1",
-		portraitSelectedVol1,
-		tagPortrait,
-		"",
-		""
-	)
-//- S06 – S13 not ready
-//- mixin portraitSelectedVol1S06
-//- mixin portraitSelectedVol1S07
-//- mixin portraitSelectedVol1S08
-//- mixin portraitSelectedVol1S09
-//- mixin PortraitSelectedVol1S10
-//- mixin portraitSelectedVol1S11
-//- mixin portraitSelectedVol1S12
-//- mixin portraitSelectedVol1S13
+	+artworkCard('Michelle in Coffee', 'portrait_selected01_s05', 'Portrait painting.', tag2009, 'Coffee, Acrylic', 'Lexan Plastic', '22', '22', '1-1', portraitSelectedVol1)
 mixin portraitSelectedVol1S14
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s14",
-		"Portrait painting of a young woman with blonde hair",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagWoman,
-		tagNude
-	)
+	+artworkCard('Daugter Irena', 'portrait_selected01_s14', 'Portrait painting.', tag1994, 'Oil', 'Canvas', '20', '16', '4-5', portraitSelectedVol1)
 mixin portraitSelectedVol1S15
-	+artworkCard(
-		"Untitled",
-		"portrait_selected01_s15",
-		"Portrait painting of a man with dark hair",
-		tag2000,
-		"oil",
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		portraitSelectedVol1,
-		tagPortrait,
-		"",
-		""
-	)
+	+artworkCard('Oreste Belluschi Reading a Letter_portrait of an Italian Student', 'portrait_selected01_s15', 'Portrait painting.', tag1988, 'Oil', 'Canvas', '20', '16', '4-5', portraitSelectedVol1)
 mixin portraitSelectedVol1S16
-	+artworkCard(
-		"So Says Barden",
-		"portrait_selected01_s16",
-		"Portrait painting of Javier Barden",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-6",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagMan,
-		tagAdult
-	)
+	+artworkCard('Javier Barden, Actor', 'portrait_selected01_s16', 'Portrait painting.', tag2011, 'Acrylic, Acrylic Ink', 'Canvas', '24', '20', '5-6', portraitSelectedVol1)
 mixin portraitSelectedVol1S17
-	+artworkCard(
-		"Orange Distraction",
-		"portrait_selected01_s17",
-		"Portrait painting of an adult man with blue eyes",
-		tag2009,
-		tagAcrylic,
-		tagPlastic,
-		"00",
-		"00",
-		"5-7",
-		portraitSelectedVol1,
-		tagPortrait,
-		tagMan,
-		tagAdult
-	)
+	+artworkCard('Orange Distraction', 'portrait_selected01_s17', 'Portrait painting.', tag2009, 'Acrylic, Coffee', 'Lexan Plastic', '29', '22', '5-7', portraitSelectedVol1)
 
-//- Next Update
+//- Guelph
 //- mixin portraitGuelphS01
 //- mixin portraitGuelphS01b
 //- mixin portraitGuelphS01c
@@ -4261,7 +842,7 @@ mixin portraitSelectedVol1S17
 //- mixin portraitGuelphG10
 //- mixin portraitGuelphP01
 
-//- Next update
+//- Assorted Still Life
 //- mixin assortedStillS01
 //- mixin assortedStillS02
 //- mixin assortedStillS03
@@ -4282,298 +863,43 @@ mixin portraitSelectedVol1S17
 
 //- Assorted Landscapes Vol. 2
 mixin assortedLandscapesVol2S01
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s01",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Beaver Hub', 'assorted_landscapes02_s01', 'Landscape painting', tag2017, 'Acrylic', 'Canvas', '30', '40', '4-3', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S02
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s02",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Hidden Valley (Entrance View)', 'assorted_landscapes02_s02', 'Landscape painting', tag2017, 'Acrylic', 'Paper', '9', '12', '4-3', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S03
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s03",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Stocle Trail', 'assorted_landscapes02_s03', 'Landscape painting', tag2018, 'Watercolour', 'Paper', '14', '11', '4-5', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S04
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s04",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('At Stock Bay', 'assorted_landscapes02_s04', 'Landscape painting', tag2018, 'Watercolour', 'Paper', '9', '11', '4-3', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S05
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s05",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Royal Park, Guelph', 'assorted_landscapes02_s05', 'Landscape painting', tag2018, 'Watercolour', 'Paper', '14', '11', '4-5', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S06
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s06",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Green Algea in Hidden Valley', 'assorted_landscapes02_s06', 'Landscape painting', tag2018, 'Acrylic', 'Canvas', '9', '16', '4-3', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S07
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s07",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"14-11",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Corn Field', 'assorted_landscapes02_s07', 'Landscape painting', tag2018, 'Acrylic', 'Paper', '11', '14', '14-11', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S08
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s08",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Five Minutes Away', 'assorted_landscapes02_s08', 'Landscape painting', tag2018, 'Watercolour', 'Paper', '16', '9', '3-4', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S09
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s09",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Wetland, Hidden Valley', 'assorted_landscapes02_s09', 'Landscape painting', tag2017, 'Acrylic', 'Paper', '9', '11', '4-3', assortedLandscapesVol2)
 mixin assortedLandscapesVol2S10
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes02_s10",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedLandscapesVol2,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Algae, Hidden Valley', 'assorted_landscapes02_s10', 'Landscape painting', tag2017, 'Acrylic', 'Paper', '11', '14', '4-3', assortedLandscapesVol2)
 
 //- Assorted Animals
 mixin assortedAnimalsS01
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s01",
-		"Painting of a dead wolf",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"6-5",
-		assortedAnimals,
-		"",
-		tagAnimal,
-		""
-	)
+	+artworkCard('Dying Wolf', 'assorted_animals_s01', 'Abstract painting', tag2013, 'Acrylic, Acrylic Ink', 'Wood Panel', '30', '36', '6-5', assortedAnimals)
 mixin assortedAnimalsS02
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s02",
-		"Painting of a cat",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		assortedAnimals,
-		"",
-		tagAnimal,
-		""
-	)
+	+artworkCard('Eben\'s Land', 'assorted_animals_s02', 'Painting depicting animals', tag2016, 'Acrylic', 'Canvas', '12', '12', '1-1', assortedAnimals)
 mixin assortedAnimalsS03
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s03",
-		"Painting of a dog",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"6-5",
-		assortedAnimals,
-		"",
-		tagAnimal,
-		""
-	)
+	+artworkCard('Mural in Memory of Crumb ', 'assorted_animals_s03', 'Painting depicting animals', tag2014, 'Acrylic', 'Wall', '30', '40', '6-5', assortedAnimals)
 mixin assortedAnimalsS04
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s04",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-3",
-		assortedAnimals,
-		"",
-		tagHorse,
-		tagAnimal,
-		""
-	)
+	+artworkCard('Group of Horses', 'assorted_animals_s04', 'Painting depicting animals', tag2014, 'Acrylic', 'Canvas', '11', '14', '4-3', assortedAnimals)
 mixin assortedAnimalsS05
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s05",
-		"Portrait of a horse",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		assortedAnimals,
-		"",
-		tagHorse,
-		tagAnimal,
-		tagPortrait
-	)
+	+artworkCard('Head of a Horse', 'assorted_animals_s05', 'Painting depicting animals', tag2015, 'Acrylic', 'Wood Panel', '8', '8', '1-1', assortedAnimals)
 mixin assortedAnimalsS06
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s06",
-		"Portrait painting of a brown horse",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"1-1",
-		assortedAnimals,
-		"",
-		tagHorse,
-		tagAnimal,
-		tagPortrait
-	)
+	+artworkCard('Sketch in Oil (Head of a Horse)', 'assorted_animals_s06', 'Painting depicting animals', tag2014, 'Oil', 'Wood Panel', '12', '12', '1-1', assortedAnimals)
 mixin assortedAnimalsS07
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s07",
-		"Painting of a brown dog sleeping",
-		tag2000,
-		tagWatercolour,
-		tagPaper,
-		"00",
-		"00",
-		"3-2",
-		assortedAnimals,
-		"",
-		tagAnimal,
-		""
-	)
+	+artworkCard('Napping Dog', 'assorted_animals_s07', 'Painting depicting animals', tag2016, 'Watercolour', 'Paper', '12', '16', '3-2', assortedAnimals)
 mixin assortedAnimalsS08
-	+artworkCard(
-		"Untitled",
-		"assorted_animals_s08",
-		"Portrait painting of a white horse",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-4",
-		assortedAnimals,
-		"",
-		tagHorse,
-		tagAnimal,
-		tagPortrait
-	)
+	+artworkCard('White Horse', 'assorted_animals_s08', 'Painting depicting animals', tag1988, 'Oil', 'Wooden Board', '22', '18', '3-4', assortedAnimals)
 
 //- Next update
 //- mixin assortedMiscS01
@@ -4584,146 +910,20 @@ mixin assortedAnimalsS08
 
 //- Assorted Landscapes Volume 1
 mixin assortedLandscapesVol1S01
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s01",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"3-2",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Around the Jefferson City Apartment', 'assorted_landscapes01_s01', 'Landscape painting', tag1994, 'Watercolour', 'Paper', '11.06', '8', '3-2', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S02
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s02",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"2-3",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('View from Jefferson City Apartment', 'assorted_landscapes01_s02', 'Landscape painting', tag1994, 'Watercolour', 'Paper', '14', '9.35', '2-3', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S03
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s03",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"11-14",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Surroundings of Jefferson City Apartment', 'assorted_landscapes01_s03', 'Landscape painting', tag1994, 'Watercolour', 'Paper', '15', '11', '11-14', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S04
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s04",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"11-14",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Study on a Forest', 'assorted_landscapes01_s04', 'Landscape painting', tag1998, 'Watercolour', 'Paper', '15', '11', '11-14', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S05
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s05",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"23-16",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Swobnica, Poland', 'assorted_landscapes01_s05', 'Landscape painting', tag1987, 'Watercolour', 'Paper', '8', '11.65', '23-16', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S06
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s06",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"8-11",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard(' My Backyard\'s Wall', 'assorted_landscapes01_s06', 'Landscape painting', tag1998, 'Watercolour', 'Paper', '15', '11', '8-11', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S07
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s07",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"4-5",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('View on Backyard', 'assorted_landscapes01_s07', 'Landscape painting', tag1998, 'Watercolour', 'Paper', '15', '11', '4-5', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S08
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s08",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"5-4",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Study of Cactuses', 'assorted_landscapes01_s08', 'Landscape painting', tag1988, 'Watercolour', 'Paper', '11.65', '8', '5-4', assortedLandscapesVol1)
 mixin assortedLandscapesVol1S09
-	+artworkCard(
-		"Untitled",
-		"assorted_landscapes01_s09",
-		"Landscape painting",
-		tag2000,
-		tagAcrylic,
-		tagCanvas,
-		"00",
-		"00",
-		"8-11",
-		assortedLandscapesVol1,
-		"",
-		tagLandscape,
-		""
-	)
+	+artworkCard('Surroundings of Szczecin', 'assorted_landscapes01_s09', 'Landscape painting', tag1988, 'Watercolour', 'Paper', '11.5', '8.35', '8-11', assortedLandscapesVol1)
